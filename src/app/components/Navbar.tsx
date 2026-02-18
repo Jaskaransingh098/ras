@@ -12,7 +12,7 @@ export default function Navbar() {
         {/* LEFT BLOCK */}
         <div
           className="flex items-center justify-between w-full md:w-auto bg-white/70 backdrop-blur-xl 
-                        rounded-2xl px-6 md:px-10 py-4 shadow-md border border-[#ece8df] md:gap-80"
+                        rounded-2xl px-6 md:px-10 py-4 shadow-md border border-[#ece8df] md:gap-21"
         >
           {/* Logo */}
           <h2 className="text-lg md:text-xl font-semibold tracking-wide text-[#2d2d2d] font-[var(--font-inter)]">
@@ -34,6 +34,14 @@ export default function Navbar() {
               Blog
             </Link>
           </div>
+           <div className="hidden md:block ml-4">
+          <Link
+            href="/contact"
+            className="bg-[#6a5acd] hover:bg-[#5b4bd6] text-white italic px-6 py-3 rounded-2xl text-sm tracking-wide transition-all duration-300 shadow-md"
+          >
+            Contact Us
+          </Link>
+        </div>
 
           {/* Mobile Hamburger */}
           <button className="md:hidden ml-4" onClick={() => setOpen(!open)}>
@@ -44,14 +52,14 @@ export default function Navbar() {
         </div>
 
         {/* RIGHT BLOCK (Contact Button) */}
-        <div className="hidden md:block ml-4">
+        {/* <div className="hidden md:block ml-4">
           <Link
             href="/contact"
             className="bg-[#6a5acd] hover:bg-[#5b4bd6] text-white italic px-6 py-3 rounded-full text-sm tracking-wide transition-all duration-300 shadow-md"
           >
             Contact Us
           </Link>
-        </div>
+        </div> */}
       </div>
 
       {/* Mobile Dropdown Menu */}

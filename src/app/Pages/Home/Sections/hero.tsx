@@ -131,7 +131,7 @@ export default function Hero() {
           <div className="absolute inset-0 bg-gradient-to-tr from-[#6a5acd]/20 to-transparent z-10 rounded-[50px]" />
 
           {/* CURVED CUT SHAPE */}
-          <div className="absolute -top-1 right-0 w-[190px] h-[95px] bg-[#f6f4ef] rounded-bl-[20px] rounded-[30px] z-0"></div>
+          {/* <div className="absolute -top-1 left-0 w-[160px] h-[95px] bg-[#f6f4ef] rounded-bl-[20px] rounded-[30px] z-0"></div> */}
         </div>
       </div>
     </section>
