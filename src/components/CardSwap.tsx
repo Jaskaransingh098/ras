@@ -28,16 +28,30 @@ export interface CardSwapProps {
 export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   customClass?: string;
 }
-
 export const Card = forwardRef<HTMLDivElement, CardProps>(
-  ({ customClass, ...rest }, ref) => (
+  ({ customClass, children, ...rest }, ref) => (
     <div
       ref={ref}
       {...rest}
-      className={`absolute top-1/2 left-1/2 rounded-xl border border-white bg-black [transform-style:preserve-3d] [will-change:transform] [backface-visibility:hidden] ${customClass ?? ""} ${rest.className ?? ""}`.trim()}
-    />
+      className={`
+        absolute top-1/2 left-1/2
+        rounded-3xl
+        bg-white
+        shadow-[0_20px_60px_rgba(0,0,0,0.15)]
+        p-4
+        overflow-hidden
+        [transform-style:preserve-3d]
+        [will-change:transform]
+        ${customClass ?? ""} ${rest.className ?? ""}
+      `}
+    >
+      <div className="w-full h-full rounded-2xl overflow-hidden">
+        {children}
+      </div>
+    </div>
   ),
 );
+
 Card.displayName = "Card";
 
 type CardRef = RefObject<HTMLDivElement | null>;
@@ -47,31 +61,32 @@ interface Slot {
   z: number;
   zIndex: number;
 }
-
 const makeSlot = (
   i: number,
   distX: number,
   distY: number,
   total: number,
 ): Slot => ({
-  x: i * distX,
-  y: -i * distY,
-  z: -i * distX * 1.5,
+  x: i * distX,          // slight right shift
+  y: -i * distY,         // slight upward shift
+  z: -i * 120,           // depth push
   zIndex: total - i,
 });
 
-const placeNow = (el: HTMLElement, slot: Slot, skew: number) =>
+const placeNow = (el: HTMLElement, slot: Slot) =>
   gsap.set(el, {
     x: slot.x,
     y: slot.y,
     z: slot.z,
+    rotationY: -8,       // 👈 tilt sideways
+    rotationX: 4,        // 👈 slight top tilt
     xPercent: -50,
     yPercent: -50,
-    skewY: skew,
     transformOrigin: "center center",
     zIndex: slot.zIndex,
     force3D: true,
   });
+
 
 const CardSwap: React.FC<CardSwapProps> = ({
   width = 500,
@@ -127,7 +142,7 @@ const CardSwap: React.FC<CardSwapProps> = ({
       placeNow(
         r.current!,
         makeSlot(i, cardDistance, verticalDistance, total),
-        skewAmount,
+        // skewAmount,
       ),
     );
 
