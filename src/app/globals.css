@@ -141,3 +141,47 @@
 .animate-fadeUp {
   animation: fadeUp 0.6s ease forwards;
 }
+
+@keyframes softFloat {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.animate-softFloat {
+  animation: softFloat 4s ease-in-out infinite;
+}
+
+.interactive-text {
+  position: relative;
+  background: linear-gradient(90deg, #111 0%, #6a5acd 50%, #111 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: background-position 0.3s ease;
+}
+
+.interactive-text::before {
+  content: "";
+  position: absolute;
+  inset: -20px;
+  background: radial-gradient(circle at var(--x, 50%) var(--y, 50%),
+      rgba(106, 90, 205, 0.25),
+      transparent 60%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  border-radius: 20px;
+}
+
+h1:hover .interactive-text::before {
+  opacity: 1;
+}

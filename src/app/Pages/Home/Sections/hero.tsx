@@ -38,7 +38,7 @@ export default function Hero() {
       {/* LEFT SIDE */}
       <div
         className="relative h-[82vh] bg-gradient-to-br from-[#faf9ff] to-[#f1efff]
- rounded-3xl px-16 py-16 flex flex-col justify-between shadow-xl border border-[#e7e2d9] mt-5"
+ rounded-3xl px-16 py-16 flex flex-col justify-between shadow-xl border border-[#e7e2d9] mt-28"
       >
         {/* TOP CONTENT */}
         <div>
@@ -110,9 +110,8 @@ export default function Hero() {
       {/* RIGHT SIDE */}
       <div
         className="
-  relative
-  h-[300px]
-  md:absolute md:top-0 md:right-0 md:w-1/2 md:h-screen
+  relative h-full md:h-[100vh] md:w-full
+
   overflow-hidden p-1
 "
       >

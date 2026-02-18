@@ -1,14 +1,14 @@
 "use client"
 
 import Navbar from "./components/Navbar";
-import Hero from "./Pages/Home/Sections/hero";
+import Home from "./Pages/Home/Home";
 
 export default function App() {
   return (
     <>
-      <main className="bg-[#f6f4ef] px-6">
+      <main className="bg-[#f6f4ef]">
         <Navbar />
-        <Hero />
+        <Home />
       </main>
     </>
   )
