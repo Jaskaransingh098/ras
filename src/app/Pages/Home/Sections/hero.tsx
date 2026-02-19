@@ -37,7 +37,7 @@ export default function Hero() {
     <section className="grid md:grid-cols-2 gap-12 ">
       {/* LEFT SIDE */}
       <div
-        className="relative h-[82vh] bg-gradient-to-br from-[#faf9ff] to-[#f1efff]
+        className="relative h-[82vh] bg-[#FFFDE1]
  rounded-3xl px-16 py-16 flex flex-col justify-between shadow-xl border border-[#e7e2d9] mt-28"
       >
         {/* TOP CONTENT */}
@@ -48,7 +48,7 @@ export default function Hero() {
             <span className="relative h-[80px] overflow-hidden align-bottom">
               <span
                 key={slides[index].word}
-                className="block font-[var(--font-playfair)] italic font-bold text-[#6a5acd] transition-all duration-500 ease-in-out transform animate-fadeUp"
+                className="block font-[var(--font-playfair)] italic font-bold text-[#c42d2d] transition-all duration-500 ease-in-out transform animate-fadeUp"
               >
                 {slides[index].word}?
               </span>
@@ -61,12 +61,12 @@ export default function Hero() {
           </p>
 
           {/* CTA */}
-          <button className="mt-8 flex items-center bg-black text-white rounded-full px-6 py-3 shadow-md hover:scale-105 transition-all duration-300">
+          <button className="mt-8 flex items-center bg-[#FBE580] text-black rounded-full px-6 py-3 shadow-md hover:scale-105 transition-all duration-300">
             <span className="mr-4 text-sm tracking-wide">
               Book Your Diagnostic Call
             </span>
 
-            <span className="bg-[#c7f36b] text-black w-8 h-8 flex items-center justify-center rounded-full">
+            <span className="bg-[#93BD57] text-black w-8 h-8 flex items-center justify-center rounded-full">
               →
             </span>
           </button>

@@ -7,12 +7,12 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="w-full mt-5 px-6 absolute z-50">
+    <div id="main-navbar" className="w-full mt-5 px-6 absolute z-50">
       <div className="flex items-center justify-between">
         {/* LEFT BLOCK */}
         <div
           className="flex items-center justify-between w-full md:w-auto bg-white/70 backdrop-blur-xl 
-                        rounded-2xl px-5 md:px-10 py-4 shadow-md border border-[#ece8df] md:gap-19"
+                        rounded-2xl px-5 md:px-10 py-4 shadow-2xl border border-[#ece8df] md:gap-19"
         >
           {/* Logo */}
           <h2 className="text-lg md:text-xl font-semibold tracking-wide text-[#2d2d2d] font-[var(--font-inter)]">
@@ -37,7 +37,7 @@ export default function Navbar() {
            <div className="hidden md:block ml-4">
           <Link
             href="/contact"
-            className="bg-[#6a5acd] hover:bg-[#5b4bd6] text-white italic px-6 py-3 rounded-2xl text-sm tracking-wide transition-all duration-300 shadow-md"
+            className="bg-[#c42d2d] border-1 hover:bg-[#fff] hover:text-black hover:border-black text-white italic px-6 py-3 rounded-3xl text-sm tracking-wide transition-all duration-300 shadow-md"
           >
             Contact Us
           </Link>

@@ -1,81 +1,135 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, RefObject } from "react";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-export default function Welcome() {
+gsap.registerPlugin(ScrollTrigger);
+
+interface Props {
+  scrollRef: RefObject<HTMLElement | null>;
+}
+
+export default function Welcome({ scrollRef }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const headlineRef = useRef<HTMLHeadingElement>(null);
+
+  const splitText = (text: string, className: string) => {
+    return text.split("").map((char, i) => (
+      <span key={i} className={`${className} inline-block`}>
+        {char === " " ? "\u00A0" : char}
+      </span>
+    ));
+  };
 
   useEffect(() => {
-    const el = headlineRef.current;
-    if (!el) return;
+    if (!containerRef.current) return;
 
-    const handleMove = (e: MouseEvent) => {
-      const rect = el.getBoundingClientRect();
-      const x = e.clientX - rect.left - rect.width / 2;
-      const y = e.clientY - rect.top - rect.height / 2;
+    const navbar = document.getElementById("main-navbar");
 
-      gsap.to(el, {
-        rotationY: x / 20,
-        rotationX: -y / 20,
-        transformPerspective: 1000,
-        transformOrigin: "center",
-        ease: "power3.out",
-        duration: 0.6,
+    if (navbar && containerRef.current) {
+      ScrollTrigger.create({
+        trigger: containerRef.current,
+        scroller: scrollRef.current,
+        start: "top 80%",
+        end: "bottom 20%",
+
+        // Hide navbar when entering Welcome
+        onEnter: () => {
+          gsap.to(navbar, { y: -100, autoAlpha: 0, duration: 0.4 });
+        },
+
+        // Hide again if scrolling back down into Welcome
+        onEnterBack: () => {
+          gsap.to(navbar, { y: -100, autoAlpha: 0, duration: 0.4 });
+        },
+
+        // Show navbar when leaving Welcome going down
+        onLeave: () => {
+          gsap.to(navbar, { y: 0, autoAlpha: 1, duration: 0.4 });
+        },
+
+        // Show navbar when leaving Welcome going up
+        onLeaveBack: () => {
+          gsap.to(navbar, { y: 0, autoAlpha: 1, duration: 0.4 });
+        },
       });
-    };
+    }
 
-    const handleLeave = () => {
-      gsap.to(el, {
-        rotationY: 0,
-        rotationX: 0,
-        ease: "power3.out",
-        duration: 0.8,
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: containerRef.current,
+          scroller: scrollRef.current,
+          start: "top 70%",
+          toggleActions: "play none none reset",
+          // once: true,
+        },
       });
-    };
 
-    el.addEventListener("mousemove", handleMove);
-    el.addEventListener("mouseleave", handleLeave);
+      // Paragraph letters
+      tl.fromTo(
+        ".letter-p",
+        { y: 120, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          ease: "power4.out",
+          stagger: 0.03,
+        },
+        0,
+      );
 
-    return () => {
-      el.removeEventListener("mousemove", handleMove);
-      el.removeEventListener("mouseleave", handleLeave);
-    };
-  }, []);
+      // Heading letters (start same time)
+      tl.fromTo(
+        ".letter-h",
+        { y: 120, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          ease: "power4.out",
+          stagger: 0.04,
+        },
+        0,
+      );
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, [scrollRef]);
 
   return (
     <div
       ref={containerRef}
-      className="relative h-screen bg-white rounded-t-[40px] flex items-center justify-center px-6 md:px-20"
+      className="relative h-[50vh] rounded-[30px] flex items-center justify-center px-6 md:px-20 overflow-hidden"
     >
       <video
         autoPlay
         muted
         loop
         playsInline
-        className="absolute inset-0 w-full h-full object-cover rounded-t-[40px]"
+        className="absolute inset-0 w-full h-full object-cover rounded-t-[30px]"
       >
         <source src="/home/welcome.mp4" type="video/mp4" />
       </video>
 
-      <div className="absolute inset-0 bg-black/40 rounded-t-[40px]"></div>
+      <div className="absolute inset-0 bg-black/40 rounded-t-[30px]" />
+
       <div className="relative z-10 text-center max-w-4xl text-white">
         <p className="text-sm tracking-[0.3em] uppercase mb-6">
-          Welcome to the work that goes beyond logical mind …
+          {splitText(
+            "Welcome to the work that goes beyond logical mind …",
+            "letter-p",
+          )}
           <br />
-          into pure transformation
+          {splitText("into pure transformation", "letter-p")}
         </p>
 
-        <h1
-          ref={headlineRef}
-          className="text-[32px] md:text-[76px] leading-[1.1] font-light font-[var(--font-playfair)] text-[#fff] cursor-pointer transition-transform"
-          style={{ transformStyle: "preserve-3d" }}
-        >
-          When Your Energy Shifts,
+        <h1 className="text-[32px] md:text-[76px] leading-[1.1] font-light">
+          {splitText("When Your Energy Shifts,", "letter-h")}
           <br />
-          <span className="bg-gradient-to-r from-[#7965ff] to-[#9c6ef7] bg-clip-text text-transparent font-extrabold">
-            Your Entire Reality Changes
+          <span className="text-red-600 font-extrabold">
+            {splitText("Your Entire Reality Changes", "letter-h")}
           </span>
         </h1>
       </div>
