@@ -4,6 +4,7 @@ import { useRef } from "react";
 import Hero from "./Sections/hero";
 import Welcome from "./Sections/welcome";
 import Experience from "./Sections/experience";
+import Reel from "./Sections/reels";
 
 export default function Home() {
   const scrollRef = useRef<HTMLElement | null>(null);
@@ -11,17 +12,17 @@ export default function Home() {
   return (
     <main
       ref={scrollRef}
-      className="h-screen overflow-y-scroll snap-y snap-mandatory scroll-smooth"
+      className="h-screen"
     >
-      <section className="snap-start h-screen px-4">
+      <section className="h-screen px-4">
         <Hero />
       </section>
 
-      <section className="snap-start h-[50vh]">
+      <section className="h-[50vh]">
         <Welcome scrollRef={scrollRef} />
       </section>
 
-      <section className="snap-start h-[90vh] mt-2 px-4">
+      <section className="h-[90vh] mt-2 px-4">
         <Experience scrollRef={scrollRef} />
       </section>
     </main>

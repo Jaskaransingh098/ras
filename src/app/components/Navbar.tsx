@@ -7,7 +7,7 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <div id="main-navbar" className="w-full mt-5 px-6 absolute z-50">
+    <div id="main-navbar" className="w-full mt-5 px-6 fixed z-50">
       <div className="flex items-center justify-between">
         {/* LEFT BLOCK */}
         <div
