@@ -11,7 +11,6 @@ interface Props {
 
 export default function Experience({ scrollRef }: Props) {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const tickerRef = useRef<HTMLDivElement>(null);
   const avatarRef = useRef<HTMLDivElement>(null);
   const mainNumberRef = useRef<HTMLHeadingElement>(null);
   const year1Ref = useRef<HTMLHeadingElement>(null);
@@ -24,36 +23,25 @@ export default function Experience({ scrollRef }: Props) {
     const ctx = gsap.context(() => {
       gsap.fromTo(
         section.querySelectorAll(".exp-reveal"),
-        { y: 60, opacity: 0 },
+        { y: 50, opacity: 0 },
         {
           y: 0,
           opacity: 1,
           duration: 1.2,
-          stagger: 0.2,
+          stagger: 0.15,
           ease: "power3.out",
           scrollTrigger: {
             trigger: section,
-            start: "top 75%",
-            toggleActions: "play none none reset",
+            start: "top 80%",
+            toggleActions: "play none none none",
           },
         },
       );
 
-      // 🔥 Infinite ticker
-      if (tickerRef.current) {
-        gsap.to(tickerRef.current, {
-          x: "-50%",
-          duration: 20,
-          ease: "linear",
-          repeat: -1,
-        });
-      }
-
-      // 🔥 Infinite avatars
       if (avatarRef.current) {
         gsap.to(avatarRef.current, {
           x: "-50%",
-          duration: 25,
+          duration: 35,
           ease: "linear",
           repeat: -1,
         });
@@ -64,12 +52,12 @@ export default function Experience({ scrollRef }: Props) {
 
         gsap.to(obj, {
           value: endValue,
-          duration: 2,
+          duration: 2.5,
           ease: "power3.out",
           scrollTrigger: {
             trigger: section,
-            start: "top 70%",
-            toggleActions: "play none none reset",
+            start: "top 85%",
+            toggleActions: "play none none none",
           },
           onUpdate: () => {
             el.innerText = Math.floor(obj.value) + suffix;
@@ -77,7 +65,7 @@ export default function Experience({ scrollRef }: Props) {
         });
       };
 
-      if (mainNumberRef.current) counter(mainNumberRef.current, 162, "+");
+      if (mainNumberRef.current) counter(mainNumberRef.current, 162, "");
       if (year1Ref.current) counter(year1Ref.current, 15, "+");
       if (year2Ref.current) counter(year2Ref.current, 25, "+");
     }, section);
@@ -88,86 +76,86 @@ export default function Experience({ scrollRef }: Props) {
   return (
     <section
       ref={sectionRef}
-      className="relative bg-[#feebfb] py-20 overflow-hidden rounded-[30px] "
+      className="relative bg-white pt-24 pb-9 overflow-hidden"
     >
-      {/* 🔥 TOP TICKER */}
-      {/* <div className="overflow-hidden border-y border-[#e7e2d9] py-4 bg-[#FFF8CC]">
-        <div ref={tickerRef} className="flex whitespace-nowrap w-max">
-          {[...Array(4)].map((_, i) => (
-            <p
-              key={i}
-              className="mx-16 text-[#111] text-lg md:text-xl font-medium tracking-wide"
-            >
-              First Indian who officially changed her surname to{" "}
-              <span className="text-[#c42d2d] font-semibold">Hindustani</span> •
-            </p>
-          ))}
-        </div>
-      </div> */}
-
-      {/* MAIN CONTENT */}
-      <div className="max-w-8xl mx-auto px-12 grid md:grid-cols-2 gap-20 items-center">
-        {/* LEFT */}
-        {/* LEFT - Masonry Stats */}
-        <div className="exp-reveal grid grid-cols-2 auto-rows-[140px] gap-6 pr-10 border-r-1 border-[#c42d2d]">
-          {/* BIG MAIN CARD */}
-          <div className="col-span-2 row-span-1 bg-gradient-to-br from-[#c42d2d] to-[#ff6a6a] text-white rounded-3xl p-10 flex flex-col justify-center shadow-xl">
-            <h1
-              ref={mainNumberRef}
-              className="text-[80px] font-[var(--font-playfair)] leading-none"
-            >
-              0
-            </h1>
-            <p className="mt-4 text-sm opacity-90">
-              Lives transformed in one powerful session
-            </p>
-          </div>
-
-          {/* SMALL CARD 1 */}
-          <div className="bg-[#fff8cc] rounded-3xl p-6 flex flex-col justify-center shadow-md hover:scale-105 transition">
-            <h2
-              ref={year1Ref}
-              className="text-6xl font-[var(--font-playfair)] text-[#c42d2d]"
-            >
-              0
-            </h2>
-            <p className="text-md text-gray-600 mt-2">
-              Years of professional energy work
-            </p>
-          </div>
-
-          {/* TALL CARD */}
-          <div className="row-span-2 bg-[#ffe4e4] rounded-3xl p-6 flex flex-col justify-center shadow-md hover:scale-105 transition">
-            <h2
-              ref={year2Ref}
-              className="text-8xl font-[var(--font-playfair)] text-[#111]"
-            >
-              0
-            </h2>
-            <p className="text-md text-gray-600 mt-2">
-              Years of spiritual mastery
-            </p>
-          </div>
+      <div className="max-w-[1240px] mx-auto px-6 md:px-12">
+        {/* TOP LEFT (162) */}
+        <div className="exp-reveal mb-8 pl-2">
+          <h1 className="text-[#a51313] text-[120px] md:text-[140px] font-[var(--font-playfair)] font-bold leading-[0.8] tracking-[-0.03em]">
+            <span ref={mainNumberRef}>0</span>
+          </h1>
+          <p className="text-[#454545] text-xl md:text-[22px] mt-6 font-medium leading-[1.35]">
+            Lives transformed in just one single <br className="hidden sm:block" />
+            private online session
+          </p>
         </div>
 
-        {/* RIGHT */}
-        <div className="exp-reveal text-[#6b6b6b] text-3xl leading-relaxed max-w-2xl">
-          Raseshvari Hindustani creates transformations that feel miraculous yet
-          deeply embodied and real. That’s why she’s known as the{" "}
-          <span className="italic font-semibold text-[#111]">
-            Walking Talking Miracle
-          </span>{" "}
-          of possibilities.
+        {/* BOTTOM ROW (Years + Text) */}
+        <div className="grid md:grid-cols-[auto_auto_1fr] md:gap-12 lg:gap-16 items-center pl-2">
+          {/* LEFT: YEARS */}
+          <div className="exp-reveal flex flex-wrap gap-8 sm:gap-12 lg:gap-16">
+            <div className="flex flex-col">
+              <h2 className="flex items-baseline gap-2 font-[var(--font-playfair)] mb-2">
+                <span
+                  ref={year1Ref}
+                  className="text-[#a51313] text-[50px] md:text-[54px] font-bold leading-none"
+                >
+                  0
+                </span>
+                <span className="text-[#222] text-[28px] md:text-[34px] font-bold leading-none">
+                  years
+                </span>
+              </h2>
+              <p className="text-[#444] text-[15px] md:text-[16px] font-medium whitespace-nowrap">
+                of professional energy work
+              </p>
+            </div>
+            <div className="flex flex-col">
+              <h2 className="flex items-baseline gap-2 font-[var(--font-playfair)] mb-2">
+                <span
+                  ref={year2Ref}
+                  className="text-[#a51313] text-[50px] md:text-[54px] font-bold leading-none"
+                >
+                  0
+                </span>
+                <span className="text-[#222] text-[28px] md:text-[34px] font-bold leading-none">
+                  years
+                </span>
+              </h2>
+              <p className="text-[#444] text-[15px] md:text-[16px] font-medium whitespace-nowrap">
+                of spiritual mastery
+              </p>
+            </div>
+          </div>
+
+          {/* DIVIDER */}
+          <div className="hidden md:block w-px h-[100px] bg-[#d36041] exp-reveal"></div>
+          <div className="md:hidden w-16 h-px bg-[#d36041] exp-reveal my-10"></div>
+
+          {/* RIGHT: TEXT */}
+          <div className="exp-reveal max-w-[480px]">
+            <p className="text-[#516075] text-[19px] md:text-[21px] leading-[1.6]">
+              Raseshvari Hindustani creates transformations that feel
+              miraculous yet deeply embodied and real. That’s why she’s known
+              as the{" "}
+              <strong className="italic text-[#3a495e] font-bold">
+                Walking Talking Miracle
+              </strong>{" "}
+              of possibilities
+            </p>
+          </div>
         </div>
       </div>
 
-      <div className="mt-10 overflow-hidden">
-        <div ref={avatarRef} className="flex gap-10 w-max">
-          {[...Array(12)].map((_, i) => (
+      {/* AVATAR CAROUSEL */}
+      <div className="mt-28 md:mt-15 overflow-hidden">
+        <div ref={avatarRef} className="flex gap-6 w-max px-6">
+          {[...Array(16)].map((_, i) => (
             <img
               key={i}
-              src={`/avatars/${(i % 4) + 1}.jpg`}
-              className="w-24 h-24 rounded-2xl object-cover border-2 border-[#FFFDE1] shadow-sm"
+              src={`/clients/${i + 1}.png`}
+              alt="Avatar"
+              className="w-[120px] h-[120px] md:w-[140px] md:h-[140px] rounded-[30px] object-cover"
             />
           ))}
         </div>

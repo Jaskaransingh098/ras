@@ -14,16 +14,25 @@ export default function Welcome({ scrollRef }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
   const tickerRef = useRef<HTMLDivElement>(null);
 
-  const splitText = (text: string, className: string) => {
+  const splitWords = (text: string, className: string) => {
+    return text.split(" ").map((word, i) => (
+      <span key={`word-${i}`} className="inline-block overflow-hidden pb-2 -mb-2 align-bottom">
+        <span className={`${className} inline-block origin-bottom-left`}>{word}</span>
+        {i !== text.split(" ").length - 1 && <span className="inline-block">&nbsp;</span>}
+      </span>
+    ));
+  };
+
+  const splitLetters = (text: string, className: string) => {
     return text.split("").map((char, i) => (
-      <span key={i} className={`${className} inline-block`}>
+      <span key={`char-${i}`} className={`${className} inline-block will-change-transform`}>
         {char === " " ? "\u00A0" : char}
       </span>
     ));
   };
 
   useEffect(() => {
-    // 🔥 Ticker always runs
+
     if (tickerRef.current) {
       gsap.to(tickerRef.current, {
         x: "-50%",
@@ -40,34 +49,36 @@ export default function Welcome({ scrollRef }: Props) {
         scrollTrigger: {
           trigger: containerRef.current,
           start: "top 80%",
-          toggleActions: "play none none reset",
+          toggleActions: "play none none none",
         },
       });
 
       tl.fromTo(
-        ".letter-p",
-        { y: 120, opacity: 0 },
+        ".word-p",
+        { y: "150%", opacity: 0, rotationZ: 5 },
         {
-          y: 0,
+          y: "0%",
           opacity: 1,
-          duration: 0.5,
+          rotationZ: 0,
+          duration: 0.9,
           ease: "power4.out",
-          stagger: 0.03,
+          stagger: 0.04,
         },
         0,
       );
 
       tl.fromTo(
         ".letter-h",
-        { y: 120, opacity: 0 },
+        { y: 40, opacity: 0, scale: 0.9 },
         {
           y: 0,
           opacity: 1,
-          duration: 0.5,
-          ease: "power4.out",
-          stagger: 0.04,
+          scale: 1,
+          duration: 0.8,
+          ease: "power3.out",
+          stagger: 0.02,
         },
-        0,
+        0.2,
       );
     }, containerRef);
 
@@ -75,7 +86,7 @@ export default function Welcome({ scrollRef }: Props) {
   }, [scrollRef]);
 
   return (
-    <div className="relative px-1.5">
+    <div className="relative px-1.5 mt-4">
       {/* VIDEO SECTION */}
       <div
         ref={containerRef}
@@ -88,32 +99,32 @@ export default function Welcome({ scrollRef }: Props) {
           playsInline
           className="absolute inset-0 w-full h-full object-cover rounded-t-[30px]"
         >
-          <source src="/home/welcome.mp4" type="video/mp4" />
+          <source src="/hero/welcome.mp4" type="video/mp4" />
         </video>
 
         <div className="absolute inset-0 bg-black/60 rounded-t-[30px]" />
 
-        <div className="relative z-10 text-center max-w-4xl text-white">
-          <p className="text-sm tracking-[0.3em] uppercase mb-6">
-            {splitText(
+        <div className="relative z-10 text-center max-w-4xl text-white drop-shadow-md">
+           <p className="text-sm tracking-[0.3em] font-medium uppercase mb-6 drop-shadow-lg">
+            {splitWords(
               "Welcome to the work that goes beyond logical mind …",
-              "letter-p",
+              "word-p",
             )}
             <br />
-            {splitText("into pure transformation", "letter-p")}
+            {splitWords("into pure transformation", "word-p")}
           </p>
 
-          <h1 className="text-[32px] md:text-[64px] leading-[1] font-light">
-            {splitText("When Your Energy Shifts,", "letter-h")}
+          <h1 className="text-[32px] md:text-[62px] leading-[1.1] font-semibold drop-shadow-xl" style={{ fontFamily: "Inter, sans-serif" }}>
+            {splitLetters("When Your Energy Shifts,", "letter-h")}
             <br />
-            <span className="text-red-600 font-extrabold">
-              {splitText("Your Entire Reality Changes", "letter-h")}
+            <span className="text-red-600 font-black drop-shadow-2xl">
+              {splitLetters("Your Entire Reality Changes", "letter-h")}
             </span>
           </h1>
         </div>
       </div>
 
-      <div className="overflow-hidden border-y border-[#e7e2d9] py-4 bg-[#393636] rounded-b-[30px]">
+      <div className="overflow-hidden border-y border-[#e7e2d9] py-4 bg-black/90 rounded-b-[30px]">
         <div ref={tickerRef} className="flex whitespace-nowrap w-max">
           {[...Array(4)].map((_, i) => (
             <p
