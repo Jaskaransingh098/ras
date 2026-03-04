@@ -109,16 +109,10 @@ export default function Result() {
                     animation: gentle-float 5s ease-in-out infinite;
                 }
                 .hl-text {
-                    background: linear-gradient(90deg, #c42d2d, #e85d5d, #c42d2d);
-                    background-size: 200% auto;
+                    background: linear-gradient(90deg, #c42d2d, #e85d5d);
                     -webkit-background-clip: text;
                     -webkit-text-fill-color: transparent;
-                    animation: shimmer 4s linear infinite;
                     font-weight: 700;
-                }
-                @keyframes shimmer {
-                    0% { background-position: -200% center; }
-                    100% { background-position: 200% center; }
                 }
             `}</style>
 
