@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -13,6 +14,7 @@ const navLinks = [
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [sticky, setSticky] = useState(false);
+  const pathname = usePathname() || "/";
 
   useEffect(() => {
     const onScroll = () => {
@@ -73,23 +75,7 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Menu - Left pills */}
-          <div className="hidden md:flex items-center gap-1 text-[14px] font-medium">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={`relative px-5 py-2 rounded-full transition-all duration-300 group ${link.href === "/"
-                    ? "bg-[#c42d2d] text-white shadow-md shadow-[#c42d2d]/20"
-                    : "text-[#555] hover:text-[#1f201d] hover:bg-gray-100/60"
-                  }`}
-              >
-                {link.label}
-                {link.href !== "/" && (
-                  <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-0 h-[2px] bg-[#c42d2d] rounded-full transition-all duration-300 group-hover:w-4" />
-                )}
-              </Link>
-            ))}
-          </div>
+          <AnimatedNav links={navLinks} pathname={pathname} isSticky={false} />
 
           {/* Mobile Hamburger (top-left state) */}
           <button
@@ -109,8 +95,8 @@ export default function Navbar() {
       {/* ── STICKY: Centered fixed navbar (appears after scrolling past hero) ── */}
       <div
         className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 transition-all duration-500 ${sticky
-            ? "opacity-100 translate-y-0 pointer-events-auto"
-            : "opacity-0 -translate-y-4 pointer-events-none"
+          ? "opacity-100 translate-y-0 pointer-events-auto"
+          : "opacity-0 -translate-y-4 pointer-events-none"
           }`}
         style={{ animation: sticky ? "slideDown 0.4s ease-out" : "none" }}
       >
@@ -121,25 +107,12 @@ export default function Navbar() {
           </Link>
 
           {/* Nav pills */}
-          <div className="hidden md:flex items-center gap-0.5">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={`px-4 py-1.5 rounded-xl text-[13px] font-medium transition-all duration-300 ${link.href === "/"
-                    ? "bg-[#c42d2d] text-white shadow-sm shadow-[#c42d2d]/15"
-                    : "text-[#666] hover:text-[#1f201d] hover:bg-gray-100/80"
-                  }`}
-              >
-                {link.label}
-              </Link>
-            ))}
-          </div>
+          <AnimatedNav links={navLinks} pathname={pathname} isSticky={true} />
 
           {/* CTA */}
           <Link
             href="/contact"
-            className="hidden md:flex items-center gap-1.5 bg-[#1f201d] text-white px-4 py-1.5 rounded-xl text-[12px] font-semibold ml-1 hover:bg-[#333] transition-all duration-200 flex-shrink-0 group"
+            className="hidden md:flex items-center gap-1.5 bg-[#1f201d] text-white px-4 py-1.5 rounded-xl text-[12px] font-semibold font-[var(--font-outfit)] ml-1 hover:bg-[#333] transition-all duration-200 flex-shrink-0 group"
           >
             Book
             <svg className="w-3 h-3 transition-transform duration-200 group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
@@ -196,12 +169,12 @@ export default function Navbar() {
               <Link
                 href="/contact"
                 onClick={() => setOpen(false)}
-                className="flex items-center justify-center gap-2 bg-[#c42d2d] text-white py-4 rounded-2xl text-[16px] font-bold shadow-xl shadow-[#c42d2d]/20 hover:bg-[#a82525] transition-all duration-300"
+                className="flex items-center justify-center gap-2 bg-[#c42d2d] text-white py-4 rounded-2xl text-[16px] font-bold font-[var(--font-outfit)] shadow-xl shadow-[#c42d2d]/20 hover:bg-[#a82525] transition-all duration-300"
               >
                 Book Your Session
               </Link>
               <div className="flex items-center justify-between">
-                <p className="text-[11px] text-[#bbb] uppercase tracking-[.2em] font-medium">© 2026 Raseshvari</p>
+                <p className="text-[11px] text-[#bbb] uppercase tracking-[.2em] font-medium font-[var(--font-dm-sans)]">© 2026 Raseshvari</p>
                 <div className="flex items-center gap-3">
                   {["Instagram", "YouTube"].map((s) => (
                     <a key={s} href="#" className="text-[11px] text-[#999] hover:text-[#c42d2d] font-medium uppercase tracking-wider transition-colors duration-300">{s}</a>
@@ -213,5 +186,81 @@ export default function Navbar() {
         </div>
       )}
     </>
+  );
+}
+
+// ── Shared Component for the sliding pill animation ──
+function AnimatedNav({
+  links,
+  pathname,
+  isSticky
+}: {
+  links: { label: string; href: string }[];
+  pathname: string;
+  isSticky: boolean
+}) {
+  const [hoveredPath, setHoveredPath] = useState<string | null>(null);
+  const refs = useRef<(HTMLAnchorElement | null)[]>([]);
+  const [indicator, setIndicator] = useState({ left: 0, width: 0, opacity: 0 });
+
+  useEffect(() => {
+    const targetPath = hoveredPath || pathname;
+    const index = links.findIndex((l) => l.href === targetPath);
+    // If not found, fallback to Home ("/") if it exists or hide the indicator
+    const fallbackIndex = links.findIndex((l) => l.href === "/");
+    const activeIndex = index >= 0 ? index : fallbackIndex;
+
+    const el = activeIndex >= 0 ? refs.current[activeIndex] : null;
+
+    if (el) {
+      setIndicator({ left: el.offsetLeft, width: el.offsetWidth, opacity: 1 });
+    } else {
+      setIndicator((prev) => ({ ...prev, opacity: 0 }));
+    }
+
+    const handleResize = () => {
+      const el = activeIndex >= 0 ? refs.current[activeIndex] : null;
+      if (el) {
+        setIndicator({ left: el.offsetLeft, width: el.offsetWidth, opacity: 1 });
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [hoveredPath, pathname, links]);
+
+  return (
+    <div
+      className={`hidden md:flex items-center relative ${isSticky ? 'gap-0.5' : 'gap-1'} font-medium font-[var(--font-dm-sans)]`}
+      onMouseLeave={() => setHoveredPath(null)}
+    >
+      {/* The background sliding pill */}
+      <div
+        className={`absolute h-full bg-[#c42d2d] transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] pointer-events-none z-0 ${isSticky
+            ? 'shadow-sm shadow-[#c42d2d]/15 rounded-xl'
+            : 'shadow-md shadow-[#c42d2d]/20 rounded-full'
+          }`}
+        style={{ left: indicator.left, width: indicator.width, opacity: indicator.opacity, top: 0 }}
+      />
+
+      {/* Nav Links */}
+      {links.map((link, i) => {
+        const isCurrentVisual = (hoveredPath || pathname) === link.href || ((hoveredPath || pathname) === '' && link.href === '/');
+
+        return (
+          <Link
+            key={link.href}
+            href={link.href}
+            ref={(el) => { refs.current[i] = el; }}
+            onMouseEnter={() => setHoveredPath(link.href)}
+            className={`relative px-4 py-1.5 md:px-5 md:py-2 z-10 transition-colors duration-500 flex items-center justify-center ${isSticky ? 'text-[13px] rounded-xl' : 'text-[14px] rounded-full'
+              } ${isCurrentVisual ? 'text-white' : 'text-[#666] hover:text-[#1f201d]'
+              }`}
+          >
+            {link.label}
+          </Link>
+        )
+      })}
+    </div>
   );
 }

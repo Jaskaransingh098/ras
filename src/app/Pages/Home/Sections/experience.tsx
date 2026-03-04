@@ -84,7 +84,7 @@ export default function Experience({ scrollRef }: Props) {
           <h1 className="text-[#a51313] text-[120px] md:text-[140px] font-[var(--font-playfair)] font-bold leading-[0.8] tracking-[-0.03em]">
             <span ref={mainNumberRef}>0</span>
           </h1>
-          <p className="text-[#454545] text-xl md:text-[22px] mt-6 font-medium leading-[1.35]">
+          <p className="text-[#454545] text-xl md:text-[22px] mt-6 font-medium leading-[1.35] font-[var(--font-dm-sans)]">
             Lives transformed in just one single <br className="hidden sm:block" />
             private online session
           </p>
@@ -106,7 +106,7 @@ export default function Experience({ scrollRef }: Props) {
                   years
                 </span>
               </h2>
-              <p className="text-[#444] text-[15px] md:text-[16px] font-medium whitespace-nowrap">
+              <p className="text-[#444] text-[15px] md:text-[16px] font-medium whitespace-nowrap font-[var(--font-dm-sans)]">
                 of professional energy work
               </p>
             </div>
@@ -134,7 +134,7 @@ export default function Experience({ scrollRef }: Props) {
 
           {/* RIGHT: TEXT */}
           <div className="exp-reveal max-w-[480px]">
-            <p className="text-[#516075] text-[19px] md:text-[21px] leading-[1.6]">
+            <p className="text-[#516075] text-[19px] md:text-[21px] leading-[1.6] font-[var(--font-inter)]">
               Raseshvari Hindustani creates transformations that feel
               miraculous yet deeply embodied and real. That’s why she’s known
               as the{" "}

@@ -53,18 +53,18 @@ export default function Hero() {
             <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" />
             <circle cx="12" cy="12" r="4" fill="currentColor" />
           </svg>
-          <span className="text-[15px] tracking-[0.2em] font-medium text-[#c42d2d]/70 uppercase">
+          <span className="text-[15px] tracking-[0.2em] font-medium text-[#c42d2d]/70 uppercase font-[var(--font-dm-sans)]">
             Are you stuck in
           </span>
         </div>
 
         {/* Headline + vertical slide indicator */}
         <div className="flex items-start gap-6">
-          <h1 className="text-[56px] md:text-[80px] leading-[1.05] font-light text-[#1f201d] font-[var(--font-inter)] tracking-tight mb-3 flex-1">
+          <h1 className="text-[56px] md:text-[80px] leading-[1.05] font-light text-[#1f201d] font-[var(--font-outfit)] tracking-tight mb-3 flex-1">
             <span className="relative h-[90px] md:h-[110px] overflow-hidden align-bottom inline-block w-full">
               <span
                 key={slides[index].word}
-                className="block font-medium transition-all duration-500 ease-in-out transform animate-fadeUp"
+                className="block font-semibold transition-all duration-500 ease-in-out transform animate-fadeUp"
               >
                 {slides[index].word}
               </span>
@@ -79,7 +79,7 @@ export default function Hero() {
                 onClick={() => setIndex(i)}
                 className="group flex items-center gap-2.5 cursor-pointer"
               >
-                <span className={`text-[10px] uppercase tracking-widest font-medium transition-all duration-500 ${i === index ? 'text-[#c42d2d] opacity-100' : 'text-transparent opacity-0 group-hover:text-gray-400 group-hover:opacity-100'}`}>
+                <span className={`text-[10px] uppercase tracking-widest font-medium font-[var(--font-dm-sans)] transition-all duration-500 ${i === index ? 'text-[#c42d2d] opacity-100' : 'text-transparent opacity-0 group-hover:text-gray-400 group-hover:opacity-100'}`}>
                   {s.word.slice(0, 3)}
                 </span>
                 <div className={`rounded-full transition-all duration-500 ${i === index ? 'w-2.5 h-2.5 bg-[#c42d2d] shadow-md shadow-[#c42d2d]/30' : 'w-1.5 h-1.5 bg-gray-300 group-hover:bg-gray-400'}`} />
@@ -91,7 +91,7 @@ export default function Hero() {
 
         <hr className="border-t border-gray-300 w-[95%] mb-3" />
 
-        <p className="text-[#6b6b6b] text-base md:text-sm max-w-[420px] leading-relaxed font-light">
+        <p className="text-[#6b6b6b] text-base md:text-sm max-w-[420px] leading-relaxed font-light font-[var(--font-inter)]">
           Welcome to the work that goes beyond the logical mind… into pure transformation.
           When your energy shifts, your entire reality changes.
         </p>
@@ -102,7 +102,7 @@ export default function Hero() {
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round">
               <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
             </svg>
-            <span className="text-[16px] tracking-wide font-medium">
+            <span className="text-[16px] tracking-wide font-medium font-[var(--font-outfit)]">
               Book Your Diagnostic Call
             </span>
           </button>
@@ -110,7 +110,7 @@ export default function Hero() {
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
               <polygon points="5 3 19 12 5 21 5 3" />
             </svg>
-            <span className="text-[16px] tracking-wide font-medium">
+            <span className="text-[16px] tracking-wide font-medium font-[var(--font-outfit)]">
               Watch One Session Shift
             </span>
           </button>
@@ -125,7 +125,7 @@ export default function Hero() {
               <div key={loop} className="flex items-center gap-4 pr-4">
                 {['Energy', 'Frequency', 'Healing', 'Abundance', 'Clarity', 'Transformation', 'Shift'].map((w) => (
                   <span key={`${loop}-${w}`} className="flex items-center gap-4">
-                    <span className="text-[11px] uppercase tracking-[.25em] text-gray-300 font-medium">{w}</span>
+                    <span className="text-[11px] uppercase tracking-[.25em] text-gray-300 font-medium font-[var(--font-cormorant)] italic text-[13px]">{w}</span>
                     <span className="text-[#c42d2d]/20 text-[8px]">✦</span>
                   </span>
                 ))}
@@ -138,7 +138,7 @@ export default function Hero() {
         <div className="mt-8 hidden md:flex items-center gap-3 text-gray-400">
           <div className="w-px h-8 bg-gradient-to-b from-gray-300 to-transparent" />
           <div className="flex flex-col items-center gap-1" style={{ animation: 'bounce-slow 2s ease-in-out infinite' }}>
-            <span className="text-[9px] uppercase tracking-[.3em] font-medium">Scroll</span>
+            <span className="text-[9px] uppercase tracking-[.3em] font-medium font-[var(--font-dm-sans)]">Scroll</span>
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
               <path d="M12 5v14" /><path d="M19 12l-7 7-7-7" />
             </svg>
@@ -178,14 +178,14 @@ export default function Hero() {
         {/* BOTTOM PILLS OVERLAY */}
         <div className="absolute bottom-12 left-8 md:left-12 z-30 flex flex-col gap-4">
           <div className="flex gap-4 flex-wrap">
-            <div className="px-6 py-3 rounded-full border border-white text-white text-lg font-light backdrop-blur-sm shadow-lg">
+            <div className="px-6 py-3 rounded-full border border-white text-white text-lg font-light backdrop-blur-sm shadow-lg font-[var(--font-dm-sans)]">
               Calm Mind
             </div>
-            <div className="px-6 py-3 rounded-full bg-white text-[#c42d2d] text-lg font-medium shadow-lg">
+            <div className="px-6 py-3 rounded-full bg-white text-[#c42d2d] text-lg font-medium shadow-lg font-[var(--font-dm-sans)]">
               Clear Direction
             </div>
           </div>
-          <div className="px-6 py-3 rounded-full bg-white text-[#c42d2d] text-lg font-medium shadow-lg inline-block w-max">
+          <div className="px-6 py-3 rounded-full bg-white text-[#c42d2d] text-lg font-medium shadow-lg inline-block w-max font-[var(--font-dm-sans)]">
             Visible Life Shifts
           </div>
         </div>

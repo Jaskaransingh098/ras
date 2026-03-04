@@ -9,6 +9,13 @@ import How from "./Sections/how";
 import ScrollPoints from "./Sections/scrollPoints";
 import Journey from "./Sections/journey";
 import Services from "./Sections/services";
+import Phases from "./Sections/phases";
+import Speaker from "./Sections/speaker";
+import LinkedIn from "./Sections/linkedin";
+import Dare from "./Sections/dare";
+import MomsCommunity from "./Sections/momscommun";
+import FAQ from "./Sections/faq";
+import Contact from "./Sections/contact";
 
 export default function Home() {
   const scrollRef = useRef<HTMLElement | null>(null);
@@ -16,7 +23,7 @@ export default function Home() {
   return (
     <main
       ref={scrollRef}
-      className="h-screen"
+      className="min-h-screen"
     >
       <section className="h-screen px-0">
         <Hero />
@@ -49,6 +56,35 @@ export default function Home() {
       <section className="">
         <Services />
       </section>
+
+      <section className="">
+        <Phases />
+      </section>
+
+      <section className="mt-1">
+        <Speaker />
+      </section>
+
+      <section className="">
+        <LinkedIn />
+      </section>
+
+      <section className="">
+        <Dare />
+      </section>
+
+      <section className="">
+        <MomsCommunity />
+      </section>
+
+      <section className="">
+        <Contact />
+      </section>
+
+      <section className="">
+        <FAQ />
+      </section>
+
     </main>
   );
 }

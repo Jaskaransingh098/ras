@@ -130,7 +130,7 @@ export default function Services() {
 
             {/* Corner decorative texts */}
             <div className="absolute top-8 left-8 md:left-12 pointer-events-none">
-                <p className="text-white/15 text-[10px] uppercase tracking-[.4em] font-medium">Energy &middot; Frequency &middot; Transformation</p>
+                <p className="text-white/15 text-[10px] uppercase tracking-[.4em] font-medium font-[var(--font-dm-sans)]">Energy &middot; Frequency &middot; Transformation</p>
             </div>
             <div className="absolute top-8 right-8 md:right-12 pointer-events-none text-right">
                 <p className="text-white/10 text-[64px] md:text-[80px] font-[var(--font-playfair)] font-bold leading-none">03</p>
@@ -148,7 +148,7 @@ export default function Services() {
                     <div className="max-w-lg">
                         <div className="flex items-center gap-3 mb-3">
                             <div className="w-8 h-[2px] rounded-full bg-gradient-to-r from-[#c42d2d] to-[#e85d5d]" />
-                            <p className="text-[10px] md:text-xs uppercase tracking-[.3em] text-white/50 font-medium">
+                            <p className="text-[10px] md:text-xs uppercase tracking-[.3em] text-white/50 font-medium font-[var(--font-dm-sans)]">
                                 Services
                             </p>
                         </div>
@@ -188,7 +188,7 @@ export default function Services() {
                             <h3 className="text-[20px] md:text-[24px] font-[var(--font-playfair)] text-[#111] font-bold leading-tight mb-3">
                                 Revenue Energetics&trade;
                             </h3>
-                            <p className="text-[#333] text-[13px] leading-relaxed mb-2 font-medium">
+                            <p className="text-[#333] text-[13px] leading-relaxed mb-2 font-medium font-[var(--font-dm-sans)]">
                                 One powerful session that shifts what strategy, effort, and coaching couldn&rsquo;t.
                             </p>
                             <p className="text-gray-400 text-[12px] leading-[1.7] flex-1">
@@ -208,7 +208,7 @@ export default function Services() {
 
                             {/* Footer */}
                             <div className="flex items-center justify-between">
-                                <a href="#" className="shine-btn inline-flex items-center gap-2 bg-gradient-to-r from-[#c42d2d] to-[#b02525] text-white px-5 py-2.5 rounded-full text-[11px] font-bold shadow-lg shadow-[#c42d2d]/25 hover:shadow-xl hover:shadow-[#c42d2d]/35 transition-all duration-300 group/btn">
+                                <a href="#" className="shine-btn inline-flex items-center gap-2 bg-gradient-to-r from-[#c42d2d] to-[#b02525] text-white px-5 py-2.5 rounded-full text-[11px] font-bold font-[var(--font-outfit)] shadow-lg shadow-[#c42d2d]/25 hover:shadow-xl hover:shadow-[#c42d2d]/35 transition-all duration-300 group/btn">
                                     Explore
                                     <svg className="w-3.5 h-3.5 transition-transform duration-300 group-hover/btn:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round">
                                         <path d="M5 12h14" /><path d="M12 5l7 7-7 7" />
@@ -240,7 +240,7 @@ export default function Services() {
                             <h3 className="text-[20px] md:text-[24px] font-[var(--font-playfair)] text-[#111] font-bold leading-tight mb-3">
                                 Energy Diagnostic Call&trade;
                             </h3>
-                            <p className="text-[#333] text-[13px] leading-relaxed mb-2 font-medium">
+                            <p className="text-[#333] text-[13px] leading-relaxed mb-2 font-medium font-[var(--font-dm-sans)]">
                                 A paid energy diagnostic call to understand what&rsquo;s really happening beneath the surface.
                             </p>
                             <p className="text-[#6b5e52] text-[12px] leading-[1.7] mb-3">
@@ -250,7 +250,7 @@ export default function Services() {
                             {/* Feature chips */}
                             <div className="flex flex-wrap gap-2 flex-1">
                                 {['Energy Roadmap', 'Block Identification', 'Clear Next Steps'].map((f) => (
-                                    <span key={f} className="feature-chip text-[9px] uppercase tracking-wider text-[#8a7565] bg-white/70 border border-[#d4c4b0]/60 rounded-full px-3 py-1 font-semibold h-fit shadow-sm">
+                                    <span key={f} className="feature-chip text-[9px] uppercase tracking-wider text-[#8a7565] bg-white/70 border border-[#d4c4b0]/60 rounded-full px-3 py-1 font-semibold font-[var(--font-dm-sans)] h-fit shadow-sm">
                                         {f}
                                     </span>
                                 ))}
@@ -269,7 +269,7 @@ export default function Services() {
 
                             {/* Footer */}
                             <div className="flex items-center justify-between">
-                                <a href="#" className="shine-btn inline-flex items-center gap-2 bg-gradient-to-r from-[#111] to-[#2a2a2a] text-white px-5 py-2.5 rounded-full text-[11px] font-bold shadow-lg hover:shadow-xl transition-all duration-300 group/btn">
+                                <a href="#" className="shine-btn inline-flex items-center gap-2 bg-gradient-to-r from-[#111] to-[#2a2a2a] text-white px-5 py-2.5 rounded-full text-[11px] font-bold font-[var(--font-outfit)] shadow-lg hover:shadow-xl transition-all duration-300 group/btn">
                                     Book Call
                                     <svg className="w-3.5 h-3.5 transition-transform duration-300 group-hover/btn:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round">
                                         <path d="M5 12h14" /><path d="M12 5l7 7-7 7" />
@@ -304,7 +304,7 @@ export default function Services() {
                             <h3 className="text-[20px] md:text-[24px] font-[var(--font-playfair)] text-white font-bold leading-tight mb-3">
                                 Energy Score&trade; Quiz
                             </h3>
-                            <p className="text-white/70 text-[13px] leading-relaxed mb-2 font-medium">
+                            <p className="text-white/70 text-[13px] leading-relaxed mb-2 font-medium font-[var(--font-dm-sans)]">
                                 A quick, intuitive check-in to see where your energy is dropping right now.
                             </p>
                             <p className="text-white/35 text-[12px] leading-[1.7] flex-1">
@@ -324,7 +324,7 @@ export default function Services() {
 
                             {/* Footer */}
                             <div className="flex items-center justify-between">
-                                <a href="#" className="shine-btn inline-flex items-center gap-2 bg-gradient-to-r from-white to-gray-100 text-[#c42d2d] px-5 py-2.5 rounded-full text-[11px] font-bold shadow-lg shadow-white/10 hover:shadow-xl hover:shadow-white/20 transition-all duration-300 group/btn">
+                                <a href="#" className="shine-btn inline-flex items-center gap-2 bg-gradient-to-r from-white to-gray-100 text-[#c42d2d] px-5 py-2.5 rounded-full text-[11px] font-bold font-[var(--font-outfit)] shadow-lg shadow-white/10 hover:shadow-xl hover:shadow-white/20 transition-all duration-300 group/btn">
                                     Take the Quiz
                                     <svg className="w-3.5 h-3.5 transition-transform duration-300 group-hover/btn:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="#c42d2d" strokeWidth="2.5" strokeLinecap="round">
                                         <path d="M5 12h14" /><path d="M12 5l7 7-7 7" />
@@ -342,7 +342,7 @@ export default function Services() {
                         <div className="w-2 h-2 rounded-full bg-white/40 animate-pulse flex-shrink-0" />
                         <p className="text-white/50 text-[13px]">
                             Not sure where to begin?{' '}
-                            <a href="#" className="text-white font-bold hover:text-[#e85d5d] transition-colors duration-300 underline decoration-white/20 underline-offset-2 hover:decoration-[#e85d5d]/50">
+                            <a href="#" className="text-white font-bold font-[var(--font-outfit)] hover:text-[#e85d5d] transition-colors duration-300 underline decoration-white/20 underline-offset-2 hover:decoration-[#e85d5d]/50">
                                 The Energy Diagnostic Call&trade;
                             </a>{' '}
                             is the easiest first step.

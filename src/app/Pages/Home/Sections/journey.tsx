@@ -57,7 +57,7 @@ export default function Journey() {
                 <div>
                     <div className="flex items-center gap-3 mb-2">
                         <div className="w-8 h-[2px] rounded-full bg-[#c42d2d]" />
-                        <p className="text-[10px] md:text-xs uppercase tracking-[.25em] text-[#c42d2d] font-semibold">
+                        <p className="text-[10px] md:text-xs uppercase tracking-[.25em] text-[#c42d2d] font-semibold font-[var(--font-dm-sans)]">
                             Gallery
                         </p>
                     </div>
@@ -66,7 +66,7 @@ export default function Journey() {
                         <span className="italic font-bold">her Journey</span>
                     </h2>
                 </div>
-                <button className="flex items-center gap-2.5 bg-[#c42d2d] text-white px-5 md:px-6 py-2.5 md:py-3 rounded-full text-xs md:text-sm font-bold shadow-lg shadow-[#c42d2d]/20 hover:bg-[#a82525] hover:scale-105 transition-all duration-300 flex-shrink-0">
+                <button className="flex items-center gap-2.5 bg-[#c42d2d] text-white px-5 md:px-6 py-2.5 md:py-3 rounded-full text-xs md:text-sm font-bold font-[var(--font-outfit)] shadow-lg shadow-[#c42d2d]/20 hover:bg-[#a82525] hover:scale-105 transition-all duration-300 flex-shrink-0">
                     Step into her journey
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round">
                         <path d="M5 12h14" /><path d="M12 5l7 7-7 7" />
@@ -88,7 +88,7 @@ export default function Journey() {
                             <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300" />
                             {/* Number badge */}
                             <div className="absolute top-2 left-2 w-6 h-6 md:w-7 md:h-7 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 shadow-sm">
-                                <span className="text-[#c42d2d] text-[9px] md:text-[10px] font-bold">{String(i + 1).padStart(2, "0")}</span>
+                                <span className="text-[#c42d2d] text-[9px] md:text-[10px] font-bold font-[var(--font-dm-sans)]">{String(i + 1).padStart(2, "0")}</span>
                             </div>
                         </div>
                     ))}

@@ -96,7 +96,7 @@ export default function ScrollPoints() {
             <div className="text-center pt-8 pb-1 px-6 flex-shrink-0 relative z-10">
                 <div className="flex items-center justify-center gap-3 mb-3">
                     <div className="w-6 h-px bg-white/40" />
-                    <p className="text-[10px] md:text-xs uppercase tracking-[.3em] text-white/70 font-medium">
+                    <p className="text-[10px] md:text-xs uppercase tracking-[.3em] text-white/70 font-medium font-[var(--font-dm-sans)]">
                         The Lady behind Real-World Miracles
                     </p>
                     <div className="w-6 h-px bg-white/40" />
@@ -104,7 +104,7 @@ export default function ScrollPoints() {
                 <h2 className="text-[32px] md:text-[50px] font-[var(--font-playfair)] text-white leading-[1.1] font-bold">
                     Raseshvari Hindustani
                 </h2>
-                <p className="mt-2 text-white/60 text-xs md:text-sm font-medium tracking-wide">
+                <p className="mt-2 text-white/60 text-xs md:text-sm font-medium tracking-wide font-[var(--font-dm-sans)]">
                     A walking, talking miracle of possibilities.
                 </p>
             </div>
@@ -125,7 +125,7 @@ export default function ScrollPoints() {
                                     <img src={card.image} alt={card.title} className="w-full h-full object-cover" />
                                     <div className="absolute inset-0 bg-gradient-to-r from-transparent to-white/5" />
                                     <div className="absolute top-4 left-4 w-9 h-9 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center shadow-md">
-                                        <span className="text-[#c42d2d] text-xs font-bold">{String(i + 1).padStart(2, "0")}</span>
+                                        <span className="text-[#c42d2d] text-xs font-bold font-[var(--font-dm-sans)]">{String(i + 1).padStart(2, "0")}</span>
                                     </div>
                                 </div>
                                 <div className="flex-1 flex flex-col justify-center p-6 md:p-10">
@@ -154,7 +154,7 @@ export default function ScrollPoints() {
                             &ldquo;She doesn&rsquo;t fix people — she shifts energy. Everything changes.&rdquo;
                         </p>
                     </div>
-                    <button className="flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white px-5 py-2 rounded-full text-xs font-semibold border border-white/20 hover:bg-white/20 hover:scale-105 transition-all duration-300">
+                    <button className="flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white px-5 py-2 rounded-full text-xs font-semibold font-[var(--font-outfit)] border border-white/20 hover:bg-white/20 hover:scale-105 transition-all duration-300">
                         Step into her journey
                         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round">
                             <path d="M5 12h14" /><path d="M12 5l7 7-7 7" />

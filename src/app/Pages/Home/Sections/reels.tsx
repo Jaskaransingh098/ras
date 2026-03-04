@@ -187,7 +187,7 @@ export default function Reel({ scrollRef }: Props) {
 
       {/* ── HEADER ── */}
       <div className="text-center mb-14 rr px-6">
-        <p className="text-sm uppercase tracking-[.2em] text-[#c42d2d] mb-4 font-semibold">
+        <p className="text-sm uppercase tracking-[.2em] text-[#c42d2d] mb-4 font-semibold font-[var(--font-dm-sans)]">
           Our Clients Brag About Us
         </p>
         <h2 className="text-[36px] md:text-[52px] lg:text-[60px] font-[var(--font-playfair)] text-[#111] leading-[1.15] max-w-3xl mx-auto">
@@ -233,9 +233,9 @@ export default function Reel({ scrollRef }: Props) {
                         <div className="absolute bottom-0 left-0 right-0 p-4 z-10 text-white">
                           <div className="flex items-center gap-2 mb-1.5">
                             <div className="w-1.5 h-1.5 rounded-full bg-[#ff4444] animate-pulse" />
-                            <span className="text-[10px] uppercase tracking-wider opacity-80 font-medium">YouTube Short</span>
+                            <span className="text-[10px] uppercase tracking-wider opacity-80 font-medium font-[var(--font-dm-sans)]">YouTube Short</span>
                           </div>
-                          <p className="font-bold text-sm leading-tight">{fc.name}</p>
+                          <p className="font-bold text-sm leading-tight font-[var(--font-outfit)]">{fc.name}</p>
                           <p className="text-[11px] opacity-70 mt-0.5">{fc.role}{fc.location ? ` · ${fc.location}` : ""}</p>
                         </div>
                       </>
@@ -252,24 +252,24 @@ export default function Reel({ scrollRef }: Props) {
                           <img src={ytThumb(fc.youtubeId)} alt="" className="w-full h-full object-cover" />
                         </div>
                         <div>
-                          <p className="text-white text-[11px] font-bold leading-tight">{fc.name}</p>
+                          <p className="text-white text-[11px] font-bold leading-tight font-[var(--font-outfit)]">{fc.name}</p>
                           <p className="text-white/50 text-[9px]">{fc.role}</p>
                         </div>
                       </div>
                       <div className="flex items-center gap-2 mb-3 flex-shrink-0">
                         <div className="h-px flex-1 bg-white/20" />
-                        <span className="text-white/40 text-[9px] uppercase tracking-widest font-semibold">Transcript</span>
+                        <span className="text-white/40 text-[9px] uppercase tracking-widest font-semibold font-[var(--font-dm-sans)]">Transcript</span>
                         <div className="h-px flex-1 bg-white/20" />
                       </div>
                       <div className="flex-1 overflow-y-auto min-h-0 ts pr-2">
                         <p className="text-white/85 text-[12px] leading-[1.8]">
-                          <span className="text-white/30 text-xl font-serif">&ldquo;</span>
+                          <span className="text-white/30 text-xl font-[var(--font-cormorant)]">&ldquo;</span>
                           {fc.transcript}
-                          <span className="text-white/30 text-xl font-serif">&rdquo;</span>
+                          <span className="text-white/30 text-xl font-[var(--font-cormorant)]">&rdquo;</span>
                         </p>
                       </div>
                       <div className="mt-3 flex-shrink-0">
-                        <button onClick={(e) => flip(featured, e)} className="w-full flex items-center justify-center gap-1.5 bg-white/15 text-white py-2 rounded-full text-[11px] font-medium border border-white/20 hover:bg-white/30 transition-colors">
+                        <button onClick={(e) => flip(featured, e)} className="w-full flex items-center justify-center gap-1.5 bg-white/15 text-white py-2 rounded-full text-[11px] font-medium font-[var(--font-dm-sans)] border border-white/20 hover:bg-white/30 transition-colors">
                           ← Back
                         </button>
                       </div>
@@ -283,7 +283,7 @@ export default function Reel({ scrollRef }: Props) {
             <div className="flex-1 flex flex-col justify-center min-w-0">
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-8 h-1 rounded-full bg-[#c42d2d]" />
-                <span className="text-[#c42d2d] text-[11px] font-bold uppercase tracking-widest">{featured + 1} / {cards.length}</span>
+                <span className="text-[#c42d2d] text-[11px] font-bold uppercase tracking-widest font-[var(--font-dm-sans)]">{featured + 1} / {cards.length}</span>
               </div>
 
               <h3 className="text-[26px] md:text-[32px] font-[var(--font-playfair)] text-[#111] leading-[1.15] font-bold">
@@ -306,17 +306,17 @@ export default function Reel({ scrollRef }: Props) {
                   <img src={ytThumb(fc.youtubeId)} alt={fc.name} className="w-full h-full object-cover" />
                 </div>
                 <div>
-                  <p className="font-bold text-[#111] text-[15px]">{fc.name}</p>
+                  <p className="font-bold text-[#111] text-[15px] font-[var(--font-outfit)]">{fc.name}</p>
                   <p className="text-gray-400 text-xs">{fc.role}{fc.location ? ` · ${fc.location}` : ""}</p>
                 </div>
               </div>
 
               <div className="mt-6 flex flex-wrap gap-2.5">
-                <button onClick={(e) => play(featured, e)} className="flex items-center gap-2 bg-[#c42d2d] text-white px-5 py-2.5 rounded-full text-xs font-bold shadow-lg shadow-[#c42d2d]/25 hover:bg-[#b02525] transition-all">
+                <button onClick={(e) => play(featured, e)} className="flex items-center gap-2 bg-[#c42d2d] text-white px-5 py-2.5 rounded-full text-xs font-bold font-[var(--font-outfit)] shadow-lg shadow-[#c42d2d]/25 hover:bg-[#b02525] transition-all">
                   <svg width="12" height="14" viewBox="0 0 14 16" fill="none"><path d="M0 0L14 8L0 16V0Z" fill="white" /></svg>
                   Watch Short
                 </button>
-                <button onClick={(e) => flip(featured, e)} className="flex items-center gap-2 bg-white text-[#c42d2d] px-5 py-2.5 rounded-full text-xs font-bold shadow-md border border-[#c42d2d]/15 hover:border-[#c42d2d]/40 transition-all">
+                <button onClick={(e) => flip(featured, e)} className="flex items-center gap-2 bg-white text-[#c42d2d] px-5 py-2.5 rounded-full text-xs font-bold font-[var(--font-outfit)] shadow-md border border-[#c42d2d]/15 hover:border-[#c42d2d]/40 transition-all">
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#c42d2d" strokeWidth="2">
                     <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
                     <polyline points="14 2 14 8 20 8" /><line x1="16" y1="13" x2="8" y2="13" /><line x1="16" y1="17" x2="8" y2="17" />
