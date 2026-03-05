@@ -59,7 +59,7 @@ export default function Phases() {
 
     return (
         <section
-            className="relative min-h-[90vh] max-h-[100vh] flex items-center overflow-hidden"
+            className="relative min-h-[90dvh] max-h-[100dvh] flex items-center overflow-hidden"
             style={{ background: "linear-gradient(160deg, #0a0a0a 0%, #151515 50%, #0e0e0e 100%)" }}
         >
             <style jsx>{`

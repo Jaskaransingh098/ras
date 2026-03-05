@@ -15,7 +15,7 @@ const photos = [
 
 export default function Journey() {
     return (
-        <section className="h-[93vh] bg-white flex flex-col relative overflow-hidden pt-10 p-5">
+        <section className="h-[93dvh] bg-white flex flex-col relative overflow-hidden pt-10 p-5">
             <style jsx>{`
                 .bento-grid {
                     display: grid;

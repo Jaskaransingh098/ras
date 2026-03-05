@@ -11,7 +11,7 @@ const galleryItems = Array.from({ length: 7 }).map((_, i) => ({
 
 export default function MomsCommunity() {
     return (
-        <section className="relative h-[90vh] flex justify-center items-center py-6 md:py-10 bg-white overflow-hidden">
+        <section className="relative h-[90dvh] flex justify-center items-center py-6 md:py-10 bg-white overflow-hidden">
             <div className="relative z-10 w-full h-full max-w-[1400px] mx-auto px-4 md:px-8">
 
                 {/* 5-Column Grid Layout spanning full height */}

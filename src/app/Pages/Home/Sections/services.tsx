@@ -2,7 +2,7 @@
 
 export default function Services() {
     return (
-        <section className="min-h-[98vh] bg-gradient-to-b from-[#4a0e0e] via-[#7a1a1a] to-[#9b1c1c] relative overflow-hidden flex flex-col justify-center py-16">
+        <section className="min-h-[98dvh] bg-gradient-to-b from-[#4a0e0e] via-[#7a1a1a] to-[#9b1c1c] relative overflow-hidden flex flex-col justify-center py-16">
             <style jsx>{`
                 @keyframes borderRotate {
                     0% { --angle: 0deg; }

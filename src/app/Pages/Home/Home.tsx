@@ -17,6 +17,7 @@ import Dare from "./Sections/dare";
 import MomsCommunity from "./Sections/momscommun";
 import FAQ from "./Sections/faq";
 import Contact from "./Sections/contact";
+import Blog from "./Sections/blog";
 
 export default function Home() {
   const scrollRef = useRef<HTMLElement | null>(null);
@@ -30,11 +31,11 @@ export default function Home() {
         <Hero />
       </section>
 
-      <section className="h-[50vh]">
+      <section className="h-[50dvh]">
         <Welcome scrollRef={scrollRef} />
       </section>
 
-      <section className="h-[90vh] mt-2 px-0">
+      <section className="h-[90dvh] mt-2 px-0">
         <Experience scrollRef={scrollRef} />
       </section>
 
@@ -56,6 +57,7 @@ export default function Home() {
 
       <section className="">
         <Services />
+
       </section>
 
       <section className="">
@@ -80,6 +82,10 @@ export default function Home() {
 
       <section className="">
         <MomsCommunity />
+      </section>
+
+      <section className="">
+        <Blog />
       </section>
 
       <section className="">

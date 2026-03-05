@@ -95,8 +95,8 @@ export default function FAQ() {
             <div
                 key={actualIndex}
                 className={`group border rounded-[20px] md:rounded-[24px] transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] overflow-hidden ${isOpen
-                        ? 'bg-white border-[#c42d2d] shadow-[0_15px_40px_-5px_rgba(196,45,45,0.15)] ring-1 ring-[#c42d2d]/20'
-                        : 'bg-white border-gray-300 hover:border-gray-400 shadow-[0_4px_15px_-5px_rgba(0,0,0,0.05)] hover:shadow-[0_8px_20px_-5px_rgba(0,0,0,0.08)]'
+                    ? 'bg-white border-[#c42d2d] shadow-[0_15px_40px_-5px_rgba(196,45,45,0.15)] ring-1 ring-[#c42d2d]/20'
+                    : 'bg-white border-gray-300 hover:border-gray-400 shadow-[0_4px_15px_-5px_rgba(0,0,0,0.05)] hover:shadow-[0_8px_20px_-5px_rgba(0,0,0,0.08)]'
                     }`}
             >
                 <button
@@ -107,8 +107,8 @@ export default function FAQ() {
                         {faq.question}
                     </span>
                     <div className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center border-2 transition-all duration-500 ${isOpen
-                            ? 'bg-[#c42d2d] border-[#c42d2d] rotate-[135deg] shadow-[0_5px_15px_rgba(196,45,45,0.4)]'
-                            : 'bg-gray-50 border-gray-300 group-hover:border-gray-500 group-hover:bg-white'
+                        ? 'bg-[#c42d2d] border-[#c42d2d] rotate-[135deg] shadow-[0_5px_15px_rgba(196,45,45,0.4)]'
+                        : 'bg-gray-50 border-gray-300 group-hover:border-gray-500 group-hover:bg-white'
                         }`}
                     >
                         <svg width="12" height="12" viewBox="0 0 24 24" fill="none">
@@ -134,7 +134,7 @@ export default function FAQ() {
     };
 
     return (
-        <section className="relative h-[90vh] min-h-[90vh] max-h-[90vh] py-8 md:py-10 px-4 md:px10 bg-[#fbfbfb] flex flex-col items-center justify-center overflow-hidden">
+        <section className="relative h-[90dvh] min-h-[90dvh] max-h-[90dvh] py-8 md:py-10 px-4 md:px10 bg-[#fbfbfb] flex flex-col items-center justify-center overflow-hidden">
             {/* Soft background accents */}
             {/* <div className="absolute top-1/4 left-0 w-[500px] h-[500px] bg-[#f5f0ea] rounded-full blur-[140px] pointer-events-none" />
             <div className="absolute bottom-0 right-[10%] w-[400px] h-[400px] bg-[#fff0f0] rounded-full blur-[120px] pointer-events-none" /> */}

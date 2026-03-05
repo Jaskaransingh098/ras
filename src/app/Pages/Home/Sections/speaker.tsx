@@ -64,7 +64,7 @@ export default function Speaker() {
     }
 
     return (
-        <section className="relative min-h-[80vh] max-h-[90vh] flex items-center overflow-hidden bg-white">
+        <section className="relative min-h-[80dvh] max-h-[90dvh] flex items-center overflow-hidden bg-white">
             <style jsx>{`
                 .explore-btn {
                     position: relative;

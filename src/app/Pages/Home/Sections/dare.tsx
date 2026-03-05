@@ -32,7 +32,7 @@ export default function DareToDream() {
     }, [isHovering]);
 
     return (
-        <section className="relative min-h-[70vh] max-h-[90vh] flex flex-col items-center justify-center overflow-hidden py-16 px-6 md:px-12 bg-gradient-to-br from-[#4a0e0e] via-[#7a1a1a] to-[#9b1c1c]">
+        <section className="relative min-h-[70dvh] max-h-[90dvh] flex flex-col items-center justify-center overflow-hidden py-16 px-6 md:px-12 bg-gradient-to-br from-[#4a0e0e] via-[#7a1a1a] to-[#9b1c1c]">
             {/* Dark premium red gradient background overlay */}
             <div className="absolute inset-0 bg-[#4a0e0e]/20" />
 

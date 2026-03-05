@@ -90,7 +90,7 @@ export default function Welcome({ scrollRef }: Props) {
       {/* VIDEO SECTION */}
       <div
         ref={containerRef}
-        className="relative h-[40vh] rounded-t-[30px] flex items-center justify-center px-6 md:px-20 overflow-hidden"
+        className="relative h-[40dvh] rounded-t-[30px] flex items-center justify-center px-6 md:px-20 overflow-hidden"
       >
         <video
           autoPlay

@@ -155,7 +155,7 @@ export default function Hero() {
       </div> */}
 
       {/* RIGHT SIDE */}
-      <div className="md:w-[45%] lg:w-[51%] w-full relative h-[60vh] md:h-[95vh] md:absolute md:right-3 md:top-3 md:rounded-[40px] overflow-hidden shadow-2xl">
+      <div className="md:w-[45%] lg:w-[51%] w-full relative h-[60dvh] md:h-[95dvh] md:absolute md:right-3 md:top-3 md:rounded-[40px] overflow-hidden shadow-2xl">
         {/* IMAGE */}
         <Image
           key={slides[index].image}

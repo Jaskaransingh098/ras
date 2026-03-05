@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function Footer() {
     return (
-        <footer className="relative w-full h-[100vh] pt-20 md:pt-32 bg-gradient-to-b from-[#8a0a0a] to-[#4a0e0e] text-white overflow-hidden mt-0 flex flex-col justify-between">
+        <footer className="relative w-full h-[100dvh] pt-20 md:pt-32 bg-gradient-to-b from-[#8a0a0a] to-[#4a0e0e] text-white overflow-hidden mt-0 flex flex-col justify-between">
             <div className="w-full h-full max-w-[1500px] mx-auto px-6 md:px-12 relative z-10 flex flex-col justify-between mt-4">
 
                 {/* Central Lotus / Icon element (from reference image) */}

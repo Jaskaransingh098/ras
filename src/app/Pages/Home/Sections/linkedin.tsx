@@ -73,7 +73,7 @@ export default function LinkedIn() {
 
     return (
         <section
-            className="relative min-h-[80vh] max-h-[90vh] flex flex-col justify-center overflow-hidden"
+            className="relative min-h-[80dvh] max-h-[90dvh] flex flex-col justify-center overflow-hidden"
             style={{ background: "linear-gradient(180deg, #f5f0ea 0%, #efe8df 50%, #f5f0ea 100%)" }}
         >
             <style jsx>{`

@@ -72,7 +72,7 @@ export default function Result() {
         <section
             ref={sectionRef}
             className="relative bg-white overflow-hidden flex flex-col justify-center"
-            style={{ minHeight: "100vh", maxHeight: "110vh" }}
+            style={{ minHeight: "100dvh", maxHeight: "110dvh" }}
         >
             <style jsx>{`
                 @keyframes gentle-float {
