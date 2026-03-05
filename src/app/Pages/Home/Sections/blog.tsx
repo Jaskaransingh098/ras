@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, useCallback } from "react";
-import Script from "next/script";
+// import Script from "next/script";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
@@ -50,6 +50,15 @@ const blogs = [
 export default function Blog() {
     const sectionRef = useRef<HTMLDivElement>(null);
     const [quoteIndex, setQuoteIndex] = useState(0);
+    const [igPosts, setIgPosts] = useState<any[]>([]);
+
+    useEffect(() => {
+        fetch("/api/instagram")
+            .then((res) => res.json())
+            .then((data) => {
+                if (data.posts) setIgPosts(data.posts);
+            });
+    }, []);
 
     /* ── Rotate quotes every 8 seconds ── */
     const nextQuote = useCallback(() => {
@@ -395,17 +404,29 @@ export default function Blog() {
 
                             {/* LightWidget Instagram Feed */}
                             <div className="rounded-xl overflow-hidden flex-1">
-                                <Script
-                                    src="https://cdn.lightwidget.com/widgets/lightwidget.js"
-                                    strategy="lazyOnload"
-                                />
-                                <iframe
-                                    src="//lightwidget.com/widgets/2ae1b20c9eac5dfbaa606a023e498ac0.html"
-                                    scrolling="no"
-                                    allowTransparency={true}
-                                    className="lightwidget-widget"
-                                    style={{ width: "100%", height: "100%", border: 0, overflow: "hidden" }}
-                                />
+                                <div className="grid grid-cols-2 gap-3">
+                                    {igPosts?.length > 0 &&
+                                        igPosts.map((post) => (
+                                            <a
+                                                key={post.id}
+                                                href={post.permalink}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="block group"
+                                            >
+                                                <div
+                                                    className="w-full h-[160px] rounded-lg overflow-hidden"
+                                                    style={{
+                                                        background: `url(${post.mediaUrl}) center/cover no-repeat`,
+                                                    }}
+                                                />
+
+                                                <p className="text-[11px] mt-2 line-clamp-2 text-[#6a4a3a]">
+                                                    {post.caption}
+                                                </p>
+                                            </a>
+                                        ))}
+                                </div>
                             </div>
                         </div>
                     </div>
