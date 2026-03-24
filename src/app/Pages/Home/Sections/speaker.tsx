@@ -64,7 +64,7 @@ export default function Speaker() {
     }
 
     return (
-        <section className="relative min-h-[80dvh] max-h-[90dvh] flex items-center overflow-hidden bg-white">
+        <section className="relative min-h-[100dvh] flex items-center overflow-hidden bg-white">
             <style jsx>{`
                 .explore-btn {
                     position: relative;
@@ -134,12 +134,12 @@ export default function Speaker() {
             <div className="absolute top-0 left-[5%] right-[5%] h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent" />
 
             <div className="max-w-8xl mx-auto px-6 md:px-12 w-full relative z-10 py-16 md:py-20">
-                <div className="flex flex-col-reverse md:flex-row gap-12 md:gap-20 items-center">
+                <div className="flex flex-col-reverse md:flex-row gap-16 md:gap-24 items-center justify-center">
 
                     {/* LEFT — Video */}
-                    <div className="md:w-[45%] w-full">
+                    <div className="w-full md:w-[300px] flex-shrink-0">
                         <div className="video-frame shadow-xl shadow-black/[0.08]">
-                            <div className="relative aspect-square bg-[#f0ebe4]">
+                            <div className="relative aspect-[9/16] max-h-[75dvh] bg-[#f0ebe4]">
                                 <video
                                     ref={videoRef}
                                     autoPlay
@@ -232,9 +232,9 @@ export default function Speaker() {
 
                         {/* Heading */}
                         <h2 className="text-[28px] md:text-[44px] font-[var(--font-playfair)] text-[#111] leading-[1.12] mb-7">
-                            Not Motivation.<br />
-                            <span className="italic text-[#c42d2d]">A Real Shift</span>{" "}
-                            in How You Operate.
+                            Talk That Go<br />
+                            <span className="italic text-[#c42d2d]">Beyond Inspiration -</span>{" "}
+                            Into Real Awareness and Action.
                         </h2>
 
                         {/* Description */}

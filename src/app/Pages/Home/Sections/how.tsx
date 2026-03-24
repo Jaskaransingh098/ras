@@ -88,11 +88,11 @@ export default function How({ scrollRef }: Props) {
         return () => ctx.revert();
     }, []);
 
-    const steps = [
-        { num: "01", title: "Book a Call", desc: "Schedule your free diagnostic session" },
-        { num: "02", title: "Energy Shift", desc: "Experience the transformation live" },
-        { num: "03", title: "New Reality", desc: "Watch your life transform rapidly" },
-    ];
+    // const steps = [
+    //     { num: "01", title: "Book a Call", desc: "Schedule your free diagnostic session" },
+    //     { num: "02", title: "Energy Shift", desc: "Experience the transformation live" },
+    //     { num: "03", title: "New Reality", desc: "Watch your life transform rapidly" },
+    // ];
 
     return (
         <section ref={sectionRef} className="py-14 bg-white overflow-hidden">
@@ -103,17 +103,17 @@ export default function How({ scrollRef }: Props) {
                     <div className="hw">
                         <div className="flex items-center gap-3 mb-3">
                             <div className="w-8 h-1 rounded-full bg-[#c42d2d]" />
-                            <p className="text-xs uppercase tracking-[.2em] text-[#c42d2d] font-semibold font-[var(--font-dm-sans)]">
-                                How It Works
+                            <p className="text-sm uppercase tracking-[.2em] text-[#c42d2d] font-semibold font-[var(--font-dm-sans)]">
+                                The science behind it
                             </p>
                         </div>
-                        <h2 className="text-[32px] md:text-[44px] font-[var(--font-playfair)] text-[#111] leading-[1.15]">
-                            See the Transformation<br className="hidden md:block" /> in Action
+                        <h2 className="text-[32px] md:text-[54px] font-[var(--font-playfair)] font-semibold text-[#111] leading-[0.9]">
+                             How it<br className="hidden md:block" /> Works
                         </h2>
                     </div>
 
                     {/* Right: 3 Steps */}
-                    <div className="hw flex gap-6 md:gap-10">
+                    {/* <div className="hw flex gap-6 md:gap-10">
                         {steps.map((step) => (
                             <div key={step.num} className="flex items-start gap-3">
                                 <span className="text-[28px] font-[var(--font-playfair)] text-[#c42d2d] font-bold leading-none">
@@ -125,7 +125,7 @@ export default function How({ scrollRef }: Props) {
                                 </div>
                             </div>
                         ))}
-                    </div>
+                    </div> */}
                 </div>
 
                 {/* ── VIDEO PLAYER ── */}
@@ -213,16 +213,16 @@ export default function How({ scrollRef }: Props) {
                 <div className="mt-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 hw">
                     <div className="flex items-center gap-3">
                         <div className="w-2 h-2 rounded-full bg-[#c42d2d] animate-pulse" />
-                        <p className="text-gray-500 text-sm font-[var(--font-cormorant)] italic text-base">
-                            One session. One shift. Unlimited possibilities.
+                        <p className="text-gray-800 text-xl font-[var(--font-cormorant)] italic text-base font-semibold">
+                           One session, one shift, ultimate unlimited possibilities
                         </p>
                     </div>
-                    <button className="flex items-center gap-2 bg-[#c42d2d] text-white px-6 py-2.5 rounded-full text-sm font-bold font-[var(--font-outfit)] shadow-lg shadow-[#c42d2d]/20 hover:bg-[#a82525] transition-all">
+                    {/* <button className="flex items-center gap-2 bg-[#c42d2d] text-white px-6 py-2.5 rounded-full text-sm font-bold font-[var(--font-outfit)] shadow-lg shadow-[#c42d2d]/20 hover:bg-[#a82525] transition-all">
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round">
                             <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
                         </svg>
                         Book Your Session
-                    </button>
+                    </button> */}
                 </div>
             </div>
         </section>

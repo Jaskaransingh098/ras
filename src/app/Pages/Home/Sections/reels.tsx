@@ -47,81 +47,131 @@ export default function Reel({ scrollRef }: Props) {
       name: "Kamal Girdhar",
       role: "Banking Professional",
       location: "New Delhi",
-      youtubeId: "Z6tDt6gOqE4",
-      transcript:
-        "I had been struggling with corporate stress for 15 years. The pressure was immense — deadlines, office politics, and constant anxiety. I tried everything from therapy to meditation apps, but nothing worked long-term. Then I found Raseshvari's Energy Shift Session. In just one session, something shifted deep within me. The heaviness I carried for years just dissolved. I felt lighter, clearer, and more focused than I had in over a decade. My colleagues noticed the change immediately. I'm now leading my team with a calm confidence I never thought possible. This was truly life-changing.",
+      youtubeId: "woZJtGv6P-w",
+      transcript: `I’ve been a part of the banking sector for the last 15 years, and I was under intense pressure managing work turmoil and internal politics, which caught on me physically, mentally, and emotionally.
+I was under constant pressure to deliver. I could see my confidence eroding, my performance dipping, and this having an adverse impact on my health and wealth. I was gradually slipping into the shell of depression. And you know in corporate life, it’s not easy to talk about things like this.
+
+I had always heard about mindset coaching, therapy, but I never heard about someone shifting energies. I decided to give it a shot and booked a session with Raseshvari.
+With just one session, things shifted. The heaviness completely lifted off, my stress evaporated, and I felt at ease.
+
+Post this session, things started to change. I moved into a new role. The stress because of work completely evaporated, and happiness surrounded me finally again.
+If you’re going through something like this, please connect with Raseshvari. She will transform your life only for the better. I genuinely thank the universe, the almighty, and Raseshvari for pulling this magic off and giving me a life full of bliss, abundance, and peace. Thank you.`,
     },
     {
       title: "Pain to Power",
       highlight: "",
       sub: "in just one",
       badge: "Energy Shift Session",
-      name: "Dr. Rajpreet",
+      name: "Dr. Roohana Rajpreet",
       role: "Dentist",
       location: "",
-      youtubeId: "BDibr1yKLMA",
-      transcript:
-        "As a dentist, I was always focused on healing others, but I neglected my own well-being. Chronic pain had become my constant companion. I was skeptical at first — how could one session change anything? But Raseshvari's approach was unlike anything I'd experienced. She identified energy blockages I didn't even know existed. After the session, the pain that had plagued me for years began to fade. I went from barely getting through my workdays to thriving with renewed energy and passion for my practice.",
+      youtubeId: "vdOWHa-rzGg",
+      transcript: `Raseshvari Hindustani:
+"Most high-achieving women carry an invisible emotional load, one that quietly blocks their growth and impacts their revenue too. One of my clients, a beautiful and brilliant doctor, had tried everything, but an old emotional pain wouldn’t just let go."
+
+Dr. Roohana Rajpreet:
+"I was going through something and I was not able to sort out some things because of which I actually needed some help. Aur mere ko lag raha tha main handle kar loongi, ho jayega saara kuch. (And I thought I'll handle it, everything will be fine.) But sometimes it is always better to ask for some help. I just want to share my experience with everybody. I had a session with her today and believe you me, I changed like this [snaps fingers], and I had that glow back on my face. So, I mean, it is visible.
+There are many people—many men, many women, many ladies like me—who are going through something but they are not talking it out. I would recommend each and every one: if you connect with her, you’ll feel much better. So with Raseshvari mam, with her experience and with her insight and with all the spirituality and all her learnings, she’s on a very different plane. Thank you so much, Raseshvari mam. More strength to you, and thanks a ton for this session which you took for me. Thank you."
+
+Raseshvari Hindustani:
+"When deep emotional weight releases, your confidence, your decisions, your work—everything opens up, and life feels so beautiful. But today, even after four years, she is living lighter, happier, and thriving. If you’re feeling stuck in your growth, in your revenue, or your happiness, let’s shift it. All you need is just one deep energy shift, and you don’t have to carry it alone. Let's connect."`,
     },
     {
-      title: "From Stuck to",
-      highlight: "Business Growth",
-      sub: "in just one",
-      badge: "Revenue Energetic Session",
-      name: "Shashank Singh",
-      role: "Founder Blackwik",
-      location: "New Delhi",
-      youtubeId: "IfAoiYonAAw",
-      transcript:
-        "My startup had hit a wall. Revenue was stagnant, team morale was low, and I was burning out fast. A friend recommended Raseshvari's Revenue Energetic Session. I thought it was unconventional, but I was desperate enough to try. The session unlocked something — creativity started flowing, I made bold decisions with clarity, and within weeks my business started growing again. We've since tripled our revenue and the team energy is completely transformed. I now do quarterly sessions to keep the momentum going.",
-    },
-    {
-      title: "Anxiety to",
-      highlight: "Inner Peace",
-      sub: "Achieved through",
-      badge: "Healing Session",
-      name: "Priya Sharma",
-      role: "Software Engineer",
-      location: "Bangalore",
-      youtubeId: "Zwuiubinbi8",
-      transcript:
-        "Working in tech, anxiety was my default state. Constant deadlines, imposter syndrome, and the fear of falling behind consumed me. I had tried counseling and medication, but the anxiety always returned. Raseshvari's healing session was a revelation. She worked on deep-rooted fears I had been carrying since childhood. After the session, I felt a profound sense of peace I hadn't experienced in years. My productivity actually improved because I was no longer paralyzed by anxiety. I sleep better, think clearer, and genuinely enjoy life again.",
-    },
-    {
-      title: "Broken Family to",
-      highlight: "Deep Reconnection",
+      title: "Inner Alignment",
+      highlight: "& Emotional Balance",
       sub: "Restored in one",
-      badge: "Family Healing Session",
-      name: "Sunita Devi",
-      role: "Homemaker & Mother",
-      location: "Lucknow",
+      badge: "Revenue-Focused Session",
+      name: "Sumedha Adavade",
+      role: "Asst. Vice President, Bank",
+      location: "Mumbai",
+      youtubeId: "Zwuiubinbi8",
+      transcript: `Every time a deal seemed close to closure… something would shift at the last moment.
+Not once.
+It started feeling like a pattern.
+I’m Sumedha Adavade, Assistant Vice President in a multinational bank in Mumbai, and last year I also began building my own cybersecurity initiative.
+On paper, everything looked aligned.
+Clients were interested, conversations were positive, and the direction felt right.
+And yet… movement was slower than expected.
+After a point, it makes you pause and reflect —
+not just on effort, but on the deeper journey within.
+
+Years ago, I had experienced a meaningful sense of clarity through a session with Raseshvari.
+So during a phase of uncertainty, I chose to reconnect and explore her revenue-focused healing session.
+What I experienced in that space was not dramatic…
+but quietly insightful.
+It helped me step back, look within, and reconnect with a sense of clarity and steadiness that I needed at that time.
+I left the session feeling lighter, more centered, and emotionally clearer about my path ahead.
+And soon after, I did see encouraging movement in my work as well.
+
+More than anything, the session reminded me that along with action in the outer world,
+inner alignment and emotional balance also play an important role in our journey.
+Her work is thoughtful and deeply personal,
+and I appreciate the space she creates for reflection and healing.
+I’m grateful to Raseshvari for being part of my journey.`,
+    },
+    {
+      title: "From Body",
+      highlight: "Hating to Loving",
+      sub: "in just one",
+      badge: "Body Image Session",
+      name: "Abhedika Sahej",
+      role: "Student",
+      location: "New Delhi",
+      youtubeId: "1k8kHVQypr4",
+      transcript: `Abhedika Sahej: Hi everybody! My name is Abhedika Sahej. I’m pursuing my 12th class, and I’m going to tell you how a small talk with Raseshvari Di assisted me in my everyday life.
+Raseshvari: This beautiful girl came to me at the age of 17, quite hating her body. And today, she owns the stage.
+Abhedika: I was actually concerned about my height and reached [out] to my dad for this. And through him, I got the contact of Ras Di and told her whatever I felt about my height. And eventually, she gave me the clearing statements which helped me to clean the blockages and whatever image was there in my head about height, of course.
+And after receiving those clearings, I felt so light. Matlab, aisa laga ki [It felt like] I was carrying a lot of load on myself and now it’s just gone. I feel so light after receiving those clearings.
+Raseshvari: She sings, she glows. She walks in her skin like a song, not a burden. You don’t have to fix your body—you just have to talk to it and finally listen.
+Abhedika: She taught me to accept myself the way I am. And I’m sure that bahut se aise teenagers honge jo apne looks ko lekar, apni body ko lekar bahut conscious honge [there will be many teenagers who are very conscious about their looks and their body]. So I would highly recommend to consult Ras Di. Talk to her. And I am sure ki aapka bhi cheezon ko dekhne ka nazariya badal jayega [that your perspective of looking at things will also change].
+Raseshvari: If she could shift all that energy in just one session, so can you. Let’s connect.`,
+    },
+    {
+      title: "Business Saved",
+      highlight: "From Shutting Down",
+      sub: "transformed in",
+      badge: "Energy Session",
+      name: "Shashank",
+      role: "Business Owner",
+      location: "",
+      youtubeId: "FPadk3vUnjA",
+      transcript: `There was a point in my life where I truly felt my business would shut down. I started it during college, and everything was going great in the beginning—sales were high, growth was solid, and overall, everything felt smooth.
+Then, suddenly, sales started dropping. I tried everything: changed products, switched categories, but the sales kept going down. At one point, I genuinely felt like I’d have to close my business and shift back to a corporate job. My mind told me to quit, but my heart felt that the problem lay somewhere else.
+
+That’s when I did just one energy session with Raseshvari Ma'am. Honestly, I don't know what she did or how she did it, but I felt something shift within me instantly.
+
+My stress lifted, I gained confidence, and I found clarity in my mind. Things that had been stuck for months started solving themselves automatically.
+It’s been four to five months since that session. My business is stable, the growth is back on track, and mentally, I feel very light. For me, this single session was a major turning point in my life.`,
+    },
+    {
+      title: "Heartbreak & Depression",
+      highlight: "to Magical Transformation",
+      sub: "Shifted in one",
+      badge: "Emotional Freedom Session",
+      name: "Swapnil Chavan",
+      role: "Interior Designer",
+      location: "Mumbai",
       youtubeId: "hWNj_VwGsEs",
-      transcript:
-        "My family was falling apart — constant arguments, emotional distance between me and my children, and years of unspoken pain. I had tried family counseling, but nothing seemed to bridge the gap. Raseshvari's Family Healing Session changed everything. She identified deep-rooted energy blocks that had been passed down through generations. After the session, conversations that were impossible before started happening naturally. My eldest son called me for the first time in months. Today, we sit together for dinner every night. She gave me my family back.",
+      transcript: `Raseshvari Hindustani: Heartbreak isn’t just pain, it’s stuck energy. And when we shift that energy, we shift everything. Not everyone feels like smiling when healing, but even in this quiet moment, you will hear the shift. Grateful to this client for sharing his transformation—and it’s his first time on the camera.
+
+Swapnil Chavan: Hello friends, myself Swapnil. I’m an interior designer from Mumbai. I would like to share about the magical transformation happening in my life in just one session. I was stuck in my relationship issue for more than one and a half years. I got into depression, I tried hard, but nothing was helping. But by God’s grace, Raseshvari ma’am helped me with her emotional freedom session. She is magical, guys. She can make anything possible. She can definitely help you out.
+
+Closing Text: You don’t have to carry the weight of heartbreak forever! Sometimes, one session…`,
     },
     {
-      title: "Financial Blocks",
-      highlight: "Shattered",
-      sub: "Breakthrough after one",
-      badge: "Abundance Session",
-      name: "Rahul Verma",
-      role: "Real Estate Developer",
-      location: "Noida",
-      youtubeId: "6ce6FWIHzf0",
-      transcript:
-        "No matter how hard I worked, money seemed to slip through my fingers. Deals would fall through at the last minute, investments would tank, and I was drowning in debt. A business partner told me about Raseshvari's Abundance Session. I was skeptical — how could energy work fix finances? But within two weeks of the session, a deal I had given up on suddenly closed. Then another. Then a whole chain of opportunities opened up. In three months, I cleared all my debts and my business is thriving like never before. It was like a dam broke.",
-    },
-    {
-      title: "Stage Fear to",
-      highlight: "Fearless Speaker",
-      sub: "Transformed in one",
-      badge: "Confidence Activation",
-      name: "Meghna Rao",
-      role: "TEDx Speaker & Author",
-      location: "Hyderabad",
-      youtubeId: "woZJtGv6P-w",
-      transcript:
-        "I had crippling stage fear. Even presenting in a small meeting would make my hands shake and my voice tremble. As someone who dreamed of being a speaker, this was devastating. Raseshvari's Confidence Activation Session unlocked something primal in me. She traced the fear back to a childhood incident I had completely forgotten. After the session, I felt a calm confidence I had never experienced. Two months later, I delivered my first TEDx talk to a standing ovation. I went from hiding in corners to commanding stages.",
+      title: "Stress-Free",
+      highlight: "& Relaxed",
+      sub: "achieved in one",
+      badge: "Healing Session",
+      name: "Dhawal Gala",
+      role: "",
+      location: "",
+      youtubeId: "Mj4tbs4Yl9w",
+      transcript: `Thanks, Ras. I am feeling really happy that I took your session, and in just one session of 40 minutes, I am feeling so relaxed and so stress-free. I am thinking, why I have not taken your session before? I mean, this kind of stress-freeness which I am recognizing now, I could have taken your session before and I would have released myself before only.
+
+And I’m really thankful to you again and I wish God gives you so [much] power and energy that you can help other people also the way you have helped me. And I am really feeling so glad that I took your session after long such time and really feel so light and I... I mean, I can’t imagine what I’m feeling. I mean, I don’t have any words to tell you what I am feeling. But it is really a very nice feeling.
+
+The stress is gone totally from my head, all the negative thoughts which were coming—they are all gone. I am really feeling light, relaxed, and very happy. Thanks to you again. Thanks. Thank you, Ras.`,
     },
   ];
 
@@ -168,7 +218,7 @@ export default function Reel({ scrollRef }: Props) {
   return (
     <section
       ref={sectionRef}
-      className="py-15 overflow-hidden min-h-[100dvh] flex flex-col justify-center bg-[#f8f7f4]"
+      className="py-25 overflow-hidden min-h-[100dvh] flex flex-col justify-center bg-[#f8f7f4]"
     >
       <style jsx>{`
         .flip-inner{transition:transform .55s cubic-bezier(.4,0,.2,1);transform-style:preserve-3d}
@@ -187,13 +237,13 @@ export default function Reel({ scrollRef }: Props) {
 
       {/* ── HEADER ── */}
       <div className="text-center mb-14 rr px-6">
-        <p className="text-sm uppercase tracking-[.2em] text-[#c42d2d] mb-4 font-semibold font-[var(--font-dm-sans)]">
+        <p className="text-5xl uppercase tracking-[.2em] text-[#c42d2d] mb-4 font-bold font-[var(--font-dm-sans)]">
           Our Clients Brag About Us
         </p>
-        <h2 className="text-[36px] md:text-[52px] lg:text-[60px] font-[var(--font-playfair)] text-[#111] leading-[1.15] max-w-3xl mx-auto">
+        <h2 className="text-[36px] md:text-[22px] tracking-[.02em] lg:text-[38px] font-[var(--font-playfair)] font-light text-[#111] leading-[1.15] max-w-3xl mx-auto">
           Don&rsquo;t believe us? Hear it straight from them.
         </h2>
-        <p className="mt-4 text-gray-500 text-base max-w-xl mx-auto">
+        <p className="mt-6 text-gray-700 text-[20px] max-w-2xl mx-auto">
           Real stories from real people. Watch the shorts or read the full transcript.
         </p>
       </div>
@@ -262,7 +312,7 @@ export default function Reel({ scrollRef }: Props) {
                         <div className="h-px flex-1 bg-white/20" />
                       </div>
                       <div className="flex-1 overflow-y-auto min-h-0 ts pr-2">
-                        <p className="text-white/85 text-[12px] leading-[1.8]">
+                        <p className="text-white/85 text-[12px] leading-[1.8] whitespace-pre-wrap">
                           <span className="text-white/30 text-xl font-[var(--font-cormorant)]">&ldquo;</span>
                           {fc.transcript}
                           <span className="text-white/30 text-xl font-[var(--font-cormorant)]">&rdquo;</span>
@@ -407,7 +457,7 @@ export default function Reel({ scrollRef }: Props) {
                               </div>
                               <p className="text-[9px] font-semibold text-[#111] mb-1 truncate flex-shrink-0">{card.name}</p>
                               <div className="flex-1 overflow-y-auto min-h-0 ts-light pr-1">
-                                <p className="text-[9px] leading-[1.65] text-gray-500">
+                                <p className="text-[9px] leading-[1.65] text-gray-500 whitespace-pre-wrap">
                                   <span className="text-[#c42d2d] text-xs font-serif">&ldquo;</span>
                                   {card.transcript}
                                   <span className="text-[#c42d2d] text-xs font-serif">&rdquo;</span>

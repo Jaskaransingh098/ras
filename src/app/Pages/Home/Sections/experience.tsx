@@ -9,9 +9,10 @@ interface Props {
   scrollRef: RefObject<HTMLElement | null>;
 }
 
+const AVATAR_COUNT = 12;
+
 export default function Experience({ scrollRef }: Props) {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const avatarRef = useRef<HTMLDivElement>(null);
   const mainNumberRef = useRef<HTMLHeadingElement>(null);
   const year1Ref = useRef<HTMLHeadingElement>(null);
   const year2Ref = useRef<HTMLHeadingElement>(null);
@@ -38,18 +39,8 @@ export default function Experience({ scrollRef }: Props) {
         },
       );
 
-      if (avatarRef.current) {
-        gsap.to(avatarRef.current, {
-          x: "-50%",
-          duration: 35,
-          ease: "linear",
-          repeat: -1,
-        });
-      }
-
       const counter = (el: HTMLElement, endValue: number, suffix = "") => {
         const obj = { value: 0 };
-
         gsap.to(obj, {
           value: endValue,
           duration: 2.5,
@@ -73,11 +64,31 @@ export default function Experience({ scrollRef }: Props) {
     return () => ctx.revert();
   }, []);
 
+  // Duplicate the array so the CSS marquee loop is seamless
+  const avatars = [...Array(AVATAR_COUNT)].map((_, i) => i + 1);
+  const allAvatars = [...avatars, ...avatars]; // duplicated for infinite loop
+
   return (
     <section
       ref={sectionRef}
       className="relative bg-white pt-24 pb-9 overflow-hidden"
     >
+      <style>{`
+        @keyframes marquee-x {
+          0%   { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        .avatar-track {
+          display: flex;
+          gap: 1.5rem;
+          width: max-content;
+          animation: marquee-x 35s linear infinite;
+        }
+        .avatar-track:hover {
+          animation-play-state: paused;
+        }
+      `}</style>
+
       <div className="max-w-[1240px] mx-auto px-6 md:px-12">
         {/* TOP LEFT (162) */}
         <div className="exp-reveal mb-8 pl-2">
@@ -136,7 +147,7 @@ export default function Experience({ scrollRef }: Props) {
           <div className="exp-reveal max-w-[480px]">
             <p className="text-[#516075] text-[19px] md:text-[21px] leading-[1.6] font-[var(--font-inter)]">
               Raseshvari Hindustani creates transformations that feel
-              miraculous yet deeply embodied and real. That’s why she’s known
+              miraculous yet deeply embodied and real. That's why she's known
               as the{" "}
               <strong className="italic text-[#3a495e] font-bold">
                 Walking Talking Miracle
@@ -147,15 +158,15 @@ export default function Experience({ scrollRef }: Props) {
         </div>
       </div>
 
-      {/* AVATAR CAROUSEL */}
+      {/* AVATAR CAROUSEL — infinite CSS marquee */}
       <div className="mt-28 md:mt-15 overflow-hidden">
-        <div ref={avatarRef} className="flex gap-6 w-max px-6">
-          {[...Array(16)].map((_, i) => (
+        <div className="avatar-track px-6">
+          {allAvatars.map((num, i) => (
             <img
               key={i}
-              src={`/clients/${i + 1}.png`}
-              alt="Avatar"
-              className="w-[120px] h-[120px] md:w-[140px] md:h-[140px] rounded-[30px] object-cover"
+              src={`/clients/${num}.png`}
+              alt={`Client ${num}`}
+              className="w-[120px] h-[120px] md:w-[140px] md:h-[140px] rounded-[30px] object-cover flex-shrink-0"
             />
           ))}
         </div>

@@ -117,15 +117,15 @@ export default function Result() {
             `}</style>
 
             {/* Subtle bg glow */}
-            <div className="absolute top-[10%] right-[8%] w-[250px] h-[250px] bg-[#c42d2d]/[0.025] rounded-full blur-[100px] pointer-events-none" />
-            <div className="absolute bottom-[10%] left-[8%] w-[200px] h-[200px] bg-[#e85d5d]/[0.025] rounded-full blur-[80px] pointer-events-none" />
+            {/* <div className="absolute top-[10%] right-[8%] w-[250px] h-[250px] bg-[#c42d2d]/[0.025] rounded-full blur-[100px] pointer-events-none" />
+            <div className="absolute bottom-[10%] left-[8%] w-[200px] h-[200px] bg-[#e85d5d]/[0.025] rounded-full blur-[80px] pointer-events-none" /> */}
 
             {/* Watermark */}
-            <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden">
+            {/* <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden">
                 <span className="text-[90px] md:text-[180px] font-[var(--font-playfair)] font-bold text-[#c42d2d]/[0.02] tracking-tight whitespace-nowrap select-none">
                     BECOME
                 </span>
-            </div>
+            </div> */}
 
             <div className="max-w-7xl mx-auto px-6 md:px-12 w-full relative z-10 py-12 md:py-14">
 
@@ -143,27 +143,30 @@ export default function Result() {
                             <span className="italic text-[#c42d2d]/75 font-light">in This Space</span>
                         </h2>
                     </div>
-                    <p className="text-[#777] text-[13px] md:text-[14px] max-w-sm leading-relaxed md:text-right font-[var(--font-dm-sans)]">
-                        The safe space where the pain, pressure, expectations and unspoken emotions you&rsquo;ve carried for years begin to loosen and release.
+                    <p className="text-[#777] text-[13px] md:text-[18px] max-w-sm leading-relaxed md:text-right font-[var(--font-dm-sans)]">
+                       This is the safe space where you finally get to breathe… where the pain, pressure, expectations and unspoken emotions you’ve carried for years begin to loosen and release.
                     </p>
                 </div>
 
                 {/* Questions + highlight */}
                 <div className="r-reveal mb-2 flex flex-col md:flex-row md:items-center gap-2 md:gap-6">
-                    <p className="text-[#555] text-[13px] md:text-[14px] italic font-[var(--font-playfair)]">
-                        What if you felt safe to be the{" "}
+                    <p className="text-[#555] text-[13px] md:text-[18px] italic font-[var(--font-playfair)]">
+                        What if you didn’t have to carry everyone’s world on your shoulders?
+                        What if you felt safe to be the REAL YOU—
+                        behind the smile, behind the strength, behind the pressure?
+                        {/* What if you felt safe to be the{" "}
                         <span className="font-bold not-italic text-[#1a1a1a]">REAL YOU</span>
-                        &mdash; behind the smile, behind the strength?
+                        &mdash; behind the smile, behind the strength? */}
                     </p>
-                    <span className="hl-text text-[14px] md:text-[16px] font-[var(--font-playfair)] whitespace-nowrap">
+                    {/* <span className="hl-text text-[14px] md:text-[16px] font-[var(--font-playfair)] whitespace-nowrap">
                         This work opens that door.
-                    </span>
+                    </span> */}
                 </div>
 
                 {/* Transition */}
-                <p className="r-reveal text-[#bbb] text-[11px] md:text-[12px] italic font-[var(--font-playfair)] mb-6 md:mb-8">
+                {/* <p className="r-reveal text-[#bbb] text-[11px] md:text-[12px] italic font-[var(--font-playfair)] mb-6 md:mb-8">
                     Here&rsquo;s what begins to shift when your energy aligns&mdash;
-                </p>
+                </p> */}
 
                 {/* ─── CARDS: 5 in a row on desktop ─── */}
                 <div className="r-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 md:gap-5 mb-8 md:mb-10">

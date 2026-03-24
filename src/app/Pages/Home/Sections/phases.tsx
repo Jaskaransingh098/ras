@@ -59,7 +59,7 @@ export default function Phases() {
 
     return (
         <section
-            className="relative min-h-[90dvh] max-h-[100dvh] flex items-center overflow-hidden"
+            className="relative min-h-[100dvh] max-h-[100dvh] flex items-center overflow-hidden"
             style={{ background: "linear-gradient(160deg, #0a0a0a 0%, #151515 50%, #0e0e0e 100%)" }}
         >
             <style jsx>{`
@@ -125,15 +125,21 @@ export default function Phases() {
                         {/* Section label */}
                         <div className="flex items-center gap-3 mb-8">
                             <div className="w-10 h-[2px] rounded-full transition-all duration-500" style={{ background: `linear-gradient(90deg, ${c.accent}, transparent)` }} />
-                            <p className="text-[10px] uppercase tracking-[.35em] text-white/45 font-semibold font-[var(--font-dm-sans)]">
+                            <p className="text-[10px] uppercase tracking-[.35em] text-white/70 font-semibold font-[var(--font-dm-sans)]">
                                 Real Transformations
                             </p>
                         </div>
 
-                        <h2 className="text-[24px] md:text-[36px] font-[var(--font-playfair)] text-white leading-[1.15] mb-10">
+                        <h2 className="text-[24px] md:text-[36px] font-[var(--font-playfair)] text-white leading-[1.15] mb-6">
                             One Session.<br />
                             <span className="italic text-white/55">Everything Shifts.</span>
                         </h2>
+
+                        {/* Descriptive text */}
+                        <p className="text-white text-[15px] md:text-[16px] leading-[1.65] mb-10 max-w-[95%] font-[var(--font-dm-sans)]">
+                            Real people. Real results. Real transformations that happen when deeply stuck patterns dissolve and your true potential emerges. 
+                            Discover the profound shifts that occur in a single session.
+                        </p>
 
                         {/* 3 Case selectors */}
                         <div className="flex flex-col gap-3">
@@ -170,14 +176,14 @@ export default function Phases() {
                                                 )}
                                                 <span
                                                     className="text-[9px] font-bold uppercase tracking-[.2em] font-[var(--font-dm-sans)] transition-colors duration-500"
-                                                    style={{ color: active === i ? item.accent : "rgba(255,255,255,0.3)" }}
+                                                    style={{ color: active === i ? item.accent : "rgba(255,255,255,0.55)" }}
                                                 >
                                                     {item.category}
                                                 </span>
                                             </div>
                                             <p
                                                 className="text-[14px] md:text-[15px] font-[var(--font-playfair)] leading-snug transition-colors duration-500 truncate"
-                                                style={{ color: active === i ? "rgba(255,255,255,0.9)" : "rgba(255,255,255,0.3)" }}
+                                                style={{ color: active === i ? "rgba(255,255,255,0.95)" : "rgba(255,255,255,0.6)" }}
                                             >
                                                 {item.tagline}
                                             </p>
@@ -281,7 +287,7 @@ export default function Phases() {
                                                     >
                                                         {step.label}
                                                     </span>
-                                                    <span className="text-white/30 text-[9px] tracking-wider font-[var(--font-dm-sans)]">
+                                                    <span className="text-white/60 text-[9px] tracking-wider font-[var(--font-dm-sans)]">
                                                         {step.sub}
                                                     </span>
                                                 </div>
@@ -296,7 +302,7 @@ export default function Phases() {
                                             </div>
 
                                             {/* Text */}
-                                            <p className="text-white/80 text-[15px] md:text-[16px] leading-[1.75] font-[var(--font-dm-sans)]">
+                                            <p className="text-white/95 text-[15px] md:text-[16px] leading-[1.75] font-[var(--font-dm-sans)]">
                                                 {step.text}
                                             </p>
                                         </div>
@@ -313,9 +319,9 @@ export default function Phases() {
                                     }}
                                 >
                                     <div className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ backgroundColor: `${c.accent}60` }} />
-                                    <p className="text-white/40 text-[12px] font-[var(--font-dm-sans)]">
+                                    <p className="text-white/70 text-[12px] font-[var(--font-dm-sans)]">
                                         Shift happened in{" "}
-                                        <span className="font-semibold font-[var(--font-outfit)]" style={{ color: `${c.accent}bb` }}>
+                                        <span className="font-semibold font-[var(--font-outfit)]" style={{ color: `${c.accent}` }}>
                                             one session
                                         </span>
                                     </p>

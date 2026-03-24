@@ -24,7 +24,7 @@ export default function DareToDream() {
 
         timerRef.current = setInterval(() => {
             setActiveIndex((prev) => (prev + 1) % guests.length);
-        }, 3500); // Change image every 3.5 seconds
+        }, 2500); // Change image every 3.5 seconds
 
         return () => {
             if (timerRef.current) clearInterval(timerRef.current);
