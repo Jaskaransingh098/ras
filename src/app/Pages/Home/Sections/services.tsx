@@ -61,7 +61,7 @@ const SPARKLE_POSITIONS = [
 
 export default function Services() {
     return (
-        <section className="min-h-[98dvh] bg-gradient-to-b from-[#4a0e0e] via-[#7a1a1a] to-[#9b1c1c] relative overflow-hidden flex flex-col justify-center py-16">
+        <section className="min-h-[98dvh] bg-gradient-to-b from-[#9b1c1c] via-[#7a1a1a] to-[#ece6e6] relative overflow-hidden flex flex-col justify-center py-16">
             <style jsx>{`
                 @keyframes borderRotate {
                     0% { --angle: 0deg; }
@@ -307,11 +307,11 @@ export default function Services() {
 
                 {/* Not sure where to begin? */}
                 <div className="mt-10 text-center">
-                    <div className="inline-flex items-center gap-3 bg-white/[0.08] backdrop-blur-md rounded-full px-6 py-3.5 border border-white/10 shadow-lg shadow-black/10 hover:bg-white/[0.12] transition-all duration-300 group">
-                        <div className="w-2 h-2 rounded-full bg-white/40 animate-pulse flex-shrink-0" />
-                        <p className="text-white/90 text-[16px]">
+                    <div className="inline-flex items-center gap-3 bg-white/[0.08] backdrop-blur-2xl rounded-full px-6 py-3.5 border border-white/10 shadow-xl shadow-black/30 hover:bg-white/[0.12] transition-all duration-300 group">
+                        <div className="w-2 h-2 rounded-full bg-black/40 animate-pulse flex-shrink-0" />
+                        <p className="text-black/90 text-[20px]">
                             Not sure where to begin?{' '}
-                            <a href="#" className="text-white font-bold font-[var(--font-outfit)] hover:text-[#e85d5d] transition-colors duration-300 underline decoration-white/20 underline-offset-2 hover:decoration-[#e85d5d]/50">
+                            <a href="#" className="text-black font-bold font-[var(--font-outfit)] hover:text-[#e85d5d] transition-colors duration-300 underline decoration-white/20 underline-offset-2 hover:decoration-[#e85d5d]/50">
                                 The Energy Diagnostic Call&trade;
                             </a>{' '}
                             is the easiest first step.

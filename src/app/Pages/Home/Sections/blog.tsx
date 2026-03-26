@@ -150,7 +150,7 @@ export default function Blog() {
                     position: relative;
                     border-radius: 20px;
                     overflow: hidden;
-                    background: linear-gradient(160deg, #3d1e1e 0%, #2a1212 50%, #1f0e0e 100%);
+                    background: linear-gradient(160deg, #9e4545ff 0%, #bd4747ff 50%, #d5acacff 100%);
                     border: 1px solid rgba(196, 45, 45, 0.15);
                     transition: all 0.45s cubic-bezier(0.23, 1, 0.32, 1);
                 }
@@ -165,7 +165,7 @@ export default function Blog() {
                     left: 0;
                     width: 100%;
                     height: 3px;
-                    background: linear-gradient(90deg, transparent, #c42d2d, transparent);
+                    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent);
                     opacity: 0.5;
                 }
 
@@ -235,7 +235,7 @@ export default function Blog() {
                             <div className="w-8 h-[2px] rounded-full" style={{ background: "linear-gradient(90deg, #c42d2d, #e85d5d)" }} />
                             <p
                                 className="text-[10px] md:text-xs uppercase tracking-[.3em] font-semibold font-[var(--font-dm-sans)]"
-                                style={{ color: "rgba(196,45,45,0.55)" }}
+                                style={{ color: "rgba(198, 16, 16, 0.55)" }}
                             >
                                 Insights & Inspiration
                             </p>
@@ -245,14 +245,14 @@ export default function Blog() {
                             style={{ fontSize: "clamp(28px, 4vw, 44px)", color: "#1a0e0e" }}
                         >
                             Words That{" "}
-                            <span className="italic font-light" style={{ color: "rgba(196,45,45,0.75)" }}>
+                            <span className="italic font-semibold" style={{ color: "rgba(196,45,45,0.75)" }}>
                                 Shift Things
                             </span>
                         </h2>
                     </div>
                     <p
-                        className="b-reveal text-[13px] md:text-[14px] max-w-xs leading-relaxed md:text-right font-[var(--font-dm-sans)]"
-                        style={{ color: "#b08070" }}
+                        className="b-reveal text-[13px] md:text-[18px] font-semibold max-w-lg leading-relaxed md:text-right font-[var(--font-dm-sans)]"
+                        style={{ color: "#ee5151ff" }}
                     >
                         Daily wisdom, Instagram energy, and journal entries — all in one place.
                     </p>
@@ -276,17 +276,17 @@ export default function Blog() {
                                 {/* Top Row: Label + Counter */}
                                 <div className="flex items-center justify-between mb-auto">
                                     <div className="flex items-center gap-2">
-                                        <div className="w-1.5 h-1.5 rounded-full bg-[#c42d2d]" />
+                                        <div className="w-1.5 h-1.5 rounded-full bg-white/80" />
                                         <span
-                                            className="text-[9px] font-bold uppercase tracking-[.3em] font-[var(--font-dm-sans)]"
-                                            style={{ color: "rgba(196,45,45,0.6)" }}
+                                            className="text-[12px] font-bold uppercase tracking-[.3em] font-[var(--font-dm-sans)]"
+                                            style={{ color: "rgba(255, 255, 255, 1)" }}
                                         >
                                             Daily Wisdom
                                         </span>
                                     </div>
                                     <span
-                                        className="text-[10px] font-[var(--font-dm-sans)] tabular-nums"
-                                        style={{ color: "rgba(255,255,255,0.25)" }}
+                                        className="text-[12px] font-[var(--font-dm-sans)] tabular-nums"
+                                        style={{ color: "rgba(255,255,255,0.7)" }}
                                     >
                                         {String(quoteIndex + 1).padStart(2, "0")} / {String(dailyQuotes.length).padStart(2, "0")}
                                     </span>
@@ -295,7 +295,7 @@ export default function Blog() {
                                 {/* Big decorative quote mark */}
                                 <div
                                     className="font-[var(--font-playfair)] select-none pointer-events-none leading-none mt-4"
-                                    style={{ fontSize: "clamp(50px, 7vw, 80px)", color: "rgba(196,45,45,0.2)" }}
+                                    style={{ fontSize: "clamp(50px, 7vw, 80px)", color: "rgba(255,255,255,0.2)" }}
                                 >
                                     “
                                 </div>
@@ -303,24 +303,24 @@ export default function Blog() {
                                 {/* Quote text */}
                                 <blockquote
                                     key={quoteIndex}
-                                    className="font-[var(--font-playfair)] italic leading-[1.55] quote-fade-enter -mt-2"
-                                    style={{ fontSize: "clamp(16px, 2vw, 22px)", color: "rgba(255,255,255,0.88)" }}
+                                    className="font-[var(--font-playfair)] italic leading-[1.25] quote-fade-enter -mt-6"
+                                    style={{ fontSize: "clamp(18px, 2vw, 24px)", color: "#ffffff" }}
                                 >
                                     {quote.text}
                                 </blockquote>
 
                                 {/* Divider */}
                                 <div className="mt-auto pt-5">
-                                    <div className="h-[1px] w-full" style={{ background: "linear-gradient(90deg, rgba(196,45,45,0.3), transparent)" }} />
+                                    <div className="h-[1px] w-full" style={{ background: "linear-gradient(90deg, rgba(255,255,255,0.3), transparent)" }} />
                                 </div>
 
                                 {/* Author + Navigation */}
                                 <div className="flex items-center justify-between mt-3">
                                     <div>
-                                        <p className="text-[12px] font-[var(--font-dm-sans)] font-semibold" style={{ color: "rgba(255,255,255,0.6)" }}>
+                                        <p className="text-[12px] font-[var(--font-dm-sans)] font-semibold" style={{ color: "rgba(255, 255, 255, 1)" }}>
                                             — {quote.author}
                                         </p>
-                                        <p className="text-[9px] font-[var(--font-dm-sans)] uppercase tracking-[.2em] mt-1" style={{ color: "rgba(255,255,255,0.2)" }}>
+                                        <p className="text-[9px] font-[var(--font-dm-sans)] uppercase tracking-[.2em] mt-1" style={{ color: "rgba(255, 255, 255, 1)" }}>
                                             {quote.label}
                                         </p>
                                     </div>
@@ -330,18 +330,18 @@ export default function Blog() {
                                         <button
                                             onClick={() => setQuoteIndex((prev) => (prev - 1 + dailyQuotes.length) % dailyQuotes.length)}
                                             className="w-7 h-7 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110"
-                                            style={{ border: "1px solid rgba(255,255,255,0.12)", background: "rgba(255,255,255,0.04)" }}
+                                            style={{ border: "1px solid rgba(255,255,255,0.3)", background: "rgba(255,255,255,0.1)" }}
                                         >
-                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" strokeWidth="2" strokeLinecap="round">
+                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" strokeWidth="2" strokeLinecap="round">
                                                 <path d="M19 12H5" /><path d="M12 19l-7-7 7-7" />
                                             </svg>
                                         </button>
                                         <button
                                             onClick={() => setQuoteIndex((prev) => (prev + 1) % dailyQuotes.length)}
                                             className="w-7 h-7 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110"
-                                            style={{ border: "1px solid rgba(255,255,255,0.12)", background: "rgba(255,255,255,0.04)" }}
+                                            style={{ border: "1px solid rgba(255,255,255,0.3)", background: "rgba(255,255,255,0.1)" }}
                                         >
-                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" strokeWidth="2" strokeLinecap="round">
+                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" strokeWidth="2" strokeLinecap="round">
                                                 <path d="M5 12h14" /><path d="M12 5l7 7-7 7" />
                                             </svg>
                                         </button>
@@ -354,7 +354,7 @@ export default function Blog() {
                                         <div
                                             key={i}
                                             className="h-[2px] flex-1 rounded-full transition-all duration-500"
-                                            style={{ background: i === quoteIndex ? "#c42d2d" : "rgba(255,255,255,0.08)" }}
+                                            style={{ background: i === quoteIndex ? "#ffffff" : "rgba(255,255,255,0.3)" }}
                                         />
                                     ))}
                                 </div>
@@ -441,7 +441,7 @@ export default function Blog() {
                                         {blog.tag}
                                     </span>
                                     <div className="flex items-center gap-2">
-                                        <span className="text-[10px] font-[var(--font-dm-sans)]" style={{ color: "#c4a090" }}>
+                                        <span className="text-[10px] font-[var(--font-dm-sans)]" style={{ color: "#7f2828ff" }}>
                                             {blog.date}
                                         </span>
                                         <span className="w-1 h-1 rounded-full" style={{ background: "#d4b0a0" }} />
@@ -458,7 +458,7 @@ export default function Blog() {
                                     {blog.title}
                                 </h3>
                                 <p
-                                    className="text-[12px] leading-[1.6] mb-3 font-[var(--font-dm-sans)] flex-1"
+                                    className="text-[15px] leading-[1.6] mb-3 font-[var(--font-dm-sans)] flex-1 font-semibold"
                                     style={{ color: "#8a6a5a" }}
                                 >
                                     {blog.excerpt}
@@ -479,12 +479,12 @@ export default function Blog() {
 
                 {/* ── Bottom CTA ── */}
                 <div className="b-reveal mt-6 flex flex-col md:flex-row items-center justify-between gap-4 flex-shrink-0">
-                    <p
+                    {/* <p
                         className="font-[var(--font-playfair)] italic text-center md:text-left"
-                        style={{ fontSize: "clamp(14px, 1.6vw, 18px)", color: "#b08070" }}
+                        style={{ fontSize: "clamp(14px, 1.6vw, 18px)", color: "#51291cff" }}
                     >
                         &ldquo;The truth in these words is the shift itself.&rdquo;
-                    </p>
+                    </p> */}
                     <div className="flex items-center gap-3">
                         <a
                             href="https://www.instagram.com/beyondimagination.club/"

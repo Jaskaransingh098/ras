@@ -21,7 +21,7 @@ const cases = [
         session: "High-Energy Transformation",
         shift: "Pain eased, deeper sleep, sense of lightness",
         result: "Regained the ability to stand and walk within 4 days",
-        accent: "#8a7565",
+        accent: "#e85d5d",
     },
     {
         id: 2,
@@ -59,9 +59,10 @@ export default function Phases() {
 
     return (
         <section
-            className="relative min-h-[100dvh] max-h-[100dvh] flex items-center overflow-hidden"
-            style={{ background: "linear-gradient(160deg, #0a0a0a 0%, #151515 50%, #0e0e0e 100%)" }}
+            className="min-h-[100dvh] bg-gradient-to-b from-[#212529] via-[#7a1a1a] to-[#9b1c1c] relative overflow-hidden flex items-center"
+            style={{ }}
         >
+            {/* <div className="absolute inset-0 bg-black/40 z-[1]" /> */}
             <style jsx>{`
                 @keyframes progress {
                     from { width: 0%; }
@@ -110,7 +111,7 @@ export default function Phases() {
 
             {/* Background glow — static, color changes on switch */}
             <div
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full blur-[200px] pointer-events-none opacity-[0.12]"
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full blur-[140px] pointer-events-none opacity-[0.08]"
                 style={{ backgroundColor: c.accent, transition: 'background-color 0.7s ease' }}
             />
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/[0.04] to-transparent" />
@@ -124,20 +125,20 @@ export default function Phases() {
                     <div className="md:w-[38%] flex flex-col justify-center">
                         {/* Section label */}
                         <div className="flex items-center gap-3 mb-8">
-                            <div className="w-10 h-[2px] rounded-full transition-all duration-500" style={{ background: `linear-gradient(90deg, ${c.accent}, transparent)` }} />
-                            <p className="text-[10px] uppercase tracking-[.35em] text-white/70 font-semibold font-[var(--font-dm-sans)]">
+                            <div className="w-10 h-[3px] rounded-full transition-all duration-500" style={{ background: `linear-gradient(90deg, ${c.accent}, transparent)` }} />
+                            <p className="text-[13px] uppercase tracking-[.3em] text-white font-bold font-[var(--font-dm-sans)]">
                                 Real Transformations
                             </p>
                         </div>
 
-                        <h2 className="text-[24px] md:text-[36px] font-[var(--font-playfair)] text-white leading-[1.15] mb-6">
+                        <h2 className="text-[28px] md:text-[42px] font-[var(--font-playfair)] text-white leading-[1.2] mb-6">
                             One Session.<br />
-                            <span className="italic text-white/55">Everything Shifts.</span>
+                            <span className="italic text-red-500">Everything Shifts.</span>
                         </h2>
 
                         {/* Descriptive text */}
-                        <p className="text-white text-[15px] md:text-[16px] leading-[1.65] mb-10 max-w-[95%] font-[var(--font-dm-sans)]">
-                            Real people. Real results. Real transformations that happen when deeply stuck patterns dissolve and your true potential emerges. 
+                        <p className="text-white text-[17px] md:text-[18px] leading-[1.85] mb-10 max-w-[95%] font-[var(--font-dm-sans)] font-medium">
+                            Real people. Real results. Real transformations that happen when deeply stuck patterns dissolve and your true potential emerges.
                             Discover the profound shifts that occur in a single session.
                         </p>
 
@@ -150,62 +151,61 @@ export default function Phases() {
                                     className={`case-selector text-left rounded-2xl p-5 border transition-all duration-500 ${active === i ? "active-case" : ""
                                         }`}
                                     style={active === i ? {
-                                        background: `linear-gradient(135deg, ${item.accent}12, ${item.accent}05)`,
-                                        borderColor: `${item.accent}30`,
-                                        boxShadow: `0 8px 32px ${item.accent}10`,
+                                        background: `linear-gradient(135deg, rgba(255,255,255,0.92), rgba(255,255,255,0.80))`,
+                                        borderColor: `${item.accent}40`,
+                                        boxShadow: `0 8px 32px ${item.accent}15`,
                                     } : {
-                                        background: "rgba(255,255,255,0.015)",
-                                        borderColor: "rgba(255,255,255,0.04)",
+                                        background: "rgba(255,255,255,0.25)",
+                                        borderColor: "rgba(255,255,255,0.3)",
                                     }}
                                 >
                                     <div className="flex items-center gap-4">
                                         {/* Number */}
                                         <span
-                                            className="text-[32px] font-[var(--font-playfair)] font-bold leading-none transition-all duration-500 select-none"
-                                            style={{ color: active === i ? `${item.accent}60` : "rgba(255,255,255,0.06)" }}
+                                            className="text-[38px] font-[var(--font-playfair)] font-bold leading-none transition-all duration-500 select-none flex-shrink-0"
+                                            style={{ color: active === i ? item.accent : "rgba(255,255,255,0.3)" }}
                                         >
                                             {item.num}
                                         </span>
                                         <div className="flex-1 min-w-0">
-                                            <div className="flex items-center gap-2 mb-1.5">
+                                            <div className="flex items-center gap-2 mb-2">
                                                 {active === i && (
                                                     <div
-                                                        className="w-1.5 h-1.5 rounded-full animate-pulse"
+                                                        className="w-2 h-2 rounded-full animate-pulse"
                                                         style={{ backgroundColor: item.accent }}
                                                     />
                                                 )}
                                                 <span
-                                                    className="text-[9px] font-bold uppercase tracking-[.2em] font-[var(--font-dm-sans)] transition-colors duration-500"
-                                                    style={{ color: active === i ? item.accent : "rgba(255,255,255,0.55)" }}
+                                                    className="text-[12px] font-bold uppercase tracking-[.18em] font-[var(--font-dm-sans)] transition-colors duration-500"
+                                                    style={{ color: active === i ? item.accent : "rgba(30,5,5,0.75)" }}
                                                 >
                                                     {item.category}
                                                 </span>
                                             </div>
                                             <p
-                                                className="text-[14px] md:text-[15px] font-[var(--font-playfair)] leading-snug transition-colors duration-500 truncate"
-                                                style={{ color: active === i ? "rgba(255,255,255,0.95)" : "rgba(255,255,255,0.6)" }}
+                                                className="text-[16px] md:text-[17px] font-[var(--font-playfair)] leading-snug transition-colors duration-500"
+                                                style={{ color: active === i ? "rgba(20,5,5,1)" : "rgba(30,5,5,0.85)" }}
                                             >
                                                 {item.tagline}
                                             </p>
                                         </div>
                                         {/* Arrow */}
                                         <svg
-                                            width="16" height="16" viewBox="0 0 24 24" fill="none"
-                                            stroke={active === i ? item.accent : "rgba(255,255,255,0.1)"}
-                                            strokeWidth="2" strokeLinecap="round"
+                                            width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                            stroke={active === i ? item.accent : "rgba(255,255,255,0.5)"}
+                                            strokeWidth="2.5" strokeLinecap="round"
                                             className="flex-shrink-0 transition-all duration-500"
-                                            style={{ opacity: active === i ? 1 : 0.5 }}
                                         >
                                             <path d="M9 18l6-6-6-6" />
                                         </svg>
                                     </div>
                                     {/* Progress bar for active */}
                                     {active === i && (
-                                        <div className="mt-3 h-[2px] rounded-full overflow-hidden" style={{ backgroundColor: `${item.accent}10` }}>
+                                        <div className="mt-4 h-[3px] rounded-full overflow-hidden" style={{ backgroundColor: `${item.accent}25` }}>
                                             <div
                                                 key={`prog-${active}`}
                                                 className="h-full rounded-full progress-bar"
-                                                style={{ backgroundColor: `${item.accent}50` }}
+                                                style={{ backgroundColor: item.accent }}
                                             />
                                         </div>
                                     )}
@@ -260,41 +260,42 @@ export default function Phases() {
 
                                         {/* Step content card */}
                                         <div
-                                            className="flex-1 rounded-2xl p-6 md:p-7 border transition-all duration-400"
+                                            className="flex-1 rounded-2xl p-6 md:p-8 border transition-all duration-400"
                                             style={{
                                                 background: si === 2
-                                                    ? `linear-gradient(135deg, ${c.accent}08, rgba(255,255,255,0.025))`
-                                                    : "rgba(255,255,255,0.025)",
-                                                borderColor: si === 2 ? `${c.accent}20` : "rgba(255,255,255,0.05)",
+                                                    ? `linear-gradient(135deg, rgba(255,255,255,0.97), rgba(255,255,255,0.90))`
+                                                    : "rgba(255,255,255,0.82)",
+                                                borderColor: si === 2 ? `${c.accent}50` : "rgba(180,140,140,0.55)",
+                                                boxShadow: si === 2 ? `0 4px 20px ${c.accent}12` : "none",
                                             }}
                                         >
                                             {/* Label row */}
-                                            <div className="flex items-center gap-3 mb-3">
+                                            <div className="flex items-center gap-3 mb-4">
                                                 <div
-                                                    className="w-8 h-8 rounded-lg flex items-center justify-center text-[11px] font-bold font-[var(--font-outfit)]"
+                                                    className="w-10 h-10 rounded-xl flex items-center justify-center text-[13px] font-bold font-[var(--font-outfit)] flex-shrink-0"
                                                     style={{
-                                                        background: `${c.accent}15`,
+                                                        background: `${c.accent}18`,
                                                         color: c.accent,
-                                                        border: `1px solid ${c.accent}20`,
+                                                        border: `2px solid ${c.accent}35`,
                                                     }}
                                                 >
                                                     {String(si + 1).padStart(2, "0")}
                                                 </div>
                                                 <div>
                                                     <span
-                                                        className="text-[11px] font-bold uppercase tracking-[.2em] font-[var(--font-dm-sans)] block"
+                                                        className="text-[13px] font-black uppercase tracking-[.18em] font-[var(--font-dm-sans)] block"
                                                         style={{ color: c.accent }}
                                                     >
                                                         {step.label}
                                                     </span>
-                                                    <span className="text-white/60 text-[9px] tracking-wider font-[var(--font-dm-sans)]">
+                                                    <span className="text-[#4a2a2a] text-[12px] tracking-wide font-[var(--font-dm-sans)] font-medium">
                                                         {step.sub}
                                                     </span>
                                                 </div>
 
                                                 {si === 2 && (
-                                                    <div className="ml-auto flex items-center gap-1.5" style={{ color: `${c.accent}70` }}>
-                                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+                                                    <div className="ml-auto flex items-center gap-1.5" style={{ color: c.accent }}>
+                                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
                                                             <path d="M20 6L9 17l-5-5" />
                                                         </svg>
                                                     </div>
@@ -302,7 +303,7 @@ export default function Phases() {
                                             </div>
 
                                             {/* Text */}
-                                            <p className="text-white/95 text-[15px] md:text-[16px] leading-[1.75] font-[var(--font-dm-sans)]">
+                                            <p className="text-[#1a0505] text-[17px] md:text-[18px] leading-[1.85] font-[var(--font-dm-sans)] font-medium">
                                                 {step.text}
                                             </p>
                                         </div>
@@ -312,16 +313,17 @@ export default function Phases() {
 
                             {/* Final tagline under the flow */}
                             <div className="mt-8 pl-8 md:pl-10">
-                                <div className="inline-flex items-center gap-2.5 rounded-full px-5 py-2.5 border"
+                                <div className="inline-flex items-center gap-3 rounded-full px-6 py-3 border"
                                     style={{
-                                        background: `${c.accent}06`,
-                                        borderColor: `${c.accent}15`,
+                                        background: "rgba(255,255,255,0.92)",
+                                        borderColor: `${c.accent}40`,
+                                        boxShadow: `0 2px 12px ${c.accent}12`,
                                     }}
                                 >
-                                    <div className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ backgroundColor: `${c.accent}60` }} />
-                                    <p className="text-white/70 text-[12px] font-[var(--font-dm-sans)]">
+                                    <div className="w-2.5 h-2.5 rounded-full animate-pulse flex-shrink-0" style={{ backgroundColor: c.accent }} />
+                                    <p className="text-[#2a0a0a] text-[15px] font-[var(--font-dm-sans)] font-semibold">
                                         Shift happened in{" "}
-                                        <span className="font-semibold font-[var(--font-outfit)]" style={{ color: `${c.accent}` }}>
+                                        <span className="font-black font-[var(--font-outfit)]" style={{ color: c.accent }}>
                                             one session
                                         </span>
                                     </p>

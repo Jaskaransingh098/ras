@@ -9,7 +9,7 @@ gsap.registerPlugin(ScrollTrigger);
 const cards = [
     {
         title: "A Calm Mind & Emotional Lightness",
-        desc: "Your overthinking quiets. Stress loosens its grip. The heaviness, guilt, anxiety, grief begins to lift — in just one session.",
+        desc: "Your overthinking quiets. Stress loosens its grip. The heaviness, guilt, abuse, anxiety, grief begins to lift — in just one session.",
         image: "/results/calm-mind.png",
         accent: "#c42d2d",
     },
@@ -17,25 +17,25 @@ const cards = [
         title: "Visible Shifts in Life, Work & Money",
         desc: "Doubts stop draining you. Work feels lighter. Opportunities, clients and revenue flow with less resistance.",
         image: "/results/work-money.png",
-        accent: "#b8860b",
+        accent: "#c42d2d",
     },
     {
         title: "Ease in Relationships & Communication",
-        desc: "Emotional triggers lose charge. Relationships soften. You respond from calm, not pain.",
+        desc: "Emotional triggers lose charge. Personal as well as professional relationships & conversations soften. You respond from calm, not pain.",
         image: "/results/relationships.png",
-        accent: "#8b5e3c",
+        accent: "#c42d2d",
     },
     {
         title: "A Lighter, Healthier Body",
-        desc: "Your body releases stored pressure. Tension softens. Pain dissolves from the inside out.",
+        desc: "Your body releases stored pressure. Tension softens. Pain begins to dissolve from the inside out. Your body feels lighter and supported.",
         image: "/results/lighter-body.png",
-        accent: "#6b8e5a",
+        accent: "#c42d2d",
     },
     {
         title: "The Safety to Finally Be YOU",
-        desc: "The soft you. The strong you. The ambitious you. The YOU waiting for years to come alive.",
+        desc: "The soft you. The peaceful you. The strong you. The ambitious you. The YOU waiting for years to come alive.",
         image: "/results/be-you.png",
-        accent: "#7b5ea7",
+        accent: "#c42d2d",
     },
 ];
 
@@ -75,15 +75,18 @@ export default function Result() {
             style={{ minHeight: "100dvh", maxHeight: "110dvh" }}
         >
             <style jsx>{`
-                @keyframes gentle-float {
-                    0%, 100% { transform: translateY(0px); }
-                    50% { transform: translateY(-8px); }
-                }
+                // @keyframes gentle-float {
+                //     0%, 100% { transform: translateY(0px); }
+                //     50% { transform: translateY(-8px); }
+                // }
                 .r-card-inner {
                     position: relative;
                     border-radius: 22px;
                     transition: all 0.45s cubic-bezier(0.23, 1, 0.32, 1);
                     overflow: hidden;
+                    background: linear-gradient(135deg, rgba(196,45,45,0.28), rgba(255,255,255,0.22));
+                    backdrop-filter: blur(8px);
+                    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.25);
                 }
                 .r-card-inner:hover {
                     transform: translateY(-8px);
@@ -95,7 +98,7 @@ export default function Result() {
                     inset: 0;
                     border-radius: 22px;
                     padding: 1px;
-                    background: linear-gradient(135deg, rgba(196,45,45,0.12), transparent 50%, rgba(196,45,45,0.06));
+                    background: linear-gradient(135deg, rgba(196,45,45,0.24), transparent 50%, rgba(196,45,45,0.12));
                     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
                     -webkit-mask-composite: xor;
                     mask-composite: exclude;
@@ -103,7 +106,7 @@ export default function Result() {
                     transition: all 0.45s;
                 }
                 .r-card-inner:hover::before {
-                    background: linear-gradient(135deg, rgba(196,45,45,0.25), transparent 50%, rgba(196,45,45,0.15));
+                    background: linear-gradient(135deg, rgba(196,45,45,0.35), transparent 50%, rgba(196,45,45,0.22));
                 }
                 .r-img {
                     animation: gentle-float 5s ease-in-out infinite;
@@ -134,16 +137,16 @@ export default function Result() {
                     <div className="max-w-lg">
                         <div className="flex items-center gap-3 mb-3">
                             <div className="w-8 h-[2px] rounded-full bg-gradient-to-r from-[#c42d2d] to-[#e85d5d]" />
-                            <p className="text-[10px] md:text-xs uppercase tracking-[.3em] text-[#c42d2d]/50 font-semibold font-[var(--font-dm-sans)]">
+                            <p className="text-[10px] md:text-lg uppercase tracking-[.3em] text-[#c42d2d]/80 font-semibold font-[var(--font-dm-sans)]">
                                 The Transformation
                             </p>
                         </div>
                         <h2 className="text-[28px] md:text-[42px] font-[var(--font-playfair)] text-[#1a1a1a] leading-[1.12] font-bold">
                             Who You Become{" "}
-                            <span className="italic text-[#c42d2d]/75 font-light">in This Space</span>
+                            <span className="italic text-[#c42d2d]/80 font-semibold">in This Space</span>
                         </h2>
                     </div>
-                    <p className="text-[#777] text-[13px] md:text-[18px] max-w-sm leading-relaxed md:text-right font-[var(--font-dm-sans)]">
+                    <p className="text-[#777] text-[13px] md:text-[19px] max-w-xl leading-relaxed md:text-right font-semibold font-[var(--font-dm-sans)]">
                        This is the safe space where you finally get to breathe… where the pain, pressure, expectations and unspoken emotions you’ve carried for years begin to loosen and release.
                     </p>
                 </div>
@@ -172,7 +175,7 @@ export default function Result() {
                 <div className="r-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 md:gap-5 mb-8 md:mb-10">
                     {cards.map((card, i) => (
                         <div key={i} className="r-card">
-                            <div className="r-card-inner group bg-[#fafafa] border border-gray-100/80 h-full flex flex-col">
+                            <div className="r-card-inner group bg-[#c42d2d]/80 text-white border border-white/20 h-full flex flex-col backdrop-blur-md">
                                 {/* Accent bar */}
                                 <div
                                     className="h-[2.5px] rounded-t-[22px]"
@@ -199,19 +202,19 @@ export default function Result() {
 
                                     {/* Number */}
                                     <span
-                                        className="text-[32px] font-[var(--font-playfair)] font-bold leading-none mb-1 opacity-[0.18] group-hover:opacity-[0.3] transition-opacity duration-500"
+                                        className="text-[32px] font-[var(--font-playfair)] font-bold leading-none mb-1 opacity-[0.88] group-hover:opacity-[0.3] transition-opacity duration-500"
                                         style={{ color: card.accent }}
                                     >
                                         0{i + 1}
                                     </span>
 
                                     {/* Title */}
-                                    <h3 className="text-[14px] md:text-[15px] font-[var(--font-playfair)] text-[#222] font-bold leading-snug mb-2">
+                                    <h3 className="text-[14px] md:text-[18px] font-[var(--font-playfair)] text-[#222] font-bold leading-snug mb-2">
                                         {card.title}
                                     </h3>
 
                                     {/* Desc */}
-                                    <p className="text-[#666] text-[11px] md:text-[12px] leading-[1.65] font-[var(--font-dm-sans)] flex-1">
+                                    <p className="text-[#383434] font-semibold text-[11px] md:text-[15px] leading-[1.45] font-[var(--font-dm-sans)] flex-1">
                                         {card.desc}
                                     </p>
                                 </div>
@@ -221,7 +224,7 @@ export default function Result() {
                 </div>
 
                 {/* ─── CLOSING ─── */}
-                <div className="r-reveal text-center">
+                {/* <div className="r-reveal text-center">
                     <div className="flex items-center justify-center gap-3 mb-4">
                         <div className="h-px w-12 bg-gradient-to-r from-transparent to-[#c42d2d]/15" />
                         <div className="flex gap-1">
@@ -241,7 +244,7 @@ export default function Result() {
                         <span className="underline decoration-[#c42d2d]/30 underline-offset-4">self</span>{" "}
                         you always knew you could be.
                     </p>
-                </div>
+                </div> */}
             </div>
         </section>
     );

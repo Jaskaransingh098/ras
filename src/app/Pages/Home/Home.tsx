@@ -77,12 +77,14 @@ export default function Home() {
       </section>
 
       <section className="">
+        <MomsCommunity />
+      </section>
+      
+      <section className="">
         <Dare />
       </section>
 
-      <section className="">
-        <MomsCommunity />
-      </section>
+
 
       <section className="">
         <Blog />

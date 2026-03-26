@@ -4,12 +4,12 @@ import { useRef, useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 
 const screenshots = [
-    { id: 1, src: "/linkedin/rec-1.png", alt: "LinkedIn Recommendation 1" },
-    { id: 2, src: "/linkedin/rec-2.png", alt: "LinkedIn Recommendation 2" },
-    { id: 3, src: "/linkedin/rec-3.png", alt: "LinkedIn Recommendation 3" },
-    { id: 4, src: "/linkedin/rec-4.png", alt: "LinkedIn Recommendation 4" },
-    { id: 5, src: "/linkedin/rec-5.png", alt: "LinkedIn Recommendation 5" },
-    { id: 6, src: "/linkedin/rec-6.png", alt: "LinkedIn Recommendation 6" },
+    { id: 1, src: "/linkedin/rec-1.png", alt: "Recommendation 1" },
+    { id: 2, src: "/linkedin/rec-2.png", alt: "Recommendation 2" },
+    { id: 3, src: "/linkedin/rec-3.png", alt: "Recommendation 3" },
+    { id: 4, src: "/linkedin/rec-4.png", alt: "Recommendation 4" },
+    { id: 5, src: "/linkedin/rec-5.png", alt: "Recommendation 5" },
+    { id: 6, src: "/linkedin/rec-6.png", alt: "Recommendation 6" },
 ];
 
 export default function LinkedIn() {
@@ -120,11 +120,11 @@ export default function LinkedIn() {
                 <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col md:flex-row md:items-end md:justify-between mb-10">
                     <div className="flex items-center gap-5">
                         {/* LinkedIn icon */}
-                        <div className="w-13 h-13 rounded-2xl bg-[#c42d2d] flex items-center justify-center shadow-lg shadow-[#c42d2d]/20 flex-shrink-0 p-3.5">
+                        {/* <div className="w-13 h-13 rounded-2xl bg-[#c42d2d] flex items-center justify-center shadow-lg shadow-[#c42d2d]/20 flex-shrink-0 p-3.5">
                             <svg width="22" height="22" viewBox="0 0 24 24" fill="white">
                                 <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
                             </svg>
-                        </div>
+                        </div> */}
                         <div>
                             <div className="flex items-center gap-3 mb-1.5">
                                 <div className="w-8 h-[2px] rounded-full bg-gradient-to-r from-[#c42d2d] to-transparent" />
@@ -140,7 +140,7 @@ export default function LinkedIn() {
                     </div>
 
                     {/* Right-side description */}
-                    <p className="text-[#999] text-[13px] max-w-[280px] leading-relaxed font-[var(--font-dm-sans)] mt-4 md:mt-0 md:text-right hidden md:block">
+                    <p className="text-gray-800 text-[17px] max-w-[280px] leading-relaxed font-[var(--font-dm-sans)] mt-4 md:mt-0 md:text-right hidden md:block">
                         Real words from real professionals who experienced a lasting shift.
                     </p>
                 </div>
@@ -171,9 +171,9 @@ export default function LinkedIn() {
                             >
                                 {/* Card top bar */}
                                 <div className="flex items-center gap-2 px-3.5 py-2 border-b border-gray-100/60">
-                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="#c42d2d" opacity="0.5">
+                                    {/* <svg width="12" height="12" viewBox="0 0 24 24" fill="#c42d2d" opacity="0.5">
                                         <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                                    </svg>
+                                    </svg> */}
                                     <span className="text-[9px] text-[#999] font-medium font-[var(--font-dm-sans)] tracking-wide">
                                         Recommendation
                                     </span>
@@ -196,30 +196,30 @@ export default function LinkedIn() {
                 {/* Bottom row — stats + badge */}
                 <div className="max-w-7xl mx-auto px-6 md:px-12 mt-8 flex flex-col md:flex-row items-center justify-between gap-4">
                     <div className="flex items-center gap-6">
-                        <div className="text-center">
+                        {/* <div className="text-center">
                             <p className="text-[24px] md:text-[28px] font-[var(--font-playfair)] font-bold text-[#111]">
                                 {screenshots.length}+
                             </p>
                             <p className="text-[10px] uppercase tracking-[.2em] text-[#999] font-[var(--font-dm-sans)]">
                                 Recommendations
                             </p>
-                        </div>
+                        </div> */}
                         <div className="w-px h-8 bg-gray-300/50" />
-                        <div className="text-center">
+                        {/* <div className="text-center">
                             <p className="text-[24px] md:text-[28px] font-[var(--font-playfair)] font-bold text-[#111]">
                                 100%
                             </p>
                             <p className="text-[10px] uppercase tracking-[.2em] text-[#999] font-[var(--font-dm-sans)]">
                                 Genuine
                             </p>
-                        </div>
+                        </div> */}
                     </div>
 
                     <div className="inline-flex items-center gap-2.5 bg-white rounded-full px-5 py-2.5 border border-gray-200/60 shadow-sm">
                         <div className="w-2 h-2 rounded-full bg-[#c42d2d] animate-pulse" />
                         <p className="text-[#666] text-[12px] font-[var(--font-dm-sans)]">
                             All sourced from{" "}
-                            <span className="text-[#c42d2d] font-semibold">LinkedIn</span> profiles
+                            <span className="text-[#c42d2d] font-semibold">Instagram and Facebook</span> profiles
                         </p>
                     </div>
                 </div>

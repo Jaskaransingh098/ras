@@ -155,8 +155,8 @@ export default function Hero() {
       </div> */}
 
       {/* RIGHT SIDE */}
-      <div className="md:w-[45%] lg:w-[51%] w-full relative h-[60dvh] md:h-[95dvh] md:absolute md:right-3 md:top-3 md:rounded-[40px] overflow-hidden shadow-2xl">
-        {/* IMAGE */}
+      {/* <div className="md:w-[45%] lg:w-[51%] w-full relative h-[60dvh] md:h-[95dvh] md:absolute md:right-3 md:top-3 md:rounded-[40px] overflow-hidden shadow-2xl">
+
         <Image
           key={slides[index].image}
           src={slides[index].image}
@@ -164,10 +164,10 @@ export default function Hero() {
           fill
           priority
           className="object-cover animate-fadeUp"
-        />
+        /> */}
 
         {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-black/10 z-10" />
+        {/* <div className="absolute inset-0 bg-black/10 z-10" /> */}
 
         {/* TOP RIGHT LANGUAGE SWITCHER */}
         {/* <div className="absolute top-8 right-8 z-30 flex gap-4 text-white text-sm font-medium tracking-wide drop-shadow-md">
@@ -176,7 +176,7 @@ export default function Hero() {
         </div> */}
 
         {/* BOTTOM PILLS OVERLAY */}
-        <div className="absolute bottom-12 left-8 md:left-12 z-30 flex flex-col gap-4">
+        {/* <div className="absolute bottom-12 left-8 md:left-12 z-30 flex flex-col gap-4">
           <div className="flex gap-4 flex-wrap">
             <div className="px-6 py-3 rounded-full border border-white text-white text-lg font-light backdrop-blur-sm shadow-lg font-[var(--font-dm-sans)]">
               Calm Mind
@@ -189,7 +189,7 @@ export default function Hero() {
             Visible Life Shifts
           </div>
         </div>
-      </div>
+      </div> */}
     </section>
   );
 }
