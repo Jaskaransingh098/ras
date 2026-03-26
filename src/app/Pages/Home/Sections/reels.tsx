@@ -308,11 +308,11 @@ The stress is gone totally from my head, all the negative thoughts which were co
                       </div>
                       <div className="flex items-center gap-2 mb-3 flex-shrink-0">
                         <div className="h-px flex-1 bg-white/20" />
-                        <span className="text-white/40 text-[9px] uppercase tracking-widest font-semibold font-[var(--font-dm-sans)]">Transcript</span>
+                        <span className="text-white/50 text-[11px] uppercase tracking-widest font-semibold font-[var(--font-dm-sans)]">Transcript</span>
                         <div className="h-px flex-1 bg-white/20" />
                       </div>
                       <div className="flex-1 overflow-y-auto min-h-0 ts pr-2">
-                        <p className="text-white/85 text-[12px] leading-[1.8] whitespace-pre-wrap">
+                        <p className="text-white/90 text-[15px] leading-[2.0] whitespace-pre-wrap font-[var(--font-dm-sans)]">
                           <span className="text-white/30 text-xl font-[var(--font-cormorant)]">&ldquo;</span>
                           {fc.transcript}
                           <span className="text-white/30 text-xl font-[var(--font-cormorant)]">&rdquo;</span>
@@ -453,18 +453,18 @@ The stress is gone totally from my head, all the negative thoughts which were co
                           <div className="phone-frame w-full bg-white shadow-lg border-2 border-[#c42d2d]/30">
                             <div className="absolute inset-0 flex flex-col p-3">
                               <div className="flex items-center mb-2 flex-shrink-0">
-                                <span className="text-[9px] font-bold text-[#c42d2d] uppercase tracking-wider">Transcript</span>
+                                <span className="text-[11px] font-bold text-[#c42d2d] uppercase tracking-wider">Transcript</span>
                               </div>
-                              <p className="text-[9px] font-semibold text-[#111] mb-1 truncate flex-shrink-0">{card.name}</p>
+                              <p className="text-[11px] font-bold text-[#111] mb-1 truncate flex-shrink-0">{card.name}</p>
                               <div className="flex-1 overflow-y-auto min-h-0 ts-light pr-1">
-                                <p className="text-[9px] leading-[1.65] text-gray-500 whitespace-pre-wrap">
+                                <p className="text-[12px] leading-[1.75] text-gray-600 font-medium whitespace-pre-wrap font-[var(--font-dm-sans)]">
                                   <span className="text-[#c42d2d] text-xs font-serif">&ldquo;</span>
                                   {card.transcript}
                                   <span className="text-[#c42d2d] text-xs font-serif">&rdquo;</span>
                                 </p>
                               </div>
                               <div className="mt-2 flex-shrink-0">
-                                <button onClick={(e) => flip(card.idx, e)} className="w-full bg-gray-100 text-gray-600 py-1.5 rounded-full text-[9px] font-medium hover:bg-gray-200 transition-colors">← Back</button>
+                                <button onClick={(e) => flip(card.idx, e)} className="w-full bg-gray-100 text-gray-700 py-1.5 rounded-full text-[11px] font-semibold hover:bg-gray-200 transition-colors">← Back</button>
                               </div>
                             </div>
                           </div>

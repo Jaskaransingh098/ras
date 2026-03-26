@@ -10,17 +10,17 @@ gsap.registerPlugin(ScrollTrigger);
 
 const dailyQuotes = [
     {
-        text: "Good morning, beautiful soul. Your energy today is your offering to the world.",
+        text: "Graphic",
         author: "Raseshvari",
         label: "Morning Energy",
     },
     {
-        text: "The universe doesn't respond to what you want — it responds to who you're being.",
+        text: "Graphic",
         author: "Raseshvari",
         label: "Energy Thought",
     },
     {
-        text: "Good night. Let go of today's weight — tomorrow, you rise lighter.",
+        text: "Graphic",
         author: "Raseshvari",
         label: "Night Reflection",
     },
@@ -146,27 +146,53 @@ export default function Blog() {
                     background: rgba(255,255,255,0.92);
                 }
 
+                /* ── Graphic-style quote card ── */
                 .quote-card {
                     position: relative;
                     border-radius: 20px;
                     overflow: hidden;
-                    background: linear-gradient(160deg, #9e4545ff 0%, #bd4747ff 50%, #d5acacff 100%);
-                    border: 1px solid rgba(196, 45, 45, 0.15);
+                    background: linear-gradient(145deg, #6b1414 0%, #9e2626 40%, #c43030 75%, #e05555 100%);
+                    border: 1px solid rgba(196, 45, 45, 0.3);
+                    box-shadow: 0 20px 60px -15px rgba(100, 10, 10, 0.55);
                     transition: all 0.45s cubic-bezier(0.23, 1, 0.32, 1);
                 }
                 .quote-card:hover {
-                    box-shadow: 0 24px 48px -12px rgba(80, 20, 20, 0.35);
-                    border-color: rgba(196, 45, 45, 0.3);
+                    box-shadow: 0 28px 70px -12px rgba(80, 20, 20, 0.5);
+                    transform: translateY(-3px);
                 }
+                /* Top shimmer line */
                 .quote-card::before {
                     content: '';
                     position: absolute;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    height: 3px;
-                    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent);
-                    opacity: 0.5;
+                    top: 0; left: 0;
+                    width: 100%; height: 2px;
+                    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.7), transparent);
+                }
+                /* Decorative circle backdrop */
+                .quote-card::after {
+                    content: '';
+                    position: absolute;
+                    bottom: -40px; right: -40px;
+                    width: 220px; height: 220px;
+                    border-radius: 50%;
+                    background: rgba(255,255,255,0.055);
+                    pointer-events: none;
+                }
+                /* Label badge on quote card */
+                .quote-label-badge {
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 6px;
+                    background: rgba(255,255,255,0.14);
+                    border: 1px solid rgba(255,255,255,0.25);
+                    border-radius: 999px;
+                    padding: 4px 12px;
+                    font-size: 10px;
+                    font-weight: 700;
+                    letter-spacing: 0.18em;
+                    text-transform: uppercase;
+                    color: rgba(255,255,255,0.9);
+                    backdrop-filter: blur(6px);
                 }
 
                 .ig-section {
@@ -221,8 +247,8 @@ export default function Blog() {
                     animation: quoteCrossFade 0.5s ease forwards;
                 }
                 @keyframes quoteCrossFade {
-                    0%   { opacity: 0; filter: blur(4px); }
-                    100% { opacity: 1; filter: blur(0); }
+                    0%   { opacity: 0; transform: scale(0.97); }
+                    100% { opacity: 1; transform: scale(1); }
                 }
             `}</style>
 
@@ -263,98 +289,103 @@ export default function Blog() {
 
                     {/* ══ TOP ROW ══ */}
 
-                    {/* ── Daily Wisdom Quote Card ── */}
+                    {/* ── Daily Wisdom Quote Card — Graphic Style ── */}
                     <div className="b-card lg:col-span-5 flex">
                         <div className="quote-card w-full flex flex-col p-7 md:p-9 relative">
-                            {/* Ambient glow */}
+
+                            {/* Large decorative circle glow top-right */}
                             <div
-                                className="absolute top-[-20%] right-[-10%] w-56 h-56 rounded-full pointer-events-none"
-                                style={{ background: "radial-gradient(circle, rgba(196,45,45,0.15) 0%, transparent 70%)", filter: "blur(50px)" }}
+                                className="absolute -top-16 -right-16 w-64 h-64 rounded-full pointer-events-none"
+                                style={{ background: "radial-gradient(circle, rgba(255,255,255,0.12) 0%, transparent 70%)" }}
                             />
+                            {/* Small accent circle bottom-left */}
+                            <div
+                                className="absolute bottom-10 -left-8 w-40 h-40 rounded-full pointer-events-none"
+                                style={{ background: "radial-gradient(circle, rgba(255,180,180,0.08) 0%, transparent 70%)" }}
+                            />
+                            {/* Fine cross-hatch decorative lines */}
+                            <div className="absolute inset-0 pointer-events-none opacity-[0.04]" style={{
+                                backgroundImage: "repeating-linear-gradient(45deg, rgba(255,255,255,0.5) 0, rgba(255,255,255,0.5) 1px, transparent 0, transparent 50%)",
+                                backgroundSize: "14px 14px",
+                            }} />
 
                             <div className="relative z-10 flex flex-col h-full">
-                                {/* Top Row: Label + Counter */}
-                                <div className="flex items-center justify-between mb-auto">
-                                    <div className="flex items-center gap-2">
-                                        <div className="w-1.5 h-1.5 rounded-full bg-white/80" />
-                                        <span
-                                            className="text-[12px] font-bold uppercase tracking-[.3em] font-[var(--font-dm-sans)]"
-                                            style={{ color: "rgba(255, 255, 255, 1)" }}
-                                        >
-                                            Daily Wisdom
-                                        </span>
-                                    </div>
+
+                                {/* Top row: label badge + counter */}
+                                <div className="flex items-center justify-between mb-6">
+                                    <span className="quote-label-badge font-[var(--font-dm-sans)]">
+                                        <span className="w-1.5 h-1.5 rounded-full bg-white/70" />
+                                        Daily Wisdom
+                                    </span>
                                     <span
-                                        className="text-[12px] font-[var(--font-dm-sans)] tabular-nums"
-                                        style={{ color: "rgba(255,255,255,0.7)" }}
+                                        className="text-[11px] font-[var(--font-dm-sans)] tabular-nums font-semibold"
+                                        style={{ color: "rgba(255,255,255,0.55)" }}
                                     >
-                                        {String(quoteIndex + 1).padStart(2, "0")} / {String(dailyQuotes.length).padStart(2, "0")}
+                                        {String(quoteIndex + 1).padStart(2, "0")}&nbsp;/&nbsp;{String(dailyQuotes.length).padStart(2, "0")}
                                     </span>
                                 </div>
 
-                                {/* Big decorative quote mark */}
+                                {/* Huge decorative opening quote — graphic focal point */}
                                 <div
-                                    className="font-[var(--font-playfair)] select-none pointer-events-none leading-none mt-4"
-                                    style={{ fontSize: "clamp(50px, 7vw, 80px)", color: "rgba(255,255,255,0.2)" }}
+                                    className="font-[var(--font-playfair)] select-none leading-none"
+                                    style={{ fontSize: "clamp(90px, 12vw, 140px)", color: "rgba(255,255,255,0.13)", lineHeight: 0.85, marginBottom: "-0.2em" }}
                                 >
-                                    “
+                                    &#8220;
                                 </div>
 
-                                {/* Quote text */}
+                                {/* Quote text — the centrepiece */}
                                 <blockquote
                                     key={quoteIndex}
-                                    className="font-[var(--font-playfair)] italic leading-[1.25] quote-fade-enter -mt-6"
-                                    style={{ fontSize: "clamp(18px, 2vw, 24px)", color: "#ffffff" }}
+                                    className="font-[var(--font-playfair)] leading-[1.3] quote-fade-enter flex-1"
+                                    style={{ fontSize: "clamp(20px, 2.2vw, 28px)", color: "#ffffff", fontStyle: "italic", textShadow: "0 2px 20px rgba(0,0,0,0.25)" }}
                                 >
                                     {quote.text}
                                 </blockquote>
 
-                                {/* Divider */}
-                                <div className="mt-auto pt-5">
-                                    <div className="h-[1px] w-full" style={{ background: "linear-gradient(90deg, rgba(255,255,255,0.3), transparent)" }} />
-                                </div>
+                                {/* Thin accent divider */}
+                                <div className="mt-6" style={{ height: "1px", background: "linear-gradient(90deg, rgba(255,255,255,0.4), transparent)" }} />
 
-                                {/* Author + Navigation */}
-                                <div className="flex items-center justify-between mt-3">
+                                {/* Author row + nav arrows */}
+                                <div className="flex items-center justify-between mt-4">
                                     <div>
-                                        <p className="text-[12px] font-[var(--font-dm-sans)] font-semibold" style={{ color: "rgba(255, 255, 255, 1)" }}>
+                                        <p className="text-[13px] font-[var(--font-dm-sans)] font-bold tracking-wide" style={{ color: "rgba(255,255,255,0.95)" }}>
                                             — {quote.author}
                                         </p>
-                                        <p className="text-[9px] font-[var(--font-dm-sans)] uppercase tracking-[.2em] mt-1" style={{ color: "rgba(255, 255, 255, 1)" }}>
+                                        <p className="text-[10px] font-[var(--font-dm-sans)] uppercase tracking-[.22em] mt-1" style={{ color: "rgba(255,255,255,0.6)" }}>
                                             {quote.label}
                                         </p>
                                     </div>
 
-                                    {/* Nav arrows */}
                                     <div className="flex items-center gap-2">
                                         <button
                                             onClick={() => setQuoteIndex((prev) => (prev - 1 + dailyQuotes.length) % dailyQuotes.length)}
-                                            className="w-7 h-7 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110"
+                                            className="w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 hover:bg-white/20"
                                             style={{ border: "1px solid rgba(255,255,255,0.3)", background: "rgba(255,255,255,0.1)" }}
                                         >
-                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" strokeWidth="2" strokeLinecap="round">
+                                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" strokeWidth="2.5" strokeLinecap="round">
                                                 <path d="M19 12H5" /><path d="M12 19l-7-7 7-7" />
                                             </svg>
                                         </button>
                                         <button
                                             onClick={() => setQuoteIndex((prev) => (prev + 1) % dailyQuotes.length)}
-                                            className="w-7 h-7 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110"
+                                            className="w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 hover:bg-white/20"
                                             style={{ border: "1px solid rgba(255,255,255,0.3)", background: "rgba(255,255,255,0.1)" }}
                                         >
-                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" strokeWidth="2" strokeLinecap="round">
+                                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" strokeWidth="2.5" strokeLinecap="round">
                                                 <path d="M5 12h14" /><path d="M12 5l7 7-7 7" />
                                             </svg>
                                         </button>
                                     </div>
                                 </div>
 
-                                {/* Progress bar */}
-                                <div className="flex gap-1.5 mt-3">
+                                {/* Progress dots */}
+                                <div className="flex gap-1.5 mt-4">
                                     {dailyQuotes.map((_, i) => (
-                                        <div
+                                        <button
                                             key={i}
-                                            className="h-[2px] flex-1 rounded-full transition-all duration-500"
-                                            style={{ background: i === quoteIndex ? "#ffffff" : "rgba(255,255,255,0.3)" }}
+                                            onClick={() => setQuoteIndex(i)}
+                                            className="h-[3px] flex-1 rounded-full transition-all duration-500"
+                                            style={{ background: i === quoteIndex ? "rgba(255,255,255,0.95)" : "rgba(255,255,255,0.25)" }}
                                         />
                                     ))}
                                 </div>
@@ -459,7 +490,7 @@ export default function Blog() {
                                 </h3>
                                 <p
                                     className="text-[15px] leading-[1.6] mb-3 font-[var(--font-dm-sans)] flex-1 font-semibold"
-                                    style={{ color: "#8a6a5a" }}
+                                    style={{ color: "#3d2010" }}
                                 >
                                     {blog.excerpt}
                                 </p>

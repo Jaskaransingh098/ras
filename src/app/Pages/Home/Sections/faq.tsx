@@ -123,7 +123,7 @@ export default function FAQ() {
                         }`}
                 >
                     <div className="overflow-hidden">
-                        <div className="px-5 md:px-6 pb-4 md:pb-3 text-[#444] text-[13px] md:text-[12px] leading-relaxed font-[var(--font-dm-sans)]">
+                        <div className="px-5 md:px-6 pb-5 md:pb-4 text-[#1e1e1e] text-[15px] md:text-[14px] leading-relaxed font-semibold font-[var(--font-dm-sans)]">
                             <div className="w-8 h-[2px] bg-[#c42d2d]/30 mb-2 rounded-full" />
                             {faq.answer}
                         </div>
