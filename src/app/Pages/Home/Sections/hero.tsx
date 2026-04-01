@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 
 const slides = [
@@ -25,16 +25,93 @@ const slides = [
 export default function Hero() {
   const [index, setIndex] = useState(0);
 
+  // Video crossfade refs/state
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([null, null]);
+  const [activeVideo, setActiveVideo] = useState<number>(0);
+
+  useEffect(() => {
+    const handlers: Array<(this: HTMLVideoElement, ev: Event) => void> = [
+      () => {
+        const next = 1;
+        const nextV = videoRefs.current[next];
+        const curV = videoRefs.current[0];
+        if (nextV) {
+          nextV.currentTime = 0;
+          nextV.play().catch(() => {});
+        }
+        // let next start, then fade
+        setTimeout(() => setActiveVideo(next), 60);
+        setTimeout(() => { if (curV) { curV.pause(); curV.currentTime = 0; } }, 1200);
+      },
+      () => {
+        const next = 0;
+        const nextV = videoRefs.current[next];
+        const curV = videoRefs.current[1];
+        if (nextV) {
+          nextV.currentTime = 0;
+          nextV.play().catch(() => {});
+        }
+        setTimeout(() => setActiveVideo(next), 60);
+        setTimeout(() => { if (curV) { curV.pause(); curV.currentTime = 0; } }, 1200);
+      },
+    ];
+
+    const v0 = videoRefs.current[0];
+    const v1 = videoRefs.current[1];
+    if (v0) v0.addEventListener("ended", handlers[0]);
+    if (v1) v1.addEventListener("ended", handlers[1]);
+
+    // Start first video
+    if (v0) {
+      v0.currentTime = 0;
+      v0.play().catch(() => {});
+      setActiveVideo(0);
+    }
+
+    return () => {
+      if (v0) v0.removeEventListener("ended", handlers[0]);
+      if (v1) v1.removeEventListener("ended", handlers[1]);
+    };
+  }, []);
+
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % slides.length);
-    }, 3500);
+    }, 5000);
 
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <section className="flex flex-col md:flex-row items-center justify-between w-full min-h-screen relative overflow-hidden">
+    <section className="flex flex-col md:flex-row items-center justify-between w-full h-screen relative overflow-hidden">
+      {/* Background videos (stacked) */}
+      {/*
+        Two videos are stacked and crossfaded. Videos must be in `public/hero`:
+        - /hero/final-01.mp4
+        - /hero/final-02.mp4
+      */}
+      <div className="absolute inset-0 w-full h-full pointer-events-none">
+        <video
+          ref={(el) => (videoRefs.current[0] = el)}
+          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${activeVideo === 0 ? 'opacity-100 z-0' : 'opacity-0 z-0'}`}
+          src="/hero/final-01.mp4"
+          playsInline
+          muted
+          aria-hidden={true}
+        />
+
+        <video
+          ref={(el) => (videoRefs.current[1] = el)}
+          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${activeVideo === 1 ? 'opacity-100 z-0' : 'opacity-0 z-0'}`}
+          src="/hero/final-02.mp4"
+          playsInline
+          muted
+          aria-hidden={true}
+        />
+
+        {/* Dim overlay to improve text contrast */}
+        <div className="absolute inset-0 bg-black/30 z-10 pointer-events-none" />
+      </div>
       {/* LEFT SIDE */}
       <div className="flex-1 w-full max-w-2xl px-6 md:pl-16 lg:pl-18 pt-32 md:pt-20 pb-16 z-10 mx-auto md:mx-0">
         <style jsx>{`
