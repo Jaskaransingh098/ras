@@ -92,7 +92,7 @@ export default function Hero() {
       */}
       <div className="absolute inset-0 w-full h-full pointer-events-none">
         <video
-          ref={(el) => (videoRefs.current[0] = el)}
+          ref={(el: HTMLVideoElement | null) => { videoRefs.current[0] = el; }}
           className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${activeVideo === 0 ? 'opacity-100 z-0' : 'opacity-0 z-0'}`}
           src="/hero/final-01.mp4"
           playsInline
@@ -101,7 +101,7 @@ export default function Hero() {
         />
 
         <video
-          ref={(el) => (videoRefs.current[1] = el)}
+          ref={(el: HTMLVideoElement | null) => { videoRefs.current[1] = el; }}
           className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${activeVideo === 1 ? 'opacity-100 z-0' : 'opacity-0 z-0'}`}
           src="/hero/final-02.mp4"
           playsInline
