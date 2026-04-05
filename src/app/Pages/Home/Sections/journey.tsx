@@ -129,9 +129,9 @@ export default function Journey() {
                             Gallery
                         </p>
                     </div>
-                    <h2 className="text-[28px] md:text-[44px] font-[var(--font-playfair)] text-[#111] leading-[1.1]">
+                    <h2 className="text-[28px] md:text-[44px] font-semibold text-[#111] leading-[1.1]">
                         A Window into{' '}
-                        <span className="italic font-bold">her Journey</span>
+                        <span className="italic text-[#c42d2d] font-bold">her Journey</span>
                     </h2>
                 </div>
                 <button className="flex items-center gap-2.5 bg-[#c42d2d] text-white px-5 md:px-6 py-2.5 md:py-3 rounded-full text-xs md:text-sm font-bold font-[var(--font-outfit)] shadow-lg shadow-[#c42d2d]/20 hover:bg-[#a82525] hover:scale-105 transition-all duration-300 flex-shrink-0">

@@ -58,7 +58,7 @@ export default function MomsCommunity() {
     const col2Images = [...col2Base, ...col2Base];
 
     return (
-        <section className="relative min-h-[70dvh] max-h-[90dvh] flex flex-col items-center justify-center overflow-hidden py-16 px-6 md:px-12 bg-gradient-to-br from-[#4a0e0e] via-[#7a1a1a] to-[#9b1c1c]">
+        <section className="relative min-h-[70dvh] max-h-[90dvh] flex flex-col items-center justify-center overflow-hidden py-16 px-6 md:px-12 bg-gradient-to-b from-[#8a0a0a] to-[#4a0e0e]">
             {/* Dark premium red gradient background overlay */}
             <div className="absolute inset-0 bg-[#4a0e0e]/20" />
 
@@ -77,12 +77,12 @@ export default function MomsCommunity() {
                         </span>
                     </div>
 
-                    <h2 className="text-[44px] md:text-[60px] font-[var(--font-playfair)] text-white font-bold leading-[1.05] tracking-tight mb-5 drop-shadow-lg">
+                    <h2 className="text-[28px] md:text-[42px] font-[var(--font-playfair)] text-white font-bold leading-[1.05] tracking-tight mb-5 drop-shadow-lg">
                         MOMS <br className="hidden md:block" />
                         <span className="italic font-light text-[#f0cfb1]">COMMUNITY</span>
                     </h2>
 
-                    <p className="text-white text-[15px] md:text-[20px] font-[var(--font-dm-sans)] max-w-[360px] mb-8 leading-relaxed">
+                    <p className="text-white text-[16px] md:text-[18px] font-[var(--font-dm-sans)] max-w-[360px] mb-8 leading-relaxed">
                         {/* I&apos;m invited to speak with institutions, organizations, leaders, and young minds on how energy shapes choices and decisions—bringing clarity and ease, especially in high-pressure environments. */}
                         A pan india beautiful nurturing space where mother's came together to co create co relate and co elevate each other Initiated by Beyond Imagination Club
                     </p>

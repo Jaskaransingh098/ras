@@ -6,7 +6,7 @@ export default function Contact() {
     const [inquiryType, setInquiryType] = useState<"services" | "speaking" | "">("");
 
     return (
-        <section className="relative h-[90dvh] py-16 px-6 md:px-12 flex items-center justify-center overflow-hidden bg-gradient-to-br from-[#4a0e0e] via-[#7a1a1a] to-[#9b1c1c]">
+        <section className="relative h-[90dvh] py-16 px-6 md:px-12 flex items-center justify-center overflow-hidden bg-gradient-to-b from-[#8a0a0a] to-[#4a0e0e]">
             {/* Dark premium red gradient background overlay */}
             <div className="absolute inset-0 bg-[#4a0e0e]/20" />
 

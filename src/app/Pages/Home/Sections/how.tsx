@@ -107,8 +107,8 @@ export default function How({ scrollRef }: Props) {
                                 The science behind it
                             </p>
                         </div>
-                        <h2 className="text-[32px] md:text-[54px] font-[var(--font-playfair)] font-semibold text-[#111] leading-[0.9]">
-                             How it<br className="hidden md:block" /> Works
+                        <h2 className="text-[28px] md:text-[42px] font-[var(--font-playfair)] font-semibold text-[#111] leading-[0.9]">
+                            How it<br className="hidden md:block" /> Works
                         </h2>
                     </div>
 
@@ -214,7 +214,7 @@ export default function How({ scrollRef }: Props) {
                     <div className="flex items-center gap-3">
                         <div className="w-2 h-2 rounded-full bg-[#c42d2d] animate-pulse" />
                         <p className="text-gray-800 text-xl font-[var(--font-cormorant)] italic text-base font-semibold">
-                           One session, one shift, ultimate unlimited possibilities
+                            One session, one shift, ultimate unlimited possibilities
                         </p>
                     </div>
                     {/* <button className="flex items-center gap-2 bg-[#c42d2d] text-white px-6 py-2.5 rounded-full text-sm font-bold font-[var(--font-outfit)] shadow-lg shadow-[#c42d2d]/20 hover:bg-[#a82525] transition-all">

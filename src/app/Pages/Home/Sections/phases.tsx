@@ -59,8 +59,8 @@ export default function Phases() {
 
     return (
         <section
-            className="min-h-[100dvh] bg-gradient-to-b from-[#212529] via-[#7a1a1a] to-[#9b1c1c] relative overflow-hidden flex items-center"
-            style={{ }}
+            className="min-h-[100dvh] bg-gradient-to-b from-[#8a0a0a] to-[#4a0e0e] relative overflow-hidden flex items-center"
+            style={{}}
         >
             {/* <div className="absolute inset-0 bg-black/40 z-[1]" /> */}
             <style jsx>{`
@@ -137,7 +137,7 @@ export default function Phases() {
                         </h2>
 
                         {/* Descriptive text */}
-                        <p className="text-white text-[17px] md:text-[18px] leading-[1.85] mb-10 max-w-[95%] font-[var(--font-dm-sans)] font-medium">
+                        <p className="text-white text-[16px] md:text-[18px] leading-[1.85] mb-10 max-w-[95%] font-[var(--font-dm-sans)] font-medium">
                             Real people. Real results. Real transformations that happen when deeply stuck patterns dissolve and your true potential emerges.
                             Discover the profound shifts that occur in a single session.
                         </p>

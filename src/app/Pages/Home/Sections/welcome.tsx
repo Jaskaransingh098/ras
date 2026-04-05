@@ -105,16 +105,16 @@ export default function Welcome({ scrollRef }: Props) {
         <div className="absolute inset-0 bg-black/60 rounded-t-[30px]" />
 
         <div className="relative z-10 text-center max-w-4xl text-white drop-shadow-md">
-          <p className="text-sm tracking-[0.3em] font-medium uppercase mb-6 drop-shadow-lg font-[var(--font-dm-sans)]">
+          {/* <p className="text-sm tracking-[0.3em] font-medium uppercase mb-6 drop-shadow-lg font-[var(--font-dm-sans)]">
             {splitWords(
               "Welcome to the work that goes beyond logical mind …",
               "word-p",
             )}
             <br />
             {splitWords("into pure transformation", "word-p")}
-          </p>
+          </p> */}
 
-          <h1 className="text-[32px] md:text-[62px] leading-[1.1] font-semibold drop-shadow-xl font-[var(--font-outfit)]">
+          <h1 className="text-[32px] md:text-[62px] leading-[1.1] font-bold drop-shadow-xl font-[var(--font-outfit)]">
             {splitLetters("When Your Energy Shifts,", "letter-h")}
             <br />
             <span className="text-red-600 font-black drop-shadow-2xl">

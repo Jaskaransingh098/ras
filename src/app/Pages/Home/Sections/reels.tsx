@@ -218,7 +218,7 @@ The stress is gone totally from my head, all the negative thoughts which were co
   return (
     <section
       ref={sectionRef}
-      className="py-25 overflow-hidden min-h-[100dvh] flex flex-col justify-center bg-[#f8f7f4]"
+      className="py-15 overflow-hidden min-h-[100dvh] flex flex-col justify-center bg-[#f8f7f4]"
     >
       <style jsx>{`
         .flip-inner{transition:transform .55s cubic-bezier(.4,0,.2,1);transform-style:preserve-3d}
@@ -237,13 +237,13 @@ The stress is gone totally from my head, all the negative thoughts which were co
 
       {/* ── HEADER ── */}
       <div className="text-center mb-14 rr px-6">
-        <p className="text-5xl uppercase tracking-[.2em] text-[#c42d2d] mb-4 font-bold font-[var(--font-dm-sans)]">
+        <p className="text-5xl uppercase tracking-[.01em] text-[#c42d2d] mb-4 font-bold font-[var(--font-dm-sans)]">
           Our Clients Brag About Us
         </p>
-        <h2 className="text-[36px] md:text-[22px] tracking-[.02em] lg:text-[38px] font-[var(--font-playfair)] font-light text-[#111] leading-[1.15] max-w-3xl mx-auto">
+        <p className="text-[36px] md:text-[20px] tracking-[.02em] lg:text-[30px] font-[var(--font-playfair)] font-semibold text-[#111] leading-[1.15] max-w-3xl mx-auto">
           Don&rsquo;t believe us? Hear it straight from them.
-        </h2>
-        <p className="mt-6 text-gray-700 text-[20px] max-w-2xl mx-auto">
+        </p>
+        <p className="mt-4 text-gray-700 text-[18px] max-w-2xl mx-auto">
           Real stories from real people. Watch the shorts or read the full transcript.
         </p>
       </div>
@@ -259,7 +259,7 @@ The stress is gone totally from my head, all the negative thoughts which were co
               <div className={`flip-inner w-full h-full ${isFeaturedFlipped ? "flipped" : ""}`}>
                 {/* FRONT */}
                 <div className="face w-full">
-                  <div className="phone-frame bg-black shadow-2xl border-[3px] border-gray-800 w-full">
+                  <div className="phone-frame bg-black shadow-2xl border-[3px] border-red-800 w-full">
                     {playingVideo === featured ? (
                       <iframe
                         src={`https://www.youtube.com/embed/${fc.youtubeId}?autoplay=1&rel=0&loop=1`}
@@ -308,14 +308,14 @@ The stress is gone totally from my head, all the negative thoughts which were co
                       </div>
                       <div className="flex items-center gap-2 mb-3 flex-shrink-0">
                         <div className="h-px flex-1 bg-white/20" />
-                        <span className="text-white/50 text-[11px] uppercase tracking-widest font-semibold font-[var(--font-dm-sans)]">Transcript</span>
+                        <span className="text-white text-[11px] uppercase tracking-widest font-semibold font-[var(--font-dm-sans)]">Transcript</span>
                         <div className="h-px flex-1 bg-white/20" />
                       </div>
                       <div className="flex-1 overflow-y-auto min-h-0 ts pr-2">
-                        <p className="text-white/90 text-[15px] leading-[2.0] whitespace-pre-wrap font-[var(--font-dm-sans)]">
-                          <span className="text-white/30 text-xl font-[var(--font-cormorant)]">&ldquo;</span>
+                        <p className="text-white text-[15px] leading-[2.0] whitespace-pre-wrap font-[var(--font-dm-sans)]">
+                          <span className="text-white/50 text-xl font-[var(--font-cormorant)]">&ldquo;</span>
                           {fc.transcript}
-                          <span className="text-white/30 text-xl font-[var(--font-cormorant)]">&rdquo;</span>
+                          <span className="text-white/50 text-xl font-[var(--font-cormorant)]">&rdquo;</span>
                         </p>
                       </div>
                       <div className="mt-3 flex-shrink-0">
@@ -341,7 +341,7 @@ The stress is gone totally from my head, all the negative thoughts which were co
                 {fc.highlight && <><br /><span className="text-[#c42d2d]">{fc.highlight}</span></>}
               </h3>
 
-              <p className="mt-3 text-gray-500 text-base">{fc.sub}</p>
+              <p className="mt-3 text-black text-base">{fc.sub}</p>
 
               <div className="mt-4">
                 <span className="bg-[#c42d2d] text-white px-5 py-2 rounded-full text-xs font-bold shadow-lg shadow-[#c42d2d]/20 inline-block">
@@ -357,7 +357,7 @@ The stress is gone totally from my head, all the negative thoughts which were co
                 </div>
                 <div>
                   <p className="font-bold text-[#111] text-[15px] font-[var(--font-outfit)]">{fc.name}</p>
-                  <p className="text-gray-400 text-xs">{fc.role}{fc.location ? ` · ${fc.location}` : ""}</p>
+                  <p className="text-black text-[14px]">{fc.role}{fc.location ? ` · ${fc.location}` : ""}</p>
                 </div>
               </div>
 
@@ -381,18 +381,18 @@ The stress is gone totally from my head, all the negative thoughts which were co
           <div className="flex-1 min-w-0 flex flex-col">
             <div className="flex items-center gap-3 mb-4 flex-shrink-0 mt-20">
               <span className="text-[#111] font-bold text-sm font-[var(--font-playfair)]">More Stories</span>
-              <div className="h-px flex-1 bg-gray-200" />
+              <div className="h-px flex-1 bg-[#c42d2d]" />
               <div className="flex items-center gap-2 flex-shrink-0">
                 <button
                   onClick={() => scrollStrip("left")}
-                  className="w-8 h-8 rounded-full border border-gray-200 flex items-center justify-center text-gray-400 hover:text-[#c42d2d] hover:border-[#c42d2d]/40 transition-all duration-200 bg-white shadow-sm"
+                  className="w-8 h-8 rounded-full border flex items-center justify-center text-[#c42d2d] border-[#c42d2d]/60 transition-all duration-200 bg-white shadow-sm"
                   aria-label="Scroll left"
                 >
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6" /></svg>
                 </button>
                 <button
                   onClick={() => scrollStrip("right")}
-                  className="w-8 h-8 rounded-full border border-gray-200 flex items-center justify-center text-gray-400 hover:text-[#c42d2d] hover:border-[#c42d2d]/40 transition-all duration-200 bg-white shadow-sm"
+                  className="w-8 h-8 rounded-full border flex items-center justify-center text-[#c42d2d] border-[#c42d2d]/60 transition-all duration-200 bg-white shadow-sm"
                   aria-label="Scroll right"
                 >
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6" /></svg>

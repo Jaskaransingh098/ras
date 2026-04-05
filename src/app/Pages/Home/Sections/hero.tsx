@@ -194,7 +194,7 @@ export default function Hero() {
         </div>
 
         {/* Scrolling marquee strip */}
-        <div className="mt-10 overflow-hidden max-w-[450px] relative">
+        {/* <div className="mt-10 overflow-hidden max-w-[450px] relative">
           <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
           <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
           <div className="flex whitespace-nowrap" style={{ animation: 'marquee 20s linear infinite' }}>
@@ -209,10 +209,10 @@ export default function Hero() {
               </div>
             ))}
           </div>
-        </div>
+        </div> */}
 
         {/* Scroll down indicator */}
-        <div className="mt-8 hidden md:flex items-center gap-3 text-gray-400">
+        {/* <div className="mt-8 hidden md:flex items-center gap-3 text-gray-400">
           <div className="w-px h-8 bg-gradient-to-b from-gray-300 to-transparent" />
           <div className="flex flex-col items-center gap-1" style={{ animation: 'bounce-slow 2s ease-in-out infinite' }}>
             <span className="text-[9px] uppercase tracking-[.3em] font-medium font-[var(--font-dm-sans)]">Scroll</span>
@@ -220,7 +220,7 @@ export default function Hero() {
               <path d="M12 5v14" /><path d="M19 12l-7 7-7-7" />
             </svg>
           </div>
-        </div>
+        </div> */}
       </div>
 
       {/* OVERLAPPING STAR ASSET */}

@@ -87,7 +87,7 @@ const cards = [
 
 export default function ScrollPoints() {
     return (
-        <section className="h-[112vh] bg-gradient-to-b from-[#9b1c1c] via-[#7a1a1a] to-[#ece6e6] flex flex-col relative overflow-hidden">
+        <section className="h-[112vh] bg-gradient-to-b from-[#8a0a0a] to-[#4a0e0e] flex flex-col relative overflow-hidden">
             {/* Subtle decorative bg elements */}
             {/* <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/[0.02] rounded-full -translate-y-1/2 translate-x-1/3 blur-3xl pointer-events-none" />
             <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-black/[0.08] rounded-full translate-y-1/2 -translate-x-1/3 blur-3xl pointer-events-none" /> */}
@@ -101,10 +101,10 @@ export default function ScrollPoints() {
                     </p>
                     <div className="w-6 h-px bg-white/40" />
                 </div>
-                <h2 className="text-[32px] md:text-[55px] font-[var(--font-playfair)] text-white leading-[1.1] font-bold">
+                <h2 className="text-[28px] md:text-[42px] font-[var(--font-playfair)] text-white leading-[1.1] font-bold">
                     Raseshvari Hindustani
                 </h2>
-                <p className="mt-2 text-white/80 text-md md:text-lg font-medium tracking-wide font-[var(--font-dm-sans)]">
+                <p className="mt-2 text-white/80 text-[16px] md:text-[18px] font-medium tracking-wide font-[var(--font-dm-sans)]">
                     A walking, talking miracle of possibilities.
                 </p>
             </div>

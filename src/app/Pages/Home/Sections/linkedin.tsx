@@ -132,7 +132,7 @@ export default function LinkedIn() {
                                     Verified Recommendations
                                 </p>
                             </div>
-                            <h2 className="text-[24px] md:text-[38px] font-[var(--font-playfair)] text-[#111] leading-[1.12]">
+                            <h2 className="text-[28px] md:text-[42px] font-[var(--font-playfair)] text-[#111] leading-[1.12]">
                                 Words That{" "}
                                 <span className="italic text-[#c42d2d]">Speak</span> for Themselves
                             </h2>
@@ -140,7 +140,7 @@ export default function LinkedIn() {
                     </div>
 
                     {/* Right-side description */}
-                    <p className="text-gray-800 text-[17px] max-w-[280px] leading-relaxed font-[var(--font-dm-sans)] mt-4 md:mt-0 md:text-right hidden md:block">
+                    <p className="text-gray-800 text-[16px] md:text-[18px] max-w-[280px] leading-relaxed font-[var(--font-dm-sans)] mt-4 md:mt-0 md:text-right hidden md:block">
                         Real words from real professionals who experienced a lasting shift.
                     </p>
                 </div>

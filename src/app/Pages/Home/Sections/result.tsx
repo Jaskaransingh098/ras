@@ -82,11 +82,12 @@ export default function Result() {
                 .r-card-inner {
                     position: relative;
                     border-radius: 22px;
+                    border: 1px solid rgba(255, 255, 255, 0.2);
                     transition: all 0.45s cubic-bezier(0.23, 1, 0.32, 1);
                     overflow: hidden;
-                    background: linear-gradient(135deg, rgba(196,45,45,0.28), rgba(255,255,255,0.22));
-                    backdrop-filter: blur(8px);
-                    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.25);
+                    // background: linear-gradient(135deg, rgba(196,45,45,0.28), rgba(255,255,255,0.22));
+                    // backdrop-filter: blur(8px);
+                    // box-shadow: inset 0 0 0 1px rgba(255,255,255,0.25);
                 }
                 .r-card-inner:hover {
                     transform: translateY(-8px);
@@ -175,7 +176,7 @@ export default function Result() {
                 <div className="r-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 md:gap-5 mb-8 md:mb-10">
                     {cards.map((card, i) => (
                         <div key={i} className="r-card">
-                            <div className="r-card-inner group bg-[#c42d2d]/80 text-white border border-white/20 h-full flex flex-col backdrop-blur-md">
+                            <div className="r-card-inner group border border-red-500 text-white h-full flex flex-col ">
                                 {/* Accent bar */}
                                 <div
                                     className="h-[2.5px] rounded-t-[22px]"
@@ -196,7 +197,7 @@ export default function Result() {
                                             alt={card.title}
                                             width={120}
                                             height={120}
-                                            className="relative z-10 w-auto h-[85px] md:h-[95px] object-contain drop-shadow-sm group-hover:scale-105 transition-transform duration-500"
+                                            className="relative z-10 w-auto h-[85px] md:h-[95px] object-contain  group-hover:scale-105 transition-transform duration-500"
                                         />
                                     </div>
 

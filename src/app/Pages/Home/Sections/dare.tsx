@@ -6,7 +6,7 @@ import Image from "next/image";
 // 13 guest images total to support 6 swapping slots (12 images) + 1 fixed center (1 image)
 const guestImages = Array.from({ length: 13 }).map((_, i) => ({
     id: i + 1,
-    src: `/guests/guest-${(i % 5) + 1}.jpg`,
+    src: `/dare/${(i % 5) + 1}.png`,
     alt: `Guest ${i + 1}`,
 }));
 
@@ -91,11 +91,11 @@ export default function DareToDream() {
                                 <div className="w-6 h-px bg-gradient-to-l from-transparent to-[#c42d2d]" />
                             </div>
 
-                            <h2 className="text-[34px] md:text-[46px] lg:text-[54px] font-[var(--font-playfair)] text-[#111] font-bold leading-[1.05] tracking-tight mb-4">
+                            <h2 className="text-[28px] md:text-[42px] font-[var(--font-playfair)] text-[#111] font-bold leading-[1.05] tracking-tight mb-4">
                                 Dare to <br /> <span className="font-light italic text-[#c42d2d]">Dream.</span>
                             </h2>
 
-                            <p className="text-[#555] text-[14px] md:text-[15px] lg:text-[18px] font-semibold font-[var(--font-dm-sans)] max-w-md leading-relaxed mb-6">
+                            <p className="text-[#555] text-[16px] md:text-[18px] font-semibold font-[var(--font-dm-sans)] max-w-md leading-relaxed mb-6">
                                 A deep dive into the minds of visionaries, leaders, and creators. Discover the energy, pressure, and choices that shaped their extraordinary paths.
                             </p>
 

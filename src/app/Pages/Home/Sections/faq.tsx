@@ -151,11 +151,11 @@ export default function FAQ() {
                         <div className="w-10 h-px bg-gradient-to-l from-transparent to-[#c42d2d]" />
                     </div>
 
-                    <h2 className="text-[36px] md:text-[46px] lg:text-[54px] font-[var(--font-playfair)] text-[#111] font-bold leading-[1.05] tracking-tight mb-2 drop-shadow-sm">
+                    <h2 className="text-[28px] md:text-[42px] font-[var(--font-playfair)] text-[#111] font-bold leading-[1.05] tracking-tight mb-2 drop-shadow-sm">
                         Frequently Asked <span className="italic font-light text-[#c42d2d]">Questions.</span>
                     </h2>
 
-                    <p className="text-[#666] text-[14px] md:text-[15px] font-[var(--font-dm-sans)] leading-relaxed max-w-2xl mx-auto">
+                    <p className="text-[#666] text-[16px] md:text-[18px] font-[var(--font-dm-sans)] leading-relaxed max-w-2xl mx-auto">
                         Everything you need to know about Energy Transformation, the process, and how it sparks real movement in your life.
                     </p>
                 </div>

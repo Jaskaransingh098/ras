@@ -10,13 +10,17 @@ export default function Speaker() {
     const [duration, setDuration] = useState(0);
     const [currentTime, setCurrentTime] = useState(0);
 
+
+
     useEffect(() => {
         const video = videoRef.current;
         if (!video) return;
 
         const onTimeUpdate = () => {
             setCurrentTime(video.currentTime);
-            setProgress(video.duration ? (video.currentTime / video.duration) * 100 : 0);
+            setProgress(
+                video.duration ? (video.currentTime / video.duration) * 100 : 0,
+            );
         };
         const onLoaded = () => setDuration(video.duration);
         const onPlay = () => setIsPlaying(true);
@@ -66,76 +70,80 @@ export default function Speaker() {
     return (
         <section className="relative min-h-[100dvh] flex items-center overflow-hidden bg-white">
             <style jsx>{`
-                .explore-btn {
-                    position: relative;
-                    overflow: hidden;
-                }
-                .explore-btn::after {
-                    content: '';
-                    position: absolute;
-                    top: 0;
-                    left: -100%;
-                    width: 60%;
-                    height: 100%;
-                    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
-                    transition: left 0.6s;
-                }
-                .explore-btn:hover::after {
-                    left: 120%;
-                }
-                .video-frame {
-                    position: relative;
-                    border-radius: 24px;
-                    overflow: hidden;
-                    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-                }
-                .video-frame:hover {
-                    transform: translateY(-4px);
-                    box-shadow: 0 30px 60px -16px rgba(0,0,0,0.15);
-                }
-                .video-controls {
-                    opacity: 0;
-                    transition: opacity 0.35s ease;
-                }
-                .video-frame:hover .video-controls {
-                    opacity: 1;
-                }
-                .seek-bar {
-                    cursor: pointer;
-                    position: relative;
-                    height: 4px;
-                    border-radius: 4px;
-                    background: rgba(255,255,255,0.2);
-                    transition: height 0.2s;
-                }
-                .seek-bar:hover {
-                    height: 6px;
-                }
-                .ctrl-btn {
-                    width: 36px;
-                    height: 36px;
-                    border-radius: 50%;
-                    background: rgba(255,255,255,0.15);
-                    backdrop-filter: blur(8px);
-                    border: 1px solid rgba(255,255,255,0.2);
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    cursor: pointer;
-                    transition: all 0.25s;
-                }
-                .ctrl-btn:hover {
-                    background: rgba(255,255,255,0.3);
-                    transform: scale(1.08);
-                }
-            `}</style>
+        .explore-btn {
+          position: relative;
+          overflow: hidden;
+        }
+        .explore-btn::after {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: -100%;
+          width: 60%;
+          height: 100%;
+          background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.25),
+            transparent
+          );
+          transition: left 0.6s;
+        }
+        .explore-btn:hover::after {
+          left: 120%;
+        }
+        .video-frame {
+          position: relative;
+          border-radius: 24px;
+          overflow: hidden;
+          transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        .video-frame:hover {
+          transform: translateY(-4px);
+          box-shadow: 0 30px 60px -16px rgba(0, 0, 0, 0.15);
+        }
+        .video-controls {
+          opacity: 0;
+          transition: opacity 0.35s ease;
+        }
+        .video-frame:hover .video-controls {
+          opacity: 1;
+        }
+        .seek-bar {
+          cursor: pointer;
+          position: relative;
+          height: 4px;
+          border-radius: 4px;
+          background: rgba(255, 255, 255, 0.2);
+          transition: height 0.2s;
+        }
+        .seek-bar:hover {
+          height: 6px;
+        }
+        .ctrl-btn {
+          width: 36px;
+          height: 36px;
+          border-radius: 50%;
+          background: rgba(255, 255, 255, 0.15);
+          backdrop-filter: blur(8px);
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          transition: all 0.25s;
+        }
+        .ctrl-btn:hover {
+          background: rgba(255, 255, 255, 0.3);
+          transform: scale(1.08);
+        }
+      `}</style>
 
             {/* Top separator */}
             <div className="absolute top-0 left-[5%] right-[5%] h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent" />
 
             <div className="max-w-8xl mx-auto px-6 md:px-12 w-full relative z-10 py-16 md:py-20">
                 <div className="flex flex-col-reverse md:flex-row gap-16 md:gap-24 items-center justify-center">
-
                     {/* LEFT — Video */}
                     <div className="w-full md:w-[300px] flex-shrink-0">
                         <div className="video-frame shadow-xl shadow-black/[0.08]">
@@ -172,12 +180,24 @@ export default function Speaker() {
                                                 {/* Play / Pause */}
                                                 <button className="ctrl-btn" onClick={togglePlay}>
                                                     {isPlaying ? (
-                                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="white" stroke="none">
+                                                        <svg
+                                                            width="14"
+                                                            height="14"
+                                                            viewBox="0 0 24 24"
+                                                            fill="white"
+                                                            stroke="none"
+                                                        >
                                                             <rect x="6" y="4" width="4" height="16" rx="1" />
                                                             <rect x="14" y="4" width="4" height="16" rx="1" />
                                                         </svg>
                                                     ) : (
-                                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="white" stroke="none">
+                                                        <svg
+                                                            width="14"
+                                                            height="14"
+                                                            viewBox="0 0 24 24"
+                                                            fill="white"
+                                                            stroke="none"
+                                                        >
                                                             <polygon points="6 3 20 12 6 21 6 3" />
                                                         </svg>
                                                     )}
@@ -186,13 +206,29 @@ export default function Speaker() {
                                                 {/* Mute / Unmute */}
                                                 <button className="ctrl-btn" onClick={toggleMute}>
                                                     {isMuted ? (
-                                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round">
+                                                        <svg
+                                                            width="14"
+                                                            height="14"
+                                                            viewBox="0 0 24 24"
+                                                            fill="none"
+                                                            stroke="white"
+                                                            strokeWidth="2"
+                                                            strokeLinecap="round"
+                                                        >
                                                             <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
                                                             <line x1="23" y1="9" x2="17" y2="15" />
                                                             <line x1="17" y1="9" x2="23" y2="15" />
                                                         </svg>
                                                     ) : (
-                                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round">
+                                                        <svg
+                                                            width="14"
+                                                            height="14"
+                                                            viewBox="0 0 24 24"
+                                                            fill="none"
+                                                            stroke="white"
+                                                            strokeWidth="2"
+                                                            strokeLinecap="round"
+                                                        >
                                                             <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
                                                             <path d="M19.07 4.93a10 10 0 0 1 0 14.14" />
                                                             <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
@@ -202,7 +238,8 @@ export default function Speaker() {
 
                                                 {/* Time */}
                                                 <span className="text-white/70 text-[11px] font-[var(--font-dm-sans)] ml-1 tabular-nums">
-                                                    {formatTime(currentTime)} / {formatTime(duration || 40)}
+                                                    {formatTime(currentTime)} /{" "}
+                                                    {formatTime(duration || 40)}
                                                 </span>
                                             </div>
 
@@ -231,23 +268,36 @@ export default function Speaker() {
                         </div>
 
                         {/* Heading */}
-                        <h2 className="text-[28px] md:text-[44px] font-[var(--font-playfair)] text-[#111] leading-[1.12] mb-7">
-                            Talk That Go<br />
-                            <span className="italic text-[#c42d2d]">Beyond Inspiration -</span>{" "}
-                            Into Real Awareness and Action.
+                        <h2 className="font-[var(--font-playfair)] text-[28px] md:text-[42px] text-[#111] leading-[1.1] mb-7">
+                            Talk that go
+                            <br />
+                            <span className="italic text-[#c42d2d] font-bold">
+                                beyond inspiration -
+                            </span>{""}
+                            <span className="text-[28px] p-3">into real awareness and action.</span>
                         </h2>
 
                         {/* Description */}
-                        <p className="text-[#333] text-[15px] md:text-[22px] leading-[1.55] font-[var(--font-dm-sans)] mb-7 max-w-2xl ">
-                            I&rsquo;m invited to speak with institutions, organizations, leaders, and young minds on how energy shapes choices and decisions&mdash;bringing{" "}
-                            <span className="text-[#111] font-semibold">clarity and ease</span>, especially in high-pressure environments, far more than we&rsquo;re taught.
+                        <p className="text-[#333] text-[16px] md:text-[18px] leading-[1.55] font-[var(--font-dm-sans)] mb-7 max-w-2xl">
+                            I&rsquo;m invited to speak with institutions, organizations,
+                            leaders, and young minds on how energy shapes choices and
+                            decisions&mdash;bringing{" "}
+                            <span className="text-[#111] font-semibold">
+                                clarity and ease
+                            </span>
+                            , especially in high-pressure environments, far more than
+                            we&rsquo;re taught.
                         </p>
 
                         {/* Quote */}
                         <div className="border-l-[3px] border-[#c42d2d]/30 pl-5 mb-8">
                             <p className="text-[#555] text-[14px] leading-[1.8] font-[var(--font-dm-sans)] italic">
-                                &ldquo;These are not motivational talks. They are grounded, experiential conversations that shift how people relate to{" "}
-                                <span className="text-[#111] not-italic font-semibold">pressure, performance, and themselves.</span>&rdquo;
+                                &ldquo;These are not motivational talks. They are grounded,
+                                experiential conversations that shift how people relate to{" "}
+                                <span className="text-[#111] not-italic font-semibold">
+                                    pressure, performance, and themselves.
+                                </span>
+                                &rdquo;
                             </p>
                         </div>
 
@@ -259,9 +309,14 @@ export default function Speaker() {
                             Explore
                             <svg
                                 className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
-                                viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="white"
+                                strokeWidth="2.5"
+                                strokeLinecap="round"
                             >
-                                <path d="M5 12h14" /><path d="M12 5l7 7-7 7" />
+                                <path d="M5 12h14" />
+                                <path d="M12 5l7 7-7 7" />
                             </svg>
                         </a>
                     </div>

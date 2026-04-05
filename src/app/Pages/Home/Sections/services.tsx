@@ -27,7 +27,7 @@ const servicesData = [
         number: "02",
         extra: (
             <div className="flex flex-wrap gap-2 flex-1 mt-3">
-                {['Energy Roadmap', 'Block Identification', 'Clear Next Steps'].map((f) => (
+                {['Energy Roadmap', 'Block Identification'].map((f) => (
                     <span key={f} className="feature-chip text-[9px] uppercase tracking-wider text-[#c42d2d] bg-white/70 border border-[#c42d2d]/20 rounded-full px-3 py-1 font-semibold font-[var(--font-dm-sans)] h-fit shadow-sm">
                         {f}
                     </span>
@@ -61,7 +61,7 @@ const SPARKLE_POSITIONS = [
 
 export default function Services() {
     return (
-        <section className="min-h-[98dvh] bg-gradient-to-b from-[#9b1c1c] via-[#7a1a1a] to-[#ece6e6] relative overflow-hidden flex flex-col justify-center py-16">
+        <section className="min-h-[98dvh] bg-gradient-to-b from-[#8a0a0a] to-[#4a0e0e] relative overflow-hidden flex flex-col justify-center py-16">
             <style jsx>{`
                 @keyframes borderRotate {
                     0% { --angle: 0deg; }
@@ -214,16 +214,16 @@ export default function Services() {
                     <div className="max-w-lg">
                         <div className="flex items-center gap-3 mb-3">
                             <div className="w-8 h-[2px] rounded-full bg-gradient-to-r from-[#c42d2d] to-[#e85d5d]" />
-                            <p className="text-[10px] md:text-sm uppercase tracking-[.3em] text-white/80 font-medium font-[var(--font-dm-sans)]">
+                            <p className="text-[10px] md:text-sm uppercase tracking-[.3em] text-white font-medium font-[var(--font-dm-sans)]">
                                 Services
                             </p>
                         </div>
-                        <h2 className="text-[26px] md:text-[38px] font-[var(--font-playfair)] text-white leading-[1.15]">
+                        <h2 className="text-[28px] md:text-[42px] font-[var(--font-playfair)] text-white leading-[1.15]">
                             Shift the One Thing That{' '}
-                            <span className="italic text-white/70">Changes Everything</span>
+                            <span className="italic text-white">Changes Everything</span>
                         </h2>
                     </div>
-                    <p className="text-white/90 text-[17px] max-w-sm mt-3 md:mt-0 leading-relaxed md:text-right">
+                    <p className="text-white/90 text-[16px] md:text-[18px] max-w-sm mt-3 md:mt-0 leading-relaxed md:text-right">
                         "Most people come to me after trying everything."
                         (Before when efforts fail.....)
                     </p>
@@ -265,13 +265,13 @@ export default function Services() {
                                 </div>
 
                                 {/* Title */}
-                                <h3 className="text-[20px] md:text-[24px] font-[var(--font-playfair)] text-[#111] font-bold leading-tight mb-3">
+                                <h3 className="text-[20px] md:text-[24px] font-[var(--font-playfair)] text-[#111] font-bold leading-tight mb-7">
                                     {svc.title}
                                 </h3>
-                                <p className="text-[#333] text-[20px] leading-relaxed mb-2 font-medium font-[var(--font-dm-sans)]">
+                                <p className="text-[#333] text-[20px] leading-[1.3] mb-7 font-medium font-[var(--font-dm-sans)]">
                                     {svc.p1}
                                 </p>
-                                <p className="text-gray-700 text-[15px] leading-[1.7] flex-1">
+                                <p className="text-gray-700 text-[15px] leading-[1.7] flex-1 font-style: italic text-center">
                                     {svc.p2}
                                 </p>
 
@@ -308,10 +308,10 @@ export default function Services() {
                 {/* Not sure where to begin? */}
                 <div className="mt-10 text-center">
                     <div className="inline-flex items-center gap-3 bg-white/[0.08] backdrop-blur-2xl rounded-full px-6 py-3.5 border border-white/10 shadow-xl shadow-black/30 hover:bg-white/[0.12] transition-all duration-300 group">
-                        <div className="w-2 h-2 rounded-full bg-black/40 animate-pulse flex-shrink-0" />
-                        <p className="text-black/90 text-[20px]">
+                        <div className="w-2 h-2 rounded-full bg-white/90 animate-pulse flex-shrink-0" />
+                        <p className="text-white/90 text-[20px]">
                             Not sure where to begin?{' '}
-                            <a href="#" className="text-black font-bold font-[var(--font-outfit)] hover:text-[#e85d5d] transition-colors duration-300 underline decoration-white/20 underline-offset-2 hover:decoration-[#e85d5d]/50">
+                            <a href="#" className="text-white font-bold font-[var(--font-outfit)] hover:text-[#e85d5d] transition-colors duration-300 underline decoration-white/20 underline-offset-2 hover:decoration-[#e85d5d]/50">
                                 The Energy Diagnostic Call&trade;
                             </a>{' '}
                             is the easiest first step.
