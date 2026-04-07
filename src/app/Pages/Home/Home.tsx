@@ -23,10 +23,7 @@ export default function Home() {
   const scrollRef = useRef<HTMLElement | null>(null);
 
   return (
-    <main
-      ref={scrollRef}
-      className="min-h-screen"
-    >
+    <main ref={scrollRef} className="min-h-screen">
       <section className="h-screen px-0">
         <Hero />
       </section>
@@ -57,7 +54,6 @@ export default function Home() {
 
       <section className="">
         <Services />
-
       </section>
 
       <section className="">
@@ -75,16 +71,13 @@ export default function Home() {
       <section className="">
         <LinkedIn />
       </section>
-
-      <section className="">
-        <MomsCommunity />
-      </section>
-      
       <section className="">
         <Dare />
       </section>
 
-
+      <section className="">
+        <MomsCommunity />
+      </section>
 
       <section className="">
         <Blog />
@@ -97,7 +90,6 @@ export default function Home() {
       <section className="">
         <FAQ />
       </section>
-
     </main>
   );
 }

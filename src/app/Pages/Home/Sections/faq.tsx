@@ -134,7 +134,7 @@ export default function FAQ() {
     };
 
     return (
-        <section className="relative h-[90dvh] min-h-[90dvh] max-h-[90dvh] py-8 md:py-10 px-4 md:px10 bg-[#fbfbfb] flex flex-col items-center justify-center overflow-hidden">
+        <section className="relative h-[100dvh] min-h-[90dvh] max-h-[100dvh] py-8 md:py-10 px-4 md:px10 bg-[#fbfbfb] flex flex-col items-center justify-center overflow-hidden">
             {/* Soft background accents */}
             {/* <div className="absolute top-1/4 left-0 w-[500px] h-[500px] bg-[#f5f0ea] rounded-full blur-[140px] pointer-events-none" />
             <div className="absolute bottom-0 right-[10%] w-[400px] h-[400px] bg-[#fff0f0] rounded-full blur-[120px] pointer-events-none" /> */}

@@ -60,7 +60,7 @@ function SwappingSlot({ images, delay, className = "flex-1" }: { images: (typeof
 
 export default function DareToDream() {
     return (
-        <section className="relative h-[90dvh] flex justify-center items-center py-6 md:py-10 bg-white overflow-hidden">
+        <section className="relative h-[90dvh] flex justify-center items-center py-6 md:py-10 bg-gradient-to-b from-[#8a0a0a] to-[#4a0e0e] overflow-hidden">
             <div className="relative z-10 w-full h-full max-w-[1400px] mx-auto px-4 md:px-8">
 
                 {/* 5-Column Grid Layout spanning full height */}
@@ -85,17 +85,17 @@ export default function DareToDream() {
                         <div className="flex flex-col items-center">
                             <div className="flex items-center gap-3 mb-4">
                                 <div className="w-6 h-px bg-gradient-to-r from-transparent to-[#c42d2d]" />
-                                <span className="text-[#c42d2d] text-[10px] md:text-[11px] uppercase tracking-[.3em] font-semibold font-[var(--font-dm-sans)]">
+                                <span className="text-white text-[10px] md:text-[11px] uppercase tracking-[.3em] font-semibold font-[var(--font-dm-sans)]">
                                     Interview Series
                                 </span>
                                 <div className="w-6 h-px bg-gradient-to-l from-transparent to-[#c42d2d]" />
                             </div>
 
-                            <h2 className="text-[28px] md:text-[42px] font-[var(--font-playfair)] text-[#111] font-bold leading-[1.05] tracking-tight mb-4">
-                                Dare to <br /> <span className="font-light italic text-[#c42d2d]">Dream.</span>
+                            <h2 className="text-[28px] md:text-[42px] font-[var(--font-playfair)] text-white font-bold leading-[1.05] tracking-tight mb-4">
+                                Dare to <br /> <span className="font-light italic text-white">Dream.</span>
                             </h2>
 
-                            <p className="text-[#555] text-[16px] md:text-[18px] font-semibold font-[var(--font-dm-sans)] max-w-md leading-relaxed mb-6">
+                            <p className="text-white/90 text-[16px] md:text-[18px] font-semibold font-[var(--font-dm-sans)] max-w-md leading-relaxed mb-6">
                                 A deep dive into the minds of visionaries, leaders, and creators. Discover the energy, pressure, and choices that shaped their extraordinary paths.
                             </p>
 

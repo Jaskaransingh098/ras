@@ -149,8 +149,8 @@ export default function ScrollPoints() {
             <div className="flex-shrink-0 relative z-10 px-6 md:px-12 pb-5 pt-2">
                 <div className="max-w-5xl mx-auto flex items-center justify-between">
                     <div className="flex items-center gap-3">
-                        <div className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
-                        <p className="text-black/90 text-xs md:text-lg italic font-[var(--font-playfair)]">
+                        <div className="w-1.5 h-1.5 rounded-full bg-white/70 animate-pulse" />
+                        <p className="text-white/90 text-xs md:text-lg italic font-[var(--font-playfair)]">
                             She does not fix people, she shifts energy. Everything changes.
                         </p>
                     </div>
