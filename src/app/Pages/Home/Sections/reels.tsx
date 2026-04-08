@@ -18,10 +18,12 @@ interface CardData {
   role: string;
   location: string;
   youtubeId: string;
+  poster?: string;
   transcript: string;
 }
 
 const ytThumb = (id: string) => `https://img.youtube.com/vi/${id}/hqdefault.jpg`;
+const cardThumb = (c: CardData) => (c.poster ? `/reels/${c.poster}` : ytThumb(c.youtubeId));
 
 export default function Reel({ scrollRef }: Props) {
   const [featured, setFeatured] = useState(0);
@@ -48,6 +50,7 @@ export default function Reel({ scrollRef }: Props) {
       role: "Banking Professional",
       location: "New Delhi",
       youtubeId: "woZJtGv6P-w",
+      poster: "kamal.png",
       transcript: `I’ve been a part of the banking sector for the last 15 years, and I was under intense pressure managing work turmoil and internal politics, which caught on me physically, mentally, and emotionally.
 I was under constant pressure to deliver. I could see my confidence eroding, my performance dipping, and this having an adverse impact on my health and wealth. I was gradually slipping into the shell of depression. And you know in corporate life, it’s not easy to talk about things like this.
 
@@ -66,6 +69,7 @@ If you’re going through something like this, please connect with Raseshvari. S
       role: "Dentist",
       location: "",
       youtubeId: "vdOWHa-rzGg",
+      poster: "she_heals.png",
       transcript: `Raseshvari Hindustani:
 "Most high-achieving women carry an invisible emotional load, one that quietly blocks their growth and impacts their revenue too. One of my clients, a beautiful and brilliant doctor, had tried everything, but an old emotional pain wouldn’t just let go."
 
@@ -270,7 +274,7 @@ The stress is gone totally from my head, all the negative thoughts which were co
                       />
                     ) : (
                       <>
-                        <img src={ytThumb(fc.youtubeId)} alt={fc.name} className="absolute inset-0 w-full h-full object-cover" />
+                        <img src={cardThumb(fc)} alt={fc.name} className="absolute inset-0 w-full h-full object-cover" />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                         <button
                           onClick={(e) => play(featured, e)}
@@ -299,7 +303,7 @@ The stress is gone totally from my head, all the negative thoughts which were co
                     <div className="absolute inset-0 flex flex-col p-5">
                       <div className="flex items-center gap-2 mb-3 flex-shrink-0">
                         <div className="w-7 h-7 rounded-full overflow-hidden border border-white/30">
-                          <img src={ytThumb(fc.youtubeId)} alt="" className="w-full h-full object-cover" />
+                          <img src={cardThumb(fc)} alt="" className="w-full h-full object-cover" />
                         </div>
                         <div>
                           <p className="text-white text-[11px] font-bold leading-tight font-[var(--font-outfit)]">{fc.name}</p>
@@ -352,8 +356,8 @@ The stress is gone totally from my head, all the negative thoughts which were co
               <div className="mt-6 mb-4 h-px bg-gray-200" />
 
               <div className="flex items-center gap-3">
-                <div className="w-11 h-11 rounded-full overflow-hidden shadow-md border-2 border-[#c42d2d]/20 flex-shrink-0">
-                  <img src={ytThumb(fc.youtubeId)} alt={fc.name} className="w-full h-full object-cover" />
+                  <div className="w-11 h-11 rounded-full overflow-hidden shadow-md border-2 border-[#c42d2d]/20 flex-shrink-0">
+                  <img src={cardThumb(fc)} alt={fc.name} className="w-full h-full object-cover" />
                 </div>
                 <div>
                   <p className="font-bold text-[#111] text-[15px] font-[var(--font-outfit)]">{fc.name}</p>
@@ -418,7 +422,7 @@ The stress is gone totally from my head, all the negative thoughts which were co
                               }`}
                             onClick={() => handleSwap(card.idx)}
                           >
-                            <img src={ytThumb(card.youtubeId)} alt={card.name} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                            <img src={cardThumb(card)} alt={card.name} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/10" />
 
                             {/* Hover play */}
