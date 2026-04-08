@@ -1,6 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 
 const cases = [
     {
@@ -36,6 +39,7 @@ const cases = [
 ];
 
 export default function Phases() {
+    const sectionRef = useRef<HTMLElement>(null);
     const [active, setActive] = useState(0);
     const [visible, setVisible] = useState(true);
     const c = cases[active];
@@ -48,6 +52,22 @@ export default function Phases() {
         return () => clearInterval(timer);
     }, [active]);
 
+    useEffect(() => {
+        const s = sectionRef.current;
+        if (!s) return;
+        const ctx = gsap.context(() => {
+            gsap.fromTo(
+                s.querySelectorAll(".ph-reveal"),
+                { y: 40, opacity: 0 },
+                {
+                    y: 0, opacity: 1, duration: 0.9, stagger: 0.15, ease: "power3.out",
+                    scrollTrigger: { trigger: s, start: "20% bottom", toggleActions: "play none none reset" },
+                }
+            );
+        }, s);
+        return () => ctx.revert();
+    }, []);
+
     function switchTo(next: number) {
         if (next === active) return;
         setVisible(false);
@@ -58,7 +78,7 @@ export default function Phases() {
     }
 
     return (
-        <section
+        <section ref={sectionRef}
             className="min-h-[100dvh] bg-gradient-to-b from-[#8a0a0a] to-[#4a0e0e] relative overflow-hidden flex items-center"
             style={{}}
         >
@@ -124,20 +144,20 @@ export default function Phases() {
                     {/* LEFT — Case Selector */}
                     <div className="md:w-[38%] flex flex-col justify-center">
                         {/* Section label */}
-                        <div className="flex items-center gap-3 mb-8">
+                        <div className="ph-reveal flex items-center gap-3 mb-8">
                             <div className="w-10 h-[3px] rounded-full transition-all duration-500" style={{ background: `linear-gradient(90deg, ${c.accent}, transparent)` }} />
                             <p className="text-[13px] uppercase tracking-[.3em] text-white font-bold font-[var(--font-dm-sans)]">
                                 Real Transformations
                             </p>
                         </div>
 
-                        <h2 className="text-[28px] md:text-[42px] font-[var(--font-playfair)] text-white leading-[1.2] mb-6">
+                        <h2 className="ph-reveal text-[28px] md:text-[42px] font-[var(--font-playfair)] text-white leading-[1.2] mb-6">
                             One Session.<br />
                             <span className="italic text-red-500">Everything Shifts.</span>
                         </h2>
 
                         {/* Descriptive text */}
-                        <p className="text-white text-[16px] md:text-[18px] leading-[1.85] mb-10 max-w-[95%] font-[var(--font-dm-sans)] font-medium">
+                        <p className="ph-reveal text-white text-[16px] md:text-[18px] leading-[1.85] mb-10 max-w-[95%] font-[var(--font-dm-sans)] font-medium">
                             Real people. Real results. Real transformations that happen when deeply stuck patterns dissolve and your true potential emerges.
                             Discover the profound shifts that occur in a single session.
                         </p>
@@ -215,7 +235,7 @@ export default function Phases() {
                     </div>
 
                     {/* RIGHT — Flow Visualization */}
-                    <div className="md:w-[62%] flex items-center">
+                    <div className="ph-reveal md:w-[62%] flex items-center">
                         <div
                             className={`w-full flow-panel ${visible ? 'visible-panel' : 'hidden-panel'}`}
                         >

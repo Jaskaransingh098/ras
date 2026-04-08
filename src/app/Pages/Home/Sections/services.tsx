@@ -1,5 +1,10 @@
 "use client";
 
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
+
 /* ─── DATA (unchanged) ─── */
 const servicesData = [
     {
@@ -59,8 +64,26 @@ const servicesData = [
    (matches reference image 1)
 ════════════════════════════════════════════════ */
 export default function Services() {
+    const sectionRef = useRef<HTMLElement>(null);
+
+    useEffect(() => {
+        const s = sectionRef.current;
+        if (!s) return;
+        const ctx = gsap.context(() => {
+            gsap.fromTo(
+                s.querySelectorAll(".svc-reveal"),
+                { y: 40, opacity: 0 },
+                {
+                    y: 0, opacity: 1, duration: 0.9, stagger: 0.15, ease: "power3.out",
+                    scrollTrigger: { trigger: s, start: "20% bottom", toggleActions: "play none none reset" },
+                }
+            );
+        }, s);
+        return () => ctx.revert();
+    }, []);
+
     return (
-        <section className="svc-root bg-gradient-to-b from-[#8a0a0a] to-[#4a0e0e] relative overflow-hidden" style={{ height: '100dvh', maxHeight: '100dvh' }}>
+        <section ref={sectionRef} className="svc-root bg-gradient-to-b from-[#8a0a0a] to-[#4a0e0e] relative overflow-hidden" style={{ height: '115dvh', maxHeight: '115dvh' }}>
             <style>{`
                 /* ── NEW editorial styles ── */
                 .svc-root {
@@ -204,7 +227,7 @@ export default function Services() {
             <div className="max-w-8xl mx-auto px-6 md:px-12 w-full pt-8 pb-10">
 
                 {/* ── Original section header ── */}
-                <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-5">
+                <div className="svc-reveal flex flex-col md:flex-row md:items-end md:justify-between mb-5">
                     <div className="max-w-lg">
                         <div className="flex items-center gap-3 mb-2">
                             <div className="w-8 h-[2px] rounded-full bg-gradient-to-r from-[#c42d2d] to-[#e85d5d]" />
@@ -265,6 +288,16 @@ export default function Services() {
                                 {svc.iconSVG}
                             </svg>
                         </div>
+                        {/* CTA Button */}
+                        <a
+                            href={svc.btnLink}
+                            className="svc-row-btn"
+                        >
+                            {svc.btnText}
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+                                <path d="M5 12h14"/><path d="M12 5l7 7-7 7"/>
+                            </svg>
+                        </a>
                     </div>
                 ))}
 
@@ -311,69 +344,6 @@ export default function Services() {
                     </a>
                 </div>
             </div>
-
-            {/* ══════════════════════════════════════
-                OLD DESIGN (commented out)
-            ══════════════════════════════════════
-            <style jsx>{`
-                @keyframes borderRotate {
-                    0% { --angle: 0deg; }
-                    100% { --angle: 360deg; }
-                }
-                @keyframes float {
-                    0%, 100% { transform: translateY(0px); }
-                    50% { transform: translateY(-8px); }
-                }
-                @keyframes shimmer {
-                    0% { background-position: -200% center; }
-                    100% { background-position: 200% center; }
-                }
-                @keyframes glow-pulse {
-                    0%, 100% { opacity: 0.4; transform: scale(1); }
-                    50% { opacity: 0.8; transform: scale(1.15); }
-                }
-                @keyframes orb-drift {
-                    0%, 100% { transform: translate(0, 0) scale(1); }
-                    33% { transform: translate(15px, -10px) scale(1.05); }
-                    66% { transform: translate(-10px, 8px) scale(0.95); }
-                }
-                .service-card {
-                    position: relative;
-                    border-radius: 24px;
-                    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-                }
-                ...etc (full old styles omitted for brevity)
-            `}</style>
-
-            <div className="max-w-7xl mx-auto px-6 md:px-12 w-full relative z-10">
-                <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-12">
-                    <div className="max-w-lg">
-                        <div className="flex items-center gap-3 mb-3">
-                            <div className="w-8 h-[2px] rounded-full bg-gradient-to-r from-[#c42d2d] to-[#e85d5d]" />
-                            <p className="text-[10px] md:text-sm uppercase tracking-[.3em] text-white ...">Services</p>
-                        </div>
-                        <h2 className="text-[28px] md:text-[42px] ...">
-                            Shift the One Thing That <span className="italic">Changes Everything</span>
-                        </h2>
-                    </div>
-                    <p className="text-white/90 ...">
-                        "Most people come to me after trying everything."
-                    </p>
-                </div>
-                <div className="grid md:grid-cols-3 gap-5 md:gap-6">
-                    {servicesData.map((svc, index) => (
-                        <div key={index} className="service-card group bg-white/95 ...">
-                            ... card contents ...
-                        </div>
-                    ))}
-                </div>
-                <div className="mt-10 text-center">
-                    <div className="inline-flex items-center gap-3 bg-white/[0.08] ...">
-                        Not sure where to begin? The Energy Diagnostic Call™ is the easiest first step.
-                    </div>
-                </div>
-            </div>
-            ══════════════════════════════════════ */}
         </section>
     );
 }

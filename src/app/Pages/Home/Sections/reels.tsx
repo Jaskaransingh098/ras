@@ -213,7 +213,7 @@ The stress is gone totally from my head, all the negative thoughts which were co
     const ctx = gsap.context(() => {
       gsap.fromTo(s.querySelectorAll(".rr"), { y: 50, opacity: 0 }, {
         y: 0, opacity: 1, duration: 0.9, stagger: 0.14, ease: "power3.out",
-        scrollTrigger: { trigger: s, start: "top 80%", toggleActions: "play none none none" },
+        scrollTrigger: { trigger: s, start: "20% bottom", toggleActions: "play none none reset" },
       });
     }, s);
     return () => ctx.revert();

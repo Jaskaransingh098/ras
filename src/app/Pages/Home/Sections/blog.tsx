@@ -87,8 +87,8 @@ export default function Blog() {
                     ease: "power3.out",
                     scrollTrigger: {
                         trigger: section,
-                        start: "top 80%",
-                        toggleActions: "play none none none",
+                        start: "20% bottom",
+                        toggleActions: "play none none reset",
                     },
                 }
             );
@@ -103,8 +103,8 @@ export default function Blog() {
                     ease: "power3.out",
                     scrollTrigger: {
                         trigger: section.querySelector(".b-grid"),
-                        start: "top 85%",
-                        toggleActions: "play none none none",
+                        start: "20% bottom",
+                        toggleActions: "play none none reset",
                     },
                 }
             );

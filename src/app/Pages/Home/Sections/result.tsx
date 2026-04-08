@@ -56,7 +56,7 @@ export default function Result() {
                 { y: 30, opacity: 0 },
                 {
                     y: 0, opacity: 1, duration: 0.9, stagger: 0.12, ease: "power3.out",
-                    scrollTrigger: { trigger: section, start: "top 80%", toggleActions: "play none none none" },
+                    scrollTrigger: { trigger: section, start: "20% bottom", toggleActions: "play none none reset" },
                 }
             );
             gsap.fromTo(
@@ -64,7 +64,7 @@ export default function Result() {
                 { y: 50, opacity: 0, scale: 0.96 },
                 {
                     y: 0, opacity: 1, scale: 1, duration: 0.65, stagger: 0.09, ease: "power3.out",
-                    scrollTrigger: { trigger: section.querySelector(".bg-grid"), start: "top 85%", toggleActions: "play none none none" },
+                    scrollTrigger: { trigger: section.querySelector(".bg-grid"), start: "20% bottom", toggleActions: "play none none reset" },
                 }
             );
         }, section);

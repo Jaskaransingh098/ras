@@ -2,6 +2,9 @@
 
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 
 // 13 guest images total to support 6 swapping slots (12 images) + 1 fixed center (1 image)
 const guestImages = Array.from({ length: 13 }).map((_, i) => ({
@@ -59,8 +62,26 @@ function SwappingSlot({ images, delay, className = "flex-1" }: { images: (typeof
 }
 
 export default function DareToDream() {
+    const sectionRef = useRef<HTMLElement>(null);
+
+    useEffect(() => {
+        const s = sectionRef.current;
+        if (!s) return;
+        const ctx = gsap.context(() => {
+            gsap.fromTo(
+                s.querySelectorAll(".dare-reveal"),
+                { y: 40, opacity: 0 },
+                {
+                    y: 0, opacity: 1, duration: 0.9, stagger: 0.15, ease: "power3.out",
+                    scrollTrigger: { trigger: s, start: "20% bottom", toggleActions: "play none none reset" },
+                }
+            );
+        }, s);
+        return () => ctx.revert();
+    }, []);
+
     return (
-        <section className="relative h-[90dvh] flex justify-center items-center py-6 md:py-10 bg-gradient-to-b from-[#8a0a0a] to-[#4a0e0e] overflow-hidden">
+        <section ref={sectionRef} className="relative h-[90dvh] flex justify-center items-center py-6 md:py-10 bg-gradient-to-b from-[#8a0a0a] to-[#4a0e0e] overflow-hidden">
             <div className="relative z-10 w-full h-full max-w-[1400px] mx-auto px-4 md:px-8">
 
                 {/* 5-Column Grid Layout spanning full height */}
@@ -82,7 +103,7 @@ export default function DareToDream() {
                     <div className="flex-[1.8] flex flex-col h-full justify-between items-center text-center pt-[5%] pb-[1%] px-2">
 
                         {/* Text Content */}
-                        <div className="flex flex-col items-center">
+                        <div className="dare-reveal flex flex-col items-center">
                             <div className="flex items-center gap-3 mb-4">
                                 <div className="w-6 h-px bg-gradient-to-r from-transparent to-[#c42d2d]" />
                                 <span className="text-white text-[10px] md:text-[11px] uppercase tracking-[.3em] font-semibold font-[var(--font-dm-sans)]">

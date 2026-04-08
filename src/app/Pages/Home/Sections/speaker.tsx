@@ -2,6 +2,9 @@
 
 import { useRef, useState, useEffect } from "react";
 import { Poppins , Roboto_Condensed} from "next/font/google";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
  const Roboto = Roboto_Condensed({
     subsets: ["latin"],
     variable: "--font-roboto-condensed",
@@ -9,6 +12,7 @@ import { Poppins , Roboto_Condensed} from "next/font/google";
   });
 
 export default function Speaker() {
+  const sectionRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(true);
   const [isMuted, setIsMuted] = useState(true);
@@ -45,6 +49,22 @@ export default function Speaker() {
     };
   }, []);
 
+  useEffect(() => {
+    const s = sectionRef.current;
+    if (!s) return;
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        s.querySelectorAll(".spk-reveal"),
+        { y: 40, opacity: 0 },
+        {
+          y: 0, opacity: 1, duration: 0.9, stagger: 0.15, ease: "power3.out",
+          scrollTrigger: { trigger: s, start: "20% bottom", toggleActions: "play none none reset" },
+        }
+      );
+    }, s);
+    return () => ctx.revert();
+  }, []);
+
   function togglePlay() {
     const video = videoRef.current;
     if (!video) return;
@@ -74,7 +94,7 @@ export default function Speaker() {
   }
 
   return (
-    <section className="relative min-h-[100dvh] flex items-center overflow-hidden bg-white">
+    <section ref={sectionRef} className="relative min-h-[100dvh] flex items-center overflow-hidden bg-white">
       <style jsx>{`
         .explore-btn {
           position: relative;
@@ -151,7 +171,7 @@ export default function Speaker() {
       <div className="max-w-8xl mx-auto px-6 md:px-12 w-full relative z-10 py-16 md:py-20">
         <div className="flex flex-col-reverse md:flex-row gap-16 md:gap-24 items-center justify-center">
           {/* LEFT — Video */}
-          <div className="w-full md:w-[300px] flex-shrink-0">
+          <div className="spk-reveal w-full md:w-[300px] flex-shrink-0">
             <div className="video-frame shadow-xl shadow-black/[0.08]">
               <div className="relative aspect-[9/16] max-h-[75dvh] bg-[#f0ebe4]">
                 <video
@@ -264,7 +284,7 @@ export default function Speaker() {
           </div>
 
           {/* RIGHT — Content */}
-          <div className="md:w-[55%]">
+          <div className="spk-reveal md:w-[55%]">
             {/* Label */}
             <div className="flex items-center gap-3 mb-5">
               <div className="w-10 h-[2px] rounded-full bg-gradient-to-r from-[#c42d2d] to-transparent" />

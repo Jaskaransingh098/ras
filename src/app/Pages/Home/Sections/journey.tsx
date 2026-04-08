@@ -1,5 +1,10 @@
 "use client";
 
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
+
 // Journey photos — each has an explicit aspect ratio (w/h)
 const photos: { src: string; alt: string; caption: string; aspect: string }[] = [
     // Portrait / headshot style
@@ -96,8 +101,26 @@ function ScrollRow({
 }
 
 export default function Journey() {
+    const sectionRef = useRef<HTMLElement>(null);
+
+    useEffect(() => {
+        const s = sectionRef.current;
+        if (!s) return;
+        const ctx = gsap.context(() => {
+            gsap.fromTo(
+                s.querySelectorAll(".jrn-reveal"),
+                { y: 40, opacity: 0 },
+                {
+                    y: 0, opacity: 1, duration: 0.9, stagger: 0.15, ease: "power3.out",
+                    scrollTrigger: { trigger: s, start: "20% bottom", toggleActions: "play none none reset" },
+                }
+            );
+        }, s);
+        return () => ctx.revert();
+    }, []);
+
     return (
-        <section className="bg-white flex flex-col relative overflow-hidden pt-10 p-5">
+        <section ref={sectionRef} className="bg-white flex flex-col relative overflow-hidden pt-10 p-5">
             <style>{`
                 @keyframes journey-scroll-fwd {
                     0%   { transform: translateX(0); }
@@ -121,7 +144,7 @@ export default function Journey() {
             `}</style>
 
             {/* Header */}
-            <div className="flex items-end justify-between px-8 md:px-12 pt-8 pb-6 flex-shrink-0">
+            <div className="jrn-reveal flex items-end justify-between px-8 md:px-12 pt-8 pb-6 flex-shrink-0">
                 <div>
                     <div className="flex items-center gap-3 mb-2">
                         <div className="w-8 h-[2px] rounded-full bg-[#c42d2d]" />
@@ -143,7 +166,7 @@ export default function Journey() {
             </div>
 
             {/* Two masonry scroll rows */}
-            <div className="flex flex-col gap-4 px-8 md:px-12 pb-10 flex-shrink-0">
+            <div className="jrn-reveal flex flex-col gap-4 px-8 md:px-12 pb-10 flex-shrink-0">
                 {/* Row 1 — taller, scrolls left */}
                 <ScrollRow items={row1} rowH={300} duration="85s" />
                 {/* Row 2 — shorter, scrolls right */}

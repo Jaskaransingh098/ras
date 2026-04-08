@@ -2,6 +2,9 @@
 
 import { useRef, useState, useEffect, useCallback } from "react";
 import Image from "next/image";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 
 const screenshots = [
     { id: 1, src: "/linkedin/rec-1.png", alt: "Recommendation 1" },
@@ -13,6 +16,7 @@ const screenshots = [
 ];
 
 export default function LinkedIn() {
+    const sectionRef = useRef<HTMLElement>(null);
     const scrollRef = useRef<HTMLDivElement>(null);
     const [canScrollLeft, setCanScrollLeft] = useState(false);
     const [canScrollRight, setCanScrollRight] = useState(true);
@@ -68,11 +72,27 @@ export default function LinkedIn() {
 
 
 
+    useEffect(() => {
+        const s = sectionRef.current;
+        if (!s) return;
+        const ctx = gsap.context(() => {
+            gsap.fromTo(
+                s.querySelectorAll(".li-reveal"),
+                { y: 40, opacity: 0 },
+                {
+                    y: 0, opacity: 1, duration: 0.9, stagger: 0.15, ease: "power3.out",
+                    scrollTrigger: { trigger: s, start: "20% bottom", toggleActions: "play none none reset" },
+                }
+            );
+        }, s);
+        return () => ctx.revert();
+    }, []);
+
     // Duplicate screenshots for infinite loop
     const allScreenshots = [...screenshots, ...screenshots];
 
     return (
-        <section
+        <section ref={sectionRef}
             className="relative min-h-[80dvh] max-h-[90dvh] flex flex-col justify-center overflow-hidden"
             style={{ background: "linear-gradient(180deg, #f5f0ea 0%, #efe8df 50%, #f5f0ea 100%)" }}
         >
@@ -117,7 +137,7 @@ export default function LinkedIn() {
 
             <div className="w-full relative z-10 pt-16 md:pt-20 pb-14 md:pb-16">
                 {/* Header row */}
-                <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col md:flex-row md:items-end md:justify-between mb-10">
+                <div className="li-reveal max-w-7xl mx-auto px-6 md:px-12 flex flex-col md:flex-row md:items-end md:justify-between mb-10">
                     <div className="flex items-center gap-5">
                         {/* LinkedIn icon */}
                         {/* <div className="w-13 h-13 rounded-2xl bg-[#c42d2d] flex items-center justify-center shadow-lg shadow-[#c42d2d]/20 flex-shrink-0 p-3.5">

@@ -82,7 +82,7 @@ export default function How({ scrollRef }: Props) {
         const ctx = gsap.context(() => {
             gsap.fromTo(s.querySelectorAll(".hw"), { y: 40, opacity: 0 }, {
                 y: 0, opacity: 1, duration: 0.8, stagger: 0.12, ease: "power3.out",
-                scrollTrigger: { trigger: s, start: "top 80%", toggleActions: "play none none none" },
+                scrollTrigger: { trigger: s, start: "20% bottom", toggleActions: "play none none reset" },
             });
         }, s);
         return () => ctx.revert();

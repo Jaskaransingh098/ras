@@ -1,12 +1,32 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Contact() {
+    const sectionRef = useRef<HTMLElement>(null);
     const [inquiryType, setInquiryType] = useState<"services" | "speaking" | "">("");
 
+    useEffect(() => {
+        const s = sectionRef.current;
+        if (!s) return;
+        const ctx = gsap.context(() => {
+            gsap.fromTo(
+                s.querySelectorAll(".ct-reveal"),
+                { y: 40, opacity: 0 },
+                {
+                    y: 0, opacity: 1, duration: 0.9, stagger: 0.2, ease: "power3.out",
+                    scrollTrigger: { trigger: s, start: "20% bottom", toggleActions: "play none none reset" },
+                }
+            );
+        }, s);
+        return () => ctx.revert();
+    }, []);
+
     return (
-        <section className="relative h-[90dvh] py-16 px-6 md:px-12 flex items-center justify-center overflow-hidden bg-gradient-to-b from-[#8a0a0a] to-[#4a0e0e]">
+        <section ref={sectionRef} className="relative h-[90dvh] py-16 px-6 md:px-12 flex items-center justify-center overflow-hidden bg-gradient-to-b from-[#8a0a0a] to-[#4a0e0e]">
             {/* Dark premium red gradient background overlay */}
             <div className="absolute inset-0 bg-[#4a0e0e]/20" />
 
@@ -17,7 +37,7 @@ export default function Contact() {
             <div className="relative z-10 w-full max-w-[1300px] h-[95%] mx-auto flex flex-col md:flex-row gap-16 md:gap-24 items-center justify-center">
 
                 {/* Left Side Typography & Info */}
-                <div className="w-full md:w-5/12 flex flex-col justify-center h-full">
+                <div className="ct-reveal w-full md:w-5/12 flex flex-col justify-center h-full">
                     <div className="flex items-center gap-3 mb-8">
                         <div className="w-10 h-px bg-gradient-to-r from-transparent to-[#f0cfb1]" />
                         <span className="text-[#f0cfb1] text-[12px] uppercase tracking-[.3em] font-semibold font-[var(--font-dm-sans)]">
@@ -49,7 +69,7 @@ export default function Contact() {
                 </div>
 
                 {/* Right Side Form Card */}
-                <div className="w-full md:w-7/12 relative flex justify-center h-full items-center">
+                <div className="ct-reveal w-full md:w-7/12 relative flex justify-center h-full items-center">
                     {/* Artistic Shadow/Backing */}
                     <div className="absolute inset-0 bg-[#3a0b0b] blur-2xl rounded-[50px] -z-10 translate-y-4 translate-x-4 opacity-50" />
 

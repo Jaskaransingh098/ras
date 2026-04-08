@@ -1,6 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 
 const faqData = [
     {
@@ -75,7 +78,24 @@ const faqData = [
 ];
 
 export default function FAQ() {
+    const sectionRef = useRef<HTMLElement>(null);
     const [openIndex, setOpenIndex] = useState<number | null>(0);
+
+    useEffect(() => {
+        const s = sectionRef.current;
+        if (!s) return;
+        const ctx = gsap.context(() => {
+            gsap.fromTo(
+                s.querySelectorAll(".faq-reveal"),
+                { y: 40, opacity: 0 },
+                {
+                    y: 0, opacity: 1, duration: 0.9, stagger: 0.12, ease: "power3.out",
+                    scrollTrigger: { trigger: s, start: "20% bottom", toggleActions: "play none none reset" },
+                }
+            );
+        }, s);
+        return () => ctx.revert();
+    }, []);
 
     const toggleFAQ = (index: number) => {
         setOpenIndex(openIndex === index ? null : index);
@@ -134,7 +154,7 @@ export default function FAQ() {
     };
 
     return (
-        <section className="relative h-[100dvh] min-h-[90dvh] max-h-[100dvh] py-8 md:py-10 px-4 md:px10 bg-[#fbfbfb] flex flex-col items-center justify-center overflow-hidden">
+        <section ref={sectionRef} className="relative h-[100dvh] min-h-[90dvh] max-h-[100dvh] py-8 md:py-10 px-4 md:px10 bg-[#fbfbfb] flex flex-col items-center justify-center overflow-hidden">
             {/* Soft background accents */}
             {/* <div className="absolute top-1/4 left-0 w-[500px] h-[500px] bg-[#f5f0ea] rounded-full blur-[140px] pointer-events-none" />
             <div className="absolute bottom-0 right-[10%] w-[400px] h-[400px] bg-[#fff0f0] rounded-full blur-[120px] pointer-events-none" /> */}
@@ -142,7 +162,7 @@ export default function FAQ() {
             <div className="relative z-10 w-full max-w-[1400px] h-full flex flex-col min-h-0">
 
                 {/* Centered Headers - Avoiding the split-screen look */}
-                <div className="w-full text-center flex flex-col items-center flex-shrink-0 mb-8 md:mb-5">
+                <div className="faq-reveal w-full text-center flex flex-col items-center flex-shrink-0 mb-8 md:mb-5">
                     <div className="flex items-center gap-3 mb-5">
                         <div className="w-10 h-px bg-gradient-to-r from-transparent to-[#c42d2d]" />
                         <span className="text-[#c42d2d] text-[12px] uppercase tracking-[.3em] font-semibold font-[var(--font-dm-sans)]">
@@ -167,12 +187,12 @@ export default function FAQ() {
                             <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-5 items-start w-full mt-2">
 
                                 {/* Left Column */}
-                                <div className="flex flex-col gap-4 md:gap-3 w-full">
+                                <div className="faq-reveal flex flex-col gap-4 md:gap-3 w-full">
                                     {leftColumnFAQs.map((faq, index) => renderCard(faq, 0, index))}
                                 </div>
 
                                 {/* Right Column */}
-                                <div className="flex flex-col gap-4 md:gap-5 w-full mt-0 lg:mt-6">
+                                <div className="faq-reveal flex flex-col gap-4 md:gap-5 w-full mt-0 lg:mt-6">
                                     {rightColumnFAQs.map((faq, index) => renderCard(faq, midpoint, index))}
                                 </div>
 

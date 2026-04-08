@@ -33,8 +33,8 @@ export default function Experience({ scrollRef }: Props) {
           ease: "power3.out",
           scrollTrigger: {
             trigger: section,
-            start: "top 80%",
-            toggleActions: "play none none none",
+            start: "20% bottom",
+            toggleActions: "play none none reset",
           },
         },
       );
@@ -47,8 +47,8 @@ export default function Experience({ scrollRef }: Props) {
           ease: "power3.out",
           scrollTrigger: {
             trigger: section,
-            start: "top 85%",
-            toggleActions: "play none none none",
+            start: "20% bottom",
+            toggleActions: "play none none reset",
           },
           onUpdate: () => {
             el.innerText = Math.floor(obj.value) + suffix;

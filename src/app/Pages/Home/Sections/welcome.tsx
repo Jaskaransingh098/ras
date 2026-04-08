@@ -48,8 +48,8 @@ export default function Welcome({ scrollRef }: Props) {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
-          start: "top 80%",
-          toggleActions: "play none none none",
+          start: "20% bottom",
+          toggleActions: "play none none reset",
         },
       });
 
