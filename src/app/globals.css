@@ -188,3 +188,34 @@
 h1:hover .interactive-text::before {
   opacity: 1;
 }
+
+/* ── Global Section Heading ──────────────────────────────────────────
+   Matches the Services section (.svc-row-title) typography exactly.
+   Apply to all main h2/h3 headings across every section.
+   Color and font-size are kept per-section — only weight, spacing,
+   line-height and font-family are enforced here.
+──────────────────────────────────────────────────────────────────── */
+.section-heading {
+  font-family: var(--font-playfair), serif !important;
+  font-weight: 800 !important;
+  line-height: 1.05 !important;
+  letter-spacing: -0.01em !important;
+}
+
+/* Smaller sub-headings (h3 level) — slightly lighter than main */
+.section-subheading {
+  font-family: var(--font-playfair), serif !important;
+  font-weight: 700 !important;
+  line-height: 1.1 !important;
+  letter-spacing: -0.01em !important;
+}
+
+/* Body / label text — DM Sans with proper fallback */
+.section-body {
+  font-family: var(--font-dm-sans), sans-serif !important;
+}
+
+/* CTA buttons — Outfit with proper fallback */
+.section-cta {
+  font-family: var(--font-outfit), sans-serif !important;
+}

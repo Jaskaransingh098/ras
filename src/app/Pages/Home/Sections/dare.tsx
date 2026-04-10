@@ -112,7 +112,7 @@ export default function DareToDream() {
                                 <div className="w-6 h-px bg-gradient-to-l from-transparent to-[#c42d2d]" />
                             </div>
 
-                            <h2 className="text-[28px] md:text-[42px] font-[var(--font-playfair)] text-white font-bold leading-[1.05] tracking-tight mb-4">
+                            <h2 className="section-heading text-[28px] md:text-[42px] font-[var(--font-playfair)] text-white font-bold leading-[1.05] tracking-tight mb-4">
                                 Dare to <br /> <span className="font-light italic text-white">Dream.</span>
                             </h2>
 
@@ -120,7 +120,7 @@ export default function DareToDream() {
                                 A deep dive into the minds of visionaries, leaders, and creators. Discover the energy, pressure, and choices that shaped their extraordinary paths.
                             </p>
 
-                            <button className="bg-[#1a1a1a] text-white hover:bg-[#c42d2d] transition-colors px-8 py-3 rounded-[12px] font-medium text-[14px] font-[var(--font-dm-sans)] shadow-md">
+                            <button className="bg-[#1a1a1a] text-white hover:bg-[#c42d2d] transition-colors px-8 py-3 rounded-[12px] font-medium text-[14px] font-[var(--font-outfit)] shadow-md">
                                 Check the Series
                             </button>
                         </div>

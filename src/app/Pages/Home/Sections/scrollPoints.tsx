@@ -101,7 +101,7 @@ export default function ScrollPoints() {
                     </p>
                     <div className="w-6 h-px bg-white/40" />
                 </div>
-                <h2 className="text-[28px] md:text-[42px] font-[var(--font-playfair)] text-white leading-[1.1] font-bold">
+                <h2 className="section-heading text-[28px] md:text-[42px] font-[var(--font-playfair)] text-white leading-[1.1] font-bold">
                     Raseshvari Hindustani
                 </h2>
                 <p className="mt-2 text-white/80 text-[16px] md:text-[18px] font-medium tracking-wide font-[var(--font-dm-sans)]">
@@ -135,7 +135,7 @@ export default function ScrollPoints() {
                                     <h3 className="text-[22px] md:text-[28px] font-[var(--font-playfair)] text-[#111] font-bold leading-tight mb-3">
                                         {card.title}
                                     </h3>
-                                    <p className="text-gray-800 text-sm md:text-[23px] leading-relaxed max-w-md">
+                                    <p className="text-gray-800 text-sm md:text-[23px] leading-relaxed max-w-md font-[var(--font-dm-sans)]">
                                         {card.description}
                                     </p>
                                 </div>

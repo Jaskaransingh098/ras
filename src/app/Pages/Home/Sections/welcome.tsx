@@ -114,10 +114,10 @@ export default function Welcome({ scrollRef }: Props) {
             {splitWords("into pure transformation", "word-p")}
           </p> */}
 
-          <h1 className="text-[32px] md:text-[62px] leading-[1.1] font-bold drop-shadow-xl font-[var(--font-outfit)]">
+          <h1 className="section-heading text-[32px] md:text-[62px] leading-[1.1] font-bold drop-shadow-xl font-[var(--font-playfair)]">
             {splitLetters("When Your Energy Shifts,", "letter-h")}
             <br />
-            <span className="text-red-600 font-black drop-shadow-2xl">
+            <span className="italic text-red-600 font-black drop-shadow-2xl">
               {splitLetters("Your Entire Reality Changes", "letter-h")}
             </span>
           </h1>
@@ -129,7 +129,7 @@ export default function Welcome({ scrollRef }: Props) {
           {[...Array(4)].map((_, i) => (
             <p
               key={i}
-              className="mx-16 text-[#f9f7f7] text-lg md:text-2xl font-medium tracking-wide font-[var(--font-cormorant)] italic"
+              className="mx-16 text-[#f9f7f7] text-lg md:text-2xl font-medium tracking-wide font-[var(--font-dm-sans)] italic"
             >
               First Indian who officially changed her surname to{" "}
               <span className="text-[#f63434] font-semibold text-3xl">

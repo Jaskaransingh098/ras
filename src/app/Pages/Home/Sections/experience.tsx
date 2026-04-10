@@ -110,7 +110,7 @@ export default function Experience({ scrollRef }: Props) {
             {/* BOTTOM: Years stats */}
             <div className="exp-reveal flex flex-wrap gap-8 sm:gap-12 lg:gap-16 pl-2 mt-4">
               <div className="flex flex-col">
-                <h2 className="flex items-baseline gap-2 font-[var(--font-playfair)] mb-2">
+                <h2 className="section-heading flex items-baseline gap-2 font-[var(--font-playfair)] mb-2">
                   <span
                     ref={year1Ref}
                     className="text-[#a51313] text-[50px] md:text-[54px] font-bold leading-none"
@@ -126,7 +126,7 @@ export default function Experience({ scrollRef }: Props) {
                 </p>
               </div>
               <div className="flex flex-col">
-                <h2 className="flex items-baseline gap-2 font-[var(--font-playfair)] mb-2">
+                <h2 className="section-heading flex items-baseline gap-2 font-[var(--font-playfair)] mb-2">
                   <span
                     ref={year2Ref}
                     className="text-[#a51313] text-[50px] md:text-[54px] font-bold leading-none"
@@ -137,7 +137,7 @@ export default function Experience({ scrollRef }: Props) {
                     years
                   </span>
                 </h2>
-                <p className="text-[#444] text-[15px] md:text-[16px] font-medium whitespace-nowrap">
+                <p className="text-[#444] text-[15px] md:text-[16px] font-medium whitespace-nowrap font-[var(--font-dm-sans)]">
                   of spiritual mastery
                 </p>
               </div>

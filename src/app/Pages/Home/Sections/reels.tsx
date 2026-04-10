@@ -247,7 +247,7 @@ The stress is gone totally from my head, all the negative thoughts which were co
         <p className="text-[36px] md:text-[20px] tracking-[.02em] lg:text-[30px] font-[var(--font-playfair)] font-semibold text-[#111] leading-[1.15] max-w-3xl mx-auto">
           Don&rsquo;t believe us? Hear it straight from them.
         </p>
-        <p className="mt-4 text-gray-700 text-[18px] max-w-2xl mx-auto">
+        <p className="mt-4 text-gray-700 text-[18px] max-w-2xl mx-auto font-[var(--font-dm-sans)]">
           Real stories from real people. Watch the shorts or read the full transcript.
         </p>
       </div>
@@ -306,7 +306,7 @@ The stress is gone totally from my head, all the negative thoughts which were co
                           <img src={cardThumb(fc)} alt="" className="w-full h-full object-cover" />
                         </div>
                         <div>
-                          <p className="text-white text-[11px] font-bold leading-tight font-[var(--font-outfit)]">{fc.name}</p>
+                          <p className="text-white text-[11px] font-bold leading-tight font-[var(--font-dm-sans)]">{fc.name}</p>
                           <p className="text-white/50 text-[9px]">{fc.role}</p>
                         </div>
                       </div>
@@ -317,9 +317,9 @@ The stress is gone totally from my head, all the negative thoughts which were co
                       </div>
                       <div className="flex-1 overflow-y-auto min-h-0 ts pr-2">
                         <p className="text-white text-[15px] leading-[2.0] whitespace-pre-wrap font-[var(--font-dm-sans)]">
-                          <span className="text-white/50 text-xl font-[var(--font-cormorant)]">&ldquo;</span>
+                          <span className="text-white/50 text-xl font-[var(--font-playfair)]">&ldquo;</span>
                           {fc.transcript}
-                          <span className="text-white/50 text-xl font-[var(--font-cormorant)]">&rdquo;</span>
+                          <span className="text-white/50 text-xl font-[var(--font-playfair)]">&rdquo;</span>
                         </p>
                       </div>
                       <div className="mt-3 flex-shrink-0">
@@ -340,7 +340,7 @@ The stress is gone totally from my head, all the negative thoughts which were co
                 <span className="text-[#c42d2d] text-[11px] font-bold uppercase tracking-widest font-[var(--font-dm-sans)]">{featured + 1} / {cards.length}</span>
               </div>
 
-              <h3 className="text-[26px] md:text-[32px] font-[var(--font-playfair)] text-[#111] leading-[1.15] font-bold">
+              <h3 className="section-subheading text-[26px] md:text-[32px] font-[var(--font-playfair)] text-[#111] leading-[1.15] font-bold">
                 {fc.title}
                 {fc.highlight && <><br /><span className="text-[#c42d2d]">{fc.highlight}</span></>}
               </h3>
@@ -360,7 +360,7 @@ The stress is gone totally from my head, all the negative thoughts which were co
                   <img src={cardThumb(fc)} alt={fc.name} className="w-full h-full object-cover" />
                 </div>
                 <div>
-                  <p className="font-bold text-[#111] text-[15px] font-[var(--font-outfit)]">{fc.name}</p>
+                  <p className="font-bold text-[#111] text-[15px] font-[var(--font-dm-sans)]">{fc.name}</p>
                   <p className="text-black text-[14px]">{fc.role}{fc.location ? ` · ${fc.location}` : ""}</p>
                 </div>
               </div>

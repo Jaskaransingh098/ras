@@ -151,9 +151,9 @@ export default function Phases() {
                             </p>
                         </div>
 
-                        <h2 className="ph-reveal text-[28px] md:text-[42px] font-[var(--font-playfair)] text-white leading-[1.2] mb-6">
+                        <h2 className="section-heading ph-reveal text-[28px] md:text-[42px] font-[var(--font-playfair)] text-white leading-[1.2] mb-6">
                             One Session.<br />
-                            <span className="italic text-red-500">Everything Shifts.</span>
+                            <span className="italic">Everything Shifts.</span>
                         </h2>
 
                         {/* Descriptive text */}

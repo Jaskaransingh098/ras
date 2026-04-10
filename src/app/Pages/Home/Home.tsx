@@ -24,7 +24,7 @@ export default function Home() {
 
   return (
     <main ref={scrollRef} className="min-h-screen">
-      <section className="h-screen px-0">
+      <section className=" px-0">
         <Hero />
       </section>
 

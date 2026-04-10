@@ -267,11 +267,11 @@ export default function Blog() {
                             </p>
                         </div>
                         <h2
-                            className="font-[var(--font-playfair)] leading-[1.1] font-bold"
+                            className="section-heading font-[var(--font-playfair)] leading-[1.1] font-bold"
                             style={{ fontSize: "clamp(28px, 4vw, 44px)", color: "#1a0e0e" }}
                         >
                             Words That{" "}
-                            <span className="italic font-semibold" style={{ color: "rgba(196,45,45,0.75)" }}>
+                            <span className="italic text-[#c42d2d] font-bold">
                                 Shift Things
                             </span>
                         </h2>
@@ -521,7 +521,7 @@ export default function Blog() {
                             href="https://www.instagram.com/beyondimagination.club/"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="group inline-flex items-center gap-2.5 px-5 py-3 rounded-full font-[var(--font-dm-sans)] font-bold text-[11px] uppercase tracking-[0.12em] transition-all duration-300 hover:scale-105"
+                            className="group inline-flex items-center gap-2.5 px-5 py-3 rounded-full font-[var(--font-outfit)] font-bold text-[11px] uppercase tracking-[0.12em] transition-all duration-300 hover:scale-105"
                             style={{
                                 color: "#c42d2d",
                                 border: "1px solid rgba(196,45,45,0.2)",
@@ -537,7 +537,7 @@ export default function Blog() {
                         </a>
                         <a
                             href="#"
-                            className="group inline-flex items-center gap-2.5 px-6 py-3 rounded-full font-[var(--font-dm-sans)] font-bold text-[11px] uppercase tracking-[0.12em] transition-all duration-300 hover:scale-105"
+                            className="group inline-flex items-center gap-2.5 px-6 py-3 rounded-full font-[var(--font-outfit)] font-bold text-[11px] uppercase tracking-[0.12em] transition-all duration-300 hover:scale-105"
                             style={{
                                 background: "linear-gradient(135deg, #c42d2d, #9b1c1c)",
                                 color: "#fff",

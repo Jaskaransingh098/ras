@@ -294,7 +294,7 @@ export default function Speaker() {
             </div>
 
             {/* Heading */}
-          <h2 className="font-[var(--font-poppins)] text-[28px] md:text-[44px] text-[#111] leading-[1.1] mb-7">
+          <h2 className="section-heading font-[var(--font-playfair)] text-[28px] md:text-[44px] text-[#111] leading-[1.1] mb-7">
               Talk that go
               <br />
               <span className="italic text-[#c42d2d] font-bold">

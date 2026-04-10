@@ -152,7 +152,7 @@ export default function Journey() {
                             Gallery
                         </p>
                     </div>
-                    <h2 className="text-[28px] md:text-[44px] font-semibold text-[#111] leading-[1.1]">
+                    <h2 className="section-heading text-[28px] md:text-[44px] font-semibold text-[#111] leading-[1.1] font-[var(--font-playfair)]">
                         A Window into{' '}
                         <span className="italic text-[#c42d2d] font-bold">her Journey</span>
                     </h2>

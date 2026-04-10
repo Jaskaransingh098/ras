@@ -129,7 +129,7 @@ export default function Services() {
                 .svc-row-num {
                     font-size: 13px;
                     font-weight: 700;
-                    color: rgba(255,255,255,0.35);
+                    color: rgba(255,255,255,1);
                     font-family: var(--font-dm-sans), sans-serif;
                     letter-spacing: 0.05em;
                     transition: color 0.3s;
@@ -157,9 +157,9 @@ export default function Services() {
                     font-family: var(--font-dm-sans), sans-serif;
                 }
                 .svc-row-desc {
-                    font-size: 14px;
+                    font-size: 16px;
                     color: rgba(255, 255, 255, 1);
-                    line-height: 1.65;
+                    line-height: 1.33;
                     font-family: var(--font-dm-sans), sans-serif;
                     max-width: 340px;
                 }
@@ -289,7 +289,7 @@ export default function Services() {
                             </svg>
                         </div>
                         {/* CTA Button */}
-                        <a
+                        {/* <a
                             href={svc.btnLink}
                             className="svc-row-btn"
                         >
@@ -297,7 +297,7 @@ export default function Services() {
                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
                                 <path d="M5 12h14"/><path d="M12 5l7 7-7 7"/>
                             </svg>
-                        </a>
+                        </a> */}
                     </div>
                 ))}
 

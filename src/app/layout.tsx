@@ -20,6 +20,8 @@ export const inter = Inter({
 export const playfair = Playfair_Display({
   subsets: ["latin"],
   variable: "--font-playfair",
+  weight: ["400", "500", "600", "700", "800", "900"],
+  style: ["normal", "italic"],
 });
 
 export const cormorant = Cormorant_Garamond({

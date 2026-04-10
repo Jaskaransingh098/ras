@@ -97,9 +97,9 @@ export default function MomsCommunity() {
                         </span>
                     </div>
 
-                    <h2 className="text-[28px] md:text-[42px] font-[var(--font-playfair)] text-[#111] font-bold leading-[1.05] tracking-tight mb-5">
+                    <h2 className="section-heading text-[28px] md:text-[42px] font-[var(--font-playfair)] text-[#111] font-bold leading-[1.05] tracking-tight mb-5">
                         MOMS <br className="hidden md:block" />
-                        <span className="italic font-light text-[#c42d2d]">COMMUNITY</span>
+                        <span className="italic font-bold text-[#c42d2d]">COMMUNITY</span>
                     </h2>
 
                     <p className="text-black text-[16px] md:text-[18px] font-[var(--font-dm-sans)] max-w-[360px] mb-8 leading-relaxed">

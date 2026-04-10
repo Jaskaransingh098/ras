@@ -61,19 +61,19 @@ export default function Navbar() {
 
       {/* ── DEFAULT: Centered glass pill navbar ~90% wide (hero / video section) ── */}
       <div
-        className={`absolute top-5 left-1/2 -translate-x-1/2 z-50 transition-all duration-500 ${sticky ? "opacity-0 pointer-events-none -translate-y-3" : "opacity-100 translate-y-0"}`}
+        className={`absolute top-3 left-1/2 -translate-x-1/2 z-50 transition-all duration-500 ${sticky ? "opacity-0 pointer-events-none -translate-y-3" : "opacity-100 translate-y-0"}`}
         style={{ width: "min(92vw, 1200px)" }}
       >
         {/* Desktop glass pill */}
         <div
           className="hidden md:flex items-center gap-3 px-5 py-3 w-full"
           style={{
-            background: "rgba(18,4,4,0.72)",
+            background: "rgba(0,0,0,0.15)",
             backdropFilter: "blur(24px)",
             WebkitBackdropFilter: "blur(24px)",
             borderRadius: "999px",
-            border: "1px solid rgba(196,45,45,0.25)",
-            boxShadow: "0 8px 32px rgba(0,0,0,0.45), inset 0 1px 0 rgba(196,45,45,0.08)",
+            border: "1px solid rgba(255,255,255,0.1)",
+            boxShadow: "0 8px 32px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.05)",
           }}
         >
           {/* Logo */}
@@ -124,9 +124,9 @@ export default function Navbar() {
         {/* Mobile top bar */}
         <div className="md:hidden flex items-center justify-between px-5 py-3 rounded-full"
           style={{
-            background: "rgba(18,4,4,0.72)",
+            background: "rgba(0,0,0,0.15)",
             backdropFilter: "blur(24px)",
-            border: "1px solid rgba(196,45,45,0.25)",
+            border: "1px solid rgba(255,255,255,0.1)",
           }}
         >
           <Link href="/" className="flex items-center gap-2 group">
@@ -163,12 +163,12 @@ export default function Navbar() {
         <div
           className="nav-pill-enter flex items-center gap-2 px-3 py-2"
           style={{
-            background: "rgba(18, 8, 8, 0.92)",
+            background: "rgba(0,0,0,0.2)",
             backdropFilter: "blur(20px)",
             WebkitBackdropFilter: "blur(20px)",
             borderRadius: "999px",
-            border: "1px solid rgba(255,255,255,0.08)",
-            boxShadow: "0 8px 40px rgba(0,0,0,0.35), 0 2px 8px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.05)",
+            border: "1px solid rgba(255,255,255,0.12)",
+            boxShadow: "0 8px 40px rgba(0,0,0,0.25), 0 2px 8px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.1)",
             minWidth: "min(780px, 92vw)",
           }}
         >
@@ -207,7 +207,7 @@ export default function Navbar() {
             }}
             onMouseLeave={(e) => {
               (e.currentTarget as HTMLAnchorElement).style.background = "rgba(255,255,255,0.97)";
-              (e.currentTarget as HTMLAnchorElement).style.color = "#1a0505";
+              (e.currentTarget as HTMLAnchorElement).style.color = "#fff";
             }}
           >
             Book a Session
@@ -415,8 +415,8 @@ function StickyNav({
             href={link.href}
             ref={(el) => { refs.current[i] = el; }}
             onMouseEnter={() => setHoveredPath(link.href)}
-            className="relative px-4 py-2 z-10 transition-colors duration-300 flex items-center justify-center text-[13px] rounded-full"
-            style={{ color: isCurrentVisual ? "rgba(255,255,255,1)" : "rgba(255,255,255,0.5)" }}
+            className="relative px-6 py-3 z-10 transition-colors duration-300 flex items-center justify-center text-[14px] rounded-full"
+            style={{ color: isCurrentVisual ? "rgba(255,255,255,1)" : "rgba(255,255,255,1)" }}
           >
             {link.label}
           </Link>
@@ -484,7 +484,7 @@ function HeroNav({
             ref={(el) => { refs.current[i] = el; }}
             onMouseEnter={() => setHoveredPath(link.href)}
             className="relative px-5 py-2.5 z-10 transition-colors duration-300 flex items-center justify-center text-[14px] rounded-full font-medium"
-            style={{ color: isCurrentVisual ? "#f5eeee" : "rgba(245,238,238,0.55)" }}
+            style={{ color: isCurrentVisual ? "#f5eeee" : "rgba(245,238,238,1)" }}
           >
             {link.label}
           </Link>

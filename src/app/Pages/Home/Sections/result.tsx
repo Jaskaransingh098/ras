@@ -331,7 +331,7 @@ export default function Result() {
                         {/* Headline */}
                         <h2 className="text-[22px] md:text-[36px] font-[var(--font-playfair)] text-[#1a1a1a] leading-[1.1] font-bold">
                             Who You Become{" "}
-                            <span className="italic text-[#c42d2d]/85">in This Space</span>
+                            <span className="italic text-[#c42d2d] font-bold">in This Space</span>
                         </h2>
                     </div>
                     <a href="#" className="res-cta-link">Book a Session →</a>
@@ -514,7 +514,7 @@ export default function Result() {
                 <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-4 r-reveal">
                     <div className="max-w-lg">
                         <span>The Transformation</span>
-                        <h2>Who You Become <span className="italic">in This Space</span></h2>
+                        <h2>Who You Become <span className="italic text-[#c42d2d] font-bold">in This Space</span></h2>
                     </div>
                     <p>This is the safe space where you finally get to breathe…</p>
                 </div>
