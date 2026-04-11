@@ -24,7 +24,7 @@ const cases = [
         session: "High-Energy Transformation",
         shift: "Pain eased, deeper sleep, sense of lightness",
         result: "Regained the ability to stand and walk within 4 days",
-        accent: "#e85d5d",
+        accent: "#c42d2d",
     },
     {
         id: 2,
@@ -34,7 +34,7 @@ const cases = [
         session: "One Powerful Energy Transformation",
         shift: "Intense release of grief and pain through tears in 30 minutes",
         result: "Immediate lightness, emotional relief & felt like a new life",
-        accent: "#e85d5d",
+        accent: "#c42d2d",
     },
 ];
 
@@ -163,7 +163,7 @@ export default function Phases() {
                         </p>
 
                         {/* 3 Case selectors */}
-                        <div className="flex flex-col gap-3">
+                        <div className="flex flex-col gap-1">
                             {cases.map((item, i) => (
                                 <button
                                     key={item.id}
@@ -179,7 +179,7 @@ export default function Phases() {
                                         borderColor: "rgba(255,255,255,0.3)",
                                     }}
                                 >
-                                    <div className="flex items-center gap-4">
+                                    <div className="flex items-center  gap-4">
                                         {/* Number */}
                                         <span
                                             className="text-[38px] font-[var(--font-playfair)] font-bold leading-none transition-all duration-500 select-none flex-shrink-0"
@@ -196,14 +196,14 @@ export default function Phases() {
                                                     />
                                                 )}
                                                 <span
-                                                    className="text-[12px] font-bold uppercase tracking-[.18em] font-[var(--font-dm-sans)] transition-colors duration-500"
+                                                    className="text-[18px] font-bold uppercase tracking-[.18em] font-[var(--font-playfair)] transition-colors duration-500"
                                                     style={{ color: active === i ? item.accent : "rgba(30,5,5,0.75)" }}
                                                 >
                                                     {item.category}
                                                 </span>
                                             </div>
                                             <p
-                                                className="text-[16px] md:text-[17px] font-[var(--font-playfair)] leading-snug transition-colors duration-500"
+                                                className="text-[16px] md:text-[17px] font-[var(--font-playfair)] leading-snug transition-colors font-bold duration-500"
                                                 style={{ color: active === i ? "rgba(20,5,5,1)" : "rgba(30,5,5,0.85)" }}
                                             >
                                                 {item.tagline}
@@ -221,7 +221,7 @@ export default function Phases() {
                                     </div>
                                     {/* Progress bar for active */}
                                     {active === i && (
-                                        <div className="mt-4 h-[3px] rounded-full overflow-hidden" style={{ backgroundColor: `${item.accent}25` }}>
+                                        <div className="mt-4 h-[3px] rounded-full overflow-hidden" style={{ backgroundColor: `white` }}>
                                             <div
                                                 key={`prog-${active}`}
                                                 className="h-full rounded-full progress-bar"
@@ -235,7 +235,7 @@ export default function Phases() {
                     </div>
 
                     {/* RIGHT — Flow Visualization */}
-                    <div className="ph-reveal md:w-[62%] flex items-center">
+                    <div className="ph-reveal md:w-[62%] flex items-center mt-40">
                         <div
                             className={`w-full flow-panel ${visible ? 'visible-panel' : 'hidden-panel'}`}
                         >
@@ -243,17 +243,17 @@ export default function Phases() {
                             <div className="relative pl-8 md:pl-10">
                                 {/* Static background line */}
                                 <div
-                                    className="absolute left-[11px] md:left-[15px] top-6 bottom-6 w-px"
-                                    style={{ background: `${c.accent}15`, transition: 'background 0.7s ease' }}
+                                    className="absolute left-[11px] md:left-[15px] top-6 bottom-6 w-[2px]"
+                                    style={{ background: `white`, transition: 'background 0.7s ease' }}
                                 />
                                 {/* Animated progress line over the static one */}
                                 <div
-                                    className="absolute left-[11px] md:left-[15px] top-6 bottom-6 w-px overflow-hidden"
+                                    className="absolute left-[11px] md:left-[15px] top-6 bottom-6 w-[2px] overflow-hidden"
                                 >
                                     <div
                                         key={`vp-${active}`}
                                         className="w-full progress-bar-v"
-                                        style={{ background: `linear-gradient(180deg, ${c.accent}, ${c.accent}40)` }}
+                                        style={{ background: `linear-gradient(180deg, ${c.accent}, ${c.accent}60)` }}
                                     />
                                 </div>
 
@@ -303,13 +303,13 @@ export default function Phases() {
                                                 </div>
                                                 <div>
                                                     <span
-                                                        className="text-[13px] font-black uppercase tracking-[.18em] font-[var(--font-dm-sans)] block"
+                                                        className="text-[16px] font-black uppercase tracking-[.18em] font-[var(--font-dm-sans)] block"
                                                         style={{ color: c.accent }}
                                                     >
                                                         {step.label}
                                                     </span>
                                                     <span className="text-[#4a2a2a] text-[12px] tracking-wide font-[var(--font-dm-sans)] font-medium">
-                                                        {step.sub}
+                                                        {/* {step.sub} */}
                                                     </span>
                                                 </div>
 
@@ -332,7 +332,7 @@ export default function Phases() {
                             </div>
 
                             {/* Final tagline under the flow */}
-                            <div className="mt-8 pl-8 md:pl-10">
+                            {/* <div className="mt-8 pl-8 md:pl-10">
                                 <div className="inline-flex items-center gap-3 rounded-full px-6 py-3 border"
                                     style={{
                                         background: "rgba(255,255,255,0.92)",
@@ -348,7 +348,7 @@ export default function Phases() {
                                         </span>
                                     </p>
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </div>

@@ -5,19 +5,19 @@ import Image from "next/image";
 
 const slides = [
   {
-    word: "RELATIONSHIP",
+    word: "RELATIONSHIP??",
     image: "/hero/2.mp4",
   },
   {
-    word: "LIFE",
+    word: "LIFE??",
     image: "/hero/Body.mp4",
   },
   {
-    word: "BUSINESS",
+    word: "BUSINESS??",
     image: "/hero/Business_.mp4",
   },
   {
-    word: "CAREER",
+    word: "CAREER??",
     image: "/hero/3.mp4",
   },
 ];
@@ -105,36 +105,38 @@ export default function Hero() {
           }
         `}</style>
 
-        {/* — Eyebrow label — */}
-        <div className="flex items-center justify-center gap-3 mb-4">
-          <div className="flex-1 max-w-[60px] h-px bg-white/30" />
-          <span
-            className="text-[17px] uppercase tracking-[0.2em] font-bold text-white/90 font-[var(--font-dm-sans)]"
-            style={{ textShadow: "0 1px 10px rgba(0,0,0,0.95), 0 0 20px rgba(0,0,0,0.7)" }}
-          >
-            Are You Stuck In Your
-          </span>
-          <div className="flex-1 max-w-[60px] h-px bg-white/30" />
+        {/* Glass Container for Hero Text */}
+        <div className="inline-block px-10 py-8 rounded-[40px] bg-white/5 backdrop-blur-lg border border-white/10 shadow-2xl mb-2">
+          {/* — Eyebrow label — */}
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <div className="flex-1 max-w-[60px] h-px bg-white/30" />
+            <span
+              className="text-[18px] md:text-[22px] uppercase tracking-[0.2em] font-bold text-white/90 font-[var(--font-dm-sans)]"
+            >
+              Are You Stuck In Your
+            </span>
+            {/* <div className="flex-1 max-w-[60px] h-px bg-white/30" /> */}
+          </div>
+
+          {/* — Main rotating word — */}
+          <h1 className="mb-" style={{ lineHeight: 1 }}>
+            <span
+              key={slides[index].word}
+              className="word-reveal block font-bold italic section-heading"
+              style={{
+                fontSize: "clamp(24px, 8vw, 65px)",
+                letterSpacing: "-0.02em",
+                color: "#a51313",
+                // textShadow: "0 2px 12px r, 0 4px 24px rgba(0,0,0,0.6)",
+              }}
+            >
+              {slides[index].word}
+            </span>
+          </h1>
         </div>
 
-        {/* — Main rotating word — */}
-        <h1 className="mb-4" style={{ lineHeight: 1 }}>
-          <span
-            key={slides[index].word}
-            className="word-reveal block font-bold italic section-heading"
-            style={{
-              fontSize: "clamp(44px, 8vw, 95px)",
-              letterSpacing: "-0.02em",
-              color: "#c42d2d",
-              textShadow: "0 2px 12px rgba(196,45,45,0.65), 0 4px 24px rgba(0,0,0,0.6)",
-            }}
-          >
-            {slides[index].word}
-          </span>
-        </h1>
-
         {/* — Counter + symmetric rules — */}
-        <div className="flex items-center justify-center gap-4 mb-7">
+        {/* <div className="flex items-center justify-center gap-4 mb-7">
           <div className="h-px flex-1 bg-white/20" />
           <span
             className="text-[10px] tracking-[0.25em] text-white/35 font-[var(--font-dm-sans)] tabular-nums"
@@ -143,7 +145,7 @@ export default function Hero() {
             {String(index + 1).padStart(2, "0")} &nbsp;/&nbsp; {String(slides.length).padStart(2, "0")}
           </span>
           <div className="h-px flex-1 bg-white/20" />
-        </div>
+        </div> */}
 
         {/* — CTAs — */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3">

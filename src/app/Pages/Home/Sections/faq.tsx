@@ -123,7 +123,7 @@ export default function FAQ() {
                     onClick={() => toggleFAQ(actualIndex)}
                     className="w-full text-left px-5 py-4 md:px-6 md:py-5 flex items-start gap-4 focus:outline-none"
                 >
-                    <span className={`flex-1 text-[15px] md:text-[16px] font-medium font-[var(--font-playfair)] tracking-wide transition-colors duration-300 ${isOpen ? 'text-[#c42d2d] font-bold' : 'text-[#222] group-hover:text-black'}`}>
+                    <span className={`flex-1 text-[15px] md:text-[17px] font-medium font-[var(--font-playfair)] tracking-wide transition-colors duration-300 ${isOpen ? 'text-[#c42d2d] font-bold' : 'text-[#222] group-hover:text-black'}`}>
                         {faq.question}
                     </span>
                     <div className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center border-2 transition-all duration-500 ${isOpen
@@ -143,8 +143,7 @@ export default function FAQ() {
                         }`}
                 >
                     <div className="overflow-hidden">
-                        <div className="px-5 md:px-6 pb-5 md:pb-4 text-[#1e1e1e] text-[15px] md:text-[14px] leading-relaxed font-semibold font-[var(--font-dm-sans)]">
-                            <div className="w-8 h-[2px] bg-[#c42d2d]/30 mb-2 rounded-full" />
+                        <div className="px-5 md:px-6 pt-0 pb-5 md:pb-4 text-[#1e1e1e] text-[15px] md:text-[16px] leading-relaxed font-semibold font-[var(--font-dm-sans)]">
                             {faq.answer}
                         </div>
                     </div>

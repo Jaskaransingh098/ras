@@ -30,7 +30,7 @@ export default function Home() {
         <Hero />
       </section>
 
-      <section className="h-[50dvh]">
+      <section className="h-[]">
         <Welcome scrollRef={scrollRef} />
       </section>
 
@@ -54,17 +54,17 @@ export default function Home() {
         <Journey />
       </section>
 
-      <section className="">
+      {/* <section className="">
         <Services />
-      </section>
+      </section> */}
 
       <section className="">
         <Services2 />
       </section>
 
-      <section className="">
+      {/* <section className="">
         <Result />
-      </section>
+      </section> */}
 
       <section className="">
         <Result2 />

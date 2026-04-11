@@ -9,7 +9,7 @@ gsap.registerPlugin(ScrollTrigger);
 // 13 guest images total to support 6 swapping slots (12 images) + 1 fixed center (1 image)
 const guestImages = Array.from({ length: 13 }).map((_, i) => ({
     id: i + 1,
-    src: `/dare/${(i % 5) + 1}.png`,
+    src: `/dare/${(i % 6) + 1}.png`,
     alt: `Guest ${i + 1}`,
 }));
 
@@ -81,14 +81,14 @@ export default function DareToDream() {
     }, []);
 
     return (
-        <section ref={sectionRef} className="relative h-[90dvh] flex justify-center items-center py-6 md:py-10 bg-gradient-to-b from-[#8a0a0a] to-[#4a0e0e] overflow-hidden">
+        <section ref={sectionRef} className="relative h-[90dvh] flex justify-center items-center py-6 md:py-4 bg-gradient-to-b from-[#8a0a0a] to-[#4a0e0e] overflow-hidden">
             <div className="relative z-10 w-full h-full max-w-[1400px] mx-auto px-4 md:px-8">
 
                 {/* 5-Column Grid Layout spanning full height */}
-                <div className="w-full h-full flex gap-3 md:gap-5 px-2">
+                <div className="w-full h-full flex gap-3 md:gap-5 px-">
 
                     {/* LEFT TALL COLUMN (Corner) — 2 swapping slots */}
-                    <div className="flex-1 flex flex-col gap-3 md:gap-4 h-full pt-[3%]">
+                    <div className="flex-1 flex flex-col gap-3 md:gap-4 h-full pt-[%]">
                         {leftCornerSlots.map((imgs, i) => (
                             <SwappingSlot key={i} images={imgs} delay={i * 600} className="flex-1 rounded-2xl md:rounded-[36px]" />
                         ))}
@@ -96,7 +96,7 @@ export default function DareToDream() {
 
                     {/* LEFT-CENTER spacer col — 1 tall swapping slot */}
                     <div className="flex-[1.1] flex flex-col h-full pt-[8%] pb-[2%]">
-                        <SwappingSlot images={leftMidSlot} delay={1200} className="h-[85%] rounded-[24px] md:rounded-[36px]" />
+                        <SwappingSlot images={leftMidSlot} delay={1200} className="h-[75%] rounded-[24px] md:rounded-[36px]" />
                     </div>
 
                     {/* CENTER COLUMN — Text + fixed wide image at bottom */}
@@ -107,7 +107,7 @@ export default function DareToDream() {
                             <div className="flex items-center gap-3 mb-4">
                                 <div className="w-6 h-px bg-gradient-to-r from-transparent to-[#c42d2d]" />
                                 <span className="text-white text-[10px] md:text-[11px] uppercase tracking-[.3em] font-semibold font-[var(--font-dm-sans)]">
-                                    Interview Series
+                                    Instagram Live Diaries Series
                                 </span>
                                 <div className="w-6 h-px bg-gradient-to-l from-transparent to-[#c42d2d]" />
                             </div>
@@ -117,7 +117,8 @@ export default function DareToDream() {
                             </h2>
 
                             <p className="text-white/90 text-[16px] md:text-[18px] font-semibold font-[var(--font-dm-sans)] max-w-md leading-relaxed mb-6">
-                                A deep dive into the minds of visionaries, leaders, and creators. Discover the energy, pressure, and choices that shaped their extraordinary paths.
+                                A Instagram Live series featuring 52 renowned and honoured voices including Padma Shri awardees, leaders, artists and professionals from diverse fields all across india and beyond— not to showcase success, but to humanize it.
+ So people watching can feel: <br/><span className="italic"> “If this is possible for them… it is possible for me too !</span>
                             </p>
 
                             <button className="bg-[#1a1a1a] text-white hover:bg-[#c42d2d] transition-colors px-8 py-3 rounded-[12px] font-medium text-[14px] font-[var(--font-outfit)] shadow-md">
@@ -126,7 +127,7 @@ export default function DareToDream() {
                         </div>
 
                         {/* Fixed center wide image */}
-                        <div className="relative w-full flex-1 rounded-[24px] md:rounded-[36px] overflow-hidden shadow-md mt-8 bg-gray-100">
+                        {/* <div className="relative w-full flex-1 rounded-[24px] md:rounded-[36px] overflow-hidden shadow-md mt-8 bg-gray-100">
                             <Image
                                 src={centerImg.src}
                                 alt={centerImg.alt}
@@ -135,16 +136,16 @@ export default function DareToDream() {
                                 sizes="400px"
                                 onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
                             />
-                        </div>
+                        </div> */}
                     </div>
 
                     {/* RIGHT-CENTER spacer col — 1 tall swapping slot */}
                     <div className="flex-[1.1] flex flex-col h-full pt-[8%] pb-[2%]">
-                        <SwappingSlot images={rightMidSlot} delay={1800} className="h-[85%] rounded-[24px] md:rounded-[36px]" />
+                        <SwappingSlot images={rightMidSlot} delay={1800} className="h-[75%] rounded-[24px] md:rounded-[36px]" />
                     </div>
 
                     {/* RIGHT TALL COLUMN (Corner) — 2 swapping slots */}
-                    <div className="flex-1 flex flex-col gap-3 md:gap-4 h-full pt-[2%]">
+                    <div className="flex-1 flex flex-col gap-3 md:gap-4 h-full pt-[%]">
                         {rightCornerSlots.map((imgs, i) => (
                             <SwappingSlot key={i} images={imgs} delay={i * 600 + 2400} className="flex-1 rounded-2xl md:rounded-[36px]" />
                         ))}

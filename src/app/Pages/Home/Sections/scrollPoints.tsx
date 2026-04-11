@@ -135,7 +135,7 @@ export default function ScrollPoints() {
                                     <h3 className="text-[22px] md:text-[28px] font-[var(--font-playfair)] text-[#111] font-bold leading-tight mb-3">
                                         {card.title}
                                     </h3>
-                                    <p className="text-gray-800 text-sm md:text-[23px] leading-relaxed max-w-md font-[var(--font-dm-sans)]">
+                                    <p className="text-gray-800 text-sm md:text-[20px]  max-w-md font-[var(--font-dm-sans)]">
                                         {card.description}
                                     </p>
                                 </div>

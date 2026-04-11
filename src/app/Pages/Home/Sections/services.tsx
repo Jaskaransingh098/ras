@@ -10,7 +10,7 @@ const servicesData = [
     {
         badge: "Signature",
         title: "Revenue Energetics™",
-        p1: "One powerful session that shifts what strategy, effort, and coaching couldn't.",
+        p1: "One powerful session that shifts what strategy, effort and coaching couldn't.",
         p2: "This isn't healing the way you think it is — it's a deeper energy transformation, a shift in your frequency that creates visible change in one session.",
         iconSVG: (
             <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
@@ -19,13 +19,13 @@ const servicesData = [
         btnLink: "#",
         number: "01",
         extra: null,
-        tags: ["Energy Shift", "Frequency Work", "One Session"],
+        tags: ["Energy Shift Session"],
     },
     {
         badge: "Paid Diagnostic",
         title: "Energy Diagnostic Call™",
         p1: "A paid energy diagnostic call to understand what's really happening beneath the surface.",
-        p2: "You receive a clear energetic roadmap showing what blocks are draining you, what needs to shift, and your next step toward your goals.",
+        p2: "You receive a clear energetic roadmap showing what blocks are draining you, what needs to shift and your next step toward your goals.",
         iconSVG: (
             <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
         ),
@@ -136,12 +136,13 @@ export default function Services() {
                     align-self: center;
                 }
                 .svc-row-title {
-                    font-size: clamp(28px, 4vw, 52px);
+                    // font-size: clamp(18px, 4vw, 32px);
+                    font-size: 34px;
                     font-weight: 800;
                     color: #fff;
                     font-family: var(--font-playfair), serif;
                     line-height: 1.05;
-                    letter-spacing: -0.01em;
+                    // letter-spacing: -0.01em;
                 }
                 .svc-row-tags-wrap {
                     display: flex;
@@ -158,14 +159,22 @@ export default function Services() {
                 }
                 .svc-row-desc {
                     font-size: 16px;
-                    color: rgba(255, 255, 255, 1);
-                    line-height: 1.33;
+                    background: rgba(255, 255, 255, 0.08);
+                    backdrop-filter: blur(14px);
+                    -webkit-backdrop-filter: blur(14px);
+                    color: rgba(255, 255, 255, 0.92);
+                    padding: 12px 16px;
+                    border-radius: 12px;
+                    border: 1px solid rgba(255, 255, 255, 0.12);
+                    line-height: 1.6;
                     font-family: var(--font-dm-sans), sans-serif;
-                    max-width: 340px;
+                    max-width: 450px;
+                    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.18);
                 }
                 .svc-row-img-box {
                     width: 100px;
                     height: 72px;
+                    margin-left: 200px;
                     border-radius: 12px;
                     overflow: hidden;
                     background: rgba(255,255,255,0.08);
@@ -251,11 +260,11 @@ export default function Services() {
                 </div> */}
 
                 {/* ── Divider top ── */}
-                <div style={{ borderTop: '1px solid rgba(255,255,255,0.2)' }} />
+                <div className="mt-10" style={{ borderTop: '1px solid rgba(255,255,255,0.2)' }} />
 
                 {/* ── Service rows ── */}
                 {servicesData.map((svc, i) => (
-                    <div key={i} className="svc-row group">
+                    <div key={i} className="svc-row group mt-10">
                         {/* Number */}
                         <span className="svc-row-num">{svc.number}</span>
 
@@ -270,9 +279,6 @@ export default function Services() {
                         </div>
 
                         {/* Description */}
-                        <p className="svc-row-desc">{svc.p1}&nbsp;{svc.p2}</p>
-
-                        {/* Image / visual */}
                         <div className="svc-row-img svc-row-img-box">
                             <div
                                 className="svc-img-grad"
@@ -288,6 +294,10 @@ export default function Services() {
                                 {svc.iconSVG}
                             </svg>
                         </div>
+                        <p className="svc-row-desc">{svc.p1}&nbsp;{svc.p2}</p>
+
+                        {/* Image / visual */}
+                        
                         {/* CTA Button */}
                         {/* <a
                             href={svc.btnLink}

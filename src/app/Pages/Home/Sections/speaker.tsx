@@ -298,7 +298,7 @@ export default function Speaker() {
               Talk that go
               <br />
               <span className="italic text-[#c42d2d] font-bold">
-                beyond inspiration -
+                beyond inspiration-
               </span>{""}
               <span className="text-[36px] p-3">into real awareness and action.</span>
             </h2>
@@ -317,7 +317,7 @@ export default function Speaker() {
 
             {/* Quote */}
             <div className="border-l-[3px] border-[#c42d2d]/30 pl-5 mb-8">
-              <p className="text-[#555] text-[14px] leading-[1.8] font-[var(--font-dm-sans)] italic">
+              <p className="text-[#555] text-[16px] leading-[1.8] font-[var(--font-dm-sans)] italic">
                 &ldquo;These are not motivational talks. They are grounded,
                 experiential conversations that shift how people relate to{" "}
                 <span className="text-[#111] not-italic font-semibold">

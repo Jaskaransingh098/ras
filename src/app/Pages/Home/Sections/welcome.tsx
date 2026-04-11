@@ -86,56 +86,23 @@ export default function Welcome({ scrollRef }: Props) {
   }, [scrollRef]);
 
   return (
-    <div className="relative px-1.5 mt-4">
+    <div className="relative px- mt-">
       {/* VIDEO SECTION */}
-      <div
-        ref={containerRef}
-        className="relative h-[40dvh] rounded-t-[30px] flex items-center justify-center px-6 md:px-20 overflow-hidden"
-      >
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover rounded-t-[30px]"
-        >
-          <source src="/hero/welcome.mp4" type="video/mp4" />
-        </video>
+     
 
-        <div className="absolute inset-0 bg-black/60 rounded-t-[30px]" />
-
-        <div className="relative z-10 text-center max-w-4xl text-white drop-shadow-md">
-          {/* <p className="text-sm tracking-[0.3em] font-medium uppercase mb-6 drop-shadow-lg font-[var(--font-dm-sans)]">
-            {splitWords(
-              "Welcome to the work that goes beyond logical mind …",
-              "word-p",
-            )}
-            <br />
-            {splitWords("into pure transformation", "word-p")}
-          </p> */}
-
-          <h1 className="section-heading text-[32px] md:text-[62px] leading-[1.1] font-bold drop-shadow-xl font-[var(--font-playfair)]">
-            {splitLetters("When Your Energy Shifts,", "letter-h")}
-            <br />
-            <span className="italic text-red-600 font-black drop-shadow-2xl">
-              {splitLetters("Your Entire Reality Changes", "letter-h")}
-            </span>
-          </h1>
-        </div>
-      </div>
-
-      <div className="overflow-hidden border-y border-[#e7e2d9] py-4 bg-black/90 rounded-b-[30px]">
+      <div className="overflow-hidden border-y border-[#e7e2d9] py-4 bg-black/90 ">
         <div ref={tickerRef} className="flex whitespace-nowrap w-max">
           {[...Array(4)].map((_, i) => (
             <p
               key={i}
-              className="mx-16 text-[#f9f7f7] text-lg md:text-2xl font-medium tracking-wide font-[var(--font-dm-sans)] italic"
+              className="mx-2 text-[#f9f7f7] text-lg md:text-2xl font-medium tracking-wide font-[var(--font-dm-sans)] italic"
             >
               First Indian who officially changed her surname to{" "}
-              <span className="text-[#f63434] font-semibold text-3xl">
+              <span className="text-[#a51313] font-semibold text-3xl">
                 Hindustani
               </span>{" "}
               •
+              <span className="pl-10">•</span>
             </p>
           ))}
         </div>

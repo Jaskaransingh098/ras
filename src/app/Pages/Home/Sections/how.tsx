@@ -108,8 +108,8 @@ export default function How({ scrollRef }: Props) {
                             </p>
                         </div>
                         <h2 className="section-heading text-[28px] md:text-[42px] font-[var(--font-playfair)] font-semibold text-[#111] leading-[0.9]">
-                            How it<br className="hidden md:block" />{' '}
-                            <span className="italic text-[#c42d2d] font-bold">Works</span>
+                            How it
+                            <span className="italic text-[#c42d2d] pl-2 font-bold">Works</span>
                         </h2>
                     </div>
 

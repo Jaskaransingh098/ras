@@ -97,14 +97,15 @@ export default function MomsCommunity() {
                         </span>
                     </div>
 
-                    <h2 className="section-heading text-[28px] md:text-[42px] font-[var(--font-playfair)] text-[#111] font-bold leading-[1.05] tracking-tight mb-5">
-                        MOMS <br className="hidden md:block" />
-                        <span className="italic font-bold text-[#c42d2d]">COMMUNITY</span>
+                    <h2 className="section-heading font-[var(--font-playfair)] text-[#111] font-bold tracking-tight mb-5">
+                        <span className="block text-[28px] md:text-[28px] leading-none">MOMS</span>
+                        <span className="block font-semibold text-[20px] leading-none">(Multitasking Outstanding Mothers Space)</span>
+                        <span className="block italic font-bold text-[#c42d2d] text-[28px] md:text-[28px] leading-none">COMMUNITY</span>
                     </h2>
 
                     <p className="text-black text-[16px] md:text-[18px] font-[var(--font-dm-sans)] max-w-[360px] mb-8 leading-relaxed">
                         {/* I&apos;m invited to speak with institutions, organizations, leaders, and young minds on how energy shapes choices and decisions—bringing clarity and ease, especially in high-pressure environments. */}
-                        A pan india beautiful nurturing space where mother's came together to co create co relate and co elevate each other Initiated by Beyond Imagination Club
+                        Raseshvari founded a pan india beautiful nurturing space where mother's came together to co-create, co-relate and co-elevate each other.
                     </p>
 
                    
@@ -114,7 +115,7 @@ export default function MomsCommunity() {
                         href="#"
                         className="group relative flex items-center gap-4 bg-[#111] text-white px-7 py-3.5 rounded-full font-bold text-[13px] uppercase tracking-[.1em] font-[var(--font-outfit)] shadow-[0_6px_20px_rgba(17,17,17,0.18)] hover:shadow-[0_0_40px_rgba(17,17,17,0.28)] hover:scale-105 transition-all duration-300 overflow-hidden"
                     >
-                        <span className="relative z-10">Join Community</span>
+                        <span className="relative z-10">Explore More</span>
                         <div className="relative z-10 w-7 h-7 rounded-full bg-white/8 flex items-center justify-center group-hover:bg-white/12 transition-colors">
                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                                 <path d="M5 12h14" />

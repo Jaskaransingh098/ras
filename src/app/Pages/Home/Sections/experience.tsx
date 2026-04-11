@@ -90,14 +90,19 @@ export default function Experience({ scrollRef }: Props) {
       `}</style>
 
       <div className="max-w-[1240px] mx-auto px-6 md:px-12">
+         <p className="text-[] pl-35 italic pb-10 text-[15px] md:text-[30px] font-[var(--font-dm-sans)] font-bold leading-[1.2] tracking-wide uppercase">
+                When Your Energy Shifts,
+                <span className="italic text-[#a51313]">Your Entire Reality Changes!</span></p>
 
         {/* TWO-COLUMN LAYOUT: Left = 162 + stats | Right = welcome quote + description */}
         <div className="grid md:grid-cols-[1fr_auto] gap-12 md:gap-16 items-start">
+
 
           {/* LEFT COLUMN: 162 number + stat years */}
           <div>
             {/* TOP LEFT (162) */}
             <div className="exp-reveal mb-8 pl-2">
+             
               <h1 className="text-[#a51313] text-[120px] md:text-[140px] font-[var(--font-playfair)] font-bold leading-[0.8] tracking-[-0.03em]">
                 <span ref={mainNumberRef}>0</span>
               </h1>
@@ -143,17 +148,20 @@ export default function Experience({ scrollRef }: Props) {
               </div>
             </div>
           </div>
+          {/* <div className=""></div> */}
 
           {/* RIGHT COLUMN: Welcome quote at the top, aligned with 162 */}
-          <div className="exp-reveal max-w-[460px] self-start pt-2 border-l-2 border-[#d36041]/40 pl-8 md:pl-10">
+          <div className="exp-reveal max-w-[560px] self-start pt-2 border-l-2 border-[#d36041]/40 pl-8 md:pl-20">
 
             {/* Intro quote line — accent pull-quote at top-right */}
-            <div className="flex items-start gap-3 mb-26">
+            <div className="flex items-start gap-3 mb-27">
               {/* <div className="w-[3px] self-stretch min-h-[2.5em] rounded-full bg-[#a51313] flex-shrink-0" /> */}
-              <p className="text-[#a51313] text-[15px] md:text-[20px] font-[var(--font-dm-sans)] font-bold leading-[1.4] tracking-wide uppercase">
+              <p className="text-[#a51313] pt-2 text-[15px] md:text-[20px] font-[var(--font-dm-sans)] font-bold leading-[1.4] tracking-wide italic">
                 Welcome to the work that goes beyond the logical mind — into pure transformation
               </p>
+
             </div>
+
 
             <p className="text-black text-[16px] md:text-[20px] leading-[1.7] font-[var(--font-dm-sans)]">
               Raseshvari Hindustani creates transformations that feel

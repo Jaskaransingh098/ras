@@ -7,8 +7,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const screenshots = [
-    { id: 1, src: "/linkedin/rec-1.png", alt: "Recommendation 1" },
-    { id: 2, src: "/linkedin/rec-2.png", alt: "Recommendation 2" },
+    { id: 1, src: "/test/1.jpeg", alt: "Recommendation 1" },
+    { id: 2, src: "/test/2.jpeg", alt: "Recommendation 2" },
     { id: 3, src: "/linkedin/rec-3.png", alt: "Recommendation 3" },
     { id: 4, src: "/linkedin/rec-4.png", alt: "Recommendation 4" },
     { id: 5, src: "/linkedin/rec-5.png", alt: "Recommendation 5" },
@@ -93,7 +93,7 @@ export default function LinkedIn() {
 
     return (
         <section ref={sectionRef}
-            className="relative min-h-[80dvh] max-h-[90dvh] flex flex-col justify-center overflow-hidden"
+            className="relative min-h-[80dvh] max-h-[100dvh] flex flex-col justify-center overflow-hidden"
             style={{ background: "linear-gradient(180deg, #f5f0ea 0%, #efe8df 50%, #f5f0ea 100%)" }}
         >
             <style jsx>{`
@@ -187,7 +187,7 @@ export default function LinkedIn() {
                         {allScreenshots.map((s, i) => (
                             <div
                                 key={`${s.id}-${i}`}
-                                className="rec-card w-[260px] md:w-[300px] bg-white border border-gray-100/80 shadow-lg shadow-black/[0.04]"
+                                className="rec-card w-[480px] md:w-[470px] bg-white border border-gray-100/80 shadow-lg shadow-black/[0.04]"
                             >
                                 {/* Card top bar */}
                                 <div className="flex items-center gap-2 px-3.5 py-2 border-b border-gray-100/60">
@@ -198,14 +198,16 @@ export default function LinkedIn() {
                                         Recommendation
                                     </span>
                                 </div>
-                                {/* Screenshot */}
-                                <div className="relative w-full aspect-[3/4]">
+                                {/* Screenshot — height adapts to the image's own aspect ratio */}
+                                <div className="w-full">
                                     <Image
                                         src={s.src}
                                         alt={s.alt}
-                                        fill
-                                        className="object-cover"
-                                        sizes="300px"
+                                        width={0}
+                                        height={0}
+                                        sizes="560px"
+                                        className="w-full h-auto block"
+                                        style={{ objectFit: "contain" }}
                                     />
                                 </div>
                             </div>
@@ -214,8 +216,8 @@ export default function LinkedIn() {
                 </div>
 
                 {/* Bottom row — stats + badge */}
-                <div className="max-w-7xl mx-auto px-6 md:px-12 mt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-                    <div className="flex items-center gap-6">
+                {/* <div className="max-w-7xl mx-auto px-6 md:px-12 mt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+                    <div className="flex items-center gap-6"> */}
                         {/* <div className="text-center">
                             <p className="text-[24px] md:text-[28px] font-[var(--font-playfair)] font-bold text-[#111]">
                                 {screenshots.length}+
@@ -224,7 +226,7 @@ export default function LinkedIn() {
                                 Recommendations
                             </p>
                         </div> */}
-                        <div className="w-px h-8 bg-gray-300/50" />
+                        {/* <div className="w-px h-8 bg-gray-300/50" /> */}
                         {/* <div className="text-center">
                             <p className="text-[24px] md:text-[28px] font-[var(--font-playfair)] font-bold text-[#111]">
                                 100%
@@ -235,15 +237,15 @@ export default function LinkedIn() {
                         </div> */}
                     </div>
 
-                    <div className="inline-flex items-center gap-2.5 bg-white rounded-full px-5 py-2.5 border border-gray-200/60 shadow-sm">
+                    {/* <div className="inline-flex items-center gap-2.5 bg-white rounded-full px-5 py-2.5 border border-gray-200/60 shadow-sm">
                         <div className="w-2 h-2 rounded-full bg-[#c42d2d] animate-pulse" />
                         <p className="text-[#666] text-[12px] font-[var(--font-dm-sans)]">
                             All sourced from{" "}
                             <span className="text-[#c42d2d] font-semibold">Instagram and Facebook</span> profiles
                         </p>
-                    </div>
-                </div>
-            </div>
+                    </div> */}
+                {/* </div> */}
+            {/* </div> */}
         </section>
     );
 }

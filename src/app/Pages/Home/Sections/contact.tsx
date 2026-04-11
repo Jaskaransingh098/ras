@@ -92,7 +92,7 @@ export default function Contact() {
                                 />
                                 <label
                                     htmlFor="firstName"
-                                    className="absolute left-5 top-[18px] text-gray-400 text-[15px] font-[var(--font-dm-sans)] transition-all peer-focus:-top-3 peer-focus:left-4 peer-focus:text-[10px] peer-focus:text-[#c42d2d] peer-focus:tracking-[.1em] peer-focus:font-bold peer-focus:uppercase peer-focus:bg-white peer-focus:px-2 peer-valid:-top-3 peer-valid:left-4 peer-valid:text-[10px] peer-valid:text-gray-400 peer-valid:tracking-[.1em] peer-valid:uppercase peer-valid:font-bold peer-valid:bg-white peer-valid:px-2 pointer-events-none"
+                                    className="absolute left-5 top-[18px] text-gray-800 text-[15px] font-[var(--font-dm-sans)] transition-all peer-focus:-top-3 peer-focus:left-4 peer-focus:text-[10px] peer-focus:text-[#c42d2d] peer-focus:tracking-[.1em] peer-focus:font-bold peer-focus:uppercase peer-focus:bg-white peer-focus:px-2 peer-valid:-top-3 peer-valid:left-4 peer-valid:text-[10px] peer-valid:text-gray-400 peer-valid:tracking-[.1em] peer-valid:uppercase peer-valid:font-bold peer-valid:bg-white peer-valid:px-2 pointer-events-none"
                                 >
                                     First Name
                                 </label>
@@ -109,7 +109,7 @@ export default function Contact() {
                                 />
                                 <label
                                     htmlFor="lastName"
-                                    className="absolute left-5 top-[18px] text-gray-400 text-[15px] font-[var(--font-dm-sans)] transition-all peer-focus:-top-3 peer-focus:left-4 peer-focus:text-[10px] peer-focus:text-[#c42d2d] peer-focus:tracking-[.1em] peer-focus:font-bold peer-focus:uppercase peer-focus:bg-white peer-focus:px-2 peer-valid:-top-3 peer-valid:left-4 peer-valid:text-[10px] peer-valid:text-gray-400 peer-valid:tracking-[.1em] peer-valid:uppercase peer-valid:font-bold peer-valid:bg-white peer-valid:px-2 pointer-events-none"
+                                    className="absolute left-5 top-[18px] text-gray-800 text-[15px] font-[var(--font-dm-sans)] transition-all peer-focus:-top-3 peer-focus:left-4 peer-focus:text-[10px] peer-focus:text-[#c42d2d] peer-focus:tracking-[.1em] peer-focus:font-bold peer-focus:uppercase peer-focus:bg-white peer-focus:px-2 peer-valid:-top-3 peer-valid:left-4 peer-valid:text-[10px] peer-valid:text-gray-400 peer-valid:tracking-[.1em] peer-valid:uppercase peer-valid:font-bold peer-valid:bg-white peer-valid:px-2 pointer-events-none"
                                 >
                                     Last Name
                                 </label>
@@ -127,7 +127,7 @@ export default function Contact() {
                             />
                             <label
                                 htmlFor="email"
-                                className="absolute left-5 top-[18px] text-gray-400 text-[15px] font-[var(--font-dm-sans)] transition-all peer-focus:-top-3 peer-focus:left-4 peer-focus:text-[10px] peer-focus:text-[#c42d2d] peer-focus:tracking-[.1em] peer-focus:font-bold peer-focus:uppercase peer-focus:bg-white peer-focus:px-2 peer-valid:-top-3 peer-valid:left-4 peer-valid:text-[10px] peer-valid:text-gray-400 peer-valid:tracking-[.1em] peer-valid:uppercase peer-valid:font-bold peer-valid:bg-white peer-valid:px-2 pointer-events-none"
+                                className="absolute left-5 top-[18px] text-gray-800 text-[15px] font-[var(--font-dm-sans)] transition-all peer-focus:-top-3 peer-focus:left-4 peer-focus:text-[10px] peer-focus:text-[#c42d2d] peer-focus:tracking-[.1em] peer-focus:font-bold peer-focus:uppercase peer-focus:bg-white peer-focus:px-2 peer-valid:-top-3 peer-valid:left-4 peer-valid:text-[10px] peer-valid:text-gray-400 peer-valid:tracking-[.1em] peer-valid:uppercase peer-valid:font-bold peer-valid:bg-white peer-valid:px-2 pointer-events-none"
                             >
                                 Email Address
                             </label>

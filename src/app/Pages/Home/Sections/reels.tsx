@@ -222,7 +222,7 @@ The stress is gone totally from my head, all the negative thoughts which were co
   return (
     <section
       ref={sectionRef}
-      className="py-15 overflow-hidden min-h-[100dvh] flex flex-col justify-center bg-[#f8f7f4]"
+      className="py-21 overflow-hidden min-h-[100dvh] flex flex-col justify-center bg-[#f8f7f4]"
     >
       <style jsx>{`
         .flip-inner{transition:transform .55s cubic-bezier(.4,0,.2,1);transform-style:preserve-3d}
@@ -345,10 +345,10 @@ The stress is gone totally from my head, all the negative thoughts which were co
                 {fc.highlight && <><br /><span className="text-[#c42d2d]">{fc.highlight}</span></>}
               </h3>
 
-              <p className="mt-3 text-black text-base">{fc.sub}</p>
+              <p className="mt-3 text-black text-base">{fc.sub} </p>
 
-              <div className="mt-4">
-                <span className="bg-[#c42d2d] text-white px-5 py-2 rounded-full text-xs font-bold shadow-lg shadow-[#c42d2d]/20 inline-block">
+              <div className="mt-1">
+                <span className=" text-black text-[15px] px- py-2 rounded-full text-xs font-bold inline-block">
                   {fc.badge}
                 </span>
               </div>
@@ -366,10 +366,10 @@ The stress is gone totally from my head, all the negative thoughts which were co
               </div>
 
               <div className="mt-6 flex flex-wrap gap-2.5">
-                <button onClick={(e) => play(featured, e)} className="flex items-center gap-2 bg-[#c42d2d] text-white px-5 py-2.5 rounded-full text-xs font-bold font-[var(--font-outfit)] shadow-lg shadow-[#c42d2d]/25 hover:bg-[#b02525] transition-all">
+                {/* <button onClick={(e) => play(featured, e)} className="flex items-center gap-2 bg-[#c42d2d] text-white px-5 py-2.5 rounded-full text-xs font-bold font-[var(--font-outfit)] shadow-lg shadow-[#c42d2d]/25 hover:bg-[#b02525] transition-all">
                   <svg width="12" height="14" viewBox="0 0 14 16" fill="none"><path d="M0 0L14 8L0 16V0Z" fill="white" /></svg>
                   Watch Short
-                </button>
+                </button> */}
                 <button onClick={(e) => flip(featured, e)} className="flex items-center gap-2 bg-white text-[#c42d2d] px-5 py-2.5 rounded-full text-xs font-bold font-[var(--font-outfit)] shadow-md border border-[#c42d2d]/15 hover:border-[#c42d2d]/40 transition-all">
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#c42d2d" strokeWidth="2">
                     <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />

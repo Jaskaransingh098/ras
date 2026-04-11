@@ -54,13 +54,15 @@ const servicesData = [
     }
 ];
 
-const SPARKLE_POSITIONS = [
-    { top: '10%', left: '15%', delay: '0s', size: '24px' },
-    { top: '25%', left: '80%', delay: '0.4s', size: '20px' },
-    { top: '45%', left: '10%', delay: '0.8s', size: '22px' },
-    { top: '65%', left: '85%', delay: '0.2s', size: '26px' },
-    { top: '80%', left: '25%', delay: '0.6s', size: '20px' },
-    { top: '50%', left: '50%', delay: '1s', size: '24px' },
+const METEORS = [
+    { top: '-80px',  right: '5%',   delay: '0s',    duration: '1.2s' },
+    { top: '-50px',  right: '22%',  delay: '0.45s', duration: '1.5s' },
+    { top: '-100px', right: '40%',  delay: '0.8s',  duration: '1.0s' },
+    { top: '5%',     right: '12%',  delay: '0.2s',  duration: '1.4s' },
+    { top: '12%',    right: '50%',  delay: '0.65s', duration: '1.3s' },
+    { top: '-30px',  right: '62%',  delay: '1.05s', duration: '1.6s' },
+    { top: '20%',    right: '30%',  delay: '0.3s',  duration: '1.1s' },
+    { top: '-60px',  right: '75%',  delay: '0.75s', duration: '1.45s'},
 ];
 
 /* ════════════════════════════════════════════════
@@ -191,22 +193,39 @@ return (
                     transform: translateY(-1px);
              
                }
-                /* Sparkle animations */
-                .sparkle-icon {
+                /* === Shooting-star / meteor animation === */
+                .meteor {
+                    position: absolute;
+                    /* tall needle = long tail */
+                    width: 2px;
+                    height: 120px;
+                    border-radius: 9999px;
+                    /* tail fades from transparent (back) → bright white head (front) */
+                    background: linear-gradient(
+                        to bottom,
+                        transparent 0%,
+                        rgba(196,45,45,0.15) 35%,
+                        rgba(255,160,160,0.7) 75%,
+                        rgba(255,255,255,0.95) 100%
+                    );
+                    /* soft glow around the head */
+                    filter: drop-shadow(0 4px 6px rgba(255,120,120,0.9))
+                            drop-shadow(0 6px 14px rgba(196,45,45,0.6));
+                    /* tilt -45° so the streak points top-right → bottom-left */
+                    transform: rotate(-45deg) translateY(-100%);
                     opacity: 0;
                     pointer-events: none;
-                
-               }
-                .service-card:hover .sparkle-icon {
-                    animation: glitter 1.5s ease-in-out infinite alternate;
-               
-               }
-                @keyframes glitter {
-                    0% { opacity: 0; transform: scale(0.5) rotate(0deg); }
-                    50% { opacity: 1; transform: scale(1.2) rotate(45deg); }
-                    100% { opacity: 0; transform: scale(0.5) rotate(90deg); }
-               
-               }
+                }
+                .service-card:hover .meteor {
+                    animation: shoot var(--dur, 1.4s) linear var(--delay, 0s) infinite;
+                }
+                @keyframes shoot {
+                    /* translateY in the -45° rotated frame moves bottom-left in world space */
+                    0%   { transform: rotate(-45deg) translateY(-100%); opacity: 0; }
+                    6%   { opacity: 1; }
+                    88%  { opacity: 0.85; }
+                    100% { transform: rotate(-45deg) translateY(700px);  opacity: 0; }
+                }
                
            `}</style>
 
@@ -260,7 +279,7 @@ Shift the One Thing That{' '}
 </div>
                     <p className="text-white/90 text-[16px] md:text-[18px] max-w-sm mt-3 md:mt-0 leading-relaxed md:text-right">
                         "Most people come to me after trying everything."
-                        (Before when efforts fail.....)
+                        Before when efforts fail.....
                    
 </p>
 </div>
@@ -271,15 +290,17 @@ Shift the One Thing That{' '}
                         <div key={index} className="service-card group bg-white/95 backdrop-blur-xl flex flex-col relative" style={{ borderRadius: '24px' }}>
                             <div className="card-glow bg-[#c42d2d]" />
                             <div className="absolute inset-0 overflow-hidden rounded-[24px] pointer-events-none z-0">
-                                {SPARKLE_POSITIONS.map((s, i) => (
-                                    <svg
+                                {METEORS.map((m, i) => (
+                                    <div
                                         key={i}
-                                        className="sparkle-icon absolute"
-                                        style={{ top: s.top, left: s.left, width: s.size, height: s.size, animationDelay: s.delay }}
-                                        viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
-                                    >
-                                        <path d="M12 0L13.5 8.5L22 10L13.5 11.5L12 20L10.5 11.5L2 10L10.5 8.5L12 0Z" fill="#c42d2d" opacity="0.6" />
-                                    </svg>
+                                        className="meteor"
+                                        style={{
+                                            top: m.top,
+                                            right: m.right,
+                                            ['--delay' as string]: m.delay,
+                                            ['--dur' as string]: m.duration,
+                                        }}
+                                    />
                                 ))}
                             </div>
                
@@ -305,13 +326,13 @@ Shift the One Thing That{' '}
                
 
                                 {/* Title */}
-                                <h3 className="text-[20px] md:text-[24px] font-[var(--font-playfair)] text-[#111] font-bold leading-tight mb-7">
+                                <h3 className="text-[20px] md:text-[24px] font-[var(--font-playfair)]  text-center text-[#111] font-bold leading-tight mb-7">
                                     {svc.title}
                                 </h3>
-                                <p className="text-[#333] text-[20px] leading-[1.3] mb-7 font-medium font-[var(--font-dm-sans)]">
+                                <p className="text-[#333] text-center text-[19px] leading-[1.3] mb-7 font-semibold font-[var(--font-playfair)]">
                                     {svc.p1}
                                 </p>
-                                <p className="text-gray-700 text-[15px] leading-[1.7] flex-1 font-style: italic text-center">
+                                <p className="text-gray-900 text-[15px] leading-[1.7] flex-1 font-style: italic text-center">
                                     {svc.p2}
                                 </p>
                        
@@ -334,16 +355,16 @@ Shift the One Thing That{' '}
                         {/* <p className="svc-row-desc">{svc.p1}&nbsp;{svc.p2}</p> */}
 
                                 {/* Footer */}
-                                <div className="flex items-center justify-between mt-auto">
+                                <div className="flex items-center justify-center mt-auto">
                                     <a href={svc.btnLink} className="shine-btn inline-flex items-center gap-2 bg-gradient-to-r from-[#c42d2d] to-[#b02525] text-white px-5 py-2.5 rounded-full text-[11px] font-bold font-[var(--font-outfit)] shadow-lg shadow-[#c42d2d]/25 hover:shadow-xl hover:shadow-[#c42d2d]/35 transition-all duration-300 group/btn relative z-20">
                                         {svc.btnText}
                                         <svg className="w-3.5 h-3.5 transition-transform duration-300 group-hover/btn:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round">
                                             <path d="M5 12h14" /><path d="M12 5l7 7-7 7" />
                                         </svg>
                                     </a>
-                                    <span className="text-[#c42d2d]/40 text-[42px] font-[var(--font-playfair)] font-bold leading-none group-hover:text-[#c42d2d]/20 transition-colors duration-500">
+                                    {/* <span className="text-[#c42d2d]/40 text-[42px] font-[var(--font-playfair)] font-bold leading-none group-hover:text-[#c42d2d]/20 transition-colors duration-500">
                                         {svc.number}
-                                    </span>
+                                    </span> */}
                                 </div>
                             </div>
                         {/* Image / visual */}

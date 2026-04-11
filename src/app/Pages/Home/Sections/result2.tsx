@@ -171,7 +171,7 @@ export default function Result() {
                             </p>
                         </div>
                         <h2 className="text-[28px] md:text-[42px] font-[var(--font-playfair)] text-[#1a1a1a] leading-[1.12] font-bold">
-                            Headline
+                            {/* Headline */}
                             <h2 className="text-[22px] md:text-[36px] font-[var(--font-playfair)] text-[#1a1a1a] leading-[1.1] font-bold">
                                 Who You Become{" "}
                                 <span className="italic text-[#c42d2d]/80 font-semibold">in This Space</span>
