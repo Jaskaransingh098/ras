@@ -9,7 +9,9 @@ import How from "./Sections/how";
 import ScrollPoints from "./Sections/scrollPoints";
 import Journey from "./Sections/journey";
 import Services from "./Sections/services";
+import Services2 from "./Sections/services2";
 import Result from "./Sections/result";
+import Result2 from "./Sections/result2";
 import Phases from "./Sections/phases";
 import Speaker from "./Sections/speaker";
 import LinkedIn from "./Sections/linkedin";
@@ -57,7 +59,15 @@ export default function Home() {
       </section>
 
       <section className="">
+        <Services2 />
+      </section>
+
+      <section className="">
         <Result />
+      </section>
+
+      <section className="">
+        <Result2 />
       </section>
 
       <section className="">
