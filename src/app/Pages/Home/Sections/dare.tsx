@@ -113,11 +113,12 @@ export default function DareToDream() {
                             </div>
 
                             <h2 className="section-heading text-[28px] md:text-[42px] font-[var(--font-playfair)] text-white font-bold leading-[1.05] tracking-tight mb-4">
-                                Dare to <br /> <span className="font-light italic text-white">Dream.</span>
+                                Dare to <span className="font-light italic text-white">Dream.</span>
                             </h2>
 
-                            <p className="text-white/90 text-[16px] md:text-[18px] font-semibold font-[var(--font-dm-sans)] max-w-md leading-relaxed mb-6">
-                                A Instagram Live series featuring 52 renowned and honoured voices including Padma Shri awardees, leaders, artists and professionals from diverse fields all across india and beyond— not to showcase success, but to humanize it.
+
+                            <p className="text-white/90 text-[16px] md:text-[18px] font-semibold font-[var(--font-dm-sans)] max-w-md leading-relaxed mb-6 mt-23">
+                                Raseshvari Hindustani hosted an Instagram Live series featuring 52 renowned and honoured voices including Padma Shri awardees, leaders, artists and professionals from diverse fields all across India and beyond— not to showcase success, but to humanize it.
  So people watching can feel: <br/><span className="italic"> “If this is possible for them… it is possible for me too !</span>
                             </p>
 

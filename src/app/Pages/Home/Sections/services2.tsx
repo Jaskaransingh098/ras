@@ -277,9 +277,9 @@ Shift the One Thing That{' '}
 <span className="italic text-white">Changes Everything</span>
 </h2>
 </div>
-                    <p className="text-white/90 text-[16px] md:text-[18px] max-w-sm mt-3 md:mt-0 leading-relaxed md:text-right">
-                        "Most people come to me after trying everything."
-                        Before when efforts fail.....
+                    <p className="text-white/90 text-[16px] md:text-[18px] max-w-[400px] mt-3 md:mt-0 leading-relaxed md:text-right">
+                       Most people come to me after trying everything…<br/>
+when effort hasn't matched results and something still feels stuck.
                    
 </p>
 </div>

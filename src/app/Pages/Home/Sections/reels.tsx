@@ -345,11 +345,11 @@ The stress is gone totally from my head, all the negative thoughts which were co
                 {fc.highlight && <><br /><span className="text-[#c42d2d]">{fc.highlight}</span></>}
               </h3>
 
-              <p className="mt-3 text-black text-base">{fc.sub} </p>
+              <p className="mt-3 text-black text-base">One Energy </p>
 
-              <div className="mt-1">
-                <span className=" text-black text-[15px] px- py-2 rounded-full text-xs font-bold inline-block">
-                  {fc.badge}
+              <div className="mt-">
+                <span className=" text-black text-[15px] px- py- rounded-full text-xs font-bold inline-block">
+                  Shift Session
                 </span>
               </div>
 
