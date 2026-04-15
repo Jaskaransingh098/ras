@@ -46,8 +46,12 @@ export default function BlogPost({
     if (!pageRef.current) return;
 
     const ctx = gsap.context(() => {
+      const elements = pageRef.current!.querySelectorAll(".animate-in");
+
+      if (!elements.length) return;
+
       gsap.fromTo(
-        pageRef.current?.querySelectorAll(".animate-in"),
+        elements,
         { y: 30, opacity: 0 },
         {
           y: 0,
