@@ -17,9 +17,10 @@ export default function Footer() {
 
                     {/* Left: Branding & Newsletter */}
                     <div className="flex flex-col max-w-sm shrink-0">
-                        <h2 className="section-heading text-[32px] font-bold font-[var(--font-playfair)] tracking-wide mb-6">
+                        <img src="/logo/logo1.png" alt="" className="h-23 w-23 bg-white rounded-3xl" />
+                        {/* <h2 className="section-heading text-[32px] font-bold font-[var(--font-playfair)] tracking-wide mb-6">
                             raseshvari
-                        </h2>
+                        </h2> */}
 
                         <p className="text-[14px] md:text-[15px] font-[var(--font-dm-sans)] text-white/90 leading-relaxed mb-8 pr-4">
                             Kaleidoscope - a creative agency specializing in making videos for strategy, marketing and production.

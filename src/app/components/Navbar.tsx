@@ -66,7 +66,7 @@ export default function Navbar() {
       >
         {/* Desktop glass pill */}
         <div
-          className="hidden md:flex items-center gap-3 px-5 py-3 w-full"
+          className="hidden md:flex items-center gap-3 px-2 h-[64px] w-full"
           style={{
             background: "rgba(0,0,0,0.15)",
             backdropFilter: "blur(24px)",
@@ -77,17 +77,18 @@ export default function Navbar() {
           }}
         >
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2.5 flex-shrink-0 mr-3 group transition-opacity duration-200 hover:opacity-80">
-            <div
+          <Link href="/" className="flex items-center gap-2.5 flex-shrink-0 mr-5 group transition-opacity duration-200 hover:opacity-80">
+          <img src="/logo/logo1.png" alt="" className="h-27 w-27 object-contain aspect-square" />
+            {/* <div
               className="w-9 h-9 rounded-full flex items-center justify-center transition-transform duration-200 group-hover:scale-105"
               style={{
                 background: "linear-gradient(135deg, #c42d2d, #9b1c1c)",
                 boxShadow: "0 2px 14px rgba(196,45,45,0.6)",
               }}
-            >
-              <span className="font-bold text-[13px] font-[var(--font-playfair)]" style={{ color: "#f5eeee" }}>R</span>
-            </div>
-            <span className="font-bold text-[15px] tracking-widest font-[var(--font-dm-sans)] uppercase" style={{ color: "#f5eeee" }}>RAS</span>
+            > */}
+              {/* <span className="font-bold text-[13px] font-[var(--font-playfair)]" style={{ color: "#f5eeee" }}>R</span> */}
+            {/* </div> */}
+            {/* <span className="font-bold text-[15px] tracking-widest font-[var(--font-dm-sans)] uppercase" style={{ color: "#f5eeee" }}>RAS</span> */}
           </Link>
 
           {/* Nav links fill space */}
@@ -161,7 +162,7 @@ export default function Navbar() {
           }`}
       >
         <div
-          className="nav-pill-enter flex items-center gap-2 px-3 py-2"
+          className="nav-pill-enter flex items-center gap-2 px-3 h-[60px]"
           style={{
             background: "rgba(0,0,0,0.2)",
             backdropFilter: "blur(20px)",
@@ -174,7 +175,8 @@ export default function Navbar() {
         >
           {/* Logo — icon + wordmark on the left */}
           <Link href="/" className="flex items-center gap-2 flex-shrink-0 mr-2 group transition-opacity duration-200 hover:opacity-80">
-            <div
+          <img src="/logo/logo.png" alt="" className="h-14 w-14 rounded-3xl" />
+            {/* <div
               className="w-8 h-8 rounded-full flex items-center justify-center transition-transform duration-200 group-hover:scale-105"
               style={{
                 background: "linear-gradient(135deg, #c42d2d, #9b1c1c)",
@@ -183,7 +185,7 @@ export default function Navbar() {
             >
               <span className="text-white font-bold text-[12px] font-[var(--font-playfair)]">R</span>
             </div>
-            <span className="text-white font-semibold text-[14px] tracking-wide font-[var(--font-dm-sans)] hidden sm:block">RAS</span>
+            <span className="text-white font-semibold text-[14px] tracking-wide font-[var(--font-dm-sans)] hidden sm:block">RAS</span> */}
           </Link>
 
           {/* Nav links — grows to fill available space */}
