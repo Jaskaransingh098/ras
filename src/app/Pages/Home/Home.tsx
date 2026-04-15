@@ -93,7 +93,7 @@ export default function Home() {
         <Blog />
       </section>
 
-      <section className="">
+      <section className="" id="contact">
         <Contact />
       </section>
 

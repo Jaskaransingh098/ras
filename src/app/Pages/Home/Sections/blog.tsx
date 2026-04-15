@@ -4,45 +4,84 @@ import { useEffect, useRef, useState, useCallback } from "react";
 // import Script from "next/script";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Image from "next/image";
+import Link from "next/link";
 gsap.registerPlugin(ScrollTrigger);
 
 /* ─── Editable Data ─── */
 
 const dailyQuotes = [
     {
-        text: "Graphic",
+        text: "Energy is the foundation of everything. When you shift your frequency, reality shifts with you.",
         author: "Raseshvari",
         label: "Morning Energy",
+        image: "/quotes/1.png",
     },
     {
-        text: "Graphic",
+        text: "The blocks you carry are not flaws—they're patterns waiting to transform.",
         author: "Raseshvari",
         label: "Energy Thought",
+        image: "/quotes/2.png",
     },
     {
-        text: "Graphic",
+        text: "Success without alignment is exhaustion. Purpose with presence is power.",
         author: "Raseshvari",
         label: "Night Reflection",
+        image: "/quotes/3.png",
     },
 ];
 
+// All available graphic quotes
+const graphicQuotes = [
+    { id: 1, src: "/quotes/1.png", alt: "Graphic Quote 1" },
+    { id: 2, src: "/quotes/2.png", alt: "Graphic Quote 2" },
+    { id: 3, src: "/quotes/3.png", alt: "Graphic Quote 3" },
+    { id: 4, src: "/quotes/4.png", alt: "Graphic Quote 4" },
+    { id: 5, src: "/quotes/5.png", alt: "Graphic Quote 5" },
+    { id: 6, src: "/quotes/6.png", alt: "Graphic Quote 6" },
+    { id: 7, src: "/quotes/Grey Brown Minimal Pastel Paper Motivation Quotes Instagram Post_20260412_152038_0007.png", alt: "Graphic Quote 7" },
+    { id: 8, src: "/quotes/Grey Brown Minimal Pastel Paper Motivation Quotes Instagram Post_20260412_152038_0008.png", alt: "Graphic Quote 8" },
+    { id: 9, src: "/quotes/Grey Brown Minimal Pastel Paper Motivation Quotes Instagram Post_20260412_152038_0009.png", alt: "Graphic Quote 9" },
+    { id: 10, src: "/quotes/Grey Brown Minimal Pastel Paper Motivation Quotes Instagram Post_20260412_152039_0010.png", alt: "Graphic Quote 10" },
+    { id: 11, src: "/quotes/Grey Brown Minimal Pastel Paper Motivation Quotes Instagram Post_20260412_152039_0011.png", alt: "Graphic Quote 11" },
+    { id: 12, src: "/quotes/Grey Brown Minimal Pastel Paper Motivation Quotes Instagram Post_20260412_152039_0012.png", alt: "Graphic Quote 12" },
+    { id: 13, src: "/quotes/Grey Brown Minimal Pastel Paper Motivation Quotes Instagram Post_20260412_152039_0013.png", alt: "Graphic Quote 13" },
+    { id: 14, src: "/quotes/Grey Brown Minimal Pastel Paper Motivation Quotes Instagram Post_20260412_152039_0014.png", alt: "Graphic Quote 14" },
+    { id: 15, src: "/quotes/Grey Brown Minimal Pastel Paper Motivation Quotes Instagram Post_20260412_152039_0015.png", alt: "Graphic Quote 15" },
+    { id: 16, src: "/quotes/Grey Brown Minimal Pastel Paper Motivation Quotes Instagram Post_20260412_152039_0016.png", alt: "Graphic Quote 16" },
+    { id: 17, src: "/quotes/Grey Brown Minimal Pastel Paper Motivation Quotes Instagram Post_20260412_152039_0017.png", alt: "Graphic Quote 17" },
+    { id: 18, src: "/quotes/Grey Brown Minimal Pastel Paper Motivation Quotes Instagram Post_20260412_152039_0018.png", alt: "Graphic Quote 18" },
+    { id: 19, src: "/quotes/19.png", alt: "Graphic Quote 19" },
+    { id: 20, src: "/quotes/20.png", alt: "Graphic Quote 20" },
+];
+
+// Function to get random 3 unique quotes
+const getRandomQuotes = (quotes: typeof graphicQuotes, count = 3) => {
+    const shuffled = [...quotes].sort(() => 0.5 - Math.random());
+    return shuffled.slice(0, count);
+};
+
 const blogs = [
     {
-        title: "Why High-Achieving Women Still Feel Empty Inside",
+        id: 1,
+        title: "But You Create Miracles For Others... How Can You Feel Low?",
         excerpt:
-            "You've done everything right — the career, the milestones, the hustle. Yet something still feels missing.",
+            "Every coach, healer, and leader carries silent pain. But here's the truth: the healer also needs healing.",
         tag: "Energy & Frequency",
-        date: "Feb 2025",
-        readTime: "5 min read",
+        date: "Mar 2025",
+        readTime: "6 min read",
+        content: "\"But you create miracles for others… how can you ever feel low?\" 😳\n\nI smile when people ask me this.\n\nBecause yes - I help others heal, transform and reconnect with their bodies…\nBut I am also human.\n\nWhat most people don't realize is that coaches, healers, leaders too have moments of doubt, heaviness and silence.\n\nOur lives are not without ups and downs. The only difference is, even in those moments, we choose to spread more light in the world.\n\nAnd here's something I've seen again and again:\n\nWhen I speak with coaches or energy workers, they don't even have to tell me ..\nI can perceive the energy of their past still weighing on them. Old hurts still bothering them.\n\nBut because they are \"the coach\"… they feel they cannot admit it.\n\nBecause they are \"the healer\"… they hide it out of fear of judgment.\n\nAnd honestly — that breaks my heart. 💔\n\nSo much silent pain, carried quietly… just because of the pressure to appear perfect.\n\nBut here's the truth:\n• The healer also needs healing.\n• The giver also needs to receive.\n• The leader also needs a space to be vulnerable.\n\nThe days are gone when vulnerability was seen as weakness.\n\nToday, vulnerability is courage. It is leadership.\n\nSo to every coach, healer, leader reading this ..\nplease remember:\n• You are human.\n• You are allowed to ask for help.\n• You are allowed to receive.\n\nBecause unless we are truly happy inside out, how can we spread more happiness in the world?\n\nAnd from my heart ❤️\ndeep gratitude to every one of you…\n\nFor the light you spread.\nFor the courage you show.\nFor choosing, again and again, to contribute to others at your fullest.\n\nBut remember -\nyou don't have to walk alone.\n\nI'm here for you. Always.\nIf you've been waiting for a hand to hold, this is it.\n\nLet's come forward. Let's hold each other's hands.\n\nBecause together, we can create a world where even healers, coaches and leaders feel safe to receive.\n\nEase & magic\nRaseshvari"
     },
     {
-        title: "The Real Reason Your Business Isn't Growing",
+        id: 2,
+        title: "Peace or Pressure — What Are You Still Holding Onto?",
         excerpt:
-            "Beneath every stuck revenue plateau is a blocked energetic pattern. Until you shift it, no funnel will save you.",
+            "Three years back, life forced me to pause. I chose peace over pressure and released everything. Here's what I learned.",
         tag: "Revenue Energetics™",
-        date: "Jan 2025",
-        readTime: "4 min read",
-    },
+        date: "Feb 2025",
+        readTime: "7 min read",
+        content: "PEACE or PRESSURE - what are you still holding on to, just because you once created it?\n\nThree years back, life forced me to pause.\nNot a gentle pause...  a complete collapse!!\n\nMy body gave up.\nMy mind went blank.\n\nAnd suddenly, all the things I had built - my community, my organization, my brand, didn't matter anymore.\n\nI didn't have the strength to handle them.\nI didn't even have the will to continue.\n\nSo I made a decision most people are scared to make..\nYes, I decided to let it all go.\n\nA few of my close friends said,\n\"Ras, you were doing so well. Don't leave everything.\"\n\nBut deep down, I knew that for me, peace was more important than pressure.\n\nWhat's the point of holding something just because you once created it,\nif it's not contributing to your happiness in the present?\n\nSo I released it all.\nThe name. The work. The identity I had built for years.\n\nIt wasn't easy.\nBut the moment I let go, I felt light.\n\nFree from the weight.\nAlmost like a child again :) no pressure, no roles, no masks.\n\nAnd today, when I look back, I know, it was the wisest decision of my life.\n\nYes, I had to start again from zero.\nBut there's no baggage.\nJust excitement, peace and a comeback that feels like a phoenix rising from the ashes.\n\nSo I ask you:\n👉 What are you still holding on to, just because you once created it?\n👉 What if letting go is the real act of leadership?\n\nBecause when you keep holding things that no longer serve your present,  the energy becomes heavy.\n\nAnd heaviness will always pull you down,\nno matter how high your title or success.\n\nAt some point, you have to choose -\n✨ Peace or Pressure.!!\n\nWe all have that choice. 💫\nWhat's yours?"
+    }
 ];
 
 /* ─── Component ─── */
@@ -195,6 +234,25 @@ export default function Blog() {
                     backdrop-filter: blur(6px);
                 }
 
+                /* Horizontal Carousel Slider */
+                .quote-carousel-container {
+                    position: relative;
+                    width: 100%;
+                    overflow: hidden;
+                    margin-bottom: 1rem;
+                }
+
+                .quote-carousel-track {
+                    display: flex;
+                    transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+                }
+
+                .quote-slide {
+                    flex: 0 0 100%;
+                    min-width: 100%;
+                    position: relative;
+                }
+
                 .ig-section {
                     position: relative;
                     border-radius: 20px;
@@ -291,7 +349,7 @@ export default function Blog() {
 
                     {/* ── Daily Wisdom Quote Card — Graphic Style ── */}
                     <div className="b-card lg:col-span-5 flex">
-                        <div className="quote-card w-full flex flex-col p-7 md:p-9 relative">
+                        <div className="quote-card w-full flex flex-col p-7 md:p-4 relative overflow-hidden">
 
                             {/* Large decorative circle glow top-right */}
                             <div
@@ -311,67 +369,92 @@ export default function Blog() {
 
                             <div className="relative z-10 flex flex-col h-full">
 
-                                {/* Top row: label badge + counter */}
-                                <div className="flex items-center justify-between mb-6">
+                                {/* Top row: label badge + View All link */}
+                                <div className="flex items-center justify-between mb-4">
                                     <span className="quote-label-badge font-[var(--font-dm-sans)]">
                                         <span className="w-1.5 h-1.5 rounded-full bg-white/70" />
                                         Daily Wisdom
                                     </span>
-                                    <span
-                                        className="text-[11px] font-[var(--font-dm-sans)] tabular-nums font-semibold"
-                                        style={{ color: "rgba(255,255,255,0.55)" }}
+                                    <Link 
+                                        href="/blog/quotes"
+                                        className="text-[10px] font-bold uppercase tracking-[.12em] font-[var(--font-dm-sans)] px-3 py-1.5 rounded-full transition-all duration-300 hover:scale-105"
+                                        style={{
+                                            color: "#ffffff",
+                                            border: "1px solid rgba(255,255,255,0.3)",
+                                            background: "rgba(255,255,255,0.1)",
+                                        }}
                                     >
-                                        {String(quoteIndex + 1).padStart(2, "0")}&nbsp;/&nbsp;{String(dailyQuotes.length).padStart(2, "0")}
-                                    </span>
+                                        View All
+                                    </Link>
                                 </div>
 
-                                {/* Huge decorative opening quote — graphic focal point */}
-                                <div
-                                    className="font-[var(--font-playfair)] select-none leading-none"
-                                    style={{ fontSize: "clamp(90px, 12vw, 140px)", color: "rgba(255,255,255,0.13)", lineHeight: 0.85, marginBottom: "-0.2em" }}
-                                >
-                                    &#8220;
+                                {/* Rotating Graphic Quote Image - Horizontal Carousel */}
+                                <div className="quote-carousel-container mb-4">
+                                    <div 
+                                        className="quote-carousel-track"
+                                        style={{
+                                            transform: `translateX(-${quoteIndex * 100}%)`,
+                                        }}
+                                    >
+                                        {dailyQuotes.map((q, index) => (
+                                            <div key={index} className="quote-slide">
+                                                <div className="relative w-full h-[390px] aspect-square rounded-lg overflow-hidden shadow-md">
+                                                    <Image
+                                                        src={q.image}
+                                                        alt="Daily wisdom graphic"
+                                                        fill
+                                                        className="object-cover"
+                                                        sizes="300px"
+                                                        onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
+                                                    />
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
                                 </div>
+
+                                {/* Divider */}
+                                {/* <div className="mb-1" style={{ height: "1px", background: "linear-gradient(90deg, rgba(255,255,255,0.4), transparent)" }} /> */}
 
                                 {/* Quote text — the centrepiece */}
-                                <blockquote
+                                {/* <blockquote
                                     key={quoteIndex}
-                                    className="font-[var(--font-playfair)] leading-[1.3] quote-fade-enter flex-1"
-                                    style={{ fontSize: "clamp(20px, 2.2vw, 28px)", color: "#ffffff", fontStyle: "italic", textShadow: "0 2px 20px rgba(0,0,0,0.25)" }}
+                                    className="font-[var(--font-playfair)] leading-[1.3] quote-fade-enter mb-4"
+                                    style={{ fontSize: "clamp(14px, 1.8vw, 18px)", color: "#ffffff", fontStyle: "italic", textShadow: "0 2px 20px rgba(0,0,0,0.25)" }}
                                 >
                                     {quote.text}
-                                </blockquote>
+                                </blockquote> */}
 
                                 {/* Thin accent divider */}
-                                <div className="mt-6" style={{ height: "1px", background: "linear-gradient(90deg, rgba(255,255,255,0.4), transparent)" }} />
+                                {/* <div className="mt-auto" style={{ height: "1px", background: "linear-gradient(90deg, rgba(255,255,255,0.4), transparent)" }} /> */}
 
                                 {/* Author row + nav arrows */}
-                                <div className="flex items-center justify-between mt-4">
+                                <div className="flex items-center justify-between mt-">
                                     <div>
-                                        <p className="text-[13px] font-[var(--font-dm-sans)] font-bold tracking-wide" style={{ color: "rgba(255,255,255,0.95)" }}>
+                                        <p className="text-[12px] font-[var(--font-dm-sans)] font-bold tracking-wide" style={{ color: "rgba(255,255,255,0.95)" }}>
                                             — {quote.author}
                                         </p>
-                                        <p className="text-[10px] font-[var(--font-dm-sans)] uppercase tracking-[.22em] mt-1" style={{ color: "rgba(255,255,255,0.6)" }}>
+                                        {/* <p className="text-[9px] font-[var(--font-dm-sans)] uppercase tracking-[.22em] mt-1" style={{ color: "rgba(255,255,255,0.6)" }}>
                                             {quote.label}
-                                        </p>
+                                        </p> */}
                                     </div>
 
                                     <div className="flex items-center gap-2">
                                         <button
                                             onClick={() => setQuoteIndex((prev) => (prev - 1 + dailyQuotes.length) % dailyQuotes.length)}
-                                            className="w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 hover:bg-white/20"
+                                            className="w-7 h-7 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 hover:bg-white/20"
                                             style={{ border: "1px solid rgba(255,255,255,0.3)", background: "rgba(255,255,255,0.1)" }}
                                         >
-                                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" strokeWidth="2.5" strokeLinecap="round">
+                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" strokeWidth="2.5" strokeLinecap="round">
                                                 <path d="M19 12H5" /><path d="M12 19l-7-7 7-7" />
                                             </svg>
                                         </button>
                                         <button
                                             onClick={() => setQuoteIndex((prev) => (prev + 1) % dailyQuotes.length)}
-                                            className="w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 hover:bg-white/20"
+                                            className="w-7 h-7 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 hover:bg-white/20"
                                             style={{ border: "1px solid rgba(255,255,255,0.3)", background: "rgba(255,255,255,0.1)" }}
                                         >
-                                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" strokeWidth="2.5" strokeLinecap="round">
+                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" strokeWidth="2.5" strokeLinecap="round">
                                                 <path d="M5 12h14" /><path d="M12 5l7 7-7 7" />
                                             </svg>
                                         </button>
@@ -379,12 +462,12 @@ export default function Blog() {
                                 </div>
 
                                 {/* Progress dots */}
-                                <div className="flex gap-1.5 mt-4">
+                                <div className="flex gap-1.5 mt-3">
                                     {dailyQuotes.map((_, i) => (
                                         <button
                                             key={i}
                                             onClick={() => setQuoteIndex(i)}
-                                            className="h-[3px] flex-1 rounded-full transition-all duration-500"
+                                            className="h-[2px] flex-1 rounded-full transition-all duration-500"
                                             style={{ background: i === quoteIndex ? "rgba(255,255,255,0.95)" : "rgba(255,255,255,0.25)" }}
                                         />
                                     ))}
@@ -497,12 +580,12 @@ export default function Blog() {
 
                                 <div className="decor-line mb-3" />
 
-                                <a href="#" className="read-arrow font-[var(--font-dm-sans)]">
+                                <Link href={`/blog/${blog.id}`} className="read-arrow font-[var(--font-dm-sans)]">
                                     Read Article
                                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
                                         <path d="M5 12h14" /><path d="M12 5l7 7-7 7" />
                                     </svg>
-                                </a>
+                                </Link>
                             </div>
                         </div>
                     ))}

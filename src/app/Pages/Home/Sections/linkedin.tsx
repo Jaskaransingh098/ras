@@ -7,12 +7,19 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const screenshots = [
-    { id: 1, src: "/test/1.jpeg", alt: "Recommendation 1" },
-    { id: 2, src: "/test/2.jpeg", alt: "Recommendation 2" },
-    { id: 3, src: "/linkedin/rec-3.png", alt: "Recommendation 3" },
-    { id: 4, src: "/linkedin/rec-4.png", alt: "Recommendation 4" },
-    { id: 5, src: "/linkedin/rec-5.png", alt: "Recommendation 5" },
-    { id: 6, src: "/linkedin/rec-6.png", alt: "Recommendation 6" },
+    { id: 1, containerHeight: 500, images: [{ src: "/recommendations/1.png", alt: "Recommendation 1" }] },
+    { id: 2, containerHeight: 520, images: [{ src: "/recommendations/2.png", alt: "Recommendation 2" }] },
+    { id: 3, containerHeight: 480, images: [{ src: "/recommendations/3.png", alt: "Recommendation 3" }] },
+    { id: 4, containerHeight: 510, images: [{ src: "/recommendations/4.png", alt: "Recommendation 4" }] },
+    { id: 5, containerHeight: 490, images: [{ src: "/recommendations/5.png", alt: "Recommendation 5" }] },
+    { id: 6, containerHeight: 530, images: [{ src: "/recommendations/6.png", alt: "Recommendation 6" }] },
+    { id: 7, containerHeight: 500, images: [{ src: "/recommendations/7.png", alt: "Recommendation 7" }] },
+    { id: 8, containerHeight: 515, images: [{ src: "/recommendations/8.png", alt: "Recommendation 8" }] },
+    { id: 9, containerHeight: 495, images: [{ src: "/recommendations/9.png", alt: "Recommendation 9" }] },
+    { id: 10, containerHeight: 505, images: [{ src: "/recommendations/10.png", alt: "Recommendation 10" }] },
+    { id: 11, containerHeight: 520, images: [{ src: "/recommendations/11.png", alt: "Recommendation 11" }] },
+    { id: 12, containerHeight: 485, images: [{ src: "/recommendations/12.png", alt: "Recommendation 12" }] },
+    { id: 13, containerHeight: 510, images: [{ src: "/recommendations/13.png", alt: "Recommendation 13" }] },
 ];
 
 export default function LinkedIn() {
@@ -21,6 +28,7 @@ export default function LinkedIn() {
     const [canScrollLeft, setCanScrollLeft] = useState(false);
     const [canScrollRight, setCanScrollRight] = useState(true);
     const [isPaused, setIsPaused] = useState(false);
+    const [hoveredCardId, setHoveredCardId] = useState<number | null>(null);
     const animRef = useRef<number | null>(null);
 
     const checkScroll = useCallback(() => {
@@ -115,6 +123,18 @@ export default function LinkedIn() {
                     transform: translateY(-6px) scale(1.02);
                     box-shadow: 0 24px 48px -12px rgba(0,0,0,0.12);
                 }
+                .rec-card.blurred {
+                    filter: blur(5px);
+                    opacity: 0.4;
+                    transform: scale(0.95);
+                }
+                .rec-card.zoomed {
+                    transform: scale(1.08) translateY(-8px);
+                    z-index: 20;
+                    filter: blur(0px);
+                    opacity: 1;
+                    box-shadow: 0 32px 64px -12px rgba(196, 45, 45, 0.2);
+                }
             `}</style>
 
             {/* Background decorations */}
@@ -184,34 +204,43 @@ export default function LinkedIn() {
                         ref={scrollRef}
                         className="scroll-container flex gap-4 md:gap-5 overflow-x-auto px-4 md:px-6 pb-2"
                     >
-                        {allScreenshots.map((s, i) => (
-                            <div
-                                key={`${s.id}-${i}`}
-                                className="rec-card w-[480px] md:w-[470px] bg-white border border-gray-100/80 shadow-lg shadow-black/[0.04]"
-                            >
-                                {/* Card top bar */}
-                                <div className="flex items-center gap-2 px-3.5 py-2 border-b border-gray-100/60">
-                                    {/* <svg width="12" height="12" viewBox="0 0 24 24" fill="#c42d2d" opacity="0.5">
-                                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                                    </svg> */}
-                                    <span className="text-[9px] text-[#999] font-medium font-[var(--font-dm-sans)] tracking-wide">
-                                        Recommendation
-                                    </span>
+                        {allScreenshots.map((s, i) => {
+                            const isHovered = hoveredCardId === s.id;
+                            const hasHovered = hoveredCardId !== null;
+                            return (
+                                <div
+                                    key={`${s.id}-${i}`}
+                                    className={`rec-card w-[480px] md:w-[470px] bg-white border border-gray-100/80 shadow-lg shadow-black/[0.04] flex flex-col ${
+                                        isHovered ? "zoomed" : hasHovered ? "blurred" : ""
+                                    }`}
+                                    onMouseEnter={() => setHoveredCardId(s.id)}
+                                    onMouseLeave={() => setHoveredCardId(null)}
+                                >
+                                    {/* Card top bar */}
+                                    <div className="flex items-center gap-2 px-3.5 py-2 border-b border-gray-100/60">
+                                        <span className="text-[9px] text-[#999] font-medium font-[var(--font-dm-sans)] tracking-wide">
+                                            Recommendation
+                                        </span>
+                                    </div>
+                                    {/* Image container — flexible height, images stack vertically */}
+                                    <div className="w-full flex-1 overflow-y-auto" style={{ height: `${s.containerHeight}px` }}>
+                                        {s.images.map((img, imgIdx) => (
+                                            <div key={imgIdx} className="w-full h-auto">
+                                                <Image
+                                                    src={img.src}
+                                                    alt={img.alt}
+                                                    width={0}
+                                                    height={0}
+                                                    sizes="560px"
+                                                    className="w-full h-auto block"
+                                                    style={{ objectFit: "cover" }}
+                                                />
+                                            </div>
+                                        ))}
+                                    </div>
                                 </div>
-                                {/* Screenshot — height adapts to the image's own aspect ratio */}
-                                <div className="w-full">
-                                    <Image
-                                        src={s.src}
-                                        alt={s.alt}
-                                        width={0}
-                                        height={0}
-                                        sizes="560px"
-                                        className="w-full h-auto block"
-                                        style={{ objectFit: "contain" }}
-                                    />
-                                </div>
-                            </div>
-                        ))}
+                            );
+                        })}
                     </div>
                 </div>
 

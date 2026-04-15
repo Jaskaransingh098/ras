@@ -57,7 +57,7 @@ export default function Contact() {
                     <div className="flex flex-col gap-2">
                         <h4 className="text-white/60 text-[11px] uppercase tracking-[.25em] font-[var(--font-dm-sans)] font-bold">Email Directly</h4>
                         <a href="mailto:hello@raseshvari.com" className="group flex items-center gap-3 text-white text-[22px] font-medium transition-colors font-[var(--font-outfit)] w-max">
-                            <span className="group-hover:text-[#f0cfb1] transition-colors">hello@raseshvari.com</span>
+                            <span className="group-hover:text-[#f0cfb1] transition-colors"> Raseshvari@rashindustani.com </span>
                             <div className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center group-hover:border-[#f0cfb1] group-hover:bg-[#f0cfb1] transition-colors">
                                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" className="stroke-white group-hover:stroke-[#9b1c1c] transition-colors" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                                     <line x1="5" y1="12" x2="19" y2="12"></line>

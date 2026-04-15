@@ -65,11 +65,37 @@ const METEORS = [
     { top: '-60px',  right: '75%',  delay: '0.75s', duration: '1.45s'},
 ];
 
+import { useState, useRef } from 'react';
+
 /* ════════════════════════════════════════════════
    NEW DESIGN  –  Editorial / Magazine layout
    (matches reference image 1)
 ════════════════════════════════════════════════ */
 export default function Services() {
+    const [sparkles, setSparkles] = useState<Array<{ id: number; x: number; y: number }>>([]);
+    const sparkleIdRef = useRef(0);
+
+    const createSparkles = () => {
+        const newSparkles = [];
+        const windowHeight = typeof window !== 'undefined' ? window.innerHeight : 800;
+        const windowWidth = typeof window !== 'undefined' ? window.innerWidth : 1200;
+        
+        // Create 30 sparkles distributed across the bottom 40% to top
+        for (let i = 0; i < 30; i++) {
+            newSparkles.push({
+                id: sparkleIdRef.current++,
+                x: Math.random() * windowWidth,
+                y: windowHeight * 0.4 + Math.random() * (windowHeight * 0.4), // Start from 40% to bottom
+            });
+        }
+        
+        setSparkles(newSparkles);
+        
+        // Remove sparkles after animation completes
+        setTimeout(() => {
+            setSparkles([]);
+        }, 1500);
+    };
 return (
         <section className="min-h-[98dvh] bg-gradient-to-b from-[#8a0a0a] to-[#4a0e0e] relative overflow-hidden flex flex-col justify-center py-16">
             <style jsx>{`
@@ -98,6 +124,38 @@ return (
                     66% { transform: translate(-10px, 8px) scale(0.95); }
                 
                }
+
+                @keyframes sparkleFloat {
+                    0% {
+                        opacity: 1;
+                        transform: translateY(0) scale(1);
+                    }
+                    100% {
+                        opacity: 0;
+                        transform: translateY(-${typeof window !== 'undefined' ? window.innerHeight * 0.4 : 320}px) scale(0);
+                    }
+                }
+
+                .sparkle {
+                    position: fixed;
+                    pointer-events: none;
+                    width: 8px;
+                    height: 8px;
+                    background: radial-gradient(circle, #ffeb3b 0%, #fbc02d 50%, transparent 100%);
+                    border-radius: 50%;
+                    box-shadow: 0 0 12px rgba(255, 235, 59, 0.8), 0 0 24px rgba(255, 179, 71, 0.6);
+                    animation: sparkleFloat 1.5s ease-out forwards;
+                    z-index: 50;
+                }
+
+                .sparkle::before {
+                    content: '';
+                    position: absolute;
+                    inset: 0;
+                    border-radius: 50%;
+                    background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, transparent 70%);
+                }
+                
                 .service-card {
                     position: relative;
                     border-radius: 24px;
@@ -356,12 +414,24 @@ when effort hasn't matched results and something still feels stuck.
 
                                 {/* Footer */}
                                 <div className="flex items-center justify-center mt-auto">
-                                    <a href={svc.btnLink} className="shine-btn inline-flex items-center gap-2 bg-gradient-to-r from-[#c42d2d] to-[#b02525] text-white px-5 py-2.5 rounded-full text-[11px] font-bold font-[var(--font-outfit)] shadow-lg shadow-[#c42d2d]/25 hover:shadow-xl hover:shadow-[#c42d2d]/35 transition-all duration-300 group/btn relative z-20">
-                                        {svc.btnText}
-                                        <svg className="w-3.5 h-3.5 transition-transform duration-300 group-hover/btn:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round">
-                                            <path d="M5 12h14" /><path d="M12 5l7 7-7 7" />
-                                        </svg>
-                                    </a>
+                                    {svc.btnText === "Book Call" ? (
+                                        <button 
+                                            onClick={createSparkles}
+                                            className="shine-btn inline-flex items-center gap-2 bg-gradient-to-r from-[#c42d2d] to-[#b02525] text-white px-5 py-2.5 rounded-full text-[11px] font-bold font-[var(--font-outfit)] shadow-lg shadow-[#c42d2d]/25 hover:shadow-xl hover:shadow-[#c42d2d]/35 transition-all duration-300 group/btn relative z-20"
+                                        >
+                                            {svc.btnText}
+                                            <svg className="w-3.5 h-3.5 transition-transform duration-300 group-hover/btn:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round">
+                                                <path d="M5 12h14" /><path d="M12 5l7 7-7 7" />
+                                            </svg>
+                                        </button>
+                                    ) : (
+                                        <a href={svc.btnLink} className="shine-btn inline-flex items-center gap-2 bg-gradient-to-r from-[#c42d2d] to-[#b02525] text-white px-5 py-2.5 rounded-full text-[11px] font-bold font-[var(--font-outfit)] shadow-lg shadow-[#c42d2d]/25 hover:shadow-xl hover:shadow-[#c42d2d]/35 transition-all duration-300 group/btn relative z-20">
+                                            {svc.btnText}
+                                            <svg className="w-3.5 h-3.5 transition-transform duration-300 group-hover/btn:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round">
+                                                <path d="M5 12h14" /><path d="M12 5l7 7-7 7" />
+                                            </svg>
+                                        </a>
+                                    )}
                                     {/* <span className="text-[#c42d2d]/40 text-[42px] font-[var(--font-playfair)] font-bold leading-none group-hover:text-[#c42d2d]/20 transition-colors duration-500">
                                         {svc.number}
                                     </span> */}
@@ -451,6 +521,18 @@ when effort hasn't matched results and something still feels stuck.
             {/* <div className="absolute bottom-8 right-8 md:right-12 pointer-events-none text-right">
                 <p className="text-white/8 text-[11px] uppercase tracking-[.5em]">Raseshvari Hindustani</p>
             </div> */}
+
+            {/* Sparkles Container */}
+            {sparkles.map((sparkle) => (
+                <div
+                    key={sparkle.id}
+                    className="sparkle"
+                    style={{
+                        left: `${sparkle.x}px`,
+                        top: `${sparkle.y}px`,
+                    }}
+                />
+            ))}
 
 </section>
 );
