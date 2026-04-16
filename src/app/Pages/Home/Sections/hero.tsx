@@ -94,7 +94,7 @@ export default function Hero() {
         <div className="absolute inset-0 bg-black/30 z-10 pointer-events-none" />
       </div>
       {/* LEFT SIDE (moved to centered overlay on video) */}
-      <div className="absolute bottom-[8%] left-1/2 -translate-x-1/2 w-full max-w-3xl px-6 z-30 pointer-events-auto text-center">
+      <div className="absolute bottom-[6%] left-1/2 -translate-x-1/2 w-full max-w-3xl px-4 sm:px-6 z-30 pointer-events-auto text-center">
         <style jsx>{`
           @keyframes wordReveal {
             0%   { opacity: 0; transform: translateY(32px); letter-spacing: 0.08em; }
@@ -106,7 +106,7 @@ export default function Hero() {
         `}</style>
 
         {/* Glass Container for Hero Text */}
-        <div className="inline-block px-10 py-8 rounded-[40px] bg-white/5 backdrop-blur-lg border border-white/10 shadow-2xl mb-2">
+        <div className="inline-block px-4 sm:px-8 md:px-10 py-5 sm:py-7 md:py-8 rounded-[24px] sm:rounded-[32px] md:rounded-[40px] bg-white/5 backdrop-blur-lg border border-white/10 shadow-2xl mb-2 w-full sm:w-auto">
           {/* — Eyebrow label — */}
           <div className="flex items-center justify-center gap-3 mb-4">
             <div className="flex-1 max-w-[60px] h-px bg-white/30" />

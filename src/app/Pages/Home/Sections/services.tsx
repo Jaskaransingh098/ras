@@ -83,7 +83,7 @@ export default function Services() {
     }, []);
 
     return (
-        <section ref={sectionRef} className="svc-root bg-gradient-to-b from-[#8a0a0a] to-[#4a0e0e] relative overflow-hidden" style={{ height: '115dvh', maxHeight: '115dvh' }}>
+        <section ref={sectionRef} className="svc-root bg-gradient-to-b from-[#8a0a0a] to-[#4a0e0e] relative overflow-hidden">
             <style>{`
                 /* ── NEW editorial styles ── */
                 .svc-root {
@@ -136,8 +136,7 @@ export default function Services() {
                     align-self: center;
                 }
                 .svc-row-title {
-                    // font-size: clamp(18px, 4vw, 32px);
-                    font-size: 34px;
+                    font-size: clamp(18px, 3.5vw, 34px);
                     font-weight: 800;
                     color: #fff;
                     font-family: var(--font-playfair), serif;
@@ -233,7 +232,7 @@ export default function Services() {
 
             {/* Decorative compass top-right */}
            
-            <div className="max-w-8xl mx-auto px-6 md:px-12 w-full pt-8 pb-10">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 w-full pt-6 md:pt-8 pb-8 md:pb-10">
 
                 {/* ── Original section header ── */}
                 <div className="svc-reveal flex flex-col md:flex-row md:items-end md:justify-between mb-5">
@@ -244,7 +243,7 @@ export default function Services() {
                                 Services
                             </p>
                         </div>
-                        <h2 className="text-[22px] md:text-[34px] font-[var(--font-playfair)] text-white leading-[1.15]">
+                        <h2 className="text-[20px] sm:text-[26px] md:text-[34px] font-[var(--font-playfair)] text-white leading-[1.15]">
                             Shift the One Thing That{' '}
                             <span className="italic text-white">Changes Everything</span>
                         </h2>

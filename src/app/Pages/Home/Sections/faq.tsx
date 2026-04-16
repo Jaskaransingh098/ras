@@ -153,12 +153,12 @@ export default function FAQ() {
     };
 
     return (
-        <section ref={sectionRef} className="relative h-[100dvh] min-h-[90dvh] max-h-[100dvh] py-8 md:py-10 px-4 md:px10 bg-[#fbfbfb] flex flex-col items-center justify-center overflow-hidden">
+        <section ref={sectionRef} className="relative py-8 md:py-10 px-4 md:px-10 bg-[#fbfbfb] flex flex-col items-center justify-center overflow-hidden">
             {/* Soft background accents */}
             {/* <div className="absolute top-1/4 left-0 w-[500px] h-[500px] bg-[#f5f0ea] rounded-full blur-[140px] pointer-events-none" />
             <div className="absolute bottom-0 right-[10%] w-[400px] h-[400px] bg-[#fff0f0] rounded-full blur-[120px] pointer-events-none" /> */}
 
-            <div className="relative z-10 w-full max-w-[1400px] h-full flex flex-col min-h-0">
+            <div className="relative z-10 w-full max-w-[1400px] mx-auto flex flex-col">
 
                 {/* Centered Headers - Avoiding the split-screen look */}
                 <div className="faq-reveal w-full text-center flex flex-col items-center flex-shrink-0 mb-8 md:mb-5">
@@ -180,8 +180,8 @@ export default function FAQ() {
                 </div>
 
                 {/* 2-Column Accordion Grid Layout for vertical efficiency and modern feel */}
-                <div className="w-full flex-1 relative px-2">
-                    <div className="absolute inset-0 overflow-visible pb-10">
+                <div className="w-full relative px-2">
+                    <div className="w-full pb-8">
                         <div className="w-full flex justify-center">
                             <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-5 items-start w-full mt-2">
 

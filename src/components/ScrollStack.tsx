@@ -343,6 +343,26 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
     }
   }, []);
 
+  // Touch handlers for mobile — mirror the mouse hover behavior
+  const handleCardTouchStart = useCallback(() => {
+    hoveringRef.current = true;
+    setIsHoveringCards(true);
+    if (lenisRef.current) {
+      lenisRef.current.start();
+    }
+  }, []);
+
+  const handleCardTouchEnd = useCallback(() => {
+    // Keep scrolling enabled briefly after touch lift so momentum carries
+    setTimeout(() => {
+      hoveringRef.current = false;
+      setIsHoveringCards(false);
+      if (lenisRef.current) {
+        lenisRef.current.stop();
+      }
+    }, 800);
+  }, []);
+
   // After Lenis is set up, stop it initially since user isn't hovering yet
   useLayoutEffect(() => {
     if (lenisRef.current && !hoveringRef.current) {
@@ -357,7 +377,7 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
       style={{
         overflowY: isHoveringCards ? 'auto' : 'hidden',
         overscrollBehavior: isHoveringCards ? 'contain' : 'auto',
-        pointerEvents: isHoveringCards ? 'auto' : 'none',
+        pointerEvents: 'auto',
         WebkitOverflowScrolling: 'touch',
         WebkitTransform: 'translateZ(0)',
         transform: 'translateZ(0)',
@@ -371,6 +391,8 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
         <div
           onMouseEnter={handleCardMouseEnter}
           onMouseLeave={handleCardMouseLeave}
+          onTouchStart={handleCardTouchStart}
+          onTouchEnd={handleCardTouchEnd}
           style={{ pointerEvents: 'auto' }}
         >
           {children}

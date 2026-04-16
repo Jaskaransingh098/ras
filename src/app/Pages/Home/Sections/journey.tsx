@@ -120,7 +120,7 @@ export default function Journey() {
     }, []);
 
     return (
-        <section ref={sectionRef} className="bg-white flex flex-col relative overflow-hidden pt-10 p-5">
+        <section ref={sectionRef} className="bg-white flex flex-col relative overflow-hidden pt-6 md:pt-10 p-3 md:p-5">
             <style>{`
                 @keyframes journey-scroll-fwd {
                     0%   { transform: translateX(0); }
@@ -144,7 +144,7 @@ export default function Journey() {
             `}</style>
 
             {/* Header */}
-            <div className="jrn-reveal flex items-end justify-between px-8 md:px-12 pt-8 pb-6 flex-shrink-0">
+            <div className="jrn-reveal flex flex-col sm:flex-row sm:items-end justify-between px-4 sm:px-8 md:px-12 pt-6 md:pt-8 pb-4 md:pb-6 flex-shrink-0 gap-4 sm:gap-0">
                 <div>
                     <div className="flex items-center gap-3 mb-2">
                         <div className="w-8 h-[2px] rounded-full bg-[#c42d2d]" />
@@ -152,12 +152,12 @@ export default function Journey() {
                             Gallery
                         </p>
                     </div>
-                    <h2 className="section-heading text-[28px] md:text-[44px] font-semibold text-[#111] leading-[1.1] font-[var(--font-playfair)]">
+                    <h2 className="section-heading text-[24px] sm:text-[32px] md:text-[44px] font-semibold text-[#111] leading-[1.1] font-[var(--font-playfair)]">
                         A Window into{' '}
                         <span className="italic text-[#c42d2d] font-bold">her Journey</span>
                     </h2>
                 </div>
-                <button className="flex items-center gap-2.5 bg-[#c42d2d] text-white px-5 md:px-6 py-2.5 md:py-3 rounded-full text-xs md:text-sm font-bold font-[var(--font-outfit)] shadow-lg shadow-[#c42d2d]/20 hover:bg-[#a82525] hover:scale-105 transition-all duration-300 flex-shrink-0">
+                <button className="flex items-center gap-2.5 bg-[#c42d2d] text-white px-4 sm:px-5 md:px-6 py-2 md:py-3 rounded-full text-xs md:text-sm font-bold font-[var(--font-outfit)] shadow-lg shadow-[#c42d2d]/20 hover:bg-[#a82525] hover:scale-105 transition-all duration-300 flex-shrink-0 self-start sm:self-auto">
                     Step into her journey
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round">
                         <path d="M5 12h14" /><path d="M12 5l7 7-7 7" />
@@ -166,11 +166,11 @@ export default function Journey() {
             </div>
 
             {/* Two masonry scroll rows */}
-            <div className="jrn-reveal flex flex-col gap-4 px-8 md:px-12 pb-10 flex-shrink-0">
-                {/* Row 1 — taller, scrolls left */}
-                <ScrollRow items={row1} rowH={300} duration="85s" />
-                {/* Row 2 — shorter, scrolls right */}
-                <ScrollRow items={row2} rowH={260} duration="80s" reverse />
+            <div className="jrn-reveal flex flex-col gap-3 md:gap-4 px-3 sm:px-8 md:px-12 pb-6 md:pb-10 flex-shrink-0">
+                {/* Row 1 — scrolls left */}
+                <ScrollRow items={row1} rowH={200} duration="85s" />
+                {/* Row 2 — scrolls right */}
+                <ScrollRow items={row2} rowH={170} duration="80s" reverse />
             </div>
         </section>
     );

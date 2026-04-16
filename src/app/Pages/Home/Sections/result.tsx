@@ -74,8 +74,7 @@ export default function Result() {
     return (
         <section
             ref={sectionRef}
-            className="relative bg-white overflow-hidden"
-            style={{ height: "105dvh", maxHeight: "105dvh" }}
+            className="relative bg-white overflow-hidden py-6 md:py-0"
         >
             <style>{`
                 /* ══ NEW bento styles (white bg, red accent) ══ */
@@ -142,7 +141,12 @@ export default function Result() {
                     display: grid;
                     gap: 10px;
                     grid-template-columns: 1.1fr 1fr 1fr;
-                    grid-template-rows: 160px 240px;
+                    grid-template-rows: 180px 260px;
+                }
+                @media (max-width: 480px) {
+                    .bg-grid {
+                        grid-template-rows: auto;
+                    }
                 }
                 @media (max-width: 900px) {
                     .bg-grid {
@@ -316,7 +320,7 @@ export default function Result() {
                 }
             `}</style>
 
-            <div className="w-full px-4 md:px-8" style={{ maxWidth: '96vw', margin: '0 auto', paddingTop: '50px', paddingBottom: '16px' }}>
+            <div className="w-full px-4 md:px-8" style={{ maxWidth: '96vw', margin: '0 auto', paddingTop: '24px', paddingBottom: '24px' }}>
 
                 {/* ── Header ── */}
                 <div className="r-reveal flex flex-col md:flex-row md:items-end md:justify-between gap-2 mb-4">

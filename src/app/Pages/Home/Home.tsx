@@ -34,7 +34,7 @@ export default function Home() {
         <Welcome scrollRef={scrollRef} />
       </section>
 
-      <section className="h-[90dvh] mt-2 px-0">
+      <section className="min-h-fit mt-2 px-0">
         <Experience scrollRef={scrollRef} />
       </section>
 

@@ -101,7 +101,7 @@ export default function LinkedIn() {
 
     return (
         <section ref={sectionRef}
-            className="relative min-h-[80dvh] max-h-[100dvh] flex flex-col justify-center overflow-hidden"
+            className="relative min-h-fit flex flex-col justify-center overflow-hidden py-10 md:py-16"
             style={{ background: "linear-gradient(180deg, #f5f0ea 0%, #efe8df 50%, #f5f0ea 100%)" }}
         >
             <style jsx>{`
@@ -155,9 +155,9 @@ export default function LinkedIn() {
 
 
 
-            <div className="w-full relative z-10 pt-16 md:pt-20 pb-14 md:pb-16">
+            <div className="w-full relative z-10 pt-8 md:pt-20 pb-8 md:pb-16">
                 {/* Header row */}
-                <div className="li-reveal max-w-7xl mx-auto px-6 md:px-12 flex flex-col md:flex-row md:items-end md:justify-between mb-10">
+                <div className="li-reveal max-w-7xl mx-auto px-4 sm:px-6 md:px-12 flex flex-col md:flex-row md:items-end md:justify-between mb-6 md:mb-10">
                     <div className="flex items-center gap-5">
                         {/* LinkedIn icon */}
                         {/* <div className="w-13 h-13 rounded-2xl bg-[#c42d2d] flex items-center justify-center shadow-lg shadow-[#c42d2d]/20 flex-shrink-0 p-3.5">
@@ -210,7 +210,7 @@ export default function LinkedIn() {
                             return (
                                 <div
                                     key={`${s.id}-${i}`}
-                                    className={`rec-card w-[480px] md:w-[470px] bg-white border border-gray-100/80 shadow-lg shadow-black/[0.04] flex flex-col ${
+                                    className={`rec-card w-[88vw] sm:w-[380px] md:w-[470px] bg-white border border-gray-100/80 shadow-lg shadow-black/[0.04] flex flex-col ${
                                         isHovered ? "zoomed" : hasHovered ? "blurred" : ""
                                     }`}
                                     onMouseEnter={() => setHoveredCardId(s.id)}

@@ -211,10 +211,10 @@ The stress is gone totally from my head, all the negative thoughts which were co
     const s = sectionRef.current;
     if (!s) return;
     const ctx = gsap.context(() => {
-      gsap.fromTo(s.querySelectorAll(".rr"), { y: 50, opacity: 0 }, {
-        y: 0, opacity: 1, duration: 0.9, stagger: 0.14, ease: "power3.out",
-        scrollTrigger: { trigger: s, start: "20% bottom", toggleActions: "play none none reset" },
-      });
+        gsap.fromTo(s.querySelectorAll(".rr"), { y: 30, opacity: 0 }, {
+          y: 0, opacity: 1, duration: 0.8, stagger: 0.12, ease: "power3.out",
+          scrollTrigger: { trigger: s, start: "top 92%", toggleActions: "play none none none" },
+        });
     }, s);
     return () => ctx.revert();
   }, []);
@@ -222,7 +222,7 @@ The stress is gone totally from my head, all the negative thoughts which were co
   return (
     <section
       ref={sectionRef}
-      className="py-21 overflow-hidden min-h-[100dvh] flex flex-col justify-center bg-[#f8f7f4]"
+      className="py-10 md:py-16 overflow-hidden min-h-fit flex flex-col justify-center bg-[#f8f7f4]"
     >
       <style jsx>{`
         .flip-inner{transition:transform .55s cubic-bezier(.4,0,.2,1);transform-style:preserve-3d}
@@ -240,40 +240,39 @@ The stress is gone totally from my head, all the negative thoughts which were co
       `}</style>
 
       {/* ── HEADER ── */}
-      <div className="text-center mb-14 rr px-6">
-        <p className="text-5xl uppercase tracking-[.01em] text-[#c42d2d] mb-4 font-bold font-[var(--font-dm-sans)]">
+      <div className="text-center mb-8 md:mb-14 rr px-4 sm:px-6">
+        <p className="text-[26px] sm:text-[32px] md:text-[40px] lg:text-5xl uppercase tracking-[.01em] text-[#c42d2d] mb-3 md:mb-4 font-bold font-[var(--font-dm-sans)]">
           Our Clients Brag About Us
         </p>
-        <p className="text-[36px] md:text-[20px] tracking-[.02em] lg:text-[30px] font-[var(--font-playfair)] font-semibold text-[#111] leading-[1.15] max-w-3xl mx-auto">
+        <p className="text-[16px] sm:text-[18px] md:text-[22px] lg:text-[28px] tracking-[.02em] font-[var(--font-playfair)] font-semibold text-[#111] leading-[1.15] max-w-3xl mx-auto">
           Don&rsquo;t believe us? Hear it straight from them.
         </p>
-        <p className="mt-4 text-gray-700 text-[18px] max-w-2xl mx-auto font-[var(--font-dm-sans)]">
+        <p className="mt-3 text-gray-700 text-[14px] sm:text-[16px] md:text-[18px] max-w-2xl mx-auto font-[var(--font-dm-sans)]">
           Real stories from real people. Watch the shorts or read the full transcript.
         </p>
       </div>
 
-      <div className="max-w-[1440px] mx-auto px-6 md:px-10 rr">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-10">
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-6 items-stretch">
 
           {/* ═══ LEFT: Featured Short + Info ═══ */}
-          <div ref={featuredRef} className="flex flex-col sm:flex-row gap-6 lg:gap-8 flex-shrink-0 lg:w-[520px] xl:w-[580px]">
-
-            {/* Phone frame player */}
-            <div className="flex-shrink-0 w-[220px] md:w-[290px] mx-auto sm:mx-0" style={{ perspective: "1400px" }}>
+          <div ref={featuredRef} className="flex flex-col sm:flex-row items-center sm:items-stretch gap-6 sm:gap-10 md:gap-16 rr">
+            {/* Featured Video (Phone Frame) */}
+            <div className="flex-shrink-0 w-[260px] xs:w-[280px] sm:w-[220px] md:w-[270px] mx-auto sm:mx-0" style={{ perspective: "1400px" }}>
               <div className={`flip-inner w-full h-full ${isFeaturedFlipped ? "flipped" : ""}`}>
                 {/* FRONT */}
                 <div className="face w-full">
-                  <div className="phone-frame bg-black shadow-2xl border-[3px] border-red-800 w-full">
+                  <div className="phone-frame bg-black shadow-2xl border-[3px] border-[#c42d2d]/30 w-full min-h-[460px] xs:min-h-[500px] sm:min-h-0">
                     {playingVideo === featured ? (
                       <iframe
                         src={`https://www.youtube.com/embed/${fc.youtubeId}?autoplay=1&rel=0&loop=1`}
                         title={fc.name}
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowFullScreen
-                        className="absolute inset-0 w-full h-full"
+                        className="absolute inset-0 w-full h-full z-20"
                       />
                     ) : (
-                      <>
+                      <div className="z-10 w-full h-full relative">
                         <img src={cardThumb(fc)} alt={fc.name} className="absolute inset-0 w-full h-full object-cover" />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                         <button
@@ -292,7 +291,7 @@ The stress is gone totally from my head, all the negative thoughts which were co
                           <p className="font-bold text-sm leading-tight font-[var(--font-outfit)]">{fc.name}</p>
                           <p className="text-[11px] opacity-70 mt-0.5">{fc.role}{fc.location ? ` · ${fc.location}` : ""}</p>
                         </div>
-                      </>
+                      </div>
                     )}
                   </div>
                 </div>
@@ -382,8 +381,8 @@ The stress is gone totally from my head, all the negative thoughts which were co
           </div>
 
           {/* ═══ RIGHT: Scrollable Thumbnails ═══ */}
-          <div className="flex-1 min-w-0 flex flex-col">
-            <div className="flex items-center gap-3 mb-4 flex-shrink-0 mt-20">
+          <div className="flex-1 min-w-0 flex flex-col rr">
+            <div className="flex items-center gap-3 mb-4 flex-shrink-0 mt-4 lg:mt-20">
               <span className="text-[#111] font-bold text-sm font-[var(--font-playfair)]">More Stories</span>
               <div className="h-px flex-1 bg-[#c42d2d]" />
               <div className="flex items-center gap-2 flex-shrink-0">

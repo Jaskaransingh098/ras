@@ -89,21 +89,20 @@ export default function Experience({ scrollRef }: Props) {
         }
       `}</style>
 
-      <div className="max-w-[1240px] mx-auto px-6 md:px-12">
-         <p className="text-[] pl-35 italic pb-10 text-[15px] md:text-[30px] font-[var(--font-dm-sans)] font-bold leading-[1.2] tracking-wide uppercase">
+      <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-12">
+         <p className="italic pb-6 md:pb-10 text-[15px] sm:text-[20px] md:text-[28px] font-[var(--font-dm-sans)] font-bold leading-[1.2] tracking-wide uppercase text-center md:text-left">
                 When Your Energy Shifts,
-                <span className="italic text-[#a51313]">Your Entire Reality Changes!</span></p>
+                <span className="italic text-[#a51313]"> Your Entire Reality Changes!</span></p>
 
         {/* TWO-COLUMN LAYOUT: Left = 162 + stats | Right = welcome quote + description */}
-        <div className="grid md:grid-cols-[1fr_auto] gap-12 md:gap-16 items-start">
+        <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-8 md:gap-16 items-start">
 
 
           {/* LEFT COLUMN: 162 number + stat years */}
           <div>
             {/* TOP LEFT (162) */}
-            <div className="exp-reveal mb-8 pl-2">
-             
-              <h1 className="text-[#a51313] text-[120px] md:text-[140px] font-[var(--font-playfair)] font-bold leading-[0.8] tracking-[-0.03em]">
+            <div className="exp-reveal mb-6 md:mb-8 pl-2">
+              <h1 className="text-[#a51313] text-[72px] sm:text-[100px] md:text-[140px] font-[var(--font-playfair)] font-bold leading-[0.8] tracking-[-0.03em]">
                 <span ref={mainNumberRef}>0</span>
               </h1>
               <p className="text-[#454545] text-xl md:text-[22px] mt-6 font-medium leading-[1.35] font-[var(--font-dm-sans)]">
@@ -151,10 +150,10 @@ export default function Experience({ scrollRef }: Props) {
           {/* <div className=""></div> */}
 
           {/* RIGHT COLUMN: Welcome quote at the top, aligned with 162 */}
-          <div className="exp-reveal max-w-[560px] self-start pt-2 border-l-2 border-[#d36041]/40 pl-8 md:pl-20">
+          <div className="exp-reveal max-w-[560px] self-start pt-2 border-l-0 md:border-l-2 border-[#d36041]/40 pl-0 md:pl-8 lg:pl-20">
 
             {/* Intro quote line — accent pull-quote at top-right */}
-            <div className="flex items-start gap-3 mb-27">
+            <div className="flex items-start gap-3 mb-8 md:mb-16">
               {/* <div className="w-[3px] self-stretch min-h-[2.5em] rounded-full bg-[#a51313] flex-shrink-0" /> */}
               <p className="text-[#a51313] pt-2 text-[15px] md:text-[20px] font-[var(--font-dm-sans)] font-bold leading-[1.4] tracking-wide italic">
                 Welcome to the work that goes beyond the logical mind — into pure transformation
@@ -178,7 +177,7 @@ export default function Experience({ scrollRef }: Props) {
       </div>
 
       {/* AVATAR CAROUSEL — infinite CSS marquee */}
-      <div className="mt-28 md:mt-15 overflow-hidden">
+      <div className="mt-10 md:mt-16 overflow-hidden">
         <div className="avatar-track px-6">
           {allAvatars.map((num, i) => (
             <img

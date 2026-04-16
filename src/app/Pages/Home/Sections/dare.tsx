@@ -112,56 +112,53 @@ export default function DareToDream() {
     }, s);
     return () => ctx.revert();
   }, []);
-
   return (
     <section
       ref={sectionRef}
-      className="relative h-[92dvh] flex justify-center items-center py-6 md:py-4 bg-gradient-to-b from-[#8a0a0a] to-[#4a0e0e] overflow-hidden"
+      className="relative min-h-[92dvh] flex justify-center items-center py-8 md:py-4 bg-gradient-to-b from-[#8a0a0a] to-[#4a0e0e] overflow-hidden"
     >
       <div className="relative z-10 w-full h-full max-w-[1400px] mx-auto px-4 md:px-8">
-        {/* 5-Column Grid Layout spanning full height */}
-        <div className="w-full h-full flex gap-3 md:gap-5 px-">
-          {/* LEFT TALL COLUMN (Corner) — 2 swapping slots */}
-          <div className="flex-1 flex flex-col gap-3 md:gap-4 h-full pt-[%]">
+        <div className="w-full h-full flex gap-2 sm:gap-3 md:gap-4">
+
+          {/* LEFT TALL COLUMN — hidden on mobile, visible on md+ */}
+          <div className="hidden md:flex flex-1 flex-col gap-3 md:gap-4 h-[85dvh]">
             {leftCornerSlots.map((imgs, i) => (
               <SwappingSlot
                 key={i}
                 images={imgs}
-                // delay={i * 600}
-                delay={Math.random() * 2000}
+                delay={i * 800}
                 className="flex-1 rounded-2xl md:rounded-[36px]"
               />
             ))}
           </div>
 
-          {/* LEFT-CENTER spacer col — 1 tall swapping slot */}
-          <div className="flex-[1.1] flex flex-col h-full pt-[8%] pb-[2%]">
+          {/* LEFT-CENTER spacer col — hidden on mobile & sm, visible on lg+ */}
+          <div className="hidden lg:flex flex-[1.1] flex-col h-[85dvh] pt-[8%] pb-[2%]">
             <SwappingSlot
               images={leftMidSlot}
-              //   delay={1200}
-              delay={Math.random() * 2000}
+              delay={1200}
               className="h-[75%] rounded-[24px] md:rounded-[36px]"
             />
           </div>
 
-          {/* CENTER COLUMN — Text + fixed wide image at bottom */}
-          <div className="flex-[1.8] flex flex-col h-full justify-between items-center text-center pt-[5%] pb-[1%] px-2">
+          {/* CENTER COLUMN — always visible */}
+          <div className="flex-1 lg:flex-[1.8] flex flex-col items-center text-center pt-4 md:pt-[5%] pb-3 px-2 md:h-[85dvh] md:justify-between">
             {/* Text Content */}
             <div className="dare-reveal flex flex-col items-center">
-              <div className="flex items-center gap-3 mb-4">
+              <div className="flex items-center gap-3 mb-3 md:mb-4">
                 <div className="w-6 h-px bg-gradient-to-r from-transparent to-[#c42d2d]" />
-                <span className="text-white text-[10px] md:text-[11px] uppercase tracking-[.3em] font-semibold font-[var(--font-dm-sans)]">
+                <span className="text-white text-[9px] md:text-[11px] uppercase tracking-[.2em] md:tracking-[.3em] font-semibold font-[var(--font-dm-sans)]">
                   Instagram Live Diaries Series
                 </span>
                 <div className="w-6 h-px bg-gradient-to-l from-transparent to-[#c42d2d]" />
               </div>
 
-              <h2 className="section-heading text-[28px] md:text-[42px] font-[var(--font-playfair)] text-white font-bold leading-[1.05] tracking-tight mb-1">
+              <h2 className="section-heading text-[32px] sm:text-[38px] md:text-[42px] font-[var(--font-playfair)] text-white font-bold leading-[1.05] tracking-tight mb-2">
                 Dare to{" "}
                 <span className="font-light italic text-white">Dream.</span>
               </h2>
-              {/* <div className="w-full max-w-xs flex-1 rounded-[24px] md:rounded-[36px] overflow-hidden shadow-lg mt-6 bg-gray-100 center-image-container"> */}
-              <div className="w-full max-w-[330px] h-[220px] md:h-[180px] rounded-[24px] md:rounded-[36px] overflow-hidden shadow-lg mt- bg-gray-100 relative">
+
+              <div className="w-full max-w-[280px] sm:max-w-[330px] h-[140px] sm:h-[180px] md:h-[180px] rounded-[20px] md:rounded-[36px] overflow-hidden shadow-lg bg-gray-100 relative mt-2">
                 <Image
                   src={centerBelowImg}
                   alt="Center inspiration image"
@@ -174,7 +171,7 @@ export default function DareToDream() {
                 />
               </div>
 
-              <p className="text-white text-[16px] md:text-[18px] font-semibold font-[var(--font-dm-sans)] max-w-md leading-relaxed mb-1 mt-">
+              <p className="text-white text-[12px] sm:text-[14px] md:text-[16px] font-semibold font-[var(--font-dm-sans)] max-w-[300px] sm:max-w-md leading-relaxed mb-3 mt-2">
                 Raseshvari Hindustani hosted an Instagram Live series featuring
                 52 renowned and honoured voices including Padma Shri awardees,
                 leaders, artists and professionals from diverse fields all
@@ -182,52 +179,58 @@ export default function DareToDream() {
                 humanize it. So people watching can feel: <br />
                 <span className="italic">
                   {" "}
-                  “If this is possible for them… it is possible for me too !
+                  "If this is possible for them… it is possible for me too !
                 </span>
               </p>
 
-              <button className="bg-[#1a1a1a] text-white hover:bg-[#c42d2d] transition-colors px-8 py-3 rounded-[12px] font-medium text-[14px] font-[var(--font-outfit)] shadow-md">
+              <button className="bg-[#1a1a1a] text-white hover:bg-[#c42d2d] transition-colors px-6 sm:px-8 py-2.5 sm:py-3 rounded-[12px] font-medium text-[13px] sm:text-[14px] font-[var(--font-outfit)] shadow-md">
                 Check the Series
               </button>
             </div>
 
-            {/* Fixed center image below text - smooth animated container */}
+            {/* ── MOBILE ONLY: horizontal scrollable strip of all 6 guest image slots ── */}
+            <div className="md:hidden w-screen -mx-4 mt-5 overflow-x-auto pb-2" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+              <style>{`.dare-strip::-webkit-scrollbar{display:none}`}</style>
+              <div className="dare-strip flex gap-2.5 px-4" style={{ width: 'max-content' }}>
+                {([...leftCornerSlots, [leftMidSlot[0], leftMidSlot[1]], [rightMidSlot[0], rightMidSlot[1]], ...rightCornerSlots] as (typeof guestImages)[number][][]).map((imgs, i) => (
+                  <div key={i} className="flex-shrink-0 w-[100px] h-[140px] rounded-[16px] overflow-hidden relative bg-white/10 shadow-md border border-white/10">
+                    <SwappingSlot
+                      images={imgs}
+                      delay={i * 500}
+                      className="w-full h-full rounded-[16px]"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+
             <style jsx>{`
               @keyframes centerImageSlideUp {
-                from {
-                  opacity: 0;
-                  transform: translateY(20px);
-                }
-                to {
-                  opacity: 1;
-                  transform: translateY(0);
-                }
+                from { opacity: 0; transform: translateY(20px); }
+                to { opacity: 1; transform: translateY(0); }
               }
-
               .center-image-container {
                 animation: centerImageSlideUp 0.8s ease-out forwards;
               }
             `}</style>
           </div>
 
-          {/* RIGHT-CENTER spacer col — 1 tall swapping slot */}
-          <div className="flex-[1.1] flex flex-col h-full pt-[8%] pb-[2%]">
+          {/* RIGHT-CENTER spacer col — hidden on mobile & sm, visible on lg+ */}
+          <div className="hidden lg:flex flex-[1.1] flex-col h-[85dvh] pt-[8%] pb-[2%]">
             <SwappingSlot
               images={rightMidSlot}
-              //   delay={1800}
-              delay={Math.random() * 2000}
+              delay={1600}
               className="h-[75%] rounded-[24px] md:rounded-[36px]"
             />
           </div>
 
-          {/* RIGHT TALL COLUMN (Corner) — 2 swapping slots */}
-          <div className="flex-1 flex flex-col gap-3 md:gap-4 h-full pt-[%]">
+          {/* RIGHT TALL COLUMN — hidden on mobile, visible on md+ */}
+          <div className="hidden md:flex flex-1 flex-col gap-3 md:gap-4 h-[85dvh]">
             {rightCornerSlots.map((imgs, i) => (
               <SwappingSlot
                 key={i}
                 images={imgs}
-                // delay={i * 600 + 2400}
-                delay={Math.random() * 2000}
+                delay={i * 800 + 400}
                 className="flex-1 rounded-2xl md:rounded-[36px]"
               />
             ))}

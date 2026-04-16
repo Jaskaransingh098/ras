@@ -81,10 +81,7 @@ export default function Result() {
     return (
         <section
             ref={sectionRef}
-            className="relative bg-white overflow-hidden flex flex-col justify-center"
-            style={{ minHeight: "100dvh", maxHeight: "110dvh" }}
-        // className="relative bg-white overflow-hidden"
-        // style={{ height: "105dvh", maxHeight: "105dvh" }}
+            className="relative bg-white overflow-hidden py-16 md:py-24 min-h-fit"
         >
             <style jsx>{`
                 // @keyframes gentle-float {

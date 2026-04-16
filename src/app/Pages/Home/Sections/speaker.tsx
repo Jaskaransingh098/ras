@@ -168,10 +168,10 @@ export default function Speaker() {
       {/* Top separator */}
       <div className="absolute top-0 left-[5%] right-[5%] h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent" />
 
-      <div className="max-w-8xl mx-auto px-6 md:px-12 w-full relative z-10 py-16 md:py-20">
-        <div className="flex flex-col-reverse md:flex-row gap-16 md:gap-24 items-center justify-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 w-full relative z-10 py-10 md:py-20">
+        <div className="flex flex-col-reverse md:flex-row gap-8 md:gap-16 lg:gap-24 items-center justify-center">
           {/* LEFT — Video */}
-          <div className="spk-reveal w-full md:w-[300px] flex-shrink-0">
+          <div className="spk-reveal w-full max-w-[320px] mx-auto md:mx-0 md:w-[260px] lg:w-[300px] flex-shrink-0">
             <div className="video-frame shadow-xl shadow-black/[0.08]">
               <div className="relative aspect-[9/16] max-h-[75dvh] bg-[#f0ebe4]">
                 <video
@@ -284,7 +284,7 @@ export default function Speaker() {
           </div>
 
           {/* RIGHT — Content */}
-          <div className="spk-reveal md:w-[55%]">
+          <div className="spk-reveal w-full md:w-[55%]">
             {/* Label */}
             <div className="flex items-center gap-3 mb-5">
               <div className="w-10 h-[2px] rounded-full bg-gradient-to-r from-[#c42d2d] to-transparent" />
@@ -294,17 +294,17 @@ export default function Speaker() {
             </div>
 
             {/* Heading */}
-          <h2 className="section-heading font-[var(--font-playfair)] text-[28px] md:text-[44px] text-[#111] leading-[1.1] mb-7">
+          <h2 className="section-heading font-[var(--font-playfair)] text-[26px] sm:text-[32px] md:text-[40px] lg:text-[44px] text-[#111] leading-[1.1] mb-5 md:mb-7">
               Talk that go
               <br />
               <span className="italic text-[#c42d2d] font-bold">
-                beyond inspiration-
-              </span>{""}
-              <span className="text-[36px] p-3">into real awareness and action.</span>
+                beyond inspiration —
+              </span>{" "}
+              <span className="block text-[20px] sm:text-[24px] md:text-[28px] mt-1">into real awareness and action.</span>
             </h2>
 
             {/* Description */}
-            <p className="text-[#333] text-[15px] md:text-[22px] leading-[1.55] font-[var(--font-dm-sans)] mb-7 max-w-2xl ">
+            <p className="text-[#333] text-[14px] sm:text-[16px] md:text-[18px] lg:text-[20px] leading-[1.55] font-[var(--font-dm-sans)] mb-5 md:mb-7 max-w-2xl">
                Raseshvari Hindustani is invited to speak with institutions, organizations,
               leaders, and young minds on how energy shapes choices and
               decisions&mdash;bringing{" "}

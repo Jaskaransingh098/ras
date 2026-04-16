@@ -95,8 +95,8 @@ export default function How({ scrollRef }: Props) {
     // ];
 
     return (
-        <section ref={sectionRef} className="py-14 bg-white overflow-hidden">
-            <div className="max-w-7xl mx-auto px-6 md:px-12">
+        <section ref={sectionRef} className="py-8 md:py-14 bg-white overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12">
                 {/* ── TOP ROW: Header + Steps ── */}
                 <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-10">
                     {/* Left: Header */}
@@ -211,13 +211,13 @@ export default function How({ scrollRef }: Props) {
                 </div>
 
                 {/* ── BOTTOM ROW: Caption + CTA ── */}
-                <div className="mt-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 hw">
-                    <div className="flex items-center gap-3">
-                        <div className="w-2 h-2 rounded-full bg-[#c42d2d] animate-pulse" />
-                        <p className="text-gray-800 text-xl font-[var(--font-dm-sans)] italic text-base font-semibold">
-                            One session, one shift, ultimate unlimited possibilities
-                        </p>
-                    </div>
+                <div className="mt-5 md:mt-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 hw">
+                <div className="flex items-center gap-3">
+                    <div className="w-2 h-2 rounded-full bg-[#c42d2d] animate-pulse" />
+                    <p className="text-gray-800 text-[15px] sm:text-xl font-[var(--font-dm-sans)] italic font-semibold">
+                        One session, one shift, ultimate unlimited possibilities
+                    </p>
+                </div>
                     {/* <button className="flex items-center gap-2 bg-[#c42d2d] text-white px-6 py-2.5 rounded-full text-sm font-bold font-[var(--font-outfit)] shadow-lg shadow-[#c42d2d]/20 hover:bg-[#a82525] transition-all">
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round">
                             <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
