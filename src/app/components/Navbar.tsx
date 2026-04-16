@@ -66,10 +66,10 @@ export default function Navbar() {
       >
         {/* Desktop glass pill */}
         <div
-          className="hidden md:flex items-center gap-3 px-2 h-[64px] w-full"
+          className="hidden md:flex items-center gap-6 px-5 h-[64px] w-full"
           style={{
             background: "rgba(0,0,0,0.15)",
-            backdropFilter: "blur(24px)",
+            backdropFilter: "blur(34px)",
             WebkitBackdropFilter: "blur(24px)",
             borderRadius: "999px",
             border: "1px solid rgba(255,255,255,0.1)",
@@ -77,8 +77,8 @@ export default function Navbar() {
           }}
         >
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2.5 flex-shrink-0 mr-5 group transition-opacity duration-200 hover:opacity-80">
-          <img src="/logo/logo1.png" alt="" className="h-27 w-27 object-contain aspect-square" />
+          <Link href="/" className="flex items-center gap-2.5 flex-shrink-0 mr-28 group transition-opacity duration-200 hover:opacity-80">
+          <img src="/logo/logo ras hindustani transparent.png" alt="" className="h-20 w-20 object-contain aspect-square" />
             {/* <div
               className="w-9 h-9 rounded-full flex items-center justify-center transition-transform duration-200 group-hover:scale-105"
               style={{
@@ -165,8 +165,8 @@ export default function Navbar() {
           className="nav-pill-enter flex items-center gap-2 px-3 h-[60px]"
           style={{
             background: "rgba(0,0,0,0.2)",
-            backdropFilter: "blur(20px)",
-            WebkitBackdropFilter: "blur(20px)",
+            backdropFilter: "blur(70px)",
+            WebkitBackdropFilter: "blur(70px)",
             borderRadius: "999px",
             border: "1px solid rgba(255,255,255,0.12)",
             boxShadow: "0 8px 40px rgba(0,0,0,0.25), 0 2px 8px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.1)",
@@ -175,7 +175,7 @@ export default function Navbar() {
         >
           {/* Logo — icon + wordmark on the left */}
           <Link href="/" className="flex items-center gap-2 flex-shrink-0 mr-2 group transition-opacity duration-200 hover:opacity-80">
-          <img src="/logo/logo.png" alt="" className="h-14 w-14 rounded-3xl" />
+          <img src="/logo/logo ras hindustani transparent.png" alt="" className="h-20 w-20" />
             {/* <div
               className="w-8 h-8 rounded-full flex items-center justify-center transition-transform duration-200 group-hover:scale-105"
               style={{

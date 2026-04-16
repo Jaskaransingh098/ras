@@ -30,7 +30,7 @@ const rightCornerSlots = [
   [guestImages[10], guestImages[11]],
 ];
 
-const SWAP_INTERVAL = 3000; // ms between swaps per slot
+const SWAP_INTERVAL = 6000; // ms between swaps per slot
 
 /** A single slot that swaps between 2 images */
 function SwappingSlot({

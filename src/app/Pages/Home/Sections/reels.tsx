@@ -69,7 +69,7 @@ If you’re going through something like this, please connect with Raseshvari. S
       role: "Dentist",
       location: "",
       youtubeId: "vdOWHa-rzGg",
-      poster: "she_heals.png",
+      poster: "she_heals_2.png",
       transcript: `Raseshvari Hindustani:
 "Most high-achieving women carry an invisible emotional load, one that quietly blocks their growth and impacts their revenue too. One of my clients, a beautiful and brilliant doctor, had tried everything, but an old emotional pain wouldn’t just let go."
 

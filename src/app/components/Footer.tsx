@@ -17,7 +17,7 @@ export default function Footer() {
 
                     {/* Left: Branding & Newsletter */}
                     <div className="flex flex-col max-w-sm shrink-0">
-                        <img src="/logo/logo1.png" alt="" className="h-23 w-23 bg-white rounded-3xl" />
+                        <img src="/logo/logo ras hindustani zoom.png" alt="" className="h-23 w-23 bg-white rounded-3xl mb-2" />
                         {/* <h2 className="section-heading text-[32px] font-bold font-[var(--font-playfair)] tracking-wide mb-6">
                             raseshvari
                         </h2> */}
