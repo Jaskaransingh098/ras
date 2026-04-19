@@ -11,7 +11,7 @@ const cards = [
     {
         title: "A Calm Mind & Emotional Lightness",
         desc: "Your overthinking quiets. Stress loosens its grip. The heaviness, guilt, abuse, anxiety, grief begins to lift — in just one session.",
-        image: "/results/calm-mind.png",
+        image: "/results/1.gif",
         accent: "#c42d2d",
     },
     {
@@ -23,19 +23,19 @@ const cards = [
     {
         title: "Ease in Relationships & Communication",
         desc: "Emotional triggers lose charge. Personal as well as professional relationships & conversations soften. You respond from calm, not pain.",
-        image: "/results/relationships.png",
+        image: "/results/3.mp4",
         accent: "#c42d2d",
     },
     {
         title: "A Lighter, Healthier Body",
         desc: "Your body releases stored pressure. Tension softens. Pain begins to dissolve from the inside out. Your body feels lighter and supported.",
-        image: "/results/lighter-body.png",
+        image: "/results/4.mp4",
         accent: "#c42d2d",
     },
     {
         title: "The Safety to Finally Be YOU",
         desc: "The soft you. The peaceful you. The strong you. The ambitious you. The YOU waiting for years to come alive.",
-        image: "/results/be-you.png",
+        image: "/results/5.mp4",
         accent: "#c42d2d",
     },
 ];
@@ -81,7 +81,7 @@ export default function Result() {
     return (
         <section
             ref={sectionRef}
-            className="relative bg-white overflow-hidden py-16 md:py-24 min-h-fit"
+            className="relative bg-white overflow-hidden py-16 md:py-4 min-h-fit"
         >
             <style jsx>{`
                 // @keyframes gentle-float {
@@ -154,7 +154,7 @@ export default function Result() {
             </div> */}
 
 
-            <div className="max-w-7xl mx-auto px-6 md:px-12 w-full relative z-10 py-12 md:py-14">
+            <div className="max-w-7xl mx-auto px-6 md:px-2 w-full relative z-10 py-12 md:py-14">
 
 
                 {/* ─── HEADER: Split layout ─── */}
@@ -226,15 +226,26 @@ export default function Result() {
                                     >
                                         <div
                                             className="absolute inset-0 rounded-xl"
-                                            style={{ background: `radial-gradient(ellipse at center, ${card.accent}08, transparent 70%)` }}
+                                            // style={{ background: `radial-gradient(ellipse at center, ${card.accent}08, transparent 70%)` }}
                                         />
-                                        <Image
-                                            src={card.image}
-                                            alt={card.title}
-                                            width={120}
-                                            height={120}
-                                            className="relative z-10 w-auto h-[85px] md:h-[95px] object-contain  group-hover:scale-105 transition-transform duration-500"
-                                        />
+                                        {card.image.endsWith('.mp4') ? (
+                                            <video
+                                                src={card.image}
+                                                autoPlay
+                                                loop
+                                                muted
+                                                playsInline
+                                                className="relative z- ob-3  w-auto h-[85px] md:h-[150px] object-contain group-hover:scale-105 transition-transform duration-500"
+                                            />
+                                        ) : (
+                                            <Image
+                                                src={card.image}
+                                                alt={card.title}
+                                                width={120}
+                                                height={120}
+                                                className="relative z- pb-3 w-auto h-[85px] md:h-[150px] object-contain group-hover:scale-105 transition-transform duration-500"
+                                            />
+                                        )}
                                     </div>
 
                                     {/* Number */}
