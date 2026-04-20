@@ -2,40 +2,24 @@ import { NextResponse } from "next/server";
 
 export async function GET() {
     try {
+        const IG_ID = process.env.INSTAGRAM_ID;
+        const TOKEN = process.env.INSTAGRAM_ACCESS_TOKEN;
+
         const res = await fetch(
-            "https://www.instagram.com/beyondimagination.club/",
-            {
-                headers: {
-                    "User-Agent":
-                        "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
-                },
-                cache: "no-store",
-            }
+            `https://graph.facebook.com/v18.0/${IG_ID}/media?fields=id,caption,media_url,thumbnail_url,permalink,timestamp,media_type&access_token=${TOKEN}`,
+            { cache: "no-store" }
         );
 
-        const html = await res.text();
+        const data = await res.json();
 
-        const jsonMatch = html.match(/window\._sharedData = (.*);<\/script>/);
-
-        if (!jsonMatch) {
-            return NextResponse.json({ posts: [] });
-        }
-
-        const json = JSON.parse(jsonMatch[1]);
-
-        const edges =
-            json.entry_data.ProfilePage[0].graphql.user.edge_owner_to_timeline_media.edges.slice(
-                0,
-                2
-            );
-
-        const posts = edges.map((edge: any) => ({
-            id: edge.node.id,
-            caption:
-                edge.node.edge_media_to_caption.edges[0]?.node.text || "",
-            mediaUrl: edge.node.display_url,
-            permalink: `https://www.instagram.com/p/${edge.node.shortcode}/`,
-            timestamp: edge.node.taken_at_timestamp,
+        const posts = data.data?.slice(0, 4).map((post: any) => ({
+            id: post.id,
+            caption: post.caption || "",
+            mediaUrl:
+                post.media_type === "VIDEO"
+                    ? post.thumbnail_url
+                    : post.media_url,
+            permalink: post.permalink,
         }));
 
         return NextResponse.json({ posts });

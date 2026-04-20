@@ -137,10 +137,10 @@ export default function MomsCommunity() {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-[70dvh] flex flex-col items-center justify-center overflow-hidden py-10 md:py-16 px-4 sm:px-6 md:px-12 bg-white"
+      className="relative min-h-[70dvh] flex flex-col items-center justify-center overflow-hidden py-5 px- sm:px- md:px- bg-[#4a0e0e]/8"
     >
       {/* Left-side subtle tint only (keeps scroller neutral) */}
-      <div className="absolute inset-y-0 left-0 w-[46%] bg-[#4a0e0e]/8 z-0 pointer-events-none" />
+      <div className="absolute inset-y-0 left-0 w-[46%] z-0 pointer-events-none" />
 
       {/* Subtle background glows placed behind content */}
       <div className="absolute top-[18%] left-[8%] w-[220px] h-[220px] bg-[#e85d5d]/6 rounded-full blur-[90px] pointer-events-none z-0" />
@@ -201,7 +201,7 @@ export default function MomsCommunity() {
         </div>
 
         {/* Right Area — 2-column infinite vertical scroll gallery */}
-        <div className="mc-reveal w-full md:w-[60%] h-[300px] sm:h-[400px] md:h-[600px] lg:h-[700px] flex gap-3 overflow-hidden rounded-2xl md:rounded-3xl relative">
+        <div className="mc-reveal w-full md:w-[70%] h-[300px] sm:h-[400px] md:h-[600px] lg:h-[800px] flex gap-3 overflow-hidden rounded-2xl md:rounded-3xl relative">
           {/* Fade top/bottom */}
           <div className="absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-white to-transparent z-10 pointer-events-none" />
           <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-white to-transparent z-10 pointer-events-none" />
