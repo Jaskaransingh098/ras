@@ -64,7 +64,7 @@ export default function MomsCommunity() {
 
     const speed = 1;
 
-    // ✅ HOVER EVENTS (ONLY ONCE — NOT INSIDE ANIMATE)
+
     const col1Container = col1.parentElement;
     const col2Container = col2.parentElement;
 
@@ -278,7 +278,7 @@ export default function MomsCommunity() {
                   <div
                     key={`c2-${idx}`}
                     className="relative w-full rounded-xl overflow-hidden shadow-md flex-shrink-0"
-                    style={{ height: "260px" }}
+                    style={{ height: "320px" }}
                   >
                     <Image
                       src={img.src}

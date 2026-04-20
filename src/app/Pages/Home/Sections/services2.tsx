@@ -1,5 +1,8 @@
 "use client";
 
+import { useState, useRef } from 'react';
+
+
 /* ─── DATA (unchanged) ─── */
 const servicesData = [
     {
@@ -54,47 +57,61 @@ const servicesData = [
     }
 ];
 
-const METEORS = [
-    { top: '-80px',  right: '5%',   delay: '0s',    duration: '1.2s' },
-    { top: '-50px',  right: '22%',  delay: '0.45s', duration: '1.5s' },
-    { top: '-100px', right: '40%',  delay: '0.8s',  duration: '1.0s' },
-    { top: '5%',     right: '12%',  delay: '0.2s',  duration: '1.4s' },
-    { top: '12%',    right: '50%',  delay: '0.65s', duration: '1.3s' },
-    { top: '-30px',  right: '62%',  delay: '1.05s', duration: '1.6s' },
-    { top: '20%',    right: '30%',  delay: '0.3s',  duration: '1.1s' },
-    { top: '-60px',  right: '75%',  delay: '0.75s', duration: '1.45s'},
-];
+// const METEORS = [
+//     { top: '-80px',  right: '5%',   delay: '0s',    duration: '1.2s' },
+//     { top: '-50px',  right: '22%',  delay: '0.45s', duration: '1.5s' },
+//     { top: '-100px', right: '40%',  delay: '0.8s',  duration: '1.0s' },
+//     { top: '5%',     right: '12%',  delay: '0.2s',  duration: '1.4s' },
+//     { top: '12%',    right: '50%',  delay: '0.65s', duration: '1.3s' },
+//     { top: '-30px',  right: '62%',  delay: '1.05s', duration: '1.6s' },
+//     { top: '20%',    right: '30%',  delay: '0.3s',  duration: '1.1s' },
+//     { top: '-60px',  right: '75%',  delay: '0.75s', duration: '1.45s'},
+// ];
 
-import { useState, useRef } from 'react';
+
 
 /* ════════════════════════════════════════════════
    NEW DESIGN  –  Editorial / Magazine layout
    (matches reference image 1)
 ════════════════════════════════════════════════ */
+interface Sparkle {
+    id: number;
+    x: number;
+    y: number;
+    delay: number;
+    duration: number;
+    size: number;
+    cardIndex: number;
+    xOffset: number;
+}
+
 export default function Services() {
-    const [sparkles, setSparkles] = useState<Array<{ id: number; x: number; y: number }>>([]);
+    const [sparkles, setSparkles] = useState<Sparkle[]>([]);
     const sparkleIdRef = useRef(0);
 
-    const createSparkles = () => {
-        const newSparkles = [];
-        const windowHeight = typeof window !== 'undefined' ? window.innerHeight : 800;
-        const windowWidth = typeof window !== 'undefined' ? window.innerWidth : 1200;
+    const createSparkles = (cardIndex: number) => {
+        const newSparkles: Sparkle[] = [];
+        const count = 50; // Optimized count for mobile + desktop smoothness
         
-        // Create 30 sparkles distributed across the bottom 40% to top
-        for (let i = 0; i < 30; i++) {
+        for (let i = 0; i < count; i++) {
             newSparkles.push({
                 id: sparkleIdRef.current++,
-                x: Math.random() * windowWidth,
-                y: windowHeight * 0.4 + Math.random() * (windowHeight * 0.4), // Start from 40% to bottom
+                x: 10 + Math.random() * 80,
+                y: 75 + Math.random() * 25,
+                delay: Math.random() * 0.4,
+                duration: 2 + Math.random() * 1.5,
+                size: 6 + Math.random() * 10,
+                cardIndex,
+                xOffset: (Math.random() - 0.5) * 80
             });
         }
         
-        setSparkles(newSparkles);
+        setSparkles(prev => [...prev, ...newSparkles]);
         
-        // Remove sparkles after animation completes
+        // Cleanup sparkles after the longest animation completes
         setTimeout(() => {
-            setSparkles([]);
-        }, 1500);
+            setSparkles(prev => prev.filter(s => !newSparkles.find(ns => ns.id === s.id)));
+        }, 4500);
     };
 return (
         <section className="min-h-[98dvh] bg-gradient-to-b from-[#8a0a0a] to-[#4a0e0e] relative overflow-hidden flex flex-col justify-center py-16">
@@ -127,33 +144,33 @@ return (
 
                 @keyframes sparkleFloat {
                     0% {
+                        opacity: 0;
+                        transform: translate3d(0, 0, 0) scale(0);
+                    }
+                    10% {
                         opacity: 1;
-                        transform: translateY(0) scale(1);
+                        transform: translate3d(var(--x-offset, 0), -20px, 0) scale(1);
+                    }
+                    90% {
+                        opacity: 1;
+                        transform: translate3d(var(--x-offset, 0), -350px, 0) scale(0.7);
                     }
                     100% {
                         opacity: 0;
-                        transform: translateY(-${typeof window !== 'undefined' ? window.innerHeight * 0.4 : 320}px) scale(0);
+                        transform: translate3d(var(--x-offset, 0), -400px, 0) scale(0);
                     }
                 }
 
                 .sparkle {
-                    position: fixed;
-                    pointer-events: none;
-                    width: 8px;
-                    height: 8px;
-                    background: radial-gradient(circle, #ffeb3b 0%, #fbc02d 50%, transparent 100%);
-                    border-radius: 50%;
-                    box-shadow: 0 0 12px rgba(255, 235, 59, 0.8), 0 0 24px rgba(255, 179, 71, 0.6);
-                    animation: sparkleFloat 1.5s ease-out forwards;
-                    z-index: 50;
-                }
-
-                .sparkle::before {
-                    content: '';
                     position: absolute;
-                    inset: 0;
-                    border-radius: 50%;
-                    background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, transparent 70%);
+                    pointer-events: none;
+                    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%23ffeb3b' d='M50 0 L62 38 L100 50 L62 62 L50 100 L38 62 L0 50 L38 38 Z'/%3E%3C/svg%3E");
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                    z-index: 100;
+                    animation-name: sparkleFloat;
+                    will-change: transform, opacity;
+                    backface-visibility: hidden;
                 }
                 
                 .service-card {
@@ -347,8 +364,8 @@ when effort hasn't matched results and something still feels stuck.
                     {servicesData.map((svc, index) => (
                         <div key={index} className="service-card group bg-white/95 backdrop-blur-xl flex flex-col relative" style={{ borderRadius: '24px' }}>
                             <div className="card-glow bg-[#c42d2d]" />
-                            <div className="absolute inset-0 overflow-hidden rounded-[24px] pointer-events-none z-0">
-                                {METEORS.map((m, i) => (
+                            <div className="absolute inset-0 overflow-hidden rounded-[24px] pointer-events-none z-30">
+                                {/* {METEORS.map((m, i) => (
                                     <div
                                         key={i}
                                         className="meteor"
@@ -358,6 +375,25 @@ when effort hasn't matched results and something still feels stuck.
                                             ['--delay' as string]: m.delay,
                                             ['--dur' as string]: m.duration,
                                         }}
+                                    />
+                                ))} */}
+
+                                {/* Sparkles Container - Individual for each card */}
+                                {sparkles.filter(s => s.cardIndex === index).map((sparkle) => (
+                                    <div
+                                        key={sparkle.id}
+                                        className="sparkle"
+                                        style={{
+                                            left: `${sparkle.x}%`,
+                                            top: `${sparkle.y}%`,
+                                            width: `${sparkle.size}px`,
+                                            height: `${sparkle.size}px`,
+                                            animationDuration: `${sparkle.duration}s`,
+                                            animationDelay: `${sparkle.delay}s`,
+                                            animationTimingFunction: 'ease-out',
+                                            animationFillMode: 'forwards',
+                                            '--x-offset': `${sparkle.xOffset}px`
+                                        } as React.CSSProperties}
                                     />
                                 ))}
                             </div>
@@ -416,7 +452,7 @@ when effort hasn't matched results and something still feels stuck.
                                 <div className="flex items-center justify-center mt-auto">
                                     {svc.btnText === "Book Call" ? (
                                         <button 
-                                            onClick={createSparkles}
+                                            onClick={() => createSparkles(index)}
                                             className="shine-btn inline-flex items-center gap-2 bg-gradient-to-r from-[#c42d2d] to-[#b02525] text-white px-5 py-2.5 rounded-full text-[11px] font-bold font-[var(--font-outfit)] shadow-lg shadow-[#c42d2d]/25 hover:shadow-xl hover:shadow-[#c42d2d]/35 transition-all duration-300 group/btn relative z-20"
                                         >
                                             {svc.btnText}
@@ -425,7 +461,16 @@ when effort hasn't matched results and something still feels stuck.
                                             </svg>
                                         </button>
                                     ) : (
-                                        <a href={svc.btnLink} className="shine-btn inline-flex items-center gap-2 bg-gradient-to-r from-[#c42d2d] to-[#b02525] text-white px-5 py-2.5 rounded-full text-[11px] font-bold font-[var(--font-outfit)] shadow-lg shadow-[#c42d2d]/25 hover:shadow-xl hover:shadow-[#c42d2d]/35 transition-all duration-300 group/btn relative z-20">
+                                        <a 
+                                            href={svc.btnLink} 
+                                            onClick={(e) => {
+                                                if (svc.btnLink === "#") {
+                                                    e.preventDefault();
+                                                    createSparkles(index);
+                                                }
+                                            }}
+                                            className="shine-btn inline-flex items-center gap-2 bg-gradient-to-r from-[#c42d2d] to-[#b02525] text-white px-5 py-2.5 rounded-full text-[11px] font-bold font-[var(--font-outfit)] shadow-lg shadow-[#c42d2d]/25 hover:shadow-xl hover:shadow-[#c42d2d]/35 transition-all duration-300 group/btn relative z-20"
+                                        >
                                             {svc.btnText}
                                             <svg className="w-3.5 h-3.5 transition-transform duration-300 group-hover/btn:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round">
                                                 <path d="M5 12h14" /><path d="M12 5l7 7-7 7" />
@@ -445,94 +490,33 @@ when effort hasn't matched results and something still feels stuck.
 </div>
             </div>
 
-                {/* Not sure where to begin? */}
-            {/* ══════════════════════════════════════
-                OLD DESIGN (commented out)
-            ══════════════════════════════════════
-            <style jsx>{`
-                @keyframes borderRotate {
-                    0% { --angle: 0deg; }
-                    100% { --angle: 360deg; }
-                }
-                @keyframes float {
-                    0%, 100% { transform: translateY(0px); }
-                    50% { transform: translateY(-8px); }
-                }
-                @keyframes shimmer {
-                    0% { background-position: -200% center; }
-                    100% { background-position: 200% center; }
-                }
-                @keyframes glow-pulse {
-                    0%, 100% { opacity: 0.4; transform: scale(1); }
-                    50% { opacity: 0.8; transform: scale(1.15); }
-                }
-                @keyframes orb-drift {
-                    0%, 100% { transform: translate(0, 0) scale(1); }
-                    33% { transform: translate(15px, -10px) scale(1.05); }
-                    66% { transform: translate(-10px, 8px) scale(0.95); }
-                }
-                .service-card {
-                    position: relative;
-                    border-radius: 24px;
-                    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-                }
-                ...etc (full old styles omitted for brevity)
-            `}</style>
 
-            <div className="max-w-7xl mx-auto px-6 md:px-12 w-full relative z-10">
-                <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-12">
-                    <div className="max-w-lg">
-                        <div className="flex items-center gap-3 mb-3">
-                            <div className="w-8 h-[2px] rounded-full bg-gradient-to-r from-[#c42d2d] to-[#e85d5d]" />
-                            <p className="text-[10px] md:text-sm uppercase tracking-[.3em] text-white ...">Services</p>
-                        </div>
-                        <h2 className="text-[28px] md:text-[42px] ...">
-                            Shift the One Thing That <span className="italic">Changes Everything</span>
-                        </h2>
-                    </div>
-                    <p className="text-white/90 ...">
-                        "Most people come to me after trying everything."
-                    </p>
-                </div>
-                <div className="grid md:grid-cols-3 gap-5 md:gap-6">
-                    {servicesData.map((svc, index) => (
-                        <div key={index} className="service-card group bg-white/95 ...">
-                            ... card contents ...
-                        </div>
-                    ))}
-                </div>
                <div className="mt-10 text-center">
                     <div className="inline-flex items-center gap-3 bg-white/[0.08] backdrop-blur-2xl rounded-full px-6 py-3.5 border border-white/10 shadow-xl shadow-black/30 hover:bg-white/[0.12] transition-all duration-300 group">
                         <div className="w-2 h-2 rounded-full bg-white/90 animate-pulse flex-shrink-0" />
                         <p className="text-white/90 text-[20px]">
                             Not sure where to begin?{' '}
-                            <a href="#" className="text-white font-bold font-[var(--font-outfit)] hover:text-[#e85d5d] transition-colors duration-300 underline decoration-white/20 underline-offset-2 hover:decoration-[#e85d5d]/50">
+                            <a 
+                                href="#" 
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    // Trigger sparkles on the first card (Revenue Energetics) as a sample
+                                    createSparkles(0); 
+                                }}
+                                className="text-white font-bold font-[var(--font-outfit)] hover:text-[#e85d5d] transition-colors duration-300 underline decoration-white/20 underline-offset-2 hover:decoration-[#e85d5d]/50"
+                            >
                                 The Energy Diagnostic Call&trade;
                             </a>{' '}
                             is the easiest first step.
                         </p>
-                    <div className="inline-flex items-center gap-3 bg-white/[0.08] ...">
-                        Not sure where to begin? The Energy Diagnostic Call™ is the easiest first step.
-                   </div>
-               </div>
-           </div>
+                    </div>
+                </div>
 
             {/* Bottom-right decorative text */}
             {/* <div className="absolute bottom-8 right-8 md:right-12 pointer-events-none text-right">
                 <p className="text-white/8 text-[11px] uppercase tracking-[.5em]">Raseshvari Hindustani</p>
             </div> */}
 
-            {/* Sparkles Container */}
-            {sparkles.map((sparkle) => (
-                <div
-                    key={sparkle.id}
-                    className="sparkle"
-                    style={{
-                        left: `${sparkle.x}px`,
-                        top: `${sparkle.y}px`,
-                    }}
-                />
-            ))}
 
 </section>
 );

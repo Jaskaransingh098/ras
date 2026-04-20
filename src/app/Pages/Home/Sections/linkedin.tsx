@@ -6,29 +6,77 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
-const screenshots = [
-    { id: 1, containerHeight: 500, images: [{ src: "/recommendations/1.png", alt: "Recommendation 1" }] },
-    { id: 2, containerHeight: 520, images: [{ src: "/recommendations/2.png", alt: "Recommendation 2" }] },
-    { id: 3, containerHeight: 480, images: [{ src: "/recommendations/3.png", alt: "Recommendation 3" }] },
-    { id: 4, containerHeight: 510, images: [{ src: "/recommendations/4.png", alt: "Recommendation 4" }] },
-    { id: 5, containerHeight: 490, images: [{ src: "/recommendations/5.png", alt: "Recommendation 5" }] },
-    { id: 6, containerHeight: 530, images: [{ src: "/recommendations/6.png", alt: "Recommendation 6" }] },
-    { id: 7, containerHeight: 500, images: [{ src: "/recommendations/7.png", alt: "Recommendation 7" }] },
-    { id: 8, containerHeight: 515, images: [{ src: "/recommendations/8.png", alt: "Recommendation 8" }] },
-    { id: 9, containerHeight: 495, images: [{ src: "/recommendations/9.png", alt: "Recommendation 9" }] },
-    { id: 10, containerHeight: 505, images: [{ src: "/recommendations/10.png", alt: "Recommendation 10" }] },
-    { id: 11, containerHeight: 520, images: [{ src: "/recommendations/11.png", alt: "Recommendation 11" }] },
-    { id: 12, containerHeight: 485, images: [{ src: "/recommendations/12.png", alt: "Recommendation 12" }] },
-    { id: 13, containerHeight: 510, images: [{ src: "/recommendations/13.png", alt: "Recommendation 13" }] },
+// const screenshots = [
+//     { id: 1, containerHeight: 500, images: [{ src: "/recommendations/1.png", alt: "Recommendation 1" }] },
+//     { id: 2, containerHeight: 520, images: [{ src: "/recommendations/2.png", alt: "Recommendation 2" }] },
+//     { id: 3, containerHeight: 480, images: [{ src: "/recommendations/3.png", alt: "Recommendation 3" }] },
+//     { id: 4, containerHeight: 510, images: [{ src: "/recommendations/4.png", alt: "Recommendation 4" }] },
+//     { id: 5, containerHeight: 490, images: [{ src: "/recommendations/5.png", alt: "Recommendation 5" }] },
+//     { id: 6, containerHeight: 530, images: [{ src: "/recommendations/6.png", alt: "Recommendation 6" }] },
+//     { id: 7, containerHeight: 500, images: [{ src: "/recommendations/7.png", alt: "Recommendation 7" }] },
+//     { id: 8, containerHeight: 515, images: [{ src: "/recommendations/8.png", alt: "Recommendation 8" }] },
+//     { id: 9, containerHeight: 495, images: [{ src: "/recommendations/9.png", alt: "Recommendation 9" }] },
+//     { id: 10, containerHeight: 505, images: [{ src: "/recommendations/10.png", alt: "Recommendation 10" }] },
+//     { id: 11, containerHeight: 520, images: [{ src: "/recommendations/11.png", alt: "Recommendation 11" }] },
+//     { id: 12, containerHeight: 485, images: [{ src: "/recommendations/12.png", alt: "Recommendation 12" }] },
+//     { id: 13, containerHeight: 510, images: [{ src: "/recommendations/13.png", alt: "Recommendation 13" }] },
+// ];
+const groups = [
+    {
+        type: "double",
+        items: [
+            { src: "/recommendations/1.png" },
+            { src: "/recommendations/3.png" }
+        ]
+    },
+    {
+        type: "single", // BIG
+        items: [{ src: "/recommendations/2.png" }]
+    },
+    {
+        type: "double",
+        items: [
+            { src: "/recommendations/4.png" },
+            { src: "/recommendations/5.png" }
+        ]
+    },
+    {
+        type: "single", // BIG
+        items: [{ src: "/recommendations/8.png" }]
+    },
+    {
+        type: "double",
+        items: [
+            { src: "/recommendations/6.png" },
+            { src: "/recommendations/7.png" }
+        ]
+    },
+    {
+        type: "single", // BIG
+        items: [{ src: "/recommendations/10.png" }]
+    },
+    {
+        type: "double",
+        items: [
+            { src: "/recommendations/9.png" },
+            { src: "/recommendations/11.png" }
+        ]
+    },
+    {
+        type: "double",
+        items: [
+            { src: "/recommendations/12.png" },
+            { src: "/recommendations/13.png" }
+        ]
+    }
 ];
-
 export default function LinkedIn() {
     const sectionRef = useRef<HTMLElement>(null);
     const scrollRef = useRef<HTMLDivElement>(null);
     const [canScrollLeft, setCanScrollLeft] = useState(false);
     const [canScrollRight, setCanScrollRight] = useState(true);
     const [isPaused, setIsPaused] = useState(false);
-    const [hoveredCardId, setHoveredCardId] = useState<number | null>(null);
+    const [hoveredId, setHoveredId] = useState<string | null>(null);
     const animRef = useRef<number | null>(null);
 
     const checkScroll = useCallback(() => {
@@ -97,11 +145,12 @@ export default function LinkedIn() {
     }, []);
 
     // Duplicate screenshots for infinite loop
-    const allScreenshots = [...screenshots, ...screenshots];
+    // const allScreenshots = [...screenshots, ...screenshots];
+    const loopGroups = [...groups, ...groups];
 
     return (
         <section ref={sectionRef}
-            className="relative min-h-fit flex flex-col justify-center overflow-hidden py-10 md:py-16"
+            className="relative min-h-auto flex flex-col justify-center overflow-hidden py-12 md:py-4"
             style={{ background: "linear-gradient(180deg, #f5f0ea 0%, #efe8df 50%, #f5f0ea 100%)" }}
         >
             <style jsx>{`
@@ -116,8 +165,10 @@ export default function LinkedIn() {
                     position: relative;
                     border-radius: 16px;
                     overflow: hidden;
+                    background: white;
                     transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
                     flex-shrink: 0;
+                    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
                 }
                 .rec-card:hover {
                     transform: translateY(-6px) scale(1.02);
@@ -129,7 +180,7 @@ export default function LinkedIn() {
                     transform: scale(0.95);
                 }
                 .rec-card.zoomed {
-                    transform: scale(1.08) translateY(-8px);
+                    transform: scale(1.05) translateY(10px);
                     z-index: 20;
                     filter: blur(0px);
                     opacity: 1;
@@ -202,52 +253,71 @@ export default function LinkedIn() {
 
                     <div
                         ref={scrollRef}
-                        className="scroll-container flex gap-4 md:gap-5 overflow-x-auto px-4 md:px-6 pb-2"
+                        className="scroll-container flex gap-5 overflow-x-auto px-6 pb-8"
                     >
-                        {allScreenshots.map((s, i) => {
-                            const isHovered = hoveredCardId === s.id;
-                            const hasHovered = hoveredCardId !== null;
-                            return (
-                                <div
-                                    key={`${s.id}-${i}`}
-                                    className={`rec-card w-[88vw] sm:w-[380px] md:w-[470px] bg-white border border-gray-100/80 shadow-lg shadow-black/[0.04] flex flex-col ${
-                                        isHovered ? "zoomed" : hasHovered ? "blurred" : ""
-                                    }`}
-                                    onMouseEnter={() => setHoveredCardId(s.id)}
-                                    onMouseLeave={() => setHoveredCardId(null)}
-                                >
-                                    {/* Card top bar */}
-                                    <div className="flex items-center gap-2 px-3.5 py-2 border-b border-gray-100/60">
-                                        <span className="text-[9px] text-[#999] font-medium font-[var(--font-dm-sans)] tracking-wide">
-                                            Recommendation
-                                        </span>
+
+                        {[...groups, ...groups].map((group, groupIndex) => (
+                            <div
+                                key={groupIndex}
+                                className="flex-shrink-0 flex gap-5 h-[480px] md:h-[550px]"
+                                style={{ width: group.type === "double" ? "400px" : "570px" }}
+                            >
+                                {group.type === "single" ? (
+                                    <div
+                                        className={`rec-card w-full h-full ${hoveredId === `${groupIndex}-0`
+                                            ? "zoomed"
+                                            : hoveredId !== null
+                                                ? "blurred"
+                                                : ""
+                                            }`}
+                                        onMouseEnter={() => setHoveredId(`${groupIndex}-0`)}
+                                        onMouseLeave={() => setHoveredId(null)}
+                                    >
+                                        <Image
+                                            src={group.items[0].src}
+                                            fill
+                                            className="object-contain"
+                                            alt="Recommendation"
+                                            unoptimized
+                                        />
                                     </div>
-                                    {/* Image container — flexible height, images stack vertically */}
-                                    <div className="w-full flex-1 overflow-y-auto" style={{ height: `${s.containerHeight}px` }}>
-                                        {s.images.map((img, imgIdx) => (
-                                            <div key={imgIdx} className="w-full h-auto">
-                                                <Image
-                                                    src={img.src}
-                                                    alt={img.alt}
-                                                    width={0}
-                                                    height={0}
-                                                    sizes="560px"
-                                                    className="w-full h-auto block"
-                                                    style={{ objectFit: "cover" }}
-                                                />
-                                            </div>
-                                        ))}
+                                ) : (
+                                    <div className="flex flex-col gap-5 w-full h-full">
+                                        {group.items.map((item, itemIndex) => {
+                                            const id = `${groupIndex}-${itemIndex}`;
+                                            return (
+                                                <div
+                                                    key={itemIndex}
+                                                    className={`rec-card w-full h-1/2 ${hoveredId === id
+                                                        ? "zoomed"
+                                                        : hoveredId !== null
+                                                            ? "blurred"
+                                                            : ""
+                                                        }`}
+                                                    onMouseEnter={() => setHoveredId(id)}
+                                                    onMouseLeave={() => setHoveredId(null)}
+                                                >
+                                                    <Image
+                                                        src={item.src}
+                                                        fill
+                                                        className="object-contain"
+                                                        alt="Recommendation"
+                                                        unoptimized
+                                                    />
+                                                </div>
+                                            );
+                                        })}
                                     </div>
-                                </div>
-                            );
-                        })}
+                                )}
+                            </div>
+                        ))}
                     </div>
                 </div>
 
                 {/* Bottom row — stats + badge */}
                 {/* <div className="max-w-7xl mx-auto px-6 md:px-12 mt-8 flex flex-col md:flex-row items-center justify-between gap-4">
                     <div className="flex items-center gap-6"> */}
-                        {/* <div className="text-center">
+                {/* <div className="text-center">
                             <p className="text-[24px] md:text-[28px] font-[var(--font-playfair)] font-bold text-[#111]">
                                 {screenshots.length}+
                             </p>
@@ -255,8 +325,8 @@ export default function LinkedIn() {
                                 Recommendations
                             </p>
                         </div> */}
-                        {/* <div className="w-px h-8 bg-gray-300/50" /> */}
-                        {/* <div className="text-center">
+                {/* <div className="w-px h-8 bg-gray-300/50" /> */}
+                {/* <div className="text-center">
                             <p className="text-[24px] md:text-[28px] font-[var(--font-playfair)] font-bold text-[#111]">
                                 100%
                             </p>
@@ -264,16 +334,16 @@ export default function LinkedIn() {
                                 Genuine
                             </p>
                         </div> */}
-                    </div>
+            </div>
 
-                    {/* <div className="inline-flex items-center gap-2.5 bg-white rounded-full px-5 py-2.5 border border-gray-200/60 shadow-sm">
+            {/* <div className="inline-flex items-center gap-2.5 bg-white rounded-full px-5 py-2.5 border border-gray-200/60 shadow-sm">
                         <div className="w-2 h-2 rounded-full bg-[#c42d2d] animate-pulse" />
                         <p className="text-[#666] text-[12px] font-[var(--font-dm-sans)]">
                             All sourced from{" "}
                             <span className="text-[#c42d2d] font-semibold">Instagram and Facebook</span> profiles
                         </p>
                     </div> */}
-                {/* </div> */}
+            {/* </div> */}
             {/* </div> */}
         </section>
     );

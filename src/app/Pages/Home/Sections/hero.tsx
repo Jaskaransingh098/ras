@@ -9,7 +9,7 @@ const slides = [
     image: "/hero/2.mp4",
   },
   {
-    word: "LIFE??",
+    word: "BODY??",
     image: "/hero/Body.mp4",
   },
   {

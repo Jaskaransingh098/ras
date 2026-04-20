@@ -10,22 +10,22 @@ const photos: { src: string; alt: string; caption: string; aspect: string }[] = 
     // Portrait / headshot style
     { src: "/journey/Daya prakash sinha.png", alt: "Padma Shri Daya Prakash Sinha ji", caption: "Padma Shri Daya Prakash Sinha ji", aspect: "3/4" },
     { src: "/journey/Pushpeshpant.png", alt: "Padma Shri Pushpesh Pant ji", caption: "Padma Shri Pushpesh Pant ji", aspect: "3/4" },
-    { src: "/journey/Anchor sadhna Shrivastav.png", alt: "Anchor Sadhna Shrivastava", caption: "Anchor Sadhna Shrivastava", aspect: "3/4" },
+    { src: "/journey/Anchor sadhna Shrivastav.png", alt: "Anchor Sadhna Shrivastava", caption: "Iconic Doordarshan News Anchor, Sadhana Srivastava ji", aspect: "3/4" },
     { src: "/journey/Salma sultan.png", alt: "Actor Salma Sultan ji", caption: "Actor Salma Sultan ji", aspect: "3/4" },
-    { src: "/journey/Sonal Mansingh.png", alt: "Classical Dancer Sonal Mansingh ji", caption: "Classical Dancer Sonal Mansingh ji", aspect: "3/4" },
-    { src: "/journey/Rita Gangwani png.png", alt: "National Awardee Rita Gangwani", caption: "National Awardee Rita Gangwani", aspect: "3/4" },
-    { src: "/journey/Avi Arya.png", alt: "Avi Arya", caption: "Avi Arya", aspect: "3/4" },
+    { src: "/journey/Sonal Mansingh.png", alt: "Classical Dancer Sonal Mansingh ji", caption: "Padma Vibhushan, Padma Bhushan Sonal Mansingh ji", aspect: "3/4" },
+    { src: "/journey/Rita Gangwani png.png", alt: "National Awardee Rita Gangwani", caption: "Celebrity Beauty Pageant Coach Rita Gangwani ji", aspect: "3/4" },
+    { src: "/journey/Avi Arya.png", alt: "Avi Arya", caption: "India's highest paid digital coach Avi Arya", aspect: "3/4" },
     { src: "/journey/Kiran bedi.png", alt: "Dr. Kiran Bedi", caption: "Dr. Kiran Bedi", aspect: "2/3" },
     { src: "/journey/Chef Davinder.png", alt: "Chef Davinder Kumar", caption: "Chef Davinder Kumar", aspect: "3/4" },
-    { src: "/journey/Naseer abdullah.png", alt: "Naseer Abdullah", caption: "Naseer Abdullah", aspect: "3/4" },
-    { src: "/journey/Pratibha prahalad.png", alt: "Pratibha Prahlad", caption: "Pratibha Prahlad", aspect: "3/4" },
-    { src: "/journey/Rama Pandey.png", alt: "Journalist Rama Pandey", caption: "Journalist Rama Pandey", aspect: "3/4" },
-    { src: "/journey/Artist monika gour png.png", alt: "Artist Monica Gaur", caption: "Artist Monica Gaur", aspect: "3/4" },
+    { src: "/journey/Naseer abdullah.png", alt: "Naseer Abdullah", caption: "Actor Naseer Abdullah ji", aspect: "3/4" },
+    { src: "/journey/Pratibha prahalad.png", alt: "Pratibha Prahlad", caption: "Padma Shri Bharatnatyam dancer Pratibha Pralhad ji", aspect: "3/4" },
+    { src: "/journey/Rama Pandey.png", alt: "Journalist Rama Pandey", caption: "Renowned Journalist Rama Pandey ji", aspect: "3/4" },
+    { src: "/journey/Artist monika gour png.png", alt: "Artist Monica Gaur", caption: "Poet Monika Gaur", aspect: "3/4" },
     // Landscape / group shots
     { src: "/journey/Maya parijat and Shovana Narayan.png", alt: "Padma Shri Shovana Narayan & Maya Parijat", caption: "Padma Shri Shovana Narayan ji (middle), Maya Parijat (left)", aspect: "4/3" },
     { src: "/journey/Padma shri shyam sharma ji.png", alt: "Padma Shri Shyam Sharma ji", caption: "Padma Shri Shyam Sharma ji", aspect: "4/3" },
     { src: "/journey/Manisha gawade and wasif Uddin dagar ji.png", alt: "Ustad Wasifuddin Dagar & Manisha Gawde", caption: "Padma Shri Ustad Wasifuddin Dagar ji (right) & Manisha Gawde (middle)", aspect: "4/3" },
-    { src: "/journey/barnalee_chattopadhyay.png", alt: "Singer Barnalee Chattopadhyay", caption: "Singer Barnalee Chattopadhyay", aspect: "4/3" },
+    { src: "/journey/barnalee_chattopadhyay.png", alt: "Singer Barnalee Chattopadhyay", caption: "Classical Playback Singer Barnalee Chattopadhyay", aspect: "4/3" },
     { src: "/journey/Atul sexsena and  chef vaibhav.png", alt: "Chef Vaibhav & Atul Saxena", caption: "Chef Vaibhav Bhargava (right) & Atul Saxena (left)", aspect: "4/3" },
     { src: "/journey/Jyoti Kalash.png", alt: "Jyoti Kalash", caption: "Jyoti Kalash — Chief Secretary (ACS) & CRC, Nagaland House", aspect: "4/3" },
     { src: "/journey/From left Prof( Dr.) MN Hoda, Mrs. Raseshvari Hindustani, Prof Sanjeev Bhanawat, Prof (Dr) Durgesh Tripathi , Dr. Sachin Bharti and Dr. Ajay Gupta( right).png", alt: "Prof. MN Hoda & others", caption: "Prof. MN Hoda, Raseshvari Hindustani, Prof. Sanjeev Bhanawat & others", aspect: "16/9" },
@@ -168,9 +168,9 @@ export default function Journey() {
             {/* Two masonry scroll rows */}
             <div className="jrn-reveal flex flex-col gap-3 md:gap-4 px-3 sm:px-8 md:px-12 pb-6 md:pb-10 flex-shrink-0">
                 {/* Row 1 — scrolls left */}
-                <ScrollRow items={row1} rowH={200} duration="85s" />
+                <ScrollRow items={row1} rowH={300} duration="85s" />
                 {/* Row 2 — scrolls right */}
-                <ScrollRow items={row2} rowH={170} duration="80s" reverse />
+                <ScrollRow items={row2} rowH={300} duration="80s" reverse />
             </div>
         </section>
     );

@@ -209,7 +209,7 @@ export default function Navbar() {
             }}
             onMouseLeave={(e) => {
               (e.currentTarget as HTMLAnchorElement).style.background = "rgba(255,255,255,0.97)";
-              (e.currentTarget as HTMLAnchorElement).style.color = "#fff";
+              (e.currentTarget as HTMLAnchorElement).style.color = "#000";
             }}
           >
             Book a Session
