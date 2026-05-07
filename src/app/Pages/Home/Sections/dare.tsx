@@ -115,7 +115,7 @@ export default function DareToDream() {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-[92dvh] flex justify-center items-center py-8 md:py-4 bg-gradient-to-b from-[#8a0a0a] to-[#4a0e0e] overflow-hidden"
+      className="relative min-h-[92dvh] flex justify-center rounded-2xl items-center py-8 md:py-4 bg-gradient-to-b from-[#8a0a0a] to-[#4a0e0e] overflow-hidden"
     >
       <div className="relative z-10 w-full h-full max-w-[1400px] mx-auto px-4 md:px-8">
         <div className="w-full h-full flex gap-2 sm:gap-3 md:gap-4">

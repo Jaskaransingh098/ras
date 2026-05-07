@@ -63,7 +63,7 @@ function MasonryCard({ photo, rowH }: { photo: typeof photos[0]; rowH: number })
             {/* Remove full image overlay, use bottom gradient for text visibility */}
             {photo.caption && (
                 <div className="absolute bottom-0 left-0 right-0 pt-16 pb-3 px-3 md:pt-20 md:pb-4 md:px-4 bg-gradient-to-t from-black/90 via-black/50 to-transparent">
-                    <p className="text-white text-[12px] md:text-[15px] leading-snug font-semibold font-[var(--font-dm-sans)] drop-shadow-md">
+                    <p className="text-white text-[12px] md:text-[13px] leading-snug font-medium font-[var(--font-dm-sans)] drop-shadow-md">
                         {photo.caption}
                     </p>
                 </div>
@@ -168,9 +168,9 @@ export default function Journey() {
             {/* Two masonry scroll rows */}
             <div className="jrn-reveal flex flex-col gap-3 md:gap-4 px-3 sm:px-8 md:px-12 pb-6 md:pb-10 flex-shrink-0">
                 {/* Row 1 — scrolls left */}
-                <ScrollRow items={row1} rowH={300} duration="85s" />
+                <ScrollRow items={row1} rowH={180} duration="85s" />
                 {/* Row 2 — scrolls right */}
-                <ScrollRow items={row2} rowH={300} duration="80s" reverse />
+                <ScrollRow items={row2} rowH={180} duration="80s" reverse />
             </div>
         </section>
     );

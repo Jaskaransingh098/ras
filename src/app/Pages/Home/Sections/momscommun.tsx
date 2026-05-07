@@ -137,7 +137,7 @@ export default function MomsCommunity() {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-[70dvh] flex flex-col items-center justify-center overflow-hidden py-5 px- sm:px- md:px- bg-[#4a0e0e]/8"
+      className="relative min-h-[70dvh] rounded-2xl flex flex-col items-center justify-center overflow-hidden py-5 px- sm:px- md:px- bg-[#4a0e0e]/8"
     >
       {/* Left-side subtle tint only (keeps scroller neutral) */}
       <div className="absolute inset-y-0 left-0 w-[46%] z-0 pointer-events-none" />

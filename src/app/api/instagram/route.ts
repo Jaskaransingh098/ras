@@ -12,7 +12,7 @@ export async function GET() {
 
         const data = await res.json();
 
-        const posts = data.data?.slice(0, 4).map((post: any) => ({
+        const posts = data.data?.slice(0, 5).map((post: any) => ({
             id: post.id,
             caption: post.caption || "",
             mediaUrl:

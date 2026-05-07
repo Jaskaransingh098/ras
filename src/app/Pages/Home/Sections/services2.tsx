@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef } from 'react';
+import Link from 'next/link';
 
 
 /* ─── DATA (unchanged) ─── */
@@ -510,6 +511,19 @@ when effort hasn't matched results and something still feels stuck.
                             is the easiest first step.
                         </p>
                     </div>
+                </div>
+
+                {/* Know More Button */}
+                <div className="mt-8 text-center">
+                    <Link
+                        href="/services"
+                        className="group inline-flex items-center gap-3 bg-white text-[#8a0a0a] px-8 py-4 rounded-full font-bold text-[14px] uppercase tracking-[.12em] font-[var(--font-outfit)] shadow-[0_8px_30px_rgba(0,0,0,0.2)] hover:shadow-[0_12px_40px_rgba(196,45,45,0.3)] hover:scale-105 hover:bg-white transition-all duration-400"
+                    >
+                        Know More
+                        <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+                            <path d="M5 12h14" /><path d="M12 5l7 7-7 7" />
+                        </svg>
+                    </Link>
                 </div>
 
             {/* Bottom-right decorative text */}

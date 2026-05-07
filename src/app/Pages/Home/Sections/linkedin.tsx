@@ -175,8 +175,6 @@ export default function LinkedIn() {
                     box-shadow: 0 24px 48px -12px rgba(0,0,0,0.12);
                 }
                 .rec-card.blurred {
-                    filter: blur(5px);
-                    opacity: 0.4;
                     transform: scale(0.95);
                 }
                 .rec-card.zoomed {
