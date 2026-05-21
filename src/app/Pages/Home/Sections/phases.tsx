@@ -79,7 +79,7 @@ export default function Phases() {
 
     return (
         <section ref={sectionRef}
-            className="min-h-[100dvh] bg-gradient-to-b from-[#8a0a0a] to-[#4a0e0e] relative overflow-hidden flex items-center"
+            className="min-h-auto md:min-h-[100dvh] bg-gradient-to-b from-[#8a0a0a] to-[#4a0e0e] relative overflow-hidden flex items-center py-10 md:py-0"
             style={{}}
         >
             {/* <div className="absolute inset-0 bg-black/40 z-[1]" /> */}
@@ -137,9 +137,9 @@ export default function Phases() {
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/[0.04] to-transparent" />
             <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/[0.04] to-transparent" />
 
-            <div className="max-w-7xl mx-auto px-6 md:px-12 w-full relative z-10 py-12">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 w-full relative z-10 py-8 md:py-12">
                 {/* Layout: Left selector + Right content */}
-                <div className="flex flex-col md:flex-row gap-10 md:gap-16 lg:gap-20">
+                <div className="flex flex-col md:flex-row gap-8 md:gap-16 lg:gap-20">
 
                     {/* LEFT — Case Selector */}
                     <div className="md:w-[38%] flex flex-col justify-center">
@@ -151,13 +151,13 @@ export default function Phases() {
                             </p>
                         </div>
 
-                        <h2 className="section-heading ph-reveal text-[28px] md:text-[42px] font-[var(--font-playfair)] text-white leading-[1.2] mb-6">
+                        <h2 className="section-heading ph-reveal text-[24px] sm:text-[28px] md:text-[42px] font-[var(--font-playfair)] text-white leading-[1.2] mb-6">
                             One Session.<br />
                             <span className="italic">Everything Shifts.</span>
                         </h2>
 
                         {/* Descriptive text */}
-                        <p className="ph-reveal text-white text-[16px] md:text-[18px] leading-[1.85] mb-10 max-w-[95%] font-[var(--font-dm-sans)] font-medium">
+                        <p className="ph-reveal text-white text-[14px] sm:text-[16px] md:text-[18px] leading-[1.85] mb-6 md:mb-10 max-w-[95%] font-[var(--font-dm-sans)] font-medium">
                             Real people. Real results. Real transformations that happen when deeply stuck patterns dissolve and your true potential emerges.
                             Discover the profound shifts that occur in a single session.
                         </p>
@@ -235,7 +235,7 @@ export default function Phases() {
                     </div>
 
                     {/* RIGHT — Flow Visualization */}
-                    <div className="ph-reveal md:w-[62%] flex items-center mt-40">
+                    <div className="ph-reveal md:w-[62%] flex items-center mt-6 md:mt-40">
                         <div
                             className={`w-full flow-panel ${visible ? 'visible-panel' : 'hidden-panel'}`}
                         >

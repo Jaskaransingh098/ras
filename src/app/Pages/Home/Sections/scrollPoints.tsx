@@ -87,13 +87,13 @@ const cards = [
 
 export default function ScrollPoints() {
     return (
-        <section className="h-[112vh] bg-gradient-to-b from-[#8a0a0a] to-[#4a0e0e] flex flex-col relative overflow-hidden">
+        <section className="h-[85vh] sm:h-[95vh] md:h-[112vh] bg-gradient-to-b from-[#8a0a0a] to-[#4a0e0e] flex flex-col relative overflow-hidden">
             {/* Subtle decorative bg elements */}
             {/* <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/[0.02] rounded-full -translate-y-1/2 translate-x-1/3 blur-3xl pointer-events-none" />
             <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-black/[0.08] rounded-full translate-y-1/2 -translate-x-1/3 blur-3xl pointer-events-none" /> */}
 
             {/* Header */}
-            <div className="text-center pt-8 pb-0 px-6 flex-shrink-0 relative z-10">
+            <div className="text-center pt-6 sm:pt-8 pb-0 px-4 sm:px-6 flex-shrink-0 relative z-10">
                 <div className="flex items-center justify-center gap-3 mb-3">
                     <div className="w-6 h-px bg-white/40" />
                     <p className="text-[10px] md:text-sm uppercase tracking-[.3em] text-white/80 font-medium font-[var(--font-dm-sans)]">
@@ -101,10 +101,10 @@ export default function ScrollPoints() {
                     </p>
                     <div className="w-6 h-px bg-white/40" />
                 </div>
-                <h2 className="section-heading text-[28px] md:text-[42px] font-[var(--font-playfair)] text-white leading-[1.1] font-bold">
+                <h2 className="section-heading text-[22px] sm:text-[28px] md:text-[42px] font-[var(--font-playfair)] text-white leading-[1.1] font-bold">
                     Raseshvari Hindustani
                 </h2>
-                <p className="mt-2 text-white/80 text-[16px] md:text-[18px] font-medium tracking-wide font-[var(--font-dm-sans)]">
+                <p className="mt-2 text-white/80 text-[13px] sm:text-[16px] md:text-[18px] font-medium tracking-wide font-[var(--font-dm-sans)]">
                     A walking, talking miracle of possibilities.
                 </p>
             </div>
@@ -121,21 +121,21 @@ export default function ScrollPoints() {
                             itemClassName="!h-auto !p-0 !rounded-2xl !shadow-xl bg-white border border-gray-100"
                         >
                             <div className="flex flex-col md:flex-row overflow-hidden rounded-2xl">
-                                <div className="md:w-[50%] h-[280px] md:h-[380px] overflow-hidden flex-shrink-0 relative">
+                                <div className="md:w-[50%] h-[180px] sm:h-[240px] md:h-[380px] overflow-hidden flex-shrink-0 relative">
                                     <img src={card.image} alt={card.title} className="w-full h-full object-cover" />
                                     <div className="absolute inset-0 bg-gradient-to-r from-transparent to-white/5" />
                                     <div className="absolute top-4 left-4 w-9 h-9 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center shadow-md">
                                         <span className="text-[#c42d2d] text-xs font-bold font-[var(--font-dm-sans)]">{String(i + 1).padStart(2, "0")}</span>
                                     </div>
                                 </div>
-                                <div className="flex-1 flex flex-col justify-center p-6 md:p-10">
+                                <div className="flex-1 flex flex-col justify-center p-4 sm:p-6 md:p-10">
                                     <div className="w-12 h-12 rounded-xl bg-[#c42d2d]/10 flex items-center justify-center mb-5 border border-[#c42d2d]/10">
                                         {card.icon}
                                     </div>
-                                    <h3 className="text-[22px] md:text-[28px] font-[var(--font-playfair)] text-[#111] font-bold leading-tight mb-3">
+                                    <h3 className="text-[18px] sm:text-[22px] md:text-[28px] font-[var(--font-playfair)] text-[#111] font-bold leading-tight mb-2 sm:mb-3">
                                         {card.title}
                                     </h3>
-                                    <p className="text-gray-800 text-sm md:text-[20px]  max-w-md font-[var(--font-dm-sans)]">
+                                    <p className="text-gray-800 text-xs sm:text-sm md:text-[20px] max-w-md font-[var(--font-dm-sans)]">
                                         {card.description}
                                     </p>
                                 </div>

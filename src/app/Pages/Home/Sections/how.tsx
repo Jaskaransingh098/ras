@@ -137,7 +137,7 @@ export default function How({ scrollRef }: Props) {
                         onMouseLeave={() => { if (isPlaying) setShowControls(false); }}
                     >
                         {/* 16:9 ratio */}
-                        <div className="relative w-full" style={{ paddingBottom: "42.85%" }}>
+                        <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
                             <video
                                 ref={videoRef}
                                 className="absolute inset-0 w-full h-full object-cover"

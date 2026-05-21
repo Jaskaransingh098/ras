@@ -115,10 +115,10 @@ export default function DareToDream() {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-[92dvh] flex justify-center rounded-2xl items-center py-8 md:py-4 bg-gradient-to-b from-[#8a0a0a] to-[#4a0e0e] overflow-hidden"
+      className="relative min-h-auto md:min-h-[92dvh] flex justify-center rounded-2xl items-center py-8 md:py-4 bg-gradient-to-b from-[#8a0a0a] to-[#4a0e0e] overflow-hidden"
     >
-      <div className="relative z-10 w-full h-full max-w-[1400px] mx-auto px-4 md:px-8">
-        <div className="w-full h-full flex gap-2 sm:gap-3 md:gap-4">
+      <div className="relative z-10 w-full h-full max-w-[1400px] mx-auto px-4 md:px-8 overflow-hidden">
+        <div className="w-full h-full flex gap-2 sm:gap-3 md:gap-4 overflow-hidden">
 
           {/* LEFT TALL COLUMN — hidden on mobile, visible on md+ */}
           <div className="hidden md:flex flex-1 flex-col gap-3 md:gap-4 h-[85dvh]">
@@ -142,7 +142,7 @@ export default function DareToDream() {
           </div>
 
           {/* CENTER COLUMN — always visible */}
-          <div className="flex-1 lg:flex-[1.8] flex flex-col items-center text-center pt-4 md:pt-[5%] pb-3 px-2 md:h-[85dvh] md:justify-between">
+          <div className="w-full md:flex-1 lg:flex-[1.8] flex flex-col items-center text-center pt-4 md:pt-[5%] pb-3 px-2 md:h-[85dvh] md:justify-between overflow-hidden">
             {/* Text Content */}
             <div className="dare-reveal flex flex-col items-center">
               <div className="flex items-center gap-3 mb-3 md:mb-4">
@@ -153,12 +153,12 @@ export default function DareToDream() {
                 <div className="w-6 h-px bg-gradient-to-l from-transparent to-[#c42d2d]" />
               </div>
 
-              <h2 className="section-heading text-[32px] sm:text-[38px] md:text-[42px] font-[var(--font-playfair)] text-white font-bold leading-[1.05] tracking-tight mb-2">
+              <h2 className="section-heading text-[26px] sm:text-[34px] md:text-[42px] font-[var(--font-playfair)] text-white font-bold leading-[1.05] tracking-tight mb-2">
                 Dare to{" "}
                 <span className="font-light italic text-white">Dream.</span>
               </h2>
 
-              <div className="w-full max-w-[280px] sm:max-w-[330px] h-[140px] sm:h-[180px] md:h-[180px] rounded-[20px] md:rounded-[36px] overflow-hidden shadow-lg bg-gray-100 relative mt-2">
+              <div className="w-[85vw] max-w-[280px] sm:max-w-[330px] h-[140px] sm:h-[180px] md:h-[180px] rounded-[20px] md:rounded-[36px] overflow-hidden shadow-lg bg-gray-100 relative mt-2">
                 <Image
                   src={centerBelowImg}
                   alt="Center inspiration image"
@@ -171,7 +171,7 @@ export default function DareToDream() {
                 />
               </div>
 
-              <p className="text-white text-[12px] sm:text-[14px] md:text-[16px] font-semibold font-[var(--font-dm-sans)] max-w-[300px] sm:max-w-md leading-relaxed mb-3 mt-2">
+              <p className="text-white text-[11px] sm:text-[13px] md:text-[16px] font-semibold font-[var(--font-dm-sans)] max-w-[85vw] sm:max-w-md leading-relaxed mb-3 mt-2">
                 Raseshvari Hindustani hosted an Instagram Live series featuring
                 52 renowned and honoured voices including Padma Shri awardees,
                 leaders, artists and professionals from diverse fields all
@@ -189,7 +189,7 @@ export default function DareToDream() {
             </div>
 
             {/* ── MOBILE ONLY: horizontal scrollable strip of all 6 guest image slots ── */}
-            <div className="md:hidden w-screen -mx-4 mt-5 overflow-x-auto pb-2" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+            <div className="md:hidden w-full mt-5 overflow-x-auto pb-2" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
               <style>{`.dare-strip::-webkit-scrollbar{display:none}`}</style>
               <div className="dare-strip flex gap-2.5 px-4" style={{ width: 'max-content' }}>
                 {([...leftCornerSlots, [leftMidSlot[0], leftMidSlot[1]], [rightMidSlot[0], rightMidSlot[1]], ...rightCornerSlots] as (typeof guestImages)[number][][]).map((imgs, i) => (

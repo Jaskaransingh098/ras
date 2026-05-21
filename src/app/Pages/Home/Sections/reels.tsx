@@ -211,10 +211,10 @@ The stress is gone totally from my head, all the negative thoughts which were co
     const s = sectionRef.current;
     if (!s) return;
     const ctx = gsap.context(() => {
-        gsap.fromTo(s.querySelectorAll(".rr"), { y: 30, opacity: 0 }, {
-          y: 0, opacity: 1, duration: 0.8, stagger: 0.12, ease: "power3.out",
-          scrollTrigger: { trigger: s, start: "top 92%", toggleActions: "play none none none" },
-        });
+      gsap.fromTo(s.querySelectorAll(".rr"), { y: 30, opacity: 0 }, {
+        y: 0, opacity: 1, duration: 0.8, stagger: 0.12, ease: "power3.out",
+        scrollTrigger: { trigger: s, start: "top 92%", toggleActions: "play none none none" },
+      });
     }, s);
     return () => ctx.revert();
   }, []);
@@ -253,16 +253,16 @@ The stress is gone totally from my head, all the negative thoughts which were co
       </div>
 
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-10">
-        <div className="flex flex-col lg:flex-row gap-8 lg:gap-6 items-stretch">
+        <div className="flex flex-col lg:flex-row gap-6 lg:gap-6 items-stretch">
 
           {/* ═══ LEFT: Featured Short + Info ═══ */}
-          <div ref={featuredRef} className="flex flex-col sm:flex-row items-center sm:items-stretch gap-6 sm:gap-10 md:gap-16 rr">
+          <div ref={featuredRef} className="flex flex-col sm:flex-row items-center sm:items-stretch gap-5 sm:gap-8 md:gap-16 rr">
             {/* Featured Video (Phone Frame) */}
-            <div className="flex-shrink-0 w-[260px] xs:w-[280px] sm:w-[220px] md:w-[270px] mx-auto sm:mx-0" style={{ perspective: "1400px" }}>
+            <div className="flex-shrink-0 w-[220px] xs:w-[240px] sm:w-[220px] md:w-[270px] mx-0 sm:mx-0">
               <div className={`flip-inner w-full h-full ${isFeaturedFlipped ? "flipped" : ""}`}>
                 {/* FRONT */}
                 <div className="face w-full">
-                  <div className="phone-frame bg-black shadow-2xl border-[3px] border-[#c42d2d]/30 w-full min-h-[460px] xs:min-h-[500px] sm:min-h-0">
+                  <div className="phone-frame bg-black shadow-2xl border-[3px] border-[#c42d2d]/30 w-full min-h-[380px] xs:min-h-[420px] sm:min-h-0">
                     {playingVideo === featured ? (
                       <iframe
                         src={`https://www.youtube.com/embed/${fc.youtubeId}?autoplay=1&rel=0&loop=1`}
@@ -339,7 +339,7 @@ The stress is gone totally from my head, all the negative thoughts which were co
                 <span className="text-[#c42d2d] text-[11px] font-bold uppercase tracking-widest font-[var(--font-dm-sans)]">{featured + 1} / {cards.length}</span>
               </div>
 
-              <h3 className="section-subheading text-[26px] md:text-[32px] font-[var(--font-playfair)] text-[#111] leading-[1.15] font-bold">
+              <h3 className="section-subheading text-[22px] sm:text-[26px] md:text-[32px] font-[var(--font-playfair)] text-[#111] leading-[1.15] font-bold">
                 {fc.title}
                 {fc.highlight && <><br /><span className="text-[#c42d2d]">{fc.highlight}</span></>}
               </h3>
@@ -355,7 +355,7 @@ The stress is gone totally from my head, all the negative thoughts which were co
               <div className="mt-6 mb-4 h-px bg-gray-200" />
 
               <div className="flex items-center gap-3">
-                  <div className="w-11 h-11 rounded-full overflow-hidden shadow-md border-2 border-[#c42d2d]/20 flex-shrink-0">
+                <div className="w-11 h-11 rounded-full overflow-hidden shadow-md border-2 border-[#c42d2d]/20 flex-shrink-0">
                   <img src={cardThumb(fc)} alt={fc.name} className="w-full h-full object-cover" />
                 </div>
                 <div>
@@ -410,7 +410,7 @@ The stress is gone totally from my head, all the negative thoughts which were co
                   return (
                     <div
                       key={card.idx}
-                      className="flex-shrink-0 w-[150px] md:w-[175px]"
+                      className="flex-shrink-0 w-[130px] sm:w-[150px] md:w-[175px]"
                       style={{ perspective: "800px" }}
                     >
                       <div className={`flip-inner w-full h-full ${isFlipped ? "flipped" : ""}`}>

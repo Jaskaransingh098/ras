@@ -98,7 +98,7 @@ export default function Welcome({ scrollRef }: Props) {
               className="mx-2 text-[#f9f7f7] text-lg md:text-2xl font-medium tracking-wide font-[var(--font-dm-sans)] italic"
             >
               First Indian who officially changed her surname to{" "}
-              <span className="text-[#a51313] font-semibold text-3xl">
+              <span className="text-[#a51313] font-semibold text-xl sm:text-2xl md:text-3xl">
                 Hindustani
               </span>{" "}
               •

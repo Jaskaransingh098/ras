@@ -78,6 +78,14 @@ export default function LinkedIn() {
     const [isPaused, setIsPaused] = useState(false);
     const [hoveredId, setHoveredId] = useState<string | null>(null);
     const animRef = useRef<number | null>(null);
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const check = () => setIsMobile(window.innerWidth < 640);
+        check();
+        window.addEventListener('resize', check);
+        return () => window.removeEventListener('resize', check);
+    }, []);
 
     const checkScroll = useCallback(() => {
         const el = scrollRef.current;
@@ -221,7 +229,7 @@ export default function LinkedIn() {
                                     Verified Recommendations
                                 </p>
                             </div>
-                            <h2 className="section-heading text-[28px] md:text-[42px] font-bold font-[var(--font-playfair)] text-[#111] leading-[1.12]">
+                            <h2 className="section-heading text-[24px] sm:text-[28px] md:text-[42px] font-bold font-[var(--font-playfair)] text-[#111] leading-[1.12]">
                                 Words That{" "}
                                 <span className="italic font-bold text-[#c42d2d]">Speak</span> for Themselves
                             </h2>
@@ -257,8 +265,8 @@ export default function LinkedIn() {
                         {[...groups, ...groups].map((group, groupIndex) => (
                             <div
                                 key={groupIndex}
-                                className="flex-shrink-0 flex gap-5 h-[480px] md:h-[550px]"
-                                style={{ width: group.type === "double" ? "400px" : "570px" }}
+                                className="flex-shrink-0 flex gap-3 sm:gap-5 h-[350px] sm:h-[420px] md:h-[550px]"
+                                style={{ width: group.type === "double" ? (isMobile ? "280px" : "400px") : (isMobile ? "380px" : "570px") }}
                             >
                                 {group.type === "single" ? (
                                     <div

@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function Footer() {
     return (
-        <footer className="relative w-full min-h-[100dvh] pt-12 md:pt-20 lg:pt-12 bg-gradient-to-b from-[#8a0a0a] to-[#4a0e0e] text-white overflow-hidden mt-0 flex flex-col justify-between">
+        <footer className="relative w-full min-h-auto md:min-h-[80dvh] pt-10 md:pt-20 lg:pt-12 bg-gradient-to-b from-[#8a0a0a] to-[#4a0e0e] text-white overflow-hidden mt-0 flex flex-col justify-between">
             <div className="flex justify-center gap-4">
                 <a href="#" className="w-15 h-15 rounded-[12px] bg-white/10 hover:bg-white text-white hover:text-[#c42d2d] flex items-center justify-center transition-all duration-300">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
@@ -19,7 +19,7 @@ export default function Footer() {
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
                             </a> */}
             </div>
-            <div className="w-full h-full max-w-[1500px] mx-auto px-4 sm:px-6 md:px-12 relative z-10 flex flex-col justify-between mt-2 md:mt-">
+            <div className="w-full h-full max-w-[1500px] mx-auto px-4 sm:px-6 md:px-12 relative z-10 flex flex-col justify-between mt-2">
 
                 {/* Central Lotus / Icon element (from reference image) */}
                 {/* <div className="absolute top-0 md:top-8 left-1/2 -translate-x-1/2 w-16 h-16 bg-[#111] rounded-full flex items-center justify-center -translate-y-1/2 z-10 shadow-[0_10px_30px_rgba(0,0,0,0.3)] border-4 border-[#8a0a0a]">
@@ -27,7 +27,7 @@ export default function Footer() {
             </div> */}
 
                 {/* Main Content Area */}
-                <div className="w-full flex justify-between gap-16 lg:gap-8 mb-20 md:mb-16 z-10 flex-col md:flex-row">
+                <div className="w-full flex justify-between gap-8 lg:gap-8 mb-12 md:mb-16 z-10 flex-col md:flex-row">
 
                     {/* Left: Branding & Newsletter */}
 
@@ -75,7 +75,7 @@ export default function Footer() {
                     </div>
 
                     {/* Right: 4-Column Navigation Grid matching Synthesis UX */}
-                    <div className="w-full md:w-auto grid grid-cols-2 md:grid-cols-4 gap-x-8 lg:gap-x-12 gap-y-12 font-[var(--font-dm-sans)] text-[12px] lg:text-[13px] tracking-[.1em] uppercase whitespace-nowrap pt-2">
+                    <div className="w-full md:w-auto grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-x-6 sm:gap-x-8 lg:gap-x-12 gap-y-8 sm:gap-y-12 font-[var(--font-dm-sans)] text-[11px] sm:text-[12px] lg:text-[13px] tracking-[.1em] uppercase pt-2">
                         <div className="flex flex-col gap-4">
                             <span className="font-bold text-white mb-2">Explore</span>
                             <Link href="#" className="text-white/70 hover:text-white transition-colors">Session</Link>
@@ -104,7 +104,7 @@ export default function Footer() {
                 </div>
 
                 {/* Bottom Copyright & Links Line */}
-                <div className="w-full flex flex-col md:flex-row items-center justify-between gap-4 md:gap-6 text-[11px] md:text-[12px] font-[var(--font-dm-sans)] text-white/70 mb-8 md:mb-50 z-10 relative">
+                <div className="w-full flex flex-col md:flex-row items-center justify-between gap-4 md:gap-6 text-[10px] sm:text-[11px] md:text-[12px] font-[var(--font-dm-sans)] text-white/70 mb-6 md:mb-12 z-10 relative">
                     <div className="flex flex-col md:flex-row gap-2 md:gap-4 items-center text-center md:text-left">
                         <span>© Copyright 2025 Abhi . All Rights Reserved</span>
                         <span className="hidden md:inline text-white/40">·</span>

@@ -94,7 +94,7 @@ export default function Speaker() {
   }
 
   return (
-    <section ref={sectionRef} className="relative min-h-[100dvh] flex items-center overflow-hidden bg-white">
+    <section ref={sectionRef} className="relative min-h-auto md:min-h-[100dvh] flex items-center overflow-hidden bg-white">
       <style jsx>{`
         .explore-btn {
           position: relative;
@@ -171,9 +171,9 @@ export default function Speaker() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 w-full relative z-10 py-10 md:py-20">
         <div className="flex flex-col-reverse md:flex-row gap-8 md:gap-16 lg:gap-24 items-center justify-center">
           {/* LEFT — Video */}
-          <div className="spk-reveal w-full max-w-[320px] mx-auto md:mx-0 md:w-[260px] lg:w-[300px] flex-shrink-0">
+          <div className="spk-reveal w-full max-w-[260px] sm:max-w-[300px] mx-auto md:mx-0 md:w-[260px] lg:w-[300px] flex-shrink-0">
             <div className="video-frame shadow-xl shadow-black/[0.08]">
-              <div className="relative aspect-[9/16] max-h-[75dvh] bg-[#f0ebe4]">
+              <div className="relative aspect-[9/16] max-h-[60dvh] md:max-h-[75dvh] bg-[#f0ebe4]">
                 <video
                   ref={videoRef}
                   autoPlay
@@ -317,7 +317,7 @@ export default function Speaker() {
 
             {/* Quote */}
             <div className="border-l-[3px] border-[#c42d2d]/30 pl-5 mb-8">
-              <p className="text-[#555] text-[16px] leading-[1.8] font-[var(--font-dm-sans)] italic">
+              <p className="text-[#555] text-[14px] sm:text-[16px] leading-[1.8] font-[var(--font-dm-sans)] italic">
                 &ldquo;These are not motivational talks. They are grounded,
                 experiential conversations that shift how people relate to{" "}
                 <span className="text-[#111] not-italic font-semibold">

@@ -257,7 +257,7 @@ export default function Home() {
               </span>
               <div className="w-8 h-[2px] bg-gradient-to-l from-transparent to-[#c42d2d]" />
             </div>
-            <h2 className="text-[26px] md:text-[38px] font-[var(--font-playfair)] text-[#111] font-bold leading-[1.1]">
+            <h2 className="text-[22px] sm:text-[26px] md:text-[38px] font-[var(--font-playfair)] text-[#111] font-bold leading-[1.1]">
               Discover{" "}
               <span className="italic text-[#c42d2d]">Her World</span>
             </h2>

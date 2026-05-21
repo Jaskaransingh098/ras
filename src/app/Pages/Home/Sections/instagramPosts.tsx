@@ -71,7 +71,7 @@ export default function InstagramPosts() {
                 }
             `}</style>
 
-            <div className="max-w-8xl mx-auto px-6 md:px-12 w-full">
+            <div className="max-w-8xl mx-auto px-4 sm:px-6 md:px-12 w-full">
                 {/* Header */}
                 <div className="ig-reveal flex items-center justify-between mb-6">
                     <div className="flex items-center gap-3">

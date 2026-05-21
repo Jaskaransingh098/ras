@@ -26,7 +26,7 @@ export default function Contact() {
     }, []);
 
     return (
-        <section ref={sectionRef} className="relative min-h-[90dvh] py-10 md:py-16 px-4 sm:px-6 md:px-12 flex items-center justify-center overflow-hidden bg-gradient-to-b from-[#8a0a0a] to-[#4a0e0e]">
+        <section ref={sectionRef} className="relative min-h-auto md:min-h-[90dvh] py-8 md:py-16 px-3 sm:px-6 md:px-12 flex items-center justify-center overflow-hidden bg-gradient-to-b from-[#8a0a0a] to-[#4a0e0e]">
             {/* Dark premium red gradient background overlay */}
             <div className="absolute inset-0 bg-[#4a0e0e]/20" />
 
@@ -34,7 +34,7 @@ export default function Contact() {
             <div className="absolute top-[20%] left-[15%] w-[300px] h-[300px] bg-[#e85d5d]/10 rounded-full blur-[100px] pointer-events-none" />
             <div className="absolute bottom-[10%] right-[15%] w-[400px] h-[400px] bg-[#c42d2d]/15 rounded-full blur-[120px] pointer-events-none" />
 
-            <div className="relative z-10 w-full max-w-[1300px] mx-auto flex flex-col md:flex-row gap-8 md:gap-16 lg:gap-24 items-center justify-center">
+            <div className="relative z-10 w-full max-w-[1300px] mx-auto flex flex-col md:flex-row gap-6 md:gap-16 lg:gap-24 items-center justify-center">
 
                 {/* Left Side Typography & Info */}
                 <div className="ct-reveal w-full md:w-5/12 flex flex-col justify-center h-full">
@@ -46,17 +46,17 @@ export default function Contact() {
                         <div className="w-10 h-px bg-gradient-to-l from-transparent to-[#f0cfb1]" />
                     </div>
 
-                    <h2 className="text-[38px] sm:text-[52px] md:text-[68px] lg:text-[76px] font-[var(--font-playfair)] text-white font-bold leading-[1] tracking-tight mb-5 md:mb-8 drop-shadow-lg">
+                    <h2 className="text-[30px] sm:text-[42px] md:text-[56px] lg:text-[76px] font-[var(--font-playfair)] text-white font-bold leading-[1] tracking-tight mb-4 md:mb-8 drop-shadow-lg">
                         Let&apos;s <br className="hidden md:block" /> ignite <span className="italic font-light text-[#f0cfb1]">change.</span>
                     </h2>
 
-                    <p className="text-white/80 text-[14px] sm:text-[16px] md:text-[18px] font-[var(--font-dm-sans)] leading-relaxed max-w-sm mb-8 md:mb-16">
+                    <p className="text-white/80 text-[13px] sm:text-[15px] md:text-[18px] font-[var(--font-dm-sans)] leading-relaxed max-w-sm mb-6 md:mb-16">
                         I&apos;m always open to discussing new opportunities, whether it&apos;s speaking at your next event or collaborating on transformative services. Let&apos;s make it happen.
                     </p>
 
                     <div className="flex flex-col gap-2">
                         <h4 className="text-white/60 text-[11px] uppercase tracking-[.25em] font-[var(--font-dm-sans)] font-bold">Email Directly</h4>
-                        <a href="mailto:hello@raseshvari.com" className="group flex items-center gap-3 text-white text-[22px] font-medium transition-colors font-[var(--font-outfit)] w-max">
+                        <a href="mailto:hello@raseshvari.com" className="group flex items-center gap-2 sm:gap-3 text-white text-[14px] sm:text-[18px] md:text-[22px] font-medium transition-colors font-[var(--font-outfit)] w-max flex-wrap">
                             <span className="group-hover:text-[#f0cfb1] transition-colors"> raseshvari@rashindustani.com </span>
                             <div className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center group-hover:border-[#f0cfb1] group-hover:bg-[#f0cfb1] transition-colors">
                                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" className="stroke-white group-hover:stroke-[#9b1c1c] transition-colors" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -73,7 +73,7 @@ export default function Contact() {
                     {/* Artistic Shadow/Backing */}
                     <div className="absolute inset-0 bg-[#3a0b0b] blur-2xl rounded-[50px] -z-10 translate-y-4 translate-x-4 opacity-50" />
 
-                    <form className="w-full relative bg-gradient-to-b from-white to-[#fcfcfc] p-6 sm:p-8 md:p-12 lg:p-14 rounded-[28px] sm:rounded-[36px] md:rounded-[40px] shadow-[0_30px_60px_rgba(0,0,0,0.15)] flex flex-col gap-5 md:gap-8 lg:gap-10">
+                    <form className="w-full relative bg-gradient-to-b from-white to-[#fcfcfc] p-5 sm:p-7 md:p-12 lg:p-14 rounded-[24px] sm:rounded-[32px] md:rounded-[40px] shadow-[0_30px_60px_rgba(0,0,0,0.15)] flex flex-col gap-4 sm:gap-6 md:gap-8 lg:gap-10">
 
                         {/* Decorative floating badge */}
                         {/* <div className="absolute -top-4 -right-4 bg-[#c42d2d] text-white px-6 py-2 rounded-full text-[10px] uppercase tracking-[.2em] font-bold font-[var(--font-dm-sans)] shadow-lg rotate-3 z-20">
