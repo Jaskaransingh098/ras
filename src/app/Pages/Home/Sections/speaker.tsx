@@ -306,7 +306,7 @@ export default function Speaker() {
             {/* Description */}
             <p className="text-[#333] text-[14px] sm:text-[16px] md:text-[18px] lg:text-[20px] leading-[1.55] font-[var(--font-dm-sans)] mb-5 md:mb-7 max-w-2xl">
                Raseshvari Hindustani is invited to speak with institutions, organizations,
-              leaders, and young minds on how energy shapes choices and
+              leaders and young minds on how energy shapes choices and
               decisions&mdash;bringing{" "}
               <span className="text-[#111] font-semibold">
                 clarity and ease
@@ -321,7 +321,7 @@ export default function Speaker() {
                 &ldquo;These are not motivational talks. They are grounded,
                 experiential conversations that shift how people relate to{" "}
                 <span className="text-[#111] not-italic font-semibold">
-                  pressure, performance, and themselves.
+                  pressure, performance and themselves.
                 </span>
                 &rdquo;
               </p>

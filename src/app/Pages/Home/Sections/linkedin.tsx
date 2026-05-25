@@ -21,54 +21,17 @@ gsap.registerPlugin(ScrollTrigger);
 //     { id: 12, containerHeight: 485, images: [{ src: "/recommendations/12.png", alt: "Recommendation 12" }] },
 //     { id: 13, containerHeight: 510, images: [{ src: "/recommendations/13.png", alt: "Recommendation 13" }] },
 // ];
-const groups = [
-    {
-        type: "double",
-        items: [
-            { src: "/recommendations/1.png" },
-            { src: "/recommendations/3.png" }
-        ]
-    },
-    {
-        type: "single", // BIG
-        items: [{ src: "/recommendations/2.png" }]
-    },
-    {
-        type: "double",
-        items: [
-            { src: "/recommendations/4.png" },
-            { src: "/recommendations/5.png" }
-        ]
-    },
-    {
-        type: "single", // BIG
-        items: [{ src: "/recommendations/8.png" }]
-    },
-    {
-        type: "double",
-        items: [
-            { src: "/recommendations/6.png" },
-            { src: "/recommendations/7.png" }
-        ]
-    },
-    {
-        type: "single", // BIG
-        items: [{ src: "/recommendations/10.png" }]
-    },
-    {
-        type: "double",
-        items: [
-            { src: "/recommendations/9.png" },
-            { src: "/recommendations/11.png" }
-        ]
-    },
-    {
-        type: "double",
-        items: [
-            { src: "/recommendations/12.png" },
-            { src: "/recommendations/13.png" }
-        ]
-    }
+const screenshots = [
+    { id: 1, src: "/linkedin/1.png" },
+    { id: 2, src: "/linkedin/2.png" },
+    { id: 3, src: "/linkedin/3.png" },
+    { id: 4, src: "/linkedin/4.png" },
+    { id: 5, src: "/linkedin/5.png" },
+    { id: 6, src: "/linkedin/6.png" },
+    { id: 7, src: "/linkedin/7.png" },
+    { id: 8, src: "/linkedin/8.png" },
+    { id: 9, src: "/linkedin/9.png" },
+    { id: 10, src: "/linkedin/10.png" },
 ];
 export default function LinkedIn() {
     const sectionRef = useRef<HTMLElement>(null);
@@ -154,7 +117,7 @@ export default function LinkedIn() {
 
     // Duplicate screenshots for infinite loop
     // const allScreenshots = [...screenshots, ...screenshots];
-    const loopGroups = [...groups, ...groups];
+    const loopScreenshots = [...screenshots, ...screenshots];
 
     return (
         <section ref={sectionRef}
@@ -216,12 +179,6 @@ export default function LinkedIn() {
                 {/* Header row */}
                 <div className="li-reveal max-w-7xl mx-auto px-4 sm:px-6 md:px-12 flex flex-col md:flex-row md:items-end md:justify-between mb-6 md:mb-10">
                     <div className="flex items-center gap-5">
-                        {/* LinkedIn icon */}
-                        {/* <div className="w-13 h-13 rounded-2xl bg-[#c42d2d] flex items-center justify-center shadow-lg shadow-[#c42d2d]/20 flex-shrink-0 p-3.5">
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="white">
-                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                            </svg>
-                        </div> */}
                         <div>
                             <div className="flex items-center gap-3 mb-1.5">
                                 <div className="w-8 h-[2px] rounded-full bg-gradient-to-r from-[#c42d2d] to-transparent" />
@@ -249,108 +206,73 @@ export default function LinkedIn() {
                     onMouseLeave={() => setIsPaused(false)}
                 >
                     {/* Left fade */}
-                    <div className="absolute left-0 top-0 bottom-0 w-12 z-10 pointer-events-none"
-                        style={{ background: "linear-gradient(to right, #f0e9e0, transparent)" }}
+                    <div
+                        className="absolute left-0 top-0 bottom-0 w-16 z-10 pointer-events-none"
+                        style={{
+                            background:
+                                "linear-gradient(to right, #f5f0ea, transparent)",
+                        }}
                     />
+
                     {/* Right fade */}
-                    <div className="absolute right-0 top-0 bottom-0 w-12 z-10 pointer-events-none"
-                        style={{ background: "linear-gradient(to left, #f0e9e0, transparent)" }}
+                    <div
+                        className="absolute right-0 top-0 bottom-0 w-16 z-10 pointer-events-none"
+                        style={{
+                            background:
+                                "linear-gradient(to left, #f5f0ea, transparent)",
+                        }}
                     />
 
                     <div
                         ref={scrollRef}
                         className="scroll-container flex gap-5 overflow-x-auto px-6 pb-8"
                     >
+                        {loopScreenshots.map((item, index) => {
+                            const id = `${item.id}-${index}`;
 
-                        {[...groups, ...groups].map((group, groupIndex) => (
-                            <div
-                                key={groupIndex}
-                                className="flex-shrink-0 flex gap-3 sm:gap-5 h-[350px] sm:h-[420px] md:h-[550px]"
-                                style={{ width: group.type === "double" ? (isMobile ? "280px" : "400px") : (isMobile ? "380px" : "570px") }}
-                            >
-                                {group.type === "single" ? (
-                                    <div
-                                        className={`rec-card w-full h-full ${hoveredId === `${groupIndex}-0`
+                            return (
+                                <div
+                                    key={id}
+                                    className={`rec-card relative flex-shrink-0 ${hoveredId === id
                                             ? "zoomed"
                                             : hoveredId !== null
                                                 ? "blurred"
                                                 : ""
-                                            }`}
-                                        onMouseEnter={() => setHoveredId(`${groupIndex}-0`)}
-                                        onMouseLeave={() => setHoveredId(null)}
-                                    >
-                                        <Image
-                                            src={group.items[0].src}
-                                            fill
-                                            className="object-contain"
-                                            alt="Recommendation"
-                                            unoptimized
-                                        />
-                                    </div>
-                                ) : (
-                                    <div className="flex flex-col gap-5 w-full h-full">
-                                        {group.items.map((item, itemIndex) => {
-                                            const id = `${groupIndex}-${itemIndex}`;
-                                            return (
-                                                <div
-                                                    key={itemIndex}
-                                                    className={`rec-card w-full h-1/2 ${hoveredId === id
-                                                        ? "zoomed"
-                                                        : hoveredId !== null
-                                                            ? "blurred"
-                                                            : ""
-                                                        }`}
-                                                    onMouseEnter={() => setHoveredId(id)}
-                                                    onMouseLeave={() => setHoveredId(null)}
-                                                >
-                                                    <Image
-                                                        src={item.src}
-                                                        fill
-                                                        className="object-contain"
-                                                        alt="Recommendation"
-                                                        unoptimized
-                                                    />
-                                                </div>
-                                            );
-                                        })}
-                                    </div>
-                                )}
-                            </div>
-                        ))}
+                                        }`}
+                                    onMouseEnter={() => setHoveredId(id)}
+                                    onMouseLeave={() => setHoveredId(null)}
+                                    style={{
+                                        width: isMobile ? "440px" : "450px",
+                                        height: isMobile ? "350px" : "440px",
+                                    }}
+                                >
+                                    <Image
+                                        src={item.src}
+                                        fill
+                                        className="object-cover"
+                                        alt="Recommendation"
+                                        unoptimized
+                                    />
+
+                                    {/* Overlay */}
+                                    <div
+                                        style={{
+                                            position: "absolute",
+                                            inset: 0,
+                                            background:
+                                                "linear-gradient(to top, rgba(0,0,0,0.12), transparent)",
+                                        }}
+                                    />
+                                </div>
+                            );
+                        })}
                     </div>
                 </div>
 
-                {/* Bottom row — stats + badge */}
-                {/* <div className="max-w-7xl mx-auto px-6 md:px-12 mt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-                    <div className="flex items-center gap-6"> */}
-                {/* <div className="text-center">
-                            <p className="text-[24px] md:text-[28px] font-[var(--font-playfair)] font-bold text-[#111]">
-                                {screenshots.length}+
-                            </p>
-                            <p className="text-[10px] uppercase tracking-[.2em] text-[#999] font-[var(--font-dm-sans)]">
-                                Recommendations
-                            </p>
-                        </div> */}
-                {/* <div className="w-px h-8 bg-gray-300/50" /> */}
-                {/* <div className="text-center">
-                            <p className="text-[24px] md:text-[28px] font-[var(--font-playfair)] font-bold text-[#111]">
-                                100%
-                            </p>
-                            <p className="text-[10px] uppercase tracking-[.2em] text-[#999] font-[var(--font-dm-sans)]">
-                                Genuine
-                            </p>
-                        </div> */}
+
             </div>
 
-            {/* <div className="inline-flex items-center gap-2.5 bg-white rounded-full px-5 py-2.5 border border-gray-200/60 shadow-sm">
-                        <div className="w-2 h-2 rounded-full bg-[#c42d2d] animate-pulse" />
-                        <p className="text-[#666] text-[12px] font-[var(--font-dm-sans)]">
-                            All sourced from{" "}
-                            <span className="text-[#c42d2d] font-semibold">Instagram and Facebook</span> profiles
-                        </p>
-                    </div> */}
-            {/* </div> */}
-            {/* </div> */}
+
         </section>
     );
 }

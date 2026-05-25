@@ -163,7 +163,7 @@ export default function Experience({ scrollRef }: Props) {
 
 
             <p className="text-black text-[16px] md:text-[20px] leading-[1.7] font-[var(--font-dm-sans)]">
-              Raseshvari Hindustani creates transformations that feel
+              <span className="font-bold italic text-[#3a495e]">Raseshvari Hindustani</span> creates transformations that feel
               miraculous yet deeply embodied and real. That&apos;s why she&apos;s known
               as the{" "}
               <strong className="italic text-[#3a495e] font-bold">

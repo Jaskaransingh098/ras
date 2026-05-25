@@ -27,7 +27,7 @@ export default function Footer() {
             </div> */}
 
                 {/* Main Content Area */}
-                <div className="w-full flex justify-between gap-8 lg:gap-8 mb-12 md:mb-16 z-10 flex-col md:flex-row">
+                <div className="w-full flex justify-between gap-8 lg:gap-8 mb-12 md:mb-46 z-10 flex-col md:flex-row">
 
                     {/* Left: Branding & Newsletter */}
 
@@ -104,7 +104,7 @@ export default function Footer() {
                 </div>
 
                 {/* Bottom Copyright & Links Line */}
-                <div className="w-full flex flex-col md:flex-row items-center justify-between gap-4 md:gap-6 text-[10px] sm:text-[11px] md:text-[12px] font-[var(--font-dm-sans)] text-white/70 mb-6 md:mb-12 z-10 relative">
+                {/* <div className="w-full flex flex-col md:flex-row items-center justify-between gap-4 md:gap-6 text-[10px] sm:text-[11px] md:text-[12px] font-[var(--font-dm-sans)] text-white/70 mb-6 md:mb-12 z-10 relative">
                     <div className="flex flex-col md:flex-row gap-2 md:gap-4 items-center text-center md:text-left">
                         <span>© Copyright 2025 Abhi . All Rights Reserved</span>
                         <span className="hidden md:inline text-white/40">·</span>
@@ -112,7 +112,7 @@ export default function Footer() {
                         </span>
                     </div>
 
-                </div>
+                </div> */}
 
                 {/* Giant Cut-off Background Word (Hindustani) */}
                 <div className="absolute left-0 -bottom-5 w-full overflow-hidden flex justify-center translate-y-[35%] md:translate-y-[20%] select-none pointer-events-none z-0 px-4">

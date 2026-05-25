@@ -68,7 +68,7 @@ If you're going through something like this, please connect with Raseshvari. She
       role: "Dentist",
       location: "",
       youtubeId: "vdOWHa-rzGg",
-      poster: "she_heals_2.png",
+      poster: "rajpreet.png",
       transcript: `Raseshvari Hindustani:
 "Most high-achieving women carry an invisible emotional load, one that quietly blocks their growth and impacts their revenue too. One of my clients, a beautiful and brilliant doctor, had tried everything, but an old emotional pain wouldn't just let go."
  
@@ -88,6 +88,7 @@ Raseshvari Hindustani:
       role: "Asst. Vice President, Bank",
       location: "Mumbai",
       youtubeId: "Zwuiubinbi8",
+      poster:"sumedha.png",
       transcript: `Every time a deal seemed close to closure… something would shift at the last moment.
 Not once.
 It started feeling like a pattern.
@@ -121,6 +122,7 @@ I'm grateful to Raseshvari for being part of my journey.`,
       role: "Student",
       location: "New Delhi",
       youtubeId: "1k8kHVQypr4",
+      poster:"abhedika.png",
       transcript: `Abhedika Sahej: Hi everybody! My name is Abhedika Sahej. I'm pursuing my 12th class, and I'm going to tell you how a small talk with Raseshvari Di assisted me in my everyday life.
 Raseshvari: This beautiful girl came to me at the age of 17, quite hating her body. And today, she owns the stage.
 Abhedika: I was actually concerned about my height and reached [out] to my dad for this. And through him, I got the contact of Ras Di and told her whatever I felt about my height. And eventually, she gave me the clearing statements which helped me to clean the blockages and whatever image was there in my head about height, of course.
@@ -138,6 +140,7 @@ Raseshvari: If she could shift all that energy in just one session, so can you. 
       role: "Business Owner",
       location: "",
       youtubeId: "FPadk3vUnjA",
+      poster:"shashank.png",
       transcript: `There was a point in my life where I truly felt my business would shut down. I started it during college, and everything was going great in the beginning—sales were high, growth was solid, and overall, everything felt smooth.
 Then, suddenly, sales started dropping. I tried everything: changed products, switched categories, but the sales kept going down. At one point, I genuinely felt like I'd have to close my business and shift back to a corporate job. My mind told me to quit, but my heart felt that the problem lay somewhere else.
  
@@ -155,6 +158,7 @@ It's been four to five months since that session. My business is stable, the gro
       role: "Interior Designer",
       location: "Mumbai",
       youtubeId: "hWNj_VwGsEs",
+      poster: "",
       transcript: `Raseshvari Hindustani: Heartbreak isn't just pain, it's stuck energy. And when we shift that energy, we shift everything. Not everyone feels like smiling when healing, but even in this quiet moment, you will hear the shift. Grateful to this client for sharing his transformation—and it's his first time on the camera.
  
 Swapnil Chavan: Hello friends, myself Swapnil. I'm an interior designer from Mumbai. I would like to share about the magical transformation happening in my life in just one session. I was stuck in my relationship issue for more than one and a half years. I got into depression, I tried hard, but nothing was helping. But by God's grace, Raseshvari ma'am helped me with her emotional freedom session. She is magical, guys. She can make anything possible. She can definitely help you out.
