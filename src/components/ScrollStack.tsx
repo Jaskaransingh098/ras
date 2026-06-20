@@ -163,35 +163,71 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
 
     updateCardTransforms();
 
-    // ─── THE KEY FIX ───────────────────────────────────────────────────────────
-    // Wheel events are captured ONLY on the cardsWrapper div.
-    // This means scrolling anywhere outside the cards div is never intercepted.
+    // ─── WHEEL (desktop) ────────────────────────────────────────────────────────
     const onCardWheel = (e: WheelEvent) => {
       const { scrollTop, scrollHeight, clientHeight } = scroller;
       const atTop = scrollTop <= 0;
       const atBottom = scrollTop + clientHeight >= scrollHeight - 1;
 
-      // At a limit? Let the event go to the page (do NOT prevent default)
       if ((e.deltaY > 0 && atBottom) || (e.deltaY < 0 && atTop)) {
         return;
       }
 
-      // Still have room to scroll cards — consume the event
       e.preventDefault();
       e.stopPropagation();
       scroller.scrollTop += e.deltaY;
       updateCardTransforms();
     };
 
-    // non-passive so we can preventDefault; only on cardsWrapper — NOT window
     cardsWrapper.addEventListener('wheel', onCardWheel, { passive: false });
 
-    // Keep transforms in sync when the scroller scrolls (e.g. via touch)
+    // ─── TOUCH (mobile) ─────────────────────────────────────────────────────────
+    let touchStartY = 0;
+    let touchLastY = 0;
+
+    const onTouchStart = (e: TouchEvent) => {
+      touchStartY = e.touches[0].clientY;
+      touchLastY = touchStartY;
+    };
+
+    const onTouchMove = (e: TouchEvent) => {
+      const currentY = e.touches[0].clientY;
+      const delta = touchLastY - currentY; // positive = scrolling down
+      touchLastY = currentY;
+
+      const { scrollTop, scrollHeight, clientHeight } = scroller;
+      const atTop = scrollTop <= 0;
+      const atBottom = scrollTop + clientHeight >= scrollHeight - 1;
+
+      if ((delta > 0 && atBottom) || (delta < 0 && atTop)) {
+        return;
+      }
+
+      e.preventDefault();
+      e.stopPropagation();
+      scroller.scrollTop += delta;
+      updateCardTransforms();
+    };
+
+    const onTouchEnd = () => {
+      touchStartY = 0;
+      touchLastY = 0;
+    };
+
+    // non-passive so we can preventDefault on touch
+    cardsWrapper.addEventListener('touchstart', onTouchStart, { passive: true });
+    cardsWrapper.addEventListener('touchmove', onTouchMove, { passive: false });
+    cardsWrapper.addEventListener('touchend', onTouchEnd, { passive: true });
+
+    // Keep transforms in sync when the scroller scrolls natively
     const onScroll = () => updateCardTransforms();
     scroller.addEventListener('scroll', onScroll, { passive: true });
 
     return () => {
       cardsWrapper.removeEventListener('wheel', onCardWheel);
+      cardsWrapper.removeEventListener('touchstart', onTouchStart);
+      cardsWrapper.removeEventListener('touchmove', onTouchMove);
+      cardsWrapper.removeEventListener('touchend', onTouchEnd);
       scroller.removeEventListener('scroll', onScroll);
       stackCompletedRef.current = false;
       cardsRef.current = [];

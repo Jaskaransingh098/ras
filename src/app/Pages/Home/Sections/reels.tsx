@@ -264,6 +264,11 @@ The stress is gone totally from my head, all the negative thoughts which were co
         .ts-light::-webkit-scrollbar-track { background: #f5f5f5; border-radius: 10px; }
         .ts-light::-webkit-scrollbar-thumb { background: #c42d2d40; border-radius: 10px; }
         .strip-scroll::-webkit-scrollbar { display: none; }
+        /* Ensure face-back fills its phone-frame and inner scroll works */
+        .phone-frame { overflow: hidden !important; }
+        .face-back { overflow: hidden; }
+        .phone-frame > .face-back > div,
+        .face-back > .phone-frame { height: 100%; }
       `}</style>
  
       {/* ── HEADER ── */}
@@ -288,7 +293,7 @@ The stress is gone totally from my head, all the negative thoughts which were co
  
             {/* Phone frame – takes up ~45% on mobile */}
             <div
-              className="flex-shrink-0 w-[42vw] max-w-[180px] sm:max-w-[210px]"
+              className="flex-shrink-0 w-[42vw] max-w-[180px] sm:max-w-[210px] relative"
               style={{ perspective: "800px" }}
             >
               <div className={`flip-inner ${isFeaturedFlipped ? "flipped" : ""}`} style={{ position: "relative" }}>
@@ -328,41 +333,47 @@ The stress is gone totally from my head, all the negative thoughts which were co
                   </div>
                 </div>
  
-                {/* BACK — Transcript */}
-                <div className="face-back">
-                  <div className="phone-frame bg-gradient-to-b from-[#c42d2d] to-[#7a1414] shadow-xl border-[2px] border-[#c42d2d]/60">
-                    <div className="absolute inset-0 flex flex-col p-3 sm:p-4">
-                      <div className="flex items-center gap-1.5 mb-2 flex-shrink-0">
-                        <div className="w-6 h-6 rounded-full overflow-hidden border border-white/30">
-                          <img src={cardThumb(fc)} alt="" className="w-full h-full object-cover" />
-                        </div>
-                        <div>
-                          <p className="text-white text-[10px] font-bold leading-tight font-[var(--font-dm-sans)]">{fc.name}</p>
-                          <p className="text-white/50 text-[8px]">{fc.role}</p>
-                        </div>
-                      </div>
-                      <div className="flex items-center gap-1.5 mb-2 flex-shrink-0">
-                        <div className="h-px flex-1 bg-white/20" />
-                        <span className="text-white text-[9px] uppercase tracking-widest font-semibold font-[var(--font-dm-sans)]">Transcript</span>
-                        <div className="h-px flex-1 bg-white/20" />
-                      </div>
-                      <div className="flex-1 overflow-y-auto min-h-0 ts pr-1">
-                        <p className="text-white text-[11px] leading-[1.8] whitespace-pre-wrap font-[var(--font-dm-sans)]">
-                          <span className="text-white/50 text-base font-[var(--font-playfair)]">&ldquo;</span>
-                          {fc.transcript}
-                          <span className="text-white/50 text-base font-[var(--font-playfair)]">&rdquo;</span>
-                        </p>
-                      </div>
-                      <div className="mt-2 flex-shrink-0">
-                        <button onClick={(e) => flip(featured, e)} className="w-full flex items-center justify-center gap-1 bg-white/15 text-white py-1.5 rounded-full text-[10px] font-medium font-[var(--font-dm-sans)] border border-white/20 hover:bg-white/30 transition-colors">
-                          ← Back
-                        </button>
-                      </div>
+                {/* BACK — Transcript (mobile featured): rendered OUTSIDE preserve-3d so scroll works */}
+                <div className="face-back" aria-hidden="true" />
+              </div>
+            </div>
+
+            {/* Transcript overlay — same exact size as video card, NOT inside preserve-3d */}
+            {isFeaturedFlipped && (
+              <div
+                className="absolute top-0 left-0 w-[42vw] max-w-[180px] sm:max-w-[210px] bg-gradient-to-b from-[#c42d2d] to-[#7a1414] shadow-xl border-[2px] border-[#c42d2d]/60"
+                style={{ zIndex: 20, borderRadius: '20px', aspectRatio: '9/16', overflow: 'hidden' }}
+              >
+                <div className="absolute inset-0 flex flex-col p-3 sm:p-4">
+                  <div className="flex items-center gap-1.5 mb-2 flex-shrink-0">
+                    <div className="w-6 h-6 rounded-full overflow-hidden border border-white/30">
+                      <img src={cardThumb(fc)} alt="" className="w-full h-full object-cover" />
                     </div>
+                    <div>
+                      <p className="text-white text-[10px] font-bold leading-tight font-[var(--font-dm-sans)]">{fc.name}</p>
+                      <p className="text-white/50 text-[8px]">{fc.role}</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-1.5 mb-2 flex-shrink-0">
+                    <div className="h-px flex-1 bg-white/20" />
+                    <span className="text-white text-[9px] uppercase tracking-widest font-semibold font-[var(--font-dm-sans)]">Transcript</span>
+                    <div className="h-px flex-1 bg-white/20" />
+                  </div>
+                  <div className="flex-1 overflow-y-auto min-h-0 ts pr-1" style={{ WebkitOverflowScrolling: 'touch' }}>
+                    <p className="text-white text-[11px] leading-[1.8] whitespace-pre-wrap font-[var(--font-dm-sans)]">
+                      <span className="text-white/50 text-base font-[var(--font-playfair)]">&ldquo;</span>
+                      {fc.transcript}
+                      <span className="text-white/50 text-base font-[var(--font-playfair)]">&rdquo;</span>
+                    </p>
+                  </div>
+                  <div className="mt-2 flex-shrink-0">
+                    <button onClick={(e) => flip(featured, e)} className="w-full flex items-center justify-center gap-1 bg-white/15 text-white py-1.5 rounded-full text-[10px] font-medium font-[var(--font-dm-sans)] border border-white/20 hover:bg-white/30 transition-colors">
+                      ← Back
+                    </button>
                   </div>
                 </div>
               </div>
-            </div>
+            )}
  
             {/* Info panel – right of phone on mobile */}
             <div className="flex-1 flex flex-col justify-start pt-1 min-w-0">
@@ -502,7 +513,7 @@ The stress is gone totally from my head, all the negative thoughts which were co
           <div ref={featuredRef} className="flex flex-row items-center sm:items-stretch gap-8 md:gap-16 rr">
             {/* Featured Phone Frame */}
             <div
-              className="flex-shrink-0 w-[250px] md:w-[270px]"
+              className="flex-shrink-0 w-[250px] md:w-[270px] relative"
               style={{ perspective: "800px" }}
             >
               <div className={`flip-inner ${isFeaturedFlipped ? "flipped" : ""}`} style={{ position: "relative" }}>
@@ -539,41 +550,47 @@ The stress is gone totally from my head, all the negative thoughts which were co
                   </div>
                 </div>
  
-                {/* BACK — Transcript */}
-                <div className="face-back">
-                  <div className="phone-frame bg-gradient-to-b from-[#c42d2d] to-[#7a1414] shadow-2xl border-[3px] border-[#c42d2d]/60">
-                    <div className="absolute inset-0 flex flex-col p-5">
-                      <div className="flex items-center gap-2 mb-3 flex-shrink-0">
-                        <div className="w-7 h-7 rounded-full overflow-hidden border border-white/30">
-                          <img src={cardThumb(fc)} alt="" className="w-full h-full object-cover" />
-                        </div>
-                        <div>
-                          <p className="text-white text-[11px] font-bold leading-tight font-[var(--font-dm-sans)]">{fc.name}</p>
-                          <p className="text-white/50 text-[9px]">{fc.role}</p>
-                        </div>
-                      </div>
-                      <div className="flex items-center gap-2 mb-3 flex-shrink-0">
-                        <div className="h-px flex-1 bg-white/20" />
-                        <span className="text-white text-[11px] uppercase tracking-widest font-semibold font-[var(--font-dm-sans)]">Transcript</span>
-                        <div className="h-px flex-1 bg-white/20" />
-                      </div>
-                      <div className="flex-1 overflow-y-auto min-h-0 ts pr-2">
-                        <p className="text-white text-[15px] leading-[2.0] whitespace-pre-wrap font-[var(--font-dm-sans)]">
-                          <span className="text-white/50 text-xl font-[var(--font-playfair)]">&ldquo;</span>
-                          {fc.transcript}
-                          <span className="text-white/50 text-xl font-[var(--font-playfair)]">&rdquo;</span>
-                        </p>
-                      </div>
-                      <div className="mt-3 flex-shrink-0">
-                        <button onClick={(e) => flip(featured, e)} className="w-full flex items-center justify-center gap-1.5 bg-white/15 text-white py-2 rounded-full text-[11px] font-medium font-[var(--font-dm-sans)] border border-white/20 hover:bg-white/30 transition-colors">
-                          ← Back
-                        </button>
-                      </div>
+                {/* BACK — Transcript (desktop featured): empty placeholder, real transcript below */}
+                <div className="face-back" aria-hidden="true" />
+              </div>
+            </div>
+
+            {/* Transcript overlay — same exact size as video card, NOT inside preserve-3d */}
+            {isFeaturedFlipped && (
+              <div
+                className="absolute top-0 left-0 w-[250px] md:w-[270px] bg-gradient-to-b from-[#c42d2d] to-[#7a1414] shadow-2xl border-[3px] border-[#c42d2d]/60"
+                style={{ zIndex: 20, borderRadius: '20px', aspectRatio: '9/16', overflow: 'hidden' }}
+              >
+                <div className="absolute inset-0 flex flex-col p-5">
+                  <div className="flex items-center gap-2 mb-3 flex-shrink-0">
+                    <div className="w-7 h-7 rounded-full overflow-hidden border border-white/30">
+                      <img src={cardThumb(fc)} alt="" className="w-full h-full object-cover" />
                     </div>
+                    <div>
+                      <p className="text-white text-[11px] font-bold leading-tight font-[var(--font-dm-sans)]">{fc.name}</p>
+                      <p className="text-white/50 text-[9px]">{fc.role}</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2 mb-3 flex-shrink-0">
+                    <div className="h-px flex-1 bg-white/20" />
+                    <span className="text-white text-[11px] uppercase tracking-widest font-semibold font-[var(--font-dm-sans)]">Transcript</span>
+                    <div className="h-px flex-1 bg-white/20" />
+                  </div>
+                  <div className="flex-1 overflow-y-auto min-h-0 ts pr-2" style={{ WebkitOverflowScrolling: 'touch' }}>
+                    <p className="text-white text-[15px] leading-[2.0] whitespace-pre-wrap font-[var(--font-dm-sans)]">
+                      <span className="text-white/50 text-xl font-[var(--font-playfair)]">&ldquo;</span>
+                      {fc.transcript}
+                      <span className="text-white/50 text-xl font-[var(--font-playfair)]">&rdquo;</span>
+                    </p>
+                  </div>
+                  <div className="mt-3 flex-shrink-0">
+                    <button onClick={(e) => flip(featured, e)} className="w-full flex items-center justify-center gap-1.5 bg-white/15 text-white py-2 rounded-full text-[11px] font-medium font-[var(--font-dm-sans)] border border-white/20 hover:bg-white/30 transition-colors">
+                      ← Back
+                    </button>
                   </div>
                 </div>
               </div>
-            </div>
+            )}
  
             {/* Desktop text info panel */}
             <div className="flex-1 flex flex-col justify-center min-w-0">

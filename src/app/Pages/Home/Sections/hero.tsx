@@ -94,7 +94,7 @@ export default function Hero() {
         <div className="absolute inset-0 bg-black/30 z-10 pointer-events-none" />
       </div>
       {/* LEFT SIDE (moved to centered overlay on video) */}
-      <div className="absolute bottom-[4%] sm:bottom-[6%] left-1/2 -translate-x-1/2 w-full max-w-3xl px-3 sm:px-6 z-30 pointer-events-auto text-center">
+      <div className="absolute bottom-[2%] sm:bottom-[5%] left-1/2 -translate-x-1/2 w-full max-w-3xl px-2 sm:px-6 z-30 pointer-events-auto text-center">
         <style jsx>{`
           @keyframes wordReveal {
             0%   { opacity: 0; transform: translateY(32px); letter-spacing: 0.08em; }
@@ -106,12 +106,12 @@ export default function Hero() {
         `}</style>
 
         {/* Glass Container for Hero Text */}
-        <div className="inline-block px-3 sm:px-8 md:px-10 py-4 sm:py-7 md:py-8 rounded-[20px] sm:rounded-[32px] md:rounded-[40px] bg-white/5 backdrop-blur-lg border border-white/10 shadow-2xl mb-2 w-full sm:w-auto">
+        <div className="inline-block px-3 sm:px-8 md:px-10 py-3 sm:py-6 md:py-8 rounded-[16px] sm:rounded-[32px] md:rounded-[40px] bg-white/5 backdrop-blur-lg border border-white/10 shadow-2xl mb-2 w-full sm:w-auto">
           {/* — Eyebrow label — */}
           <div className="flex items-center justify-center gap-3 mb-4">
             <div className="flex-1 max-w-[60px] h-px bg-white/30" />
             <span
-              className="text-[14px] sm:text-[18px] md:text-[22px] uppercase tracking-[0.15em] sm:tracking-[0.2em] font-bold text-white/90 font-[var(--font-dm-sans)]"
+              className="text-[11px] sm:text-[18px] md:text-[22px] uppercase tracking-[0.1em] sm:tracking-[0.2em] font-bold text-white/90 font-[var(--font-dm-sans)]"
             >
               Are You Stuck In Your
             </span>
@@ -148,8 +148,8 @@ export default function Hero() {
         </div> */}
 
         {/* — CTAs — */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-2.5 sm:gap-3 w-full sm:w-auto px-2 sm:px-0">
-          <button className="flex items-center justify-center gap-2 bg-white hover:bg-white/95 text-[#c42d2d] rounded-full px-5 sm:px-6 py-2.5 transition-all duration-300 shadow-lg shadow-black/40 w-full sm:w-auto">
+        <div className="flex flex-col xs:flex-row items-center justify-center gap-2 sm:gap-3 w-full sm:w-auto px-1 sm:px-0">
+          <button className="flex items-center justify-center gap-2 bg-white hover:bg-white/95 text-[#c42d2d] rounded-full px-4 sm:px-6 py-2 sm:py-2.5 transition-all duration-300 shadow-lg shadow-black/40 w-full sm:w-auto">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c42d2d" strokeWidth="2" strokeLinecap="round">
               <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
             </svg>
@@ -157,7 +157,7 @@ export default function Hero() {
               Book Your Diagnostic Call
             </span>
           </button>
-          <button className="flex items-center justify-center gap-2 border border-white/60 text-white hover:bg-white hover:text-[#c42d2d] rounded-full px-5 sm:px-6 py-2.5 transition-all duration-300 w-full sm:w-auto">
+          <button className="flex items-center justify-center gap-2 border border-white/60 text-white hover:bg-white hover:text-[#c42d2d] rounded-full px-4 sm:px-6 py-2 sm:py-2.5 transition-all duration-300 w-full sm:w-auto">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
               <polygon points="5 3 19 12 5 21 5 3" />
             </svg>

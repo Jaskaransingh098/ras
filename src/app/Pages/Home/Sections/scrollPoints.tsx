@@ -87,7 +87,7 @@ const cards = [
 
 export default function ScrollPoints() {
     return (
-        <section className="h-[85vh] sm:h-[95vh] md:h-[112vh] bg-gradient-to-b from-[#8a0a0a] to-[#4a0e0e] flex flex-col relative overflow-hidden">
+        <section className="min-h-[90vh] h-[90vh] sm:h-[95vh] md:h-[112vh] bg-gradient-to-b from-[#8a0a0a] to-[#4a0e0e] flex flex-col relative overflow-hidden">
             {/* Subtle decorative bg elements */}
             {/* <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/[0.02] rounded-full -translate-y-1/2 translate-x-1/3 blur-3xl pointer-events-none" />
             <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-black/[0.08] rounded-full translate-y-1/2 -translate-x-1/3 blur-3xl pointer-events-none" /> */}

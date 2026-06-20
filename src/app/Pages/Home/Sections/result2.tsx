@@ -17,7 +17,7 @@ const cards = [
     {
         title: "Visible Shifts in Life, Work & Money",
         desc: "Doubts stop draining you. Work feels lighter. Opportunities, clients and revenue flow with less resistance.",
-        image: "/results/work-money.png",
+        image: "/results/male-2.png",
         accent: "#c42d2d",
     },
     {
@@ -29,13 +29,13 @@ const cards = [
     {
         title: "A Lighter, Healthier Body",
         desc: "Your body releases stored pressure. Tension softens. Pain begins to dissolve from the inside out. Your body feels lighter and supported.",
-        image: "/results/4.mp4",
+        image: "/results/male-4.png",
         accent: "#c42d2d",
     },
     {
         title: "The Safety to Finally Be YOU",
         desc: "The soft you. The peaceful you. The strong you. The ambitious you. The YOU waiting for years to come alive.",
-        image: "/results/5.mp4",
+        image: "/results/4.mp4",
         accent: "#c42d2d",
     },
 ];
