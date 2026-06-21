@@ -66,7 +66,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="flex flex-col md:flex-row items-center justify-between w-full h-[56.25vw] md:h-[90vh] min-h-[260px] md:min-h-0 relative overflow-hidden bg-black">
+    <section className="flex flex-col md:flex-row items-center justify-between w-full h-[56.25vw] md:h-[90vh] min-h-[350px] md:min-h-0 relative overflow-hidden bg-white">
       {/* Background videos (stacked) */}
       {/*
         Two videos are stacked and crossfaded. Videos must be in `public/hero`:
