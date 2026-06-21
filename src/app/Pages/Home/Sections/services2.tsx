@@ -1,6 +1,5 @@
 "use client";
 
-import { useState, useRef } from 'react';
 import Link from 'next/link';
 
 
@@ -75,45 +74,7 @@ const servicesData = [
    NEW DESIGN  –  Editorial / Magazine layout
    (matches reference image 1)
 ════════════════════════════════════════════════ */
-interface Sparkle {
-    id: number;
-    x: number;
-    y: number;
-    delay: number;
-    duration: number;
-    size: number;
-    cardIndex: number;
-    xOffset: number;
-}
-
 export default function Services() {
-    const [sparkles, setSparkles] = useState<Sparkle[]>([]);
-    const sparkleIdRef = useRef(0);
-
-    const createSparkles = (cardIndex: number) => {
-        const newSparkles: Sparkle[] = [];
-        const count = 50; // Optimized count for mobile + desktop smoothness
-        
-        for (let i = 0; i < count; i++) {
-            newSparkles.push({
-                id: sparkleIdRef.current++,
-                x: 10 + Math.random() * 80,
-                y: 75 + Math.random() * 25,
-                delay: Math.random() * 0.4,
-                duration: 2 + Math.random() * 1.5,
-                size: 6 + Math.random() * 10,
-                cardIndex,
-                xOffset: (Math.random() - 0.5) * 80
-            });
-        }
-        
-        setSparkles(prev => [...prev, ...newSparkles]);
-        
-        // Cleanup sparkles after the longest animation completes
-        setTimeout(() => {
-            setSparkles(prev => prev.filter(s => !newSparkles.find(ns => ns.id === s.id)));
-        }, 4500);
-    };
 return (
         <section className="min-h-auto md:min-h-[98dvh] bg-gradient-to-b from-[#8a0a0a] to-[#4a0e0e] relative overflow-hidden flex flex-col justify-center py-10 md:py-16">
             <style jsx>{`
@@ -365,39 +326,7 @@ when effort hasn't matched results and something still feels stuck.
                     {servicesData.map((svc, index) => (
                         <div key={index} className="service-card group bg-white/95 backdrop-blur-xl flex flex-col relative" style={{ borderRadius: '24px' }}>
                             <div className="card-glow bg-[#c42d2d]" />
-                            <div className="absolute inset-0 overflow-hidden rounded-[24px] pointer-events-none z-30">
-                                {/* {METEORS.map((m, i) => (
-                                    <div
-                                        key={i}
-                                        className="meteor"
-                                        style={{
-                                            top: m.top,
-                                            right: m.right,
-                                            ['--delay' as string]: m.delay,
-                                            ['--dur' as string]: m.duration,
-                                        }}
-                                    />
-                                ))} */}
 
-                                {/* Sparkles Container - Individual for each card */}
-                                {sparkles.filter(s => s.cardIndex === index).map((sparkle) => (
-                                    <div
-                                        key={sparkle.id}
-                                        className="sparkle"
-                                        style={{
-                                            left: `${sparkle.x}%`,
-                                            top: `${sparkle.y}%`,
-                                            width: `${sparkle.size}px`,
-                                            height: `${sparkle.size}px`,
-                                            animationDuration: `${sparkle.duration}s`,
-                                            animationDelay: `${sparkle.delay}s`,
-                                            animationTimingFunction: 'ease-out',
-                                            animationFillMode: 'forwards',
-                                            '--x-offset': `${sparkle.xOffset}px`
-                                        } as React.CSSProperties}
-                                    />
-                                ))}
-                            </div>
                
 
                             {/* Top accent line */}
@@ -451,33 +380,15 @@ when effort hasn't matched results and something still feels stuck.
 
                                 {/* Footer */}
                                 <div className="flex items-center justify-center mt-auto">
-                                    {svc.btnText === "Book Call" ? (
-                                        <button 
-                                            onClick={() => createSparkles(index)}
-                                            className="shine-btn inline-flex items-center gap-2 bg-gradient-to-r from-[#c42d2d] to-[#b02525] text-white px-5 py-2.5 rounded-full text-[11px] font-bold font-[var(--font-outfit)] shadow-lg shadow-[#c42d2d]/25 hover:shadow-xl hover:shadow-[#c42d2d]/35 transition-all duration-300 group/btn relative z-20"
-                                        >
-                                            {svc.btnText}
-                                            <svg className="w-3.5 h-3.5 transition-transform duration-300 group-hover/btn:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round">
-                                                <path d="M5 12h14" /><path d="M12 5l7 7-7 7" />
-                                            </svg>
-                                        </button>
-                                    ) : (
-                                        <a 
-                                            href={svc.btnLink} 
-                                            onClick={(e) => {
-                                                if (svc.btnLink === "#") {
-                                                    e.preventDefault();
-                                                    createSparkles(index);
-                                                }
-                                            }}
-                                            className="shine-btn inline-flex items-center gap-2 bg-gradient-to-r from-[#c42d2d] to-[#b02525] text-white px-5 py-2.5 rounded-full text-[11px] font-bold font-[var(--font-outfit)] shadow-lg shadow-[#c42d2d]/25 hover:shadow-xl hover:shadow-[#c42d2d]/35 transition-all duration-300 group/btn relative z-20"
-                                        >
-                                            {svc.btnText}
-                                            <svg className="w-3.5 h-3.5 transition-transform duration-300 group-hover/btn:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round">
-                                                <path d="M5 12h14" /><path d="M12 5l7 7-7 7" />
-                                            </svg>
-                                        </a>
-                                    )}
+                                    <Link
+                                        href={svc.btnText === "Book Call" ? "/energy-diagnostic-call" : svc.btnLink === "#" ? "/energy-diagnostic-call" : svc.btnLink}
+                                        className="shine-btn inline-flex items-center gap-2 bg-gradient-to-r from-[#c42d2d] to-[#b02525] text-white px-5 py-2.5 rounded-full text-[11px] font-bold font-[var(--font-outfit)] shadow-lg shadow-[#c42d2d]/25 hover:shadow-xl hover:shadow-[#c42d2d]/35 transition-all duration-300 group/btn relative z-20"
+                                    >
+                                        {svc.btnText}
+                                        <svg className="w-3.5 h-3.5 transition-transform duration-300 group-hover/btn:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round">
+                                            <path d="M5 12h14" /><path d="M12 5l7 7-7 7" />
+                                        </svg>
+                                    </Link>
                                     {/* <span className="text-[#c42d2d]/40 text-[42px] font-[var(--font-playfair)] font-bold leading-none group-hover:text-[#c42d2d]/20 transition-colors duration-500">
                                         {svc.number}
                                     </span> */}
@@ -497,17 +408,12 @@ when effort hasn't matched results and something still feels stuck.
                         <div className="w-2 h-2 rounded-full bg-white/90 animate-pulse flex-shrink-0" />
                         <p className="text-white/90 text-[13px] sm:text-[16px] md:text-[20px]">
                             Not sure where to begin?{' '}
-                            <a 
-                                href="#" 
-                                onClick={(e) => {
-                                    e.preventDefault();
-                                    // Trigger sparkles on the first card (Revenue Energetics) as a sample
-                                    createSparkles(0); 
-                                }}
+                            <Link 
+                                href="/energy-diagnostic-call"
                                 className="text-white font-bold font-[var(--font-outfit)] hover:text-[#e85d5d] transition-colors duration-300 underline decoration-white/20 underline-offset-2 hover:decoration-[#e85d5d]/50"
                             >
                                 The Energy Diagnostic Call&trade;
-                            </a>{' '}
+                            </Link>{' '}
                             is the easiest first step.
                         </p>
                     </div>
