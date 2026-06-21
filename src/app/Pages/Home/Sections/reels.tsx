@@ -1,6 +1,6 @@
 "use client";
  
-import { useState, useEffect, useRef, RefObject } from "react";
+import { useState, useEffect, useRef, RefObject, useCallback } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
@@ -18,12 +18,189 @@ interface CardData {
   role: string;
   location: string;
   youtubeId: string;
+  localVideo?: string; // path like "/reels/sumedha.mp4" for non-YouTube videos
   poster?: string;
   transcript: string;
 }
  
 const ytThumb = (id: string) => `https://img.youtube.com/vi/${id}/hqdefault.jpg`;
-const cardThumb = (c: CardData) => (c.poster ? `/reels/${c.poster}` : ytThumb(c.youtubeId));
+
+const cardThumb = (c: CardData) => {
+  if (c.poster) return `/reels/${c.poster}`;
+  if (!c.youtubeId) return "";
+  return ytThumb(c.youtubeId);
+};
+
+// ─── Custom YouTube Shorts-style player for local videos ─────────────────────
+function ShortsPlayer({ src, poster, name, role }: {
+  src: string;
+  poster?: string;
+  name: string;
+  role: string;
+}) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [playing, setPlaying] = useState(false);
+  const [muted, setMuted] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const [showControls, setShowControls] = useState(true);
+  const hideTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const resetHideTimer = useCallback(() => {
+    if (hideTimer.current) clearTimeout(hideTimer.current);
+    setShowControls(true);
+    hideTimer.current = setTimeout(() => setShowControls(false), 2500);
+  }, []);
+
+  useEffect(() => {
+    resetHideTimer();
+    return () => { if (hideTimer.current) clearTimeout(hideTimer.current); };
+  }, [resetHideTimer]);
+
+  const togglePlay = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    const v = videoRef.current;
+    if (!v) return;
+    if (v.paused) { v.play(); setPlaying(true); } else { v.pause(); setPlaying(false); }
+    resetHideTimer();
+  };
+
+  const toggleMute = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    const v = videoRef.current;
+    if (!v) return;
+    v.muted = !v.muted;
+    setMuted(v.muted);
+    resetHideTimer();
+  };
+
+  const handleTimeUpdate = () => {
+    const v = videoRef.current;
+    if (!v || !v.duration) return;
+    setProgress((v.currentTime / v.duration) * 100);
+  };
+
+  const handleSeek = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.stopPropagation();
+    const v = videoRef.current;
+    if (!v || !v.duration) return;
+    const rect = e.currentTarget.getBoundingClientRect();
+    const ratio = (e.clientX - rect.left) / rect.width;
+    v.currentTime = ratio * v.duration;
+    resetHideTimer();
+  };
+
+  return (
+    <div
+      className="absolute inset-0 bg-black"
+      onClick={(e) => { togglePlay(e); }}
+      style={{ cursor: "pointer" }}
+    >
+      {/* Video element */}
+      <video
+        ref={videoRef}
+        src={src}
+        poster={poster}
+        playsInline
+        loop
+        className="absolute inset-0 w-full h-full object-cover"
+        onTimeUpdate={handleTimeUpdate}
+        onPlay={() => setPlaying(true)}
+        onPause={() => setPlaying(false)}
+      />
+
+      {/* Dark gradient overlays */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/70 pointer-events-none" />
+
+      {/* ── TOP ICONS (volume · CC · settings) ── */}
+      <div
+        className="absolute top-3 right-3 flex flex-col gap-2.5 z-30 transition-opacity duration-300"
+        style={{ opacity: showControls ? 1 : 0 }}
+      >
+        <button
+          onClick={toggleMute}
+          className="w-7 h-7 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center"
+          title={muted ? "Unmute" : "Mute"}
+        >
+          {muted ? (
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="white">
+              <path d="M3.63 3.63a.996.996 0 0 0 0 1.41L7.29 8.7 7 9H4c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1h3l3.29 3.29c.63.63 1.71.18 1.71-.71v-4.17l4.18 4.18c-.49.37-1.02.68-1.6.91-.36.15-.58.53-.58.92 0 .72.73 1.18 1.39.91.8-.33 1.55-.77 2.22-1.31l1.34 1.34a.996.996 0 1 0 1.41-1.41L5.05 3.63c-.39-.39-1.02-.39-1.42 0zM19 12c0 .82-.15 1.61-.41 2.34l1.53 1.53c.56-1.17.88-2.48.88-3.87 0-3.83-2.4-7.11-5.78-8.4-.59-.23-1.22.2-1.22.83v.91c0 .38.25.71.61.85C17.18 6.54 19 9.06 19 12zm-8.71-6.29-.17.17L12 7.76V6.41c0-.89-1.08-1.33-1.71-.7zM16.5 12A4.5 4.5 0 0 0 14 7.97v1.79l2.48 2.48c.01-.08.02-.16.02-.24z"/>
+            </svg>
+          ) : (
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="white">
+              <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+            </svg>
+          )}
+        </button>
+        {/* CC icon */}
+        <div className="w-7 h-7 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="white" opacity="0.7">
+            <path d="M19 4H5c-1.11 0-2 .9-2 2v12c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-8 7H9.5v-.5h-2v3h2V13H11v1c0 .55-.45 1-1 1H7c-.55 0-1-.45-1-1v-4c0-.55.45-1 1-1h3c.55 0 1 .45 1 1v1zm7 0h-1.5v-.5h-2v3h2V13H18v1c0 .55-.45 1-1 1h-3c-.55 0-1-.45-1-1v-4c0-.55.45-1 1-1h3c.55 0 1 .45 1 1v1z"/>
+          </svg>
+        </div>
+        {/* Settings icon */}
+        <div className="w-7 h-7 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="white" opacity="0.7">
+            <path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/>
+          </svg>
+        </div>
+      </div>
+
+      {/* ── CENTER PLAY/PAUSE BUTTON ── */}
+      <div
+        className="absolute inset-0 flex items-center justify-center z-20 pointer-events-none transition-opacity duration-300"
+        style={{ opacity: showControls ? 1 : 0 }}
+      >
+        <div className="w-14 h-14 rounded-full bg-black/40 backdrop-blur-sm flex items-center justify-center">
+          {playing ? (
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="white">
+              <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+            </svg>
+          ) : (
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="white">
+              <path d="M8 5v14l11-7z"/>
+            </svg>
+          )}
+        </div>
+      </div>
+
+      {/* ── BOTTOM INFO + PROGRESS ── */}
+      <div className="absolute bottom-0 left-0 right-0 z-20 px-3 pb-3">
+        {/* Person info */}
+        <div className="flex items-center gap-2 mb-2">
+          <div className="w-7 h-7 rounded-full overflow-hidden border-2 border-white/60 flex-shrink-0">
+            {poster && <img src={poster} alt={name} className="w-full h-full object-cover" />}
+          </div>
+          <div className="min-w-0">
+            <p className="text-white text-[11px] font-bold leading-tight uppercase tracking-wide truncate" style={{ textShadow: '0 1px 3px rgba(0,0,0,0.8)' }}>{name}</p>
+            <p className="text-white/70 text-[9px] truncate">{role}</p>
+          </div>
+        </div>
+
+        {/* Progress bar */}
+        <div
+          className="relative h-1 rounded-full bg-white/30 cursor-pointer mb-2"
+          onClick={handleSeek}
+        >
+          <div
+            className="h-full rounded-full bg-[#ff0000] transition-none relative"
+            style={{ width: `${progress}%` }}
+          >
+            <div className="absolute right-0 top-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-[#ff0000] shadow-lg" />
+          </div>
+        </div>
+
+        {/* Shorts branding */}
+        <div className="flex items-center justify-end gap-1">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="white">
+            <path d="M17.77 10.32l-1.2-.5L18 9.06c1.84-.96 2.53-3.23 1.56-5.06s-3.23-2.53-5.06-1.56L6 6.94c-1.29.68-2.07 2.04-1.98 3.49.09 1.45.97 2.71 2.29 3.27l1.2.5L6 14.94c-1.84.96-2.53 3.23-1.56 5.06.97 1.83 3.23 2.53 5.06 1.56l8.5-4.5c1.29-.68 2.07-2.04 1.98-3.49-.09-1.45-.97-2.71-2.21-3.25zM10 14.45v-5l5 2.5-5 2.5z"/>
+          </svg>
+          <span className="text-white text-[10px] font-bold tracking-wide">Shorts</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+// ─────────────────────────────────────────────────────────────────────────────
  
 export default function Reel({ scrollRef }: Props) {
   const [featured, setFeatured] = useState(0);
@@ -80,14 +257,15 @@ Raseshvari Hindustani:
 "When deep emotional weight releases, your confidence, your decisions, your work—everything opens up, and life feels so beautiful. But today, even after four years, she is living lighter, happier, and thriving. If you're feeling stuck in your growth, in your revenue, or your happiness, let's shift it. All you need is just one deep energy shift, and you don't have to carry it alone. Let's connect."`,
     },
     {
-      title: "Inner Alignment",
-      highlight: "& Emotional Balance",
-      sub: "Restored in one",
+      title: "Deals Stuck at the",
+      highlight: "Last Moment — Shifted",
+      sub: "clarity found in one",
       badge: "Revenue-Focused Session",
       name: "Sumedha Adavade",
-      role: "Asst. Vice President, Bank",
+      role: "Asst. Vice President, Multinational Bank",
       location: "Mumbai",
-      youtubeId: "Zwuiubinbi8",
+      youtubeId: "",
+      localVideo: "/reels/sumedha-video.mp4",
       poster:"sumedha.png",
       transcript: `Every time a deal seemed close to closure… something would shift at the last moment.
 Not once.
@@ -149,37 +327,137 @@ That's when I did just one energy session with Raseshvari Ma'am. Honestly, I don
 My stress lifted, I gained confidence, and I found clarity in my mind. Things that had been stuck for months started solving themselves automatically.
 It's been four to five months since that session. My business is stable, the growth is back on track, and mentally, I feel very light. For me, this single session was a major turning point in my life.`,
     },
-    {
-      title: "Heartbreak & Depression",
-      highlight: "to Magical Transformation",
-      sub: "Shifted in one",
-      badge: "Emotional Freedom Session",
-      name: "Swapnil Chavan",
-      role: "Interior Designer",
-      location: "Mumbai",
-      youtubeId: "hWNj_VwGsEs",
-      poster: "",
-      transcript: `Raseshvari Hindustani: Heartbreak isn't just pain, it's stuck energy. And when we shift that energy, we shift everything. Not everyone feels like smiling when healing, but even in this quiet moment, you will hear the shift. Grateful to this client for sharing his transformation—and it's his first time on the camera.
- 
-Swapnil Chavan: Hello friends, myself Swapnil. I'm an interior designer from Mumbai. I would like to share about the magical transformation happening in my life in just one session. I was stuck in my relationship issue for more than one and a half years. I got into depression, I tried hard, but nothing was helping. But by God's grace, Raseshvari ma'am helped me with her emotional freedom session. She is magical, guys. She can make anything possible. She can definitely help you out.
- 
-Closing Text: You don't have to carry the weight of heartbreak forever! Sometimes, one session…`,
-    },
-    {
-      title: "Stress-Free",
-      highlight: "& Relaxed",
-      sub: "achieved in one",
-      badge: "Healing Session",
-      name: "Dhawal Gala",
-      role: "",
+     {
+      title: "Dream Job at a",
+      highlight: "Product-Based Company",
+      sub: "unlocked in just one",
+      badge: "Career Shift Session",
+      name: "Megha",
+      role: "IT Professional, Bangalore",
       location: "",
-      youtubeId: "Mj4tbs4Yl9w",
-      transcript: `Thanks, Ras. I am feeling really happy that I took your session, and in just one session of 40 minutes, I am feeling so relaxed and so stress-free. I am thinking, why I have not taken your session before? I mean, this kind of stress-freeness which I am recognizing now, I could have taken your session before and I would have released myself before only.
- 
-And I'm really thankful to you again and I wish God gives you so [much] power and energy that you can help other people also the way you have helped me. And I am really feeling so glad that I took your session after long such time and really feel so light and I... I mean, I can't imagine what I'm feeling. I mean, I don't have any words to tell you what I am feeling. But it is really a very nice feeling.
- 
-The stress is gone totally from my head, all the negative thoughts which were coming—they are all gone. I am really feeling light, relaxed, and very happy. Thanks to you again. Thanks. Thank you, Ras.`,
+      youtubeId: "xsL-pKPDCro",
+      poster:"megha.png",
+      transcript: `Hello everyone! My name is Megha. I am working in a prestigious IT company in Bangalore. So today I want to share with you a magical story that happened with me.
+
+I had a very great shift in my career.
+
+I had a very big dream that I want to work in a product-based company.
+
+But somehow I landed up in a service-based company.
+
+It was a good company, but deep down, I always had this feeling.
+
+I discussed everything with Raseshvari ma’am.
+
+I must say, just one day, and I was very, very happy that I did.
+
+It shifted my life magically.
+
+I just felt very light, like I can do that.
+
+After doing her session, I immediately got a job in a product-based company.
+
+It is a really good company.
+
+Nowadays I wait for my job to start.
+
+There is no frustration, no irritation.
+
+Whatever I am, whoever I am, I'm happy with that.
+
+And that's all because of Raseshvari ma'am.
+
+I must recommend all of you to just go for it, guys!
+
+
+
+She has done miracles.
+
+I love you, my miracle lady!
+
+Thank you for all your blessings and hurray, thank you so much!
+`,
     },
+
+     {
+      title: "Years of Exhaustion &",
+      highlight: "Broken Relationships",
+      sub: "healed in just one",
+      badge: "Energy Healing Session",
+      name: "Bitheeka Rao",
+      role: "Working Professional, Gurgaon",
+      location: "",
+      youtubeId: "",
+      localVideo: "/reels/bitheeka.mp4",
+      poster:"bitheeka.png",
+      transcript: `
+Honestly, I never believed in energy work.
+In fact, I never even felt like trying something like this.
+
+My name is Bithika Rao. I work in a private organization in Gurgaon.
+At that time, juggling household responsibilities, office work and my daughter’s studies had completely exhausted me. Everything together had become overwhelming. During this phase, I was really struggling with my family relationships and had completely broken down. Mentally, I was absolutely drained. It was affecting my peace of mind, my sleep, and even my health.
+
+I had known Raseshvari for many years through her mother’s community. I had heard a lot about her work but I never imagined that I would personally reach out to her. 
+Then one day, something just clicked..it felt like the time had come. I felt that I had to speak to her at least once.
+
+When I reached out to her, she immediately agreed to give me a session.
+
+During the session, she spoke about things that I had never shared with her. It felt like she was reading the energy of my life experiences on her own. Everything she said was absolutely true.
+
+And when she started clearing those energies, I felt an unusual sense of calm. A kind of peace that’s very hard to put into words. Honestly, it felt like a huge emotional burden that had been building up for years had suddenly lifted from my body.
+
+I had been struggling with sleep for a very long time. But that very night, I slept peacefully. And since then, falling asleep has become much easier.
+
+From the very next day, I started noticing gradual changes. My reactions began to change. My relationships started feeling lighter. Even in my professional life, things began to move differently.
+
+Now I understand why people call her “magical.” Not because of anything dramatic but because the shift feels real.
+
+Sometimes the solution isn’t visible.
+But that doesn’t mean it isn’t powerful.
+
+If you ever feel stuck in your life and don’t know where to turn, at least have one conversation.
+It might change more than you expect.
+
+`,
+    },
+    
+     {
+      title: "Even a Healer",
+      highlight: "Needed Healing",
+      sub: "transformed in just one",
+      badge: "Deep Energy Session",
+      name: "Milli Bhargava",
+      role: "Reiki Healer & Tarot Reader",
+      location: "",
+      youtubeId: "",
+      localVideo: "/reels/milli.mp4",
+      poster:"milli.png",
+      transcript: `
+I’m a Reiki healer and Tarot reader…
+and I don’t get impressed easily.”
+
+Hi I am MILLI BHARGAVA from Delhi 
+I am deeply into Occult sciences 
+I’ve known Raseshwari for a while, and from our very first conversation, I could sense her level of work-
+it’s far beyond words.
+When you’re in this field, you know when someone is operating at a very different frequency.”
+
+Even as a healer, I'm human. There was a phase in my life when I was struggling to manage things..both energetically and emotionally. Without thinking twice, she was the only person I felt called to reach out to.
+During the session, things I couldn't even name began to surface and suddenly, they made sense. The baggage I had been carrying as a mother, daughter and wife quietly came up and started dissolving.
+ I don't know how but it did.
+
+What truly surprised me was how the burdens I had been carrying started getting resolved during the session itself. By the end, I felt incredibly light.
+
+From the very next day, I could see a shift. My profession, my personal life..everything started moving with much more ease and flow.
+I had heard people call her a “walking, talking miracle,” and after experiencing a session with her, I completely understood why.
+Yes, the session was quite pricey but it was worth every single penny.
+So even if you're a healer, coach or specialist, don't overthink it. Just go for it.
+
+Thank you, Ras, from the bottom of my heart, for being in my life and helping me resolve what I couldn't resolve on my own.
+
+`,
+    },
+    
   ];
  
   const sideCards = cards
@@ -300,7 +578,15 @@ The stress is gone totally from my head, all the negative thoughts which were co
                 {/* FRONT */}
                 <div className="face">
                   <div className="phone-frame bg-black shadow-xl border-[2px] border-[#c42d2d]/30">
-                    {playingVideo === featured ? (
+                    {fc.localVideo ? (
+                      // ─ Local video: always mounted, ShortsPlayer handles its own play state
+                      <ShortsPlayer
+                        src={fc.localVideo}
+                        poster={fc.poster ? `/reels/${fc.poster}` : undefined}
+                        name={fc.name}
+                        role={fc.role}
+                      />
+                    ) : playingVideo === featured ? (
                       <iframe
                         src={`https://www.youtube.com/embed/${fc.youtubeId}?autoplay=1&rel=0&loop=1`}
                         title={fc.name}
@@ -323,7 +609,7 @@ The stress is gone totally from my head, all the negative thoughts which were co
                         <div className="absolute bottom-0 left-0 right-0 p-2.5 z-10 text-white">
                           <div className="flex items-center gap-1.5 mb-1">
                             <div className="w-1.5 h-1.5 rounded-full bg-[#ff4444] animate-pulse" />
-                            <span className="text-[9px] uppercase tracking-wider opacity-80 font-medium font-[var(--font-dm-sans)]">YouTube Short</span>
+                             <span className="text-[9px] uppercase tracking-wider opacity-80 font-medium font-[var(--font-dm-sans)]">YouTube Short</span>
                           </div>
                           <p className="font-bold text-[11px] leading-tight font-[var(--font-outfit)]">{fc.name}</p>
                           <p className="text-[9px] opacity-70 mt-0.5">{fc.role}{fc.location ? ` · ${fc.location}` : ""}</p>
@@ -520,7 +806,15 @@ The stress is gone totally from my head, all the negative thoughts which were co
                 {/* FRONT */}
                 <div className="face">
                   <div className="phone-frame bg-black shadow-2xl border-[3px] border-[#c42d2d]/30">
-                    {playingVideo === featured ? (
+                    {fc.localVideo ? (
+                      // ─ Local video: ShortsPlayer with full custom UI
+                      <ShortsPlayer
+                        src={fc.localVideo}
+                        poster={fc.poster ? `/reels/${fc.poster}` : undefined}
+                        name={fc.name}
+                        role={fc.role}
+                      />
+                    ) : playingVideo === featured ? (
                       <iframe
                         src={`https://www.youtube.com/embed/${fc.youtubeId}?autoplay=1&rel=0&loop=1`}
                         title={fc.name}

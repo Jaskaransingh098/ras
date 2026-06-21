@@ -5,22 +5,6 @@ import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
-
-// const screenshots = [
-//     { id: 1, containerHeight: 500, images: [{ src: "/recommendations/1.png", alt: "Recommendation 1" }] },
-//     { id: 2, containerHeight: 520, images: [{ src: "/recommendations/2.png", alt: "Recommendation 2" }] },
-//     { id: 3, containerHeight: 480, images: [{ src: "/recommendations/3.png", alt: "Recommendation 3" }] },
-//     { id: 4, containerHeight: 510, images: [{ src: "/recommendations/4.png", alt: "Recommendation 4" }] },
-//     { id: 5, containerHeight: 490, images: [{ src: "/recommendations/5.png", alt: "Recommendation 5" }] },
-//     { id: 6, containerHeight: 530, images: [{ src: "/recommendations/6.png", alt: "Recommendation 6" }] },
-//     { id: 7, containerHeight: 500, images: [{ src: "/recommendations/7.png", alt: "Recommendation 7" }] },
-//     { id: 8, containerHeight: 515, images: [{ src: "/recommendations/8.png", alt: "Recommendation 8" }] },
-//     { id: 9, containerHeight: 495, images: [{ src: "/recommendations/9.png", alt: "Recommendation 9" }] },
-//     { id: 10, containerHeight: 505, images: [{ src: "/recommendations/10.png", alt: "Recommendation 10" }] },
-//     { id: 11, containerHeight: 520, images: [{ src: "/recommendations/11.png", alt: "Recommendation 11" }] },
-//     { id: 12, containerHeight: 485, images: [{ src: "/recommendations/12.png", alt: "Recommendation 12" }] },
-//     { id: 13, containerHeight: 510, images: [{ src: "/recommendations/13.png", alt: "Recommendation 13" }] },
-// ];
 const screenshots = [
     { id: 1, src: "/linkedin/1.png" },
     { id: 2, src: "/linkedin/2.png" },
@@ -140,6 +124,7 @@ export default function LinkedIn() {
                     transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
                     flex-shrink: 0;
                     box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+
                 }
                 .rec-card:hover {
                     transform: translateY(-6px) scale(1.02);
@@ -259,8 +244,8 @@ export default function LinkedIn() {
                                         style={{
                                             position: "absolute",
                                             inset: 0,
-                                            background:
-                                                "linear-gradient(to top, rgba(0,0,0,0.12), transparent)",
+                                            // background:
+                                            //     "linear-gradient(to top, rgba(0,0,0,0.12), transparent)",
                                         }}
                                     />
                                 </div>
