@@ -85,7 +85,7 @@ export default function EnergyDiagnosticCallPage() {
   return (
     <>
       <Navbar />
-      <div ref={pageRef}>
+      <div ref={pageRef} className="diag-page-root">
         <style>{`
           /* ── ROOT VARS ── */
           :root {
@@ -95,11 +95,19 @@ export default function EnergyDiagnosticCallPage() {
             --ink: #1C0E0A; --ink-mid: #4A3530; --ink-soft: #7A6560;
             --line: rgba(155,15,31,0.1); --line-lt: rgba(28,14,10,0.08);
             --serif: var(--font-cormorant), 'Cormorant Garamond', Georgia, serif;
-            --sans: var(--font-dm-sans), 'Inter', system-ui, sans-serif;
+            --sans: var(--font-inter), 'Inter', system-ui, sans-serif;
             --shadow-sm: 0 2px 16px rgba(155,15,31,0.07), 0 1px 3px rgba(0,0,0,0.04);
             --shadow-md: 0 8px 48px rgba(155,15,31,0.10), 0 2px 8px rgba(0,0,0,0.05);
             --shadow-lg: 0 20px 80px rgba(155,15,31,0.13), 0 4px 16px rgba(0,0,0,0.06);
             --grad: linear-gradient(135deg, #9B0F1F 0%, #C4894A 60%, #E8B87A 100%);
+          }
+
+          .diag-page-root,
+          .diag-page-root input,
+          .diag-page-root button,
+          .diag-page-root textarea,
+          .diag-page-root select {
+            font-family: var(--sans);
           }
 
           /* ── BG ORBS ── */
@@ -189,31 +197,33 @@ export default function EnergyDiagnosticCallPage() {
           .hero-cta-group { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; margin-top: 44px; animation: fadeUp 1s ease 0.52s both; }
           .hero-trust { display: flex; align-items: center; gap: 10px; margin-top: 32px; justify-content: center; color: var(--ink-soft); font-weight: 500; animation: fadeUp 1s ease 0.62s both; font-family: var(--sans); }
           .hero-trust-sep { width: 4px; height: 4px; border-radius: 50%; background: var(--line); }
-          .hero-trust span { font-size: 12px; color: var(--ink-soft); letter-spacing: 0.07em; }
-
-          /* ── RECOGNITION ── */
+          .hero-trust span { font-size: 12px; color: var(--ink-soft); letter-spacing: 0.07em; }          /* ── RECOGNITION ── */
           .section-recognition { background: var(--bg-warm); }
-          .recognition-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+          .recognition-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: flex-start; }
+          .recognition-bullets-col { margin-top: 95px; }
           .recognition-visual { position: relative; perspective: 1000px; }
           .recognition-card-3d { background: linear-gradient(135deg, var(--red) 0%, var(--red-deep) 100%); border-radius: 28px; padding: 56px 48px; transform: rotateY(-8deg) rotateX(4deg); transform-style: preserve-3d; transition: transform 0.6s cubic-bezier(0.4,0,0.2,1); box-shadow: 32px 32px 80px rgba(155,15,31,0.25), -4px -4px 20px rgba(155,15,31,0.1); position: relative; overflow: hidden; }
           .recognition-card-3d::before { content: ''; position: absolute; inset: 0; border-radius: 28px; background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 55%); pointer-events: none; }
           .recognition-visual:hover .recognition-card-3d { transform: rotateY(-2deg) rotateX(1deg); }
           .big-number { font-family: var(--serif); font-size: 160px; font-weight: 300; line-height: 0.8; color: rgba(255,255,255,0.12); position: absolute; top: -20px; right: 16px; pointer-events: none; user-select: none; }
-          .recognition-float-stat { position: absolute; bottom: -24px; right: -24px; background: #fff; border: 1px solid var(--line); box-shadow: var(--shadow-md); border-radius: 18px; padding: 20px 28px; }
-          .stat-n { font-family: var(--serif); font-size: 38px; font-weight: 400; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-          .stat-l { font-size: 12px; color: var(--ink-soft); letter-spacing: 0.08em; margin-top: 2px; font-family: var(--sans); }
+          .recognition-float-stat { position: absolute; bottom: -20px; right: -20px; background: #fff; border: 1px solid var(--line); box-shadow: var(--shadow-md); border-radius: 14px; padding: 12px 20px; }
+          .stat-n { font-family: var(--serif); font-size: 28px; font-weight: 400; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1; }
+          .stat-l { font-size: 10px; color: var(--ink-soft); letter-spacing: 0.06em; margin-top: 2px; font-family: var(--sans); }
           .bullet-grid { margin-top: 8px; }
           .bullet-item { padding: 16px 0; border-bottom: 1px solid var(--line-lt); display: flex; align-items: baseline; gap: 16px; font-size: 16px; color: var(--ink-mid); line-height: 1.72; transition: color 0.3s; font-family: var(--sans); }
           .bullet-item:hover { color: var(--ink); }
           .bullet-mark { width: 6px; height: 6px; border-radius: 50%; background: var(--grad); flex-shrink: 0; margin-top: 8px; box-shadow: 0 0 6px rgba(155,15,31,0.35); }
-          .pull-quote-block { margin-top: 44px; padding: 30px 38px; background: rgba(155,15,31,0.04); border-left: 2px solid var(--red); border-radius: 0 16px 16px 0; }
+          .pull-quote-block { margin-top: 44px; padding: 40px 48px; background: rgba(155,15,31,0.04); border-left: 3px solid var(--red); border-radius: 0 20px 20px 0; width: 100%; }
           .pull-quote-block p { font-family: var(--serif); font-style: italic; font-size: 18px; color: var(--ink-mid); line-height: 1.72; }
 
           /* ── SESSION ── */
           .section-session { background: var(--bg); }
-          .session-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+          .session-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: flex-start; }
           .session-image-box { position: relative; perspective: 800px; }
-          .session-img-wrap { background: linear-gradient(145deg, #F0EAE2, #E8DED3); border: 1px solid var(--line); border-radius: 28px; height: 520px; display: flex; align-items: center; justify-content: center; transform: rotateY(5deg); box-shadow: var(--shadow-lg); transition: transform 0.6s; position: relative; overflow: hidden; }
+          .session-img-wrap { background: linear-gradient(145deg, #F0EAE2, #E8DED3); border: 1px solid var(--line); border-radius: 28px; height: 500px; display: flex; align-items: center; justify-content: center; transform: rotateY(5deg); box-shadow: var(--shadow-lg); transition: transform 0.6s; position: relative; overflow: hidden; }
+          .session-img-wrap.red-box { background: linear-gradient(135deg, var(--red) 0%, var(--red-deep) 100%); border: 1px solid rgba(255, 255, 255, 0.08); padding: 0px; }
+          .session-red-title { font-family: var(--serif); font-size: clamp(32px, 3.5vw, 46px); font-weight: 400; color: #FDFCFB; line-height: 1.25; text-align: center; }
+          .session-red-title em { font-style: italic; color: rgba(232, 184, 122, 0.9); }
           .session-image-box:hover .session-img-wrap { transform: rotateY(1deg); }
           .session-img-wrap::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(155,15,31,0.06), transparent 60%); }
           .session-img-label { font-family: var(--serif); font-style: italic; font-size: 15px; color: var(--ink-soft); z-index: 1; }
@@ -227,7 +237,7 @@ export default function EnergyDiagnosticCallPage() {
           .section-about { background: var(--bg-warm); }
           .about-layout { display: grid; grid-template-columns: 5fr 7fr; gap: 100px; align-items: center; }
           .about-img-col { position: relative; }
-          .about-img-frame { background: linear-gradient(145deg, #EDE6DC, #E0D5C8); border: 1px solid var(--line); border-radius: 32px; height: 580px; display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative; box-shadow: var(--shadow-md); }
+          .about-img-frame { background: linear-gradient(145deg, #EDE6DC, #E0D5C8); border: 1px solid var(--line); border-radius: 32px; height: 510px; display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative; box-shadow: var(--shadow-md); }
           .about-img-frame::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(155,15,31,0.07), transparent 60%); }
           .about-img-label { font-family: var(--serif); font-style: italic; font-size: 15px; color: var(--ink-soft); z-index: 1; }
           .about-accent { position: absolute; bottom: -20px; right: -20px; width: 120px; height: 120px; border-radius: 24px; background: var(--grad); display: flex; align-items: center; justify-content: center; flex-direction: column; box-shadow: 0 8px 40px rgba(155,15,31,0.4); text-align: center; padding: 16px; }
@@ -235,10 +245,11 @@ export default function EnergyDiagnosticCallPage() {
           .about-stats-bar { display: grid; grid-template-columns: repeat(3,1fr); border: 1px solid var(--line); border-radius: 20px; overflow: hidden; background: #fff; box-shadow: var(--shadow-sm); margin: 44px 0; }
           .about-stat { padding: 26px 20px; text-align: center; border-right: 1px solid var(--line); }
           .about-stat:last-child { border-right: none; }
-          .about-stat-num { font-family: var(--serif); font-size: 46px; font-weight: 400; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1; display: block; }
+          .about-stat-num { font-family: var(--serif); font-size: 46px; font-weight: 400; background: #9B0F1F; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1; display: block; }
           .about-stat-lbl { font-size: 11px; color: var(--ink-soft); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 7px; font-family: var(--sans); }
           .closing-italic { font-family: var(--serif); font-style: italic; font-size: 18px; color: var(--ink-mid); line-height: 1.7; padding-top: 28px; border-top: 1px solid var(--line-lt); margin-top: 28px; }
-
+          .about-closing-block { margin-top: 60px; padding-top: 36px; border-top: 1px solid var(--line-lt); text-align: center; width: 100%; }
+          .about-closing-quote { font-family: var(--serif); font-style: italic; font-size: 20px; color: var(--ink-mid); line-height: 1.7; max-width: 800px; margin: 0 auto; }
           /* ── TESTIMONIALS ── */
           .section-testimonials { background: var(--red-deep, #720A15); }
           .testimonial-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 60px; }
@@ -295,7 +306,7 @@ export default function EnergyDiagnosticCallPage() {
           .faq-item { border-bottom: 1px solid var(--line-lt); overflow: hidden; }
           .faq-toggle { display: flex; justify-content: space-between; align-items: center; padding: 26px 0; cursor: pointer; gap: 24px; transition: color 0.3s; }
           .faq-toggle:hover .faq-q { color: var(--red); }
-          .faq-q { font-family: var(--serif); font-size: 20px; font-weight: 400; color: var(--ink); line-height: 1.4; }
+          .faq-q { font-family: var(--sans); font-size: 20px; font-weight: 500; color: var(--ink); line-height: 1.4; }
           .faq-icon { width: 32px; height: 32px; border-radius: 50%; flex-shrink: 0; border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; font-size: 18px; color: var(--red); transition: all 0.4s; }
           .faq-item.open .faq-icon { transform: rotate(45deg); border-color: var(--red); background: var(--red); color: #fff; }
           .faq-body { max-height: 0; overflow: hidden; transition: max-height 0.5s cubic-bezier(0.4,0,0.2,1); }
@@ -328,6 +339,7 @@ export default function EnergyDiagnosticCallPage() {
             .hero-cta-group { flex-direction: column; align-items: center; }
             .diag-sec { padding: 100px 0; }
             .recognition-float-stat { bottom: -12px; right: -12px; }
+            .recognition-bullets-col { margin-top: 0; }
           }
           @media (max-width: 600px) {
             .process-grid { grid-template-columns: 1fr; }
@@ -366,26 +378,29 @@ export default function EnergyDiagnosticCallPage() {
             <span>Limited Sessions</span>
           </div>
         </section>
-
         {/* ── RECOGNITION ── */}
         <section className="diag-section section-recognition diag-sec" id="recognition">
           <div className="diag-container">
             <div className="recognition-grid">
-              <div className="recognition-visual reveal">
-                <div className="recognition-card-3d">
-                  <div className="big-number">02</div>
-                  <span className="eyebrow" style={{ color: 'rgba(255,255,255,0.55)' }}>Recognition</span>
-                  <p style={{ fontFamily: 'var(--serif)', fontSize: '28px', fontWeight: 400, color: '#FDFCFB', lineHeight: 1.35, marginTop: '8px' }}>Sometimes the visible problem is only the surface.</p>
-                  <div className="gold-line" style={{ margin: '24px 0' }} />
-                  <p style={{ fontSize: '15px', color: 'rgba(253,252,251,0.65)', lineHeight: 1.8, fontFamily: 'var(--sans)' }}>The deeper reason may be something you haven&apos;t fully seen yet.</p>
-                </div>
-                <div className="recognition-float-stat">
-                  <div className="stat-n">5+</div>
-                  <div className="stat-l">Countries Reached</div>
+              <div>
+                <h2 className="section-headline reveal" style={{ fontFamily: 'var(--serif)', marginBottom: '32px', fontSize: '38px', lineHeight: 1.2 }}>
+                  This May Resonate<br />With You, If... <span style={{ color: 'var(--red)', marginLeft: '6px' }}>&rarr;</span>
+                </h2>
+                <div className="recognition-visual reveal">
+                  <div className="recognition-card-3d">
+                    <div className="big-number">02</div>
+                    <span className="eyebrow" style={{ color: 'rgba(255,255,255,0.55)' }}>Recognition</span>
+                    <p style={{ fontFamily: 'var(--serif)', fontSize: '28px', fontWeight: 400, color: '#FDFCFB', lineHeight: 1.35, marginTop: '8px' }}>Sometimes the visible problem is only the surface.</p>
+                    <div className="gold-line" style={{ margin: '24px 0' }} />
+                    <p style={{ fontSize: '15px', color: 'rgba(253,252,251,0.65)', lineHeight: 1.8, fontFamily: 'var(--serif)', fontStyle: 'italic' }}>The deeper reason may be something you haven&apos;t fully seen yet.</p>
+                  </div>
+                  <div className="recognition-float-stat">
+                    <div className="stat-n">5+</div>
+                    <div className="stat-l">Countries Reached</div>
+                  </div>
                 </div>
               </div>
-              <div>
-                <span className="eyebrow reveal">This May Resonate With You</span>
+              <div className="recognition-bullets-col">
                 <div className="bullet-grid reveal reveal-delay-1">
                   {[
                     "No matter how much effort you put into life, things still feel stuck, heavy, or unresolved",
@@ -398,10 +413,12 @@ export default function EnergyDiagnosticCallPage() {
                     <div key={txt} className="bullet-item"><span className="bullet-mark" /><span>{txt}</span></div>
                   ))}
                 </div>
-                <div className="pull-quote-block reveal reveal-delay-2">
-                  <p>&quot;Many people describe this experience not as being given answers, but as finally being able to understand their life experiences differently — sometimes for the first time in years.&quot;</p>
-                </div>
               </div>
+            </div>
+
+            {/* Pull Quote Block (Full Width / full rectangular space) */}
+            <div className="pull-quote-block reveal reveal-delay-2" style={{ marginTop: '60px' }}>
+              <p>&quot;Many people describe this experience not as being given answers, but as finally being able to understand their life experiences differently — sometimes for the first time in years.&quot;</p>
             </div>
           </div>
         </section>
@@ -411,13 +428,14 @@ export default function EnergyDiagnosticCallPage() {
           <div className="diag-container">
             <div className="session-layout">
               <div className="session-image-box reveal">
-                <div className="session-img-wrap"><span className="session-img-label">Quiet · Personal · Unhurried</span></div>
+                <div className="session-img-wrap red-box">
+                 <img src="/images/diagnostic-what.png" alt="" />
+                </div>
                 <div className="session-float-tag">1-Hour Private Session</div>
               </div>
               <div>
                 <span className="eyebrow reveal">The Session</span>
-                <h2 className="section-headline reveal reveal-delay-1">What Is an Energy<br /><em>Diagnostic Call?</em></h2>
-                <div className="gold-line reveal reveal-delay-2" />
+                <div className="gold-line reveal reveal-delay-2" style={{ marginTop: '12px' }} />
                 <p className="section-subtext reveal reveal-delay-2" style={{ marginBottom: '18px' }}>Through a deeply personal and unhurried conversation, Raseshvari listens not only to what you share — but also to the recurring patterns and deeper themes that may be connected beneath the surface.</p>
                 <p style={{ fontFamily: 'var(--serif)', fontStyle: 'italic', fontSize: '17px', color: 'var(--ink-mid)', lineHeight: 1.72 }} className="reveal reveal-delay-2">This is not about judging you or telling you what is &quot;wrong&quot; with you.</p>
                 <div className="session-bullets reveal reveal-delay-3">
@@ -441,8 +459,8 @@ export default function EnergyDiagnosticCallPage() {
           <div className="diag-container">
             <div className="about-layout">
               <div className="about-img-col reveal">
-                <div className="about-img-frame"><span className="about-img-label">Raseshvari Hindustani</span></div>
-                <div className="about-accent"><span>27 years of deep experience</span></div>
+                <div className="about-img-frame"><img src="/images/diagnostic-who.png" alt="" /></div>
+                {/* <div className="about-accent"><span>27 years of deep experience</span></div> */}
               </div>
               <div>
                 <span className="eyebrow reveal">About</span>
@@ -455,8 +473,12 @@ export default function EnergyDiagnosticCallPage() {
                 <p className="section-subtext reveal reveal-delay-2" style={{ marginBottom: '16px' }}>For over 15 years, Raseshvari has been working closely with people navigating repeated life patterns, heaviness, relationship struggles, inner confusion, and deeper personal challenges that often cannot be understood only on the surface.</p>
                 <p className="section-subtext reveal reveal-delay-2" style={{ marginBottom: '16px' }}>People from different walks of life across 5+ countries — professionals, business owners, leaders, mothers — have reached out seeking deeper understanding and personal transformation.</p>
                 <p className="section-subtext reveal reveal-delay-3">Before stepping fully into this work, Raseshvari also worked as a UGC NET qualified lecturer, bringing both depth and grounded understanding into the way she guides people today.</p>
-                <p className="closing-italic reveal reveal-delay-3">&quot;Sometimes being truly understood — and truly understanding the deeper root cause beneath your experiences — can itself become the beginning of change.&quot;</p>
               </div>
+            </div>
+
+            {/* Closing Quote (Full Width) */}
+            <div className="about-closing-block reveal reveal-delay-3">
+              <p className="about-closing-quote">&quot;Sometimes being truly understood — and truly understanding the deeper root cause beneath your experiences — can itself become the beginning of change.&quot;</p>
             </div>
           </div>
         </section>
@@ -568,7 +590,7 @@ export default function EnergyDiagnosticCallPage() {
           <div className="diag-container-sm">
             <div className="reveal">
               <span className="eyebrow">Questions</span>
-              <h2 className="section-headline">Things people often<br /><em>want to know</em></h2>
+              <h2 className="section-headline">Things people often<br /><em>ask before the call</em></h2>
             </div>
             <div className="faq-list reveal reveal-delay-1">
               {[

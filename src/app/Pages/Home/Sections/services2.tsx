@@ -10,9 +10,7 @@ const servicesData = [
         title: "Revenue Energetics™",
         p1: "One powerful session that shifts what strategy, effort, and coaching couldn't.",
         p2: "This isn't healing the way you think it is — it's a deeper energy transformation, a shift in your frequency that creates visible change in one session.",
-        iconSVG: (
-            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
-        ),
+        iconSVG: "/services/Revenue-energetic.png",
         btnText: "Explore",
         btnLink: "#",
         number: "01",
@@ -24,9 +22,7 @@ const servicesData = [
         title: "Energy Diagnostic Call™",
         p1: "A paid energy diagnostic call to understand what's really happening beneath the surface.",
         p2: "You receive a clear energetic roadmap showing what blocks are draining you, what needs to shift, and your next step toward your goals.",
-        iconSVG: (
-            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
-        ),
+        iconSVG: "/services/Energy-diagnostic.png",
         btnText: "Book Call",
         btnLink: "#",
         number: "02",
@@ -46,9 +42,7 @@ const servicesData = [
         title: "Energy Score™ Quiz",
         p1: "A quick, intuitive check-in to see where your energy is dropping right now.",
         p2: "This is not a medical diagnosis — it's a gentle mirror to the hidden energetic patterns your mind may overlook. See what's truly happening beneath the surface.",
-        iconSVG: (
-            <><path d="M9 11l3 3L22 4" /><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" /></>
-        ),
+        iconSVG: "/services/Energy-score.png",
         btnText: "Take the Quiz",
         btnLink: "#",
         number: "03",
@@ -57,23 +51,7 @@ const servicesData = [
     }
 ];
 
-// const METEORS = [
-//     { top: '-80px',  right: '5%',   delay: '0s',    duration: '1.2s' },
-//     { top: '-50px',  right: '22%',  delay: '0.45s', duration: '1.5s' },
-//     { top: '-100px', right: '40%',  delay: '0.8s',  duration: '1.0s' },
-//     { top: '5%',     right: '12%',  delay: '0.2s',  duration: '1.4s' },
-//     { top: '12%',    right: '50%',  delay: '0.65s', duration: '1.3s' },
-//     { top: '-30px',  right: '62%',  delay: '1.05s', duration: '1.6s' },
-//     { top: '20%',    right: '30%',  delay: '0.3s',  duration: '1.1s' },
-//     { top: '-60px',  right: '75%',  delay: '0.75s', duration: '1.45s'},
-// ];
 
-
-
-/* ════════════════════════════════════════════════
-   NEW DESIGN  –  Editorial / Magazine layout
-   (matches reference image 1)
-════════════════════════════════════════════════ */
 export default function Services() {
 return (
         <section className="min-h-auto md:min-h-[98dvh] bg-gradient-to-b from-[#8a0a0a] to-[#4a0e0e] relative overflow-hidden flex flex-col justify-center py-10 md:py-16">
@@ -92,11 +70,11 @@ return (
                     100% { background-position: 200% center; }
              
                }
-                @keyframes glow-pulse {
-                    0%, 100% { opacity: 0.4; transform: scale(1); }
-                    50% { opacity: 0.8; transform: scale(1.15); }
+            //     @keyframes glow-pulse {
+            //         0%, 100% { opacity: 0.4; transform: scale(1); }
+            //         50% { opacity: 0.8; transform: scale(1.15); }
               
-               }
+            //    }
                 @keyframes orb-drift {
                     0%, 100% { transform: translate(0, 0) scale(1); }
                     33% { transform: translate(15px, -10px) scale(1.05); }
@@ -104,36 +82,9 @@ return (
                 
                }
 
-                @keyframes sparkleFloat {
-                    0% {
-                        opacity: 0;
-                        transform: translate3d(0, 0, 0) scale(0);
-                    }
-                    10% {
-                        opacity: 1;
-                        transform: translate3d(var(--x-offset, 0), -20px, 0) scale(1);
-                    }
-                    90% {
-                        opacity: 1;
-                        transform: translate3d(var(--x-offset, 0), -350px, 0) scale(0.7);
-                    }
-                    100% {
-                        opacity: 0;
-                        transform: translate3d(var(--x-offset, 0), -400px, 0) scale(0);
-                    }
-                }
+                
 
-                .sparkle {
-                    position: absolute;
-                    pointer-events: none;
-                    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%23ffeb3b' d='M50 0 L62 38 L100 50 L62 62 L50 100 L38 62 L0 50 L38 38 Z'/%3E%3C/svg%3E");
-                    background-size: contain;
-                    background-repeat: no-repeat;
-                    z-index: 100;
-                    animation-name: sparkleFloat;
-                    will-change: transform, opacity;
-                    backface-visibility: hidden;
-                }
+               
                 
                 .service-card {
                     position: relative;
@@ -187,7 +138,7 @@ return (
                     border: 1.5px dashed;
                     opacity: 0;
                     transition: all 0.4s;
-                    animation: glow-pulse 3s ease-in-out infinite;
+                    // animation: glow-pulse 3s ease-in-out infinite;
            
                }
                 .service-card:hover .icon-ring::after {
@@ -266,34 +217,7 @@ return (
                
            `}</style>
 
-            {/* Animated background orbs */}
-            {/* <div className="absolute top-[10%] right-[15%] w-[300px] h-[300px] bg-[#c42d2d]/10 rounded-full blur-[100px] floating-orb pointer-events-none" />
-            <div className="absolute bottom-[15%] left-[10%] w-[250px] h-[250px] bg-[#e85d5d]/8 rounded-full blur-[80px] floating-orb pointer-events-none" style={{ animationDelay: '-3s' }} /> */}
-            {/* <div className="absolute top-[50%] left-[50%] w-[400px] h-[400px] bg-white/[0.015] rounded-full blur-[120px] floating-orb pointer-events-none" style={{ animationDelay: '-5s' }} /> */}
-            {/* Decorative compass top-right */}
-           
-            {/* <div className="max-w-8xl mx-auto px-6 md:px-12 w-full pt-8 pb-10"> */}
-
-            {/* Large watermark text */}
-            {/* <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden">
-                <span className="text-[140px] md:text-[220px] font-[var(--font-playfair)] font-bold text-white/[0.025] tracking-tight whitespace-nowrap select-none">
-                    SHIFT
-                </span>
-            </div> */}
-
-            {/* Corner decorative texts */}
-            {/* <div className="absolute top-8 left-8 md:left-12 pointer-events-none">
-                <p className="text-white/15 text-[10px] uppercase tracking-[.4em] font-medium font-[var(--font-dm-sans)]">Energy &middot; Frequency &middot; Transformation</p>
-            </div> */}
-            {/* <div className="absolute top-8 right-8 md:right-12 pointer-events-none text-right">
-                <p className="text-white/70 text-[64px] md:text-[80px] font-[var(--font-playfair)] font-bold leading-none">03</p>
-                <p className="text-white/70 text-[9px] uppercase tracking-[.3em] mt-1">Ways to begin</p>
-            </div> */}
-            {/* <div className="absolute bottom-8 left-8 md:left-12 pointer-events-none">
-                <p className="text-white/10 text-[11px] italic font-[var(--font-playfair)] max-w-[180px] leading-relaxed">
-                    &ldquo;The shift happens when you stop trying to fix — and allow transformation.&rdquo;
-                </p>
-            </div> */}
+          
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 w-full relative z-10">
                 {/* Section header */}
@@ -336,10 +260,12 @@ when effort hasn't matched results and something still feels stuck.
                             <div className="p-5 sm:p-6 md:p-7 flex-1 flex flex-col relative z-10">
                                 {/* Icon & Badge */}
                                 <div className="flex items-start justify-between mb-5">
-                                    <div className="icon-ring icon-ring-red w-14 h-14 rounded-2xl bg-gradient-to-br from-[#c42d2d]/10 to-[#c42d2d]/5 border border-[#c42d2d]/15 flex items-center justify-center group-hover:from-[#c42d2d]/20 group-hover:to-[#c42d2d]/10 transition-all duration-500 z-10 bg-white">
-                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#c42d2d" strokeWidth="1.8" strokeLinecap="round" className="transition-transform duration-500 group-hover:scale-110">
-                                            {svc.iconSVG}
-                                        </svg>
+                                    <div className="icon-ring icon-ring-red w-16 h-16 rounded-2xl bg-gradient-to-br from-[#c42d2d]/10 to-[#c42d2d]/5 border border-[#c42d2d]/15 flex items-center justify-center group-hover:from-[#c42d2d]/20 group-hover:to-[#c42d2d]/10 transition-all duration-500 z-10 bg-white">
+                                        <img 
+                                            src={svc.iconSVG} 
+                                            alt={svc.title} 
+                                            className="w-16 h-16 object-contain transition-transform duration-500 group-hover:scale-110" 
+                                        />
                                     </div>
                                     <span className="inline-flex items-center gap-1.5 bg-gradient-to-r from-[#c42d2d]/10 to-[#c42d2d]/5 text-[#c42d2d] text-[9px] font-bold uppercase tracking-wider rounded-full px-3 py-1 border border-[#c42d2d]/15 shadow-sm">
                                         <span className="w-1.5 h-1.5 rounded-full bg-[#c42d2d] animate-pulse" />

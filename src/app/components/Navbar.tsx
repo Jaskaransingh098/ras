@@ -61,7 +61,7 @@ export default function Navbar() {
 
       {/* ── DEFAULT: Centered glass pill navbar ~90% wide (hero / video section) ── */}
       <div
-        className={`absolute top-3 left-1/2 -translate-x-1/2 z-50 transition-all duration-500 ${sticky ? "opacity-0 pointer-events-none -translate-y-3" : "opacity-100 translate-y-0"}`}
+        className={`hidden md:block absolute top-3 left-1/2 -translate-x-1/2 z-50 transition-all duration-500 ${sticky ? "opacity-0 pointer-events-none -translate-y-3" : "opacity-100 translate-y-0"}`}
         style={{ width: "min(92vw, 1200px)" }}
       >
         {/* Desktop glass pill */}
@@ -121,42 +121,11 @@ export default function Navbar() {
             </svg>
           </Link>
         </div>
-
-        {/* Mobile top bar */}
-        <div className="md:hidden flex items-center justify-between px-5 py-3 rounded-full"
-          style={{
-            background: "rgba(0,0,0,0.15)",
-            backdropFilter: "blur(24px)",
-            border: "1px solid rgba(255,255,255,0.1)",
-          }}
-        >
-          <Link href="/" className="flex items-center gap-2 group">
-            <div
-              className="w-9 h-9 rounded-full flex items-center justify-center"
-              style={{ background: "linear-gradient(135deg,#c42d2d,#9b1c1c)", boxShadow: "0 2px 12px rgba(196,45,45,0.55)" }}
-            >
-              <span className="font-bold text-[13px] font-[var(--font-playfair)]" style={{ color: "#f5eeee" }}>R</span>
-            </div>
-            <span className="font-bold text-[15px] tracking-widest uppercase font-[var(--font-dm-sans)]" style={{ color: "#f5eeee" }}>RAS</span>
-          </Link>
-          <button
-            className="w-10 h-10 rounded-full flex items-center justify-center"
-            style={{ background: "rgba(196,45,45,0.18)", border: "1px solid rgba(196,45,45,0.3)" }}
-            onClick={() => setOpen(!open)}
-            aria-label="Toggle menu"
-          >
-            <div className="w-5 h-4 relative flex flex-col justify-between">
-              <span className={`hamburger-line block h-[2px] rounded-full ${open ? "transform rotate-45 translate-y-[7px] w-5" : "w-5"}`} style={{ background: "#f5eeee" }} />
-              <span className={`hamburger-line block h-[2px] rounded-full ${open ? "opacity-0 w-0" : "opacity-100 w-3.5"}`} style={{ background: "#f5eeee" }} />
-              <span className={`hamburger-line block h-[2px] rounded-full ${open ? "transform -rotate-45 -translate-y-[7px] w-5" : "w-5"}`} style={{ background: "#f5eeee" }} />
-            </div>
-          </button>
-        </div>
       </div>
 
       {/* ── STICKY: Pill-shaped dark floating navbar ── */}
       <div
-        className={`fixed top-5 left-1/2 -translate-x-1/2 z-50 transition-all duration-500 ${sticky
+        className={`hidden md:block fixed top-5 left-1/2 -translate-x-1/2 z-50 transition-all duration-500 ${sticky
           ? "opacity-100 translate-y-0 pointer-events-auto"
           : "opacity-0 -translate-y-5 pointer-events-none"
           }`}
@@ -217,22 +186,28 @@ export default function Navbar() {
               <path d="M5 12h14" /><path d="M12 5l7 7-7 7" />
             </svg>
           </Link>
-
-          {/* Mobile hamburger (sticky state) */}
-          <button
-            className="md:hidden w-8 h-8 rounded-full flex items-center justify-center ml-0.5 transition-colors"
-            style={{ background: "rgba(255,255,255,0.06)" }}
-            onClick={() => setOpen(!open)}
-            aria-label="Toggle menu"
-          >
-            <div className="w-4 h-3 relative flex flex-col justify-between">
-              <span className={`hamburger-line block h-[1.5px] bg-white rounded-full ${open ? "transform rotate-45 translate-y-[5px] w-4" : "w-4"}`} />
-              <span className={`hamburger-line block h-[1.5px] bg-white rounded-full ${open ? "opacity-0 w-0" : "opacity-100 w-3"}`} />
-              <span className={`hamburger-line block h-[1.5px] bg-white rounded-full ${open ? "transform -rotate-45 -translate-y-[5px] w-4" : "w-4"}`} />
-            </div>
-          </button>
         </div>
       </div>
+
+      {/* ── MOBILE: Floating Hamburger Button ── */}
+      {!open && (
+        <button
+          className="md:hidden fixed top-5 right-5 z-50 w-11 h-11 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg shadow-black/20"
+          style={{
+            background: "rgba(0, 0, 0, 0.4)",
+            backdropFilter: "blur(8px)",
+            border: "1px solid rgba(255, 255, 255, 0.15)",
+          }}
+          onClick={() => setOpen(true)}
+          aria-label="Toggle menu"
+        >
+          <div className="w-5 h-3.5 relative flex flex-col justify-between">
+            <span className="block h-[2px] w-5 rounded-full bg-white" />
+            <span className="block h-[2px] w-3.5 rounded-full bg-white" />
+            <span className="block h-[2px] w-5 rounded-full bg-white" />
+          </div>
+        </button>
+      )}
 
       {/* ── Mobile Full-Screen Menu ── */}
       {open && (
