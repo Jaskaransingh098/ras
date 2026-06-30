@@ -5,6 +5,7 @@ import Link from "next/link";
 export default function Footer() {
     return (
         <footer className="relative w-full min-h-auto md:min-h-[80dvh] pt-10 md:pt-20 lg:pt-12 bg-gradient-to-b from-[#8a0a0a] to-[#4a0e0e] text-white overflow-hidden mt-0 flex flex-col justify-between">
+            <h1 className="flex justify-center mb-4 text-xl font-[var(--font-dm-sans)]">Follow Us</h1>
             <div className="flex justify-center gap-4">
                 <a href="#" className="w-15 h-15 rounded-[12px] bg-white/10 hover:bg-white text-white hover:text-[#c42d2d] flex items-center justify-center transition-all duration-300">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>

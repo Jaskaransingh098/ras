@@ -98,10 +98,10 @@ nav.scrolled {
 
 /* ── BUTTONS ── */
 .btn-glow {
-  background:  rgba(155,15,31,0.9); color: #fff;
+  background: var(--grad); color: #fff;
   padding: 18px 44px; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase;
   font-weight: 500; text-decoration: none; border-radius: 100px;
-  /* box-shadow: 0 6px 40px rgba(155,15,31,0.35), 0 2px 8px rgba(0,0,0,0.1); */
+  box-shadow: 0 6px 40px rgba(155,15,31,0.35), 0 2px 8px rgba(0,0,0,0.1);
   transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
   position: relative; overflow: hidden;
   text-shadow: 0 1px 3px rgba(0,0,0,0.3);
@@ -111,7 +111,7 @@ nav.scrolled {
   background: linear-gradient(135deg, rgba(255,255,255,0.15), transparent);
   opacity: 0; transition: opacity 0.3s;
 }
-.btn-glow:hover { transform: translateY(-3px); background: 0 6px 40px rgba(253, 134, 148, 0.35), 0 2px 8px rgba(0,0,0,0.1); box-shadow: 0 12px 60px rgba(155,15,31,0.45), 0 4px 12px rgba(240, 201, 201, 0.6); }
+.btn-glow:hover { transform: translateY(-3px); box-shadow: 0 12px 60px rgba(155,15,31,0.45), 0 4px 12px rgba(0,0,0,0.12); }
 .btn-glow:hover::before { opacity: 1; }
 
 .btn-outline {
@@ -213,14 +213,13 @@ section { position: relative; z-index: 2; }
 }
 .hero-relatability {
   font-family: var(--serif); font-style: italic;
-  font-size: clamp(17px, 1.8vw, 21px); color: black;
+  font-size: clamp(17px, 1.8vw, 21px); color: var(--ink-soft);
   max-width: 540px; line-height: 1.65; animation: fadeUp 1s ease 0.42s both;
 }
 .hero-cta-group { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; margin-top: 44px; animation: fadeUp 1s ease 0.52s both; }
 .hero-trust {
   display: flex; align-items: center; gap: 10px;
   margin-top: 32px; justify-content: center;
-  color: var(--ink-soft); font-weight: 500;
   animation: fadeUp 1s ease 0.62s both;
 }
 .hero-trust-sep { width: 4px; height: 4px; border-radius: 50%; background: var(--line); }
@@ -551,7 +550,7 @@ footer {
     <span>Online Only</span><span class="hero-trust-sep"></span>
     <span>Limited Sessions</span>
   </div>
-  <!-- <div class="scroll-indicator"><div class="scroll-line"></div><span>Scroll</span></div> -->
+  <div class="scroll-indicator"><div class="scroll-line"></div><span>Scroll</span></div>
 </section>
 
 <!-- RECOGNITION -->

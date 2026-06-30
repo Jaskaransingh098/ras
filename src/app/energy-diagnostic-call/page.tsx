@@ -1,11 +1,114 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Navbar from "@/app/components/Navbar";
 import Footer from "@/app/components/Footer";
 
+const WA_NUMBER = "917700801831"; // ← replace with actual WhatsApp number (country code + number)
+
+// ── Country codes list ──
+const COUNTRIES = [
+  { code: 'IN', flag: '🇮🇳', name: 'India',                dial: '+91'  },
+  { code: 'US', flag: '🇺🇸', name: 'United States',         dial: '+1'   },
+  { code: 'GB', flag: '🇬🇧', name: 'United Kingdom',        dial: '+44'  },
+  { code: 'AE', flag: '🇦🇪', name: 'UAE',                   dial: '+971' },
+  { code: 'AU', flag: '🇦🇺', name: 'Australia',             dial: '+61'  },
+  { code: 'CA', flag: '🇨🇦', name: 'Canada',                dial: '+1'   },
+  { code: 'SG', flag: '🇸🇬', name: 'Singapore',             dial: '+65'  },
+  { code: 'NZ', flag: '🇳🇿', name: 'New Zealand',           dial: '+64'  },
+  { code: 'DE', flag: '🇩🇪', name: 'Germany',               dial: '+49'  },
+  { code: 'FR', flag: '🇫🇷', name: 'France',                dial: '+33'  },
+  { code: 'NL', flag: '🇳🇱', name: 'Netherlands',           dial: '+31'  },
+  { code: 'SE', flag: '🇸🇪', name: 'Sweden',                dial: '+46'  },
+  { code: 'NO', flag: '🇳🇴', name: 'Norway',                dial: '+47'  },
+  { code: 'CH', flag: '🇨🇭', name: 'Switzerland',           dial: '+41'  },
+  { code: 'IT', flag: '🇮🇹', name: 'Italy',                 dial: '+39'  },
+  { code: 'ES', flag: '🇪🇸', name: 'Spain',                 dial: '+34'  },
+  { code: 'ZA', flag: '🇿🇦', name: 'South Africa',          dial: '+27'  },
+  { code: 'NG', flag: '🇳🇬', name: 'Nigeria',               dial: '+234' },
+  { code: 'KE', flag: '🇰🇪', name: 'Kenya',                 dial: '+254' },
+  { code: 'PK', flag: '🇵🇰', name: 'Pakistan',              dial: '+92'  },
+  { code: 'BD', flag: '🇧🇩', name: 'Bangladesh',            dial: '+880' },
+  { code: 'LK', flag: '🇱🇰', name: 'Sri Lanka',             dial: '+94'  },
+  { code: 'NP', flag: '🇳🇵', name: 'Nepal',                 dial: '+977' },
+  { code: 'MY', flag: '🇲🇾', name: 'Malaysia',              dial: '+60'  },
+  { code: 'PH', flag: '🇵🇭', name: 'Philippines',           dial: '+63'  },
+  { code: 'JP', flag: '🇯🇵', name: 'Japan',                 dial: '+81'  },
+  { code: 'KR', flag: '🇰🇷', name: 'South Korea',           dial: '+82'  },
+  { code: 'CN', flag: '🇨🇳', name: 'China',                 dial: '+86'  },
+  { code: 'BR', flag: '🇧🇷', name: 'Brazil',                dial: '+55'  },
+  { code: 'MX', flag: '🇲🇽', name: 'Mexico',                dial: '+52'  },
+  { code: 'AR', flag: '🇦🇷', name: 'Argentina',             dial: '+54'  },
+  { code: 'QA', flag: '🇶🇦', name: 'Qatar',                 dial: '+974' },
+  { code: 'KW', flag: '🇰🇼', name: 'Kuwait',                dial: '+965' },
+  { code: 'SA', flag: '🇸🇦', name: 'Saudi Arabia',          dial: '+966' },
+  { code: 'BH', flag: '🇧🇭', name: 'Bahrain',               dial: '+973' },
+  { code: 'OM', flag: '🇴🇲', name: 'Oman',                  dial: '+968' },
+  { code: 'TH', flag: '🇹🇭', name: 'Thailand',              dial: '+66'  },
+  { code: 'ID', flag: '🇮🇩', name: 'Indonesia',             dial: '+62'  },
+  { code: 'VN', flag: '🇻🇳', name: 'Vietnam',               dial: '+84'  },
+  { code: 'TR', flag: '🇹🇷', name: 'Turkey',                dial: '+90'  },
+  { code: 'EG', flag: '🇪🇬', name: 'Egypt',                 dial: '+20'  },
+  { code: 'PT', flag: '🇵🇹', name: 'Portugal',              dial: '+351' },
+  { code: 'PL', flag: '🇵🇱', name: 'Poland',                dial: '+48'  },
+  { code: 'IE', flag: '🇮🇪', name: 'Ireland',               dial: '+353' },
+  { code: 'GH', flag: '🇬🇭', name: 'Ghana',                 dial: '+233' },
+  { code: 'IL', flag: '🇮🇱', name: 'Israel',                dial: '+972' },
+  { code: 'RU', flag: '🇷🇺', name: 'Russia',                dial: '+7'   },
+  { code: 'UA', flag: '🇺🇦', name: 'Ukraine',               dial: '+380' },
+];
+
 export default function EnergyDiagnosticCallPage() {
   const pageRef = useRef<HTMLDivElement>(null);
+  const [isIndia, setIsIndia] = useState<boolean | null>(null);
+  const [showForm, setShowForm] = useState(false);
+  const [formData, setFormData] = useState({ name: '', email: '', phone: '', message: '' });
+  const [submitting, setSubmitting] = useState(false);
+  const [selectedCountry, setSelectedCountry] = useState(COUNTRIES[0]); // default India
+  const [showCountryDrop, setShowCountryDrop] = useState(false);
+  const [countrySearch, setCountrySearch] = useState('');
+
+  // ── Geo detection ──
+  useEffect(() => {
+    fetch('https://ipapi.co/json/')
+      .then(r => r.json())
+      .then(data => {
+        const cc = data.country_code as string;
+        setIsIndia(cc === 'IN');
+        const matched = COUNTRIES.find(c => c.code === cc);
+        // Auto-select India for IN, US for everything else (unless matched)
+        if (cc === 'IN') {
+          setSelectedCountry(COUNTRIES[0]); // India is index 0
+        } else if (matched) {
+          setSelectedCountry(matched);
+        } else {
+          setSelectedCountry(COUNTRIES[1]); // US fallback
+        }
+      })
+      .catch(() => setIsIndia(true)); // default to India on error
+  }, []);
+
+  const handleFormSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setSubmitting(true);
+    const price = isIndia ? '₹15,000' : '$199';
+    const fullPhone = `${selectedCountry.dial} ${formData.phone}`;
+    const msg = encodeURIComponent(
+      `*Energy Diagnostic Call Application*\n\n` +
+      `*Name:* ${formData.name}\n` +
+      `*Email:* ${formData.email}\n` +
+      `*Phone:* ${fullPhone}\n` +
+      `*Session Price:* ${price}\n` +
+      `*Message:* ${formData.message || 'No additional message'}`
+    );
+    setTimeout(() => {
+      window.open(`https://wa.me/${WA_NUMBER}?text=${msg}`, '_blank');
+      setShowForm(false);
+      setSubmitting(false);
+      setFormData({ name: '', email: '', phone: '', message: '' });
+      setCountrySearch('');
+    }, 300);
+  };
 
   useEffect(() => {
     // ── Scroll reveal ──
@@ -82,24 +185,44 @@ export default function EnergyDiagnosticCallPage() {
     };
   }, []);
 
+  // ── Close country dropdown on outside click ──
+  useEffect(() => {
+    if (!showCountryDrop) return;
+    const handler = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (!target.closest('.phone-row')) setShowCountryDrop(false);
+    };
+    document.addEventListener('mousedown', handler);
+    return () => document.removeEventListener('mousedown', handler);
+  }, [showCountryDrop]);
+
   return (
     <>
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
       <Navbar />
       <div ref={pageRef} className="diag-page-root">
         <style>{`
           /* ── ROOT VARS ── */
-          :root {
+          .diag-page-root {
             --bg: #FDFCFB; --bg-warm: #F7F2EC; --bg-dark: #8F0C1C;
             --red: #9B0F1F; --red-deep: #720A15; --red-soft: #C0344A;
             --gold: #B8793A; --gold-lt: #D4954E;
             --ink: #1C0E0A; --ink-mid: #4A3530; --ink-soft: #7A6560;
             --line: rgba(155,15,31,0.1); --line-lt: rgba(28,14,10,0.08);
-            --serif: var(--font-cormorant), 'Cormorant Garamond', Georgia, serif;
-            --sans: var(--font-inter), 'Inter', system-ui, sans-serif;
+            --serif: 'Cormorant Garamond', var(--font-cormorant), Georgia, serif;
+            --sans: 'Inter', var(--font-inter), system-ui, sans-serif;
             --shadow-sm: 0 2px 16px rgba(155,15,31,0.07), 0 1px 3px rgba(0,0,0,0.04);
             --shadow-md: 0 8px 48px rgba(155,15,31,0.10), 0 2px 8px rgba(0,0,0,0.05);
             --shadow-lg: 0 20px 80px rgba(155,15,31,0.13), 0 4px 16px rgba(0,0,0,0.06);
             --grad: linear-gradient(135deg, #9B0F1F 0%, #C4894A 60%, #E8B87A 100%);
+
+            background: var(--bg);
+            color: var(--ink);
+            font-weight: 300;
+            font-size: 17px;
+            line-height: 1.8;
           }
 
           .diag-page-root,
@@ -121,21 +244,22 @@ export default function EnergyDiagnosticCallPage() {
           .diag-section { position: relative; z-index: 2; }
           .diag-container    { max-width: 1200px; margin: 0 auto; padding: 0 60px; }
           .diag-container-sm { max-width: 800px;  margin: 0 auto; padding: 0 60px; }
-          .diag-sec    { padding: 140px 0; }
+          .diag-sec    { padding: 100px 0; }
           .diag-sec-sm { padding: 100px 0; }
 
           /* ── BUTTONS ── */
           .btn-glow {
             display: inline-block;
-            background: rgba(155,15,31,0.9); color: #fff;
+            background: var(--grad); color: #fff;
             padding: 18px 44px; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase;
             font-weight: 500; text-decoration: none; border-radius: 100px;
+            box-shadow: 0 6px 40px rgba(155,15,31,0.35), 0 2px 8px rgba(0,0,0,0.1);
             transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
             position: relative; overflow: hidden;
             text-shadow: 0 1px 3px rgba(0,0,0,0.3);
           }
           .btn-glow::before { content: ''; position: absolute; inset: 0; border-radius: 100px; background: linear-gradient(135deg, rgba(255,255,255,0.15), transparent); opacity: 0; transition: opacity 0.3s; }
-          .btn-glow:hover { transform: translateY(-3px); box-shadow: 0 12px 60px rgba(155,15,31,0.45), 0 4px 12px rgba(240,201,201,0.6); }
+          .btn-glow:hover { transform: translateY(-3px); box-shadow: 0 12px 60px rgba(155,15,31,0.45), 0 4px 12px rgba(0,0,0,0.12); }
           .btn-glow:hover::before { opacity: 1; }
 
           .btn-outline {
@@ -167,7 +291,7 @@ export default function EnergyDiagnosticCallPage() {
           .reveal-delay-4 { transition-delay: 0.4s; }
 
           /* ── TYPE ── */
-          .eyebrow { font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--red); display: block; margin-bottom: 20px; font-weight: 400; font-family: var(--sans); }
+          .eyebrow { font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--red); display: block; margin-bottom: 0px; font-weight: 400; font-family: var(--sans); }
           .eyebrow-light { color: rgba(255,255,255,0.55); }
           .section-headline { font-family: var(--serif); font-size: clamp(36px, 4.5vw, 64px); font-weight: 400; line-height: 1.12; color: var(--ink); }
           .section-headline em { font-style: italic; color: var(--red); }
@@ -193,24 +317,24 @@ export default function EnergyDiagnosticCallPage() {
           .grad-text { background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-style: italic; }
           .hero-divider { width: 1px; height: 52px; background: linear-gradient(to bottom, rgba(155,15,31,0.5), transparent); margin: 36px auto; animation: fadeUp 1s ease 0.3s both; }
           .hero-sub { font-size: clamp(17px, 2vw, 21px); color: var(--ink-mid); max-width: 600px; line-height: 1.82; font-weight: 300; animation: fadeUp 1s ease 0.35s both; font-family: var(--sans); }
-          .hero-relatability { font-family: var(--serif); font-style: italic; font-size: clamp(17px, 1.8vw, 21px); color: black; max-width: 540px; line-height: 1.65; animation: fadeUp 1s ease 0.42s both; }
+          .hero-relatability { font-family: var(--serif); font-style: italic; font-size: clamp(17px, 1.8vw, 21px); color: var(--ink-soft); max-width: 540px; line-height: 1.65; animation: fadeUp 1s ease 0.42s both; }
           .hero-cta-group { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; margin-top: 44px; animation: fadeUp 1s ease 0.52s both; }
           .hero-trust { display: flex; align-items: center; gap: 10px; margin-top: 32px; justify-content: center; color: var(--ink-soft); font-weight: 500; animation: fadeUp 1s ease 0.62s both; font-family: var(--sans); }
           .hero-trust-sep { width: 4px; height: 4px; border-radius: 50%; background: var(--line); }
           .hero-trust span { font-size: 12px; color: var(--ink-soft); letter-spacing: 0.07em; }          /* ── RECOGNITION ── */
           .section-recognition { background: var(--bg-warm); }
-          .recognition-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: flex-start; }
-          .recognition-bullets-col { margin-top: 95px; }
+          .recognition-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center flex:start; }
+          .recognition-bullets-col { margin-top: px; }
           .recognition-visual { position: relative; perspective: 1000px; }
           .recognition-card-3d { background: linear-gradient(135deg, var(--red) 0%, var(--red-deep) 100%); border-radius: 28px; padding: 56px 48px; transform: rotateY(-8deg) rotateX(4deg); transform-style: preserve-3d; transition: transform 0.6s cubic-bezier(0.4,0,0.2,1); box-shadow: 32px 32px 80px rgba(155,15,31,0.25), -4px -4px 20px rgba(155,15,31,0.1); position: relative; overflow: hidden; }
           .recognition-card-3d::before { content: ''; position: absolute; inset: 0; border-radius: 28px; background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 55%); pointer-events: none; }
           .recognition-visual:hover .recognition-card-3d { transform: rotateY(-2deg) rotateX(1deg); }
           .big-number { font-family: var(--serif); font-size: 160px; font-weight: 300; line-height: 0.8; color: rgba(255,255,255,0.12); position: absolute; top: -20px; right: 16px; pointer-events: none; user-select: none; }
           .recognition-float-stat { position: absolute; bottom: -20px; right: -20px; background: #fff; border: 1px solid var(--line); box-shadow: var(--shadow-md); border-radius: 14px; padding: 12px 20px; }
-          .stat-n { font-family: var(--serif); font-size: 28px; font-weight: 400; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1; }
-          .stat-l { font-size: 10px; color: var(--ink-soft); letter-spacing: 0.06em; margin-top: 2px; font-family: var(--sans); }
+          .stat-n { font-family: var(--serif); font-size: 38px; font-weight: 400; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+          .stat-l { font-size: 12px; color: var(--ink-soft); letter-spacing: 0.08em; margin-top: 2px; font-family: var(--sans); }
           .bullet-grid { margin-top: 8px; }
-          .bullet-item { padding: 16px 0; border-bottom: 1px solid var(--line-lt); display: flex; align-items: baseline; gap: 16px; font-size: 16px; color: var(--ink-mid); line-height: 1.72; transition: color 0.3s; font-family: var(--sans); }
+          .bullet-item { padding: 16px 0; border-bottom: 1px solid var(--line-lt); display: flex; align-items: baseline; gap: 16px; font-size: 16px; color: var(--ink-mid); line-height: 1.2; transition: color 0.3s; font-family: var(--sans); }
           .bullet-item:hover { color: var(--ink); }
           .bullet-mark { width: 6px; height: 6px; border-radius: 50%; background: var(--grad); flex-shrink: 0; margin-top: 8px; box-shadow: 0 0 6px rgba(155,15,31,0.35); }
           .pull-quote-block { margin-top: 44px; padding: 40px 48px; background: rgba(155,15,31,0.04); border-left: 3px solid var(--red); border-radius: 0 20px 20px 0; width: 100%; }
@@ -227,25 +351,25 @@ export default function EnergyDiagnosticCallPage() {
           .session-image-box:hover .session-img-wrap { transform: rotateY(1deg); }
           .session-img-wrap::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(155,15,31,0.06), transparent 60%); }
           .session-img-label { font-family: var(--serif); font-style: italic; font-size: 15px; color: var(--ink-soft); z-index: 1; }
-          .session-float-tag { position: absolute; top: 28px; left: -18px; background: var(--red); color: #fff; border-radius: 100px; padding: 10px 22px; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 500; box-shadow: 0 6px 24px rgba(155,15,31,0.35); font-family: var(--sans); }
-          .session-bullets { margin-top: 28px; }
+          .session-float-tag { position: absolute; top: 28px; left: -18px; background: #e79c2aff; color: #fff; border-radius: 100px; padding: 10px 22px; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 500; box-shadow: 0 6px 24px rgba(155,15,31,0.35); font-family: var(--sans); }
+          .session-bullets { margin-top: 8px; }
           .session-bullet { display: flex; align-items: flex-start; gap: 14px; padding: 14px 0; border-bottom: 1px solid var(--line-lt); }
           .session-bullet-icon { width: 30px; height: 30px; border-radius: 50%; flex-shrink: 0; background: rgba(155,15,31,0.08); border: 1px solid rgba(155,15,31,0.15); display: flex; align-items: center; justify-content: center; font-size: 12px; color: var(--red); margin-top: 2px; }
-          .session-bullet p { font-size: 16px; color: var(--ink-mid); line-height: 1.78; font-family: var(--sans); }
+          .session-bullet p { font-size: 16px; color: var(--ink-mid); line-height: 1.2; font-family: var(--sans); }
 
           /* ── ABOUT ── */
           .section-about { background: var(--bg-warm); }
-          .about-layout { display: grid; grid-template-columns: 5fr 7fr; gap: 100px; align-items: center; }
+          .about-layout { display: grid; grid-template-columns: 5fr 7fr; gap: 100px; align-items: end; }
           .about-img-col { position: relative; }
           .about-img-frame { background: linear-gradient(145deg, #EDE6DC, #E0D5C8); border: 1px solid var(--line); border-radius: 32px; height: 510px; display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative; box-shadow: var(--shadow-md); }
           .about-img-frame::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(155,15,31,0.07), transparent 60%); }
           .about-img-label { font-family: var(--serif); font-style: italic; font-size: 15px; color: var(--ink-soft); z-index: 1; }
           .about-accent { position: absolute; bottom: -20px; right: -20px; width: 120px; height: 120px; border-radius: 24px; background: var(--grad); display: flex; align-items: center; justify-content: center; flex-direction: column; box-shadow: 0 8px 40px rgba(155,15,31,0.4); text-align: center; padding: 16px; }
           .about-accent span { font-family: var(--serif); font-size: 11px; font-style: italic; color: rgba(255,255,255,0.92); line-height: 1.45; }
-          .about-stats-bar { display: grid; grid-template-columns: repeat(3,1fr); border: 1px solid var(--line); border-radius: 20px; overflow: hidden; background: #fff; box-shadow: var(--shadow-sm); margin: 44px 0; }
-          .about-stat { padding: 26px 20px; text-align: center; border-right: 1px solid var(--line); }
+          .about-stats-bar { display: grid; grid-template-columns: repeat(3,1fr); border: 1px solid var(--line); border-radius: 20px; overflow: hidden; background: #fff; box-shadow: var(--shadow-sm); margin: 0px 0 40px 0; }
+          .about-stat { padding: 6px 20px; text-align: center; border-right: 1px solid var(--line); }
           .about-stat:last-child { border-right: none; }
-          .about-stat-num { font-family: var(--serif); font-size: 46px; font-weight: 400; background: #9B0F1F; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1; display: block; }
+          .about-stat-num { font-family: var(--serif); font-size: 46px; font-weight: 400; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1; display: block; }
           .about-stat-lbl { font-size: 11px; color: var(--ink-soft); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 7px; font-family: var(--sans); }
           .closing-italic { font-family: var(--serif); font-style: italic; font-size: 18px; color: var(--ink-mid); line-height: 1.7; padding-top: 28px; border-top: 1px solid var(--line-lt); margin-top: 28px; }
           .about-closing-block { margin-top: 60px; padding-top: 36px; border-top: 1px solid var(--line-lt); text-align: center; width: 100%; }
@@ -258,9 +382,11 @@ export default function EnergyDiagnosticCallPage() {
           .t-card-1 { margin-top: 0; } .t-card-2 { margin-top: 32px; } .t-card-3 { margin-top: -16px; }
           .t-qmark { font-family: var(--serif); font-size: 80px; font-weight: 300; line-height: 0.7; color: rgba(232,184,122,0.35); display: block; margin-bottom: 18px; }
           .t-text { font-family: var(--serif); font-style: italic; font-size: 19px; color: rgba(253,252,251,0.92); line-height: 1.72; }
-          .t-author { margin-top: 26px; display: flex; align-items: center; gap: 12px; }
-          .t-dot { width: 32px; height: 32px; border-radius: 50%; background: linear-gradient(135deg, rgba(155,15,31,0.8), rgba(196,137,74,0.5)); border: 1px solid rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; font-family: var(--serif); font-size: 13px; color: rgba(255,255,255,0.9); }
-          .t-name { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.45); font-family: var(--sans); }
+          .t-author { margin-top: 26px; display: flex; align-items: center; gap: 14px; }
+          .t-avatar { width: 44px; height: 44px; border-radius: 50%; border: 1.5px solid rgba(255,255,255,0.25); object-fit: cover; flex-shrink: 0; }
+          .t-meta { display: flex; flex-direction: column; gap: 2px; text-align: left; }
+          .t-name { font-size: 13px; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; color: rgba(253,252,251,0.95); font-family: var(--sans); }
+          .t-title { font-size: 11px; color: rgba(253,252,251,0.5); font-family: var(--sans); line-height: 1.3; }
           .wa-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 64px; }
           .wa-mockup { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.09); border-radius: 22px; overflow: hidden; }
           .wa-top { background: rgba(255,255,255,0.05); padding: 16px 20px; display: flex; align-items: center; gap: 12px; border-bottom: 1px solid rgba(255,255,255,0.07); }
@@ -279,8 +405,8 @@ export default function EnergyDiagnosticCallPage() {
           .section-process { background: var(--bg); }
           .process-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; margin-top: 68px; }
           .process-card { padding: 40px 32px 36px; border-radius: 24px; position: relative; overflow: hidden; }
-          .process-num { font-family: var(--serif); font-size: 68px; font-weight: 300; line-height: 1; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; opacity: 0.25; margin-bottom: 20px; display: block; transition: opacity 0.4s; }
-          .process-card:hover .process-num { opacity: 0.6; }
+          .process-num { font-family: var(--serif); font-size: 68px; font-weight: 300; line-height: 1; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; opacity: 0.6; margin-bottom: 20px; display: block; transition: opacity 0.4s; }
+          // .process-card:hover .process-num { opacity: 0.6; }
           .step-badge { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--red); margin-bottom: 10px; display: block; font-weight: 400; font-family: var(--sans); }
           .step-title { font-family: var(--serif); font-size: 22px; font-weight: 400; color: var(--ink); margin-bottom: 12px; line-height: 1.3; }
           .step-desc { font-size: 15px; color: var(--ink-mid); line-height: 1.78; font-family: var(--sans); }
@@ -289,16 +415,62 @@ export default function EnergyDiagnosticCallPage() {
           .section-pricing { background: var(--bg-warm); }
           .pricing-wrapper { max-width: 620px; margin: 60px auto 0; position: relative; }
           .pricing-glow { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 380px; height: 380px; border-radius: 50%; background: radial-gradient(circle, rgba(155,15,31,0.08), transparent 70%); pointer-events: none; }
-          .pricing-card { background: #fff; border: 1px solid var(--line); border-radius: 32px; padding: 72px 64px; text-align: center; position: relative; overflow: hidden; box-shadow: var(--shadow-lg); }
+          .pricing-card { background: #fff; border: 1px solid var(--line); border-radius: 32px; padding: 40px 44px; text-align: center; position: relative; overflow: hidden; box-shadow: var(--shadow-lg); }
           .pricing-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--grad); }
           .price-eyebrow { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--red); font-family: var(--sans); }
-          .price-title { font-family: var(--serif); font-size: 30px; color: var(--ink); font-weight: 400; margin-top: 10px; line-height: 1.2; }
-          .price-amount { font-family: var(--serif); font-size: 88px; font-weight: 300; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1; margin: 28px 0 6px; }
-          .price-sup { font-size: 40px; vertical-align: super; }
-          .price-includes { list-style: none; margin: 36px 0; padding: 36px 0; border-top: 1px solid var(--line-lt); border-bottom: 1px solid var(--line-lt); display: flex; flex-direction: column; gap: 14px; }
-          .price-includes li { font-size: 16px; color: var(--ink-mid); display: flex; align-items: center; justify-content: center; gap: 12px; font-family: var(--sans); }
+          .price-title { font-family: var(--serif); font-size: 28px; color: var(--ink); font-weight: 400; margin-top: 8px; line-height: 1.2; }
+          .price-amount { font-family: var(--serif); font-size: 76px; font-weight: 300; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1; margin: 18px 0 4px; }
+          .price-sup { font-size: 34px; vertical-align: super; }
+          .price-includes { list-style: none; margin: 20px 0; padding: 20px 0; border-top: 1px solid var(--line-lt); border-bottom: 1px solid var(--line-lt); display: flex; flex-direction: column; gap: 10px; }
+          .price-includes li { font-size: 15px; color: var(--ink-mid); display: flex; align-items: center; justify-content: center; gap: 12px; font-family: var(--sans); }
           .price-includes li::before { content: '✦'; font-size: 8px; color: var(--red); }
-          .pricing-note { font-family: var(--serif); font-style: italic; font-size: 16px; color: var(--ink-soft); margin-bottom: 36px; }
+          .pricing-note { font-family: var(--serif); font-style: italic; font-size: 15px; color: var(--ink-soft); margin-bottom: 24px; }
+          .price-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(155,15,31,0.06); border: 1px solid rgba(155,15,31,0.15); border-radius: 100px; padding: 5px 16px; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--red); font-family: var(--sans); margin-bottom: 12px; }
+
+          /* ── APPLY MODAL ── */
+          .modal-overlay { position: fixed; inset: 0; background: rgba(28,14,10,0.6); z-index: 9999; display: flex; align-items: center; justify-content: center; padding: 24px; backdrop-filter: blur(6px); animation: fadeIn 0.2s ease; }
+          @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+          .modal-box { background: #FDFCFB; border-radius: 28px; padding: 48px 44px; width: 100%; max-width: 520px; position: relative; box-shadow: 0 32px 80px rgba(28,14,10,0.18); animation: slideUp 0.3s cubic-bezier(0.4,0,0.2,1); }
+          @keyframes slideUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+          .modal-box::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--grad); border-radius: 28px 28px 0 0; }
+          .modal-close { position: absolute; top: 18px; right: 18px; width: 32px; height: 32px; border-radius: 50%; background: rgba(155,15,31,0.08); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 18px; color: var(--ink-soft); transition: all 0.2s; }
+          .modal-close:hover { background: rgba(155,15,31,0.15); color: var(--red); }
+          .modal-title { font-family: var(--serif); font-size: 28px; font-weight: 400; color: var(--ink); line-height: 1.2; margin-bottom: 6px; }
+          .modal-sub { font-size: 14px; color: var(--ink-soft); font-family: var(--sans); margin-bottom: 28px; line-height: 1.6; }
+          .form-group { margin-bottom: 16px; text-align: left; }
+          .form-label { display: block; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-mid); margin-bottom: 6px; font-family: var(--sans); font-weight: 500; }
+          .form-input { width: 100%; padding: 12px 16px; border: 1.5px solid rgba(155,15,31,0.15); border-radius: 12px; font-size: 15px; color: var(--ink); background: #fff; font-family: var(--sans); outline: none; transition: border-color 0.2s; box-sizing: border-box; }
+          .form-input:focus { border-color: var(--red); }
+          .form-textarea { resize: vertical; min-height: 90px; }
+          /* Phone row */
+          .phone-row { display: flex; gap: 0; border: 1.5px solid rgba(155,15,31,0.15); border-radius: 12px; overflow: visible; transition: border-color 0.2s; background: #fff; position: relative; }
+          .phone-row:focus-within { border-color: var(--red); }
+          .cc-btn { display: flex; align-items: center; gap: 6px; padding: 0 12px; cursor: pointer; background: transparent; border: none; border-right: 1.5px solid rgba(155,15,31,0.12); border-radius: 0; font-family: var(--sans); font-size: 14px; color: var(--ink); white-space: nowrap; flex-shrink: 0; transition: background 0.2s; user-select: none; min-width: 86px; }
+          .cc-btn:hover { background: rgba(155,15,31,0.04); }
+          .cc-flag { font-size: 20px; line-height: 1; }
+          .cc-dial { font-size: 13px; font-weight: 500; color: var(--ink-mid); }
+          .cc-chevron { font-size: 9px; color: var(--ink-soft); margin-left: 2px; transition: transform 0.2s; }
+          .cc-chevron.open { transform: rotate(180deg); }
+          .phone-number-input { flex: 1; padding: 12px 14px; border: none; outline: none; font-size: 15px; color: var(--ink); background: transparent; font-family: var(--sans); min-width: 0; }
+          /* Country dropdown */
+          .cc-dropdown { position: absolute; top: calc(100% + 8px); left: 0; width: 280px; background: #fff; border: 1px solid rgba(155,15,31,0.12); border-radius: 16px; box-shadow: 0 16px 48px rgba(28,14,10,0.14); z-index: 10000; overflow: hidden; animation: ccDrop 0.18s cubic-bezier(0.4,0,0.2,1); }
+          @keyframes ccDrop { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
+          .cc-search { width: 100%; padding: 12px 16px; border: none; border-bottom: 1px solid rgba(155,15,31,0.08); outline: none; font-size: 13px; font-family: var(--sans); color: var(--ink); background: rgba(155,15,31,0.02); box-sizing: border-box; }
+          .cc-search::placeholder { color: var(--ink-soft); }
+          .cc-list { max-height: 220px; overflow-y: auto; }
+          .cc-list::-webkit-scrollbar { width: 4px; }
+          .cc-list::-webkit-scrollbar-thumb { background: rgba(155,15,31,0.18); border-radius: 4px; }
+          .cc-option { display: flex; align-items: center; gap: 10px; padding: 10px 16px; cursor: pointer; transition: background 0.15s; font-family: var(--sans); font-size: 14px; }
+          .cc-option:hover { background: rgba(155,15,31,0.05); }
+          .cc-option.active { background: rgba(155,15,31,0.08); }
+          .cc-opt-flag { font-size: 18px; flex-shrink: 0; }
+          .cc-opt-name { flex: 1; color: var(--ink); font-size: 13px; }
+          .cc-opt-dial { color: var(--ink-soft); font-size: 12px; font-weight: 500; }
+          /* /Phone row */
+          .form-submit { width: 100%; padding: 16px; background: rgba(155,15,31,0.9); color: #fff; border: none; border-radius: 100px; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 500; cursor: pointer; font-family: var(--sans); transition: all 0.3s; margin-top: 8px; }
+          .form-submit:hover { background: var(--red-deep); transform: translateY(-1px); box-shadow: 0 8px 32px rgba(155,15,31,0.35); }
+          .form-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+          .form-note { font-size: 12px; color: var(--ink-soft); text-align: center; margin-top: 14px; font-family: var(--sans); line-height: 1.5; }
 
           /* ── FAQ ── */
           .section-faq { background: var(--bg); }
@@ -306,7 +478,7 @@ export default function EnergyDiagnosticCallPage() {
           .faq-item { border-bottom: 1px solid var(--line-lt); overflow: hidden; }
           .faq-toggle { display: flex; justify-content: space-between; align-items: center; padding: 26px 0; cursor: pointer; gap: 24px; transition: color 0.3s; }
           .faq-toggle:hover .faq-q { color: var(--red); }
-          .faq-q { font-family: var(--sans); font-size: 20px; font-weight: 500; color: var(--ink); line-height: 1.4; }
+          .faq-q { font-family: var(--serif); font-size: 20px; font-weight: 400; color: var(--ink); line-height: 1.4; }
           .faq-icon { width: 32px; height: 32px; border-radius: 50%; flex-shrink: 0; border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; font-size: 18px; color: var(--red); transition: all 0.4s; }
           .faq-item.open .faq-icon { transform: rotate(45deg); border-color: var(--red); background: var(--red); color: #fff; }
           .faq-body { max-height: 0; overflow: hidden; transition: max-height 0.5s cubic-bezier(0.4,0,0.2,1); }
@@ -335,7 +507,8 @@ export default function EnergyDiagnosticCallPage() {
             .testimonial-grid, .wa-grid { grid-template-columns: 1fr; gap: 16px; }
             .t-card-1, .t-card-2, .t-card-3 { margin-top: 0; }
             .process-grid { grid-template-columns: 1fr 1fr; }
-            .pricing-card { padding: 44px 28px; }
+            .pricing-card { padding: 28px 20px; }
+            .modal-box { padding: 36px 24px; }
             .hero-cta-group { flex-direction: column; align-items: center; }
             .diag-sec { padding: 100px 0; }
             .recognition-float-stat { bottom: -12px; right: -12px; }
@@ -366,11 +539,7 @@ export default function EnergyDiagnosticCallPage() {
           <p className="hero-sub">A 1-hour private online Energy Diagnostic Call with Raseshvari Hindustani — designed to help you understand the hidden energetic patterns that may be affecting the way life has been feeling for you.</p>
           <p className="hero-relatability" style={{ marginTop: '20px' }}>For people who feel like something in life hasn&apos;t been fully making sense for a long time... despite all their efforts to move forward.</p>
           <div className="hero-cta-group" id="apply">
-            <a href="https://wa.me/" className="btn-glow">Apply for Your Energy Diagnostic Call</a>
-            <a href="https://wa.me/" className="btn-outline">
-              <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" /></svg>
-              Chat on WhatsApp
-            </a>
+            <button className="btn-glow" onClick={() => setShowForm(true)} style={{ cursor: 'pointer', border: 'none' }}>Apply for Your Energy Diagnostic Call</button>
           </div>
           <div className="hero-trust">
             <span>1-Hour Private Zoom Session</span><span className="hero-trust-sep" />
@@ -392,12 +561,12 @@ export default function EnergyDiagnosticCallPage() {
                     <span className="eyebrow" style={{ color: 'rgba(255,255,255,0.55)' }}>Recognition</span>
                     <p style={{ fontFamily: 'var(--serif)', fontSize: '28px', fontWeight: 400, color: '#FDFCFB', lineHeight: 1.35, marginTop: '8px' }}>Sometimes the visible problem is only the surface.</p>
                     <div className="gold-line" style={{ margin: '24px 0' }} />
-                    <p style={{ fontSize: '15px', color: 'rgba(253,252,251,0.65)', lineHeight: 1.8, fontFamily: 'var(--serif)', fontStyle: 'italic' }}>The deeper reason may be something you haven&apos;t fully seen yet.</p>
+                    <p style={{ fontSize: '15px', color: 'rgba(253,252,251,0.65)', lineHeight: 1.8, fontFamily: 'var(--serif)', fontStyle: 'italic' }}>&quot;The deeper reason may be something you haven&apos;t fully seen yet.&quot;</p>
                   </div>
-                  <div className="recognition-float-stat">
+                  {/* <div className="recognition-float-stat">
                     <div className="stat-n">5+</div>
                     <div className="stat-l">Countries Reached</div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
               <div className="recognition-bullets-col">
@@ -448,7 +617,7 @@ export default function EnergyDiagnosticCallPage() {
                     <div key={txt} className="session-bullet"><div className="session-bullet-icon">→</div><p>{txt}</p></div>
                   ))}
                 </div>
-                <div style={{ marginTop: '32px', paddingTop: '22px', borderTop: '1px solid var(--line-lt)', fontSize: '12px', color: 'var(--ink-soft)', letterSpacing: '0.1em', textTransform: 'uppercase', fontFamily: 'var(--sans)' }} className="reveal reveal-delay-3">Online on Zoom &nbsp;·&nbsp; Confidential &nbsp;·&nbsp; Personal</div>
+                {/* <div style={{ marginTop: '32px', paddingTop: '22px', borderTop: '1px solid var(--line-lt)', fontSize: '12px', color: 'var(--ink-soft)', letterSpacing: '0.1em', textTransform: 'uppercase', fontFamily: 'var(--sans)' }} className="reveal reveal-delay-3">Online on Zoom &nbsp;·&nbsp; Confidential &nbsp;·&nbsp; Personal</div> */}
               </div>
             </div>
           </div>
@@ -491,9 +660,39 @@ export default function EnergyDiagnosticCallPage() {
               <h2 className="section-headline on-dark">What People Often Experience<br /><em>After The Session</em></h2>
             </div>
             <div className="testimonial-grid">
-              <div className="testimonial-card t-card-1 reveal reveal-delay-1"><span className="t-qmark">&quot;</span><p className="t-text">I originally came because the same patterns kept repeating in my relationships no matter how much I tried to change things. During the session, I understood something I had never connected before — and honestly, it changed the way I saw my entire situation.</p><div className="t-author"><div className="t-dot">A</div><span className="t-name">Aditi, Delhi</span></div></div>
-              <div className="testimonial-card t-card-2 reveal reveal-delay-2"><span className="t-qmark">&quot;</span><p className="t-text">I didn&apos;t even know how to properly explain what I was feeling before the session. But somehow, things that had felt confusing for years started making sense in a very different way.</p><div className="t-author"><div className="t-dot">N</div><span className="t-name">Neha, Bangalore</span></div></div>
-              <div className="testimonial-card t-card-3 reveal reveal-delay-3"><span className="t-qmark">&quot;</span><p className="t-text">I had been carrying constant heaviness for a very long time while still functioning normally in life. I left the session feeling lighter and much more settled within myself.</p><div className="t-author"><div className="t-dot">✦</div><span className="t-name">Anonymous</span></div></div>
+              <div className="testimonial-card t-card-1 reveal reveal-delay-1">
+                <span className="t-qmark">&quot;</span>
+                <p className="t-text">I originally came because the same patterns kept repeating in my relationships no matter how much I tried to change things. During the call, I understood something I had never connected before — and honestly, it changed the way I saw my entire situation.</p>
+                <div className="t-author">
+                  <img src="/energy-testimonial/kirthi.jpeg" alt="Dr Kirthi kakade" className="t-avatar" />
+                  <div className="t-meta">
+                    <span className="t-name">Dr Kirthi kakade</span>
+                    <span className="t-title">Homeopathy and Psychotherapist, Bangalore</span>
+                  </div>
+                </div>
+              </div>
+              <div className="testimonial-card t-card-2 reveal reveal-delay-2">
+                <span className="t-qmark">&quot;</span>
+                <p className="t-text">I didn&apos;t even know how to properly explain what I was feeling before the call. But somehow, things that had felt confusing for years started making sense in a very different way.</p>
+                <div className="t-author">
+                  <img src="/energy-testimonial/kamal.jpeg" alt="Kamal Girdhar" className="t-avatar" />
+                  <div className="t-meta">
+                    <span className="t-name">Kamal Girdhar</span>
+                    <span className="t-title">AVP Banking Sector, New Delhi</span>
+                  </div>
+                </div>
+              </div>
+              <div className="testimonial-card t-card-3 reveal reveal-delay-3">
+                <span className="t-qmark">&quot;</span>
+                <p className="t-text">I had been carrying constant heaviness for a very long time while still functioning normally in life. I left the call feeling lighter and much more settled within myself.</p>
+                <div className="t-author">
+                  <img src="/energy-testimonial/rohit.jpeg" alt="Rohit Sandani" className="t-avatar" />
+                  <div className="t-meta">
+                    <span className="t-name">Rohit Sandani</span>
+                    <span className="t-title">Ish Cyberolutions, Delhi</span>
+                  </div>
+                </div>
+              </div>
             </div>
 
             {/* WhatsApp mockups */}
@@ -554,6 +753,90 @@ export default function EnergyDiagnosticCallPage() {
           </div>
         </section>
 
+        {/* ── APPLY MODAL ── */}
+        {showForm && (
+          <div className="modal-overlay" onClick={(e) => { if (e.target === e.currentTarget) setShowForm(false); }}>
+            <div className="modal-box">
+              <button className="modal-close" onClick={() => setShowForm(false)} aria-label="Close">✕</button>
+              <p className="modal-title">Apply for Your<br /><em style={{ fontStyle: 'italic', color: 'var(--red)' }}>Energy Diagnostic Call</em></p>
+              <p className="modal-sub">Share a few details and we will connect with you personally on WhatsApp to guide your next steps.</p>
+              <form onSubmit={handleFormSubmit}>
+                <div className="form-group">
+                  <label className="form-label" htmlFor="apply-name">Your Name *</label>
+                  <input id="apply-name" className="form-input" type="text" required placeholder="Full name" value={formData.name} onChange={e => setFormData(p => ({ ...p, name: e.target.value }))} />
+                </div>
+                <div className="form-group">
+                  <label className="form-label" htmlFor="apply-email">Email Address *</label>
+                  <input id="apply-email" className="form-input" type="email" required placeholder="you@example.com" value={formData.email} onChange={e => setFormData(p => ({ ...p, email: e.target.value }))} />
+                </div>
+                <div className="form-group">
+                  <label className="form-label" htmlFor="apply-phone">WhatsApp / Phone *</label>
+                  <div className="phone-row">
+                    {/* Country code trigger */}
+                    <button
+                      type="button"
+                      className="cc-btn"
+                      onClick={() => { setShowCountryDrop(v => !v); setCountrySearch(''); }}
+                      aria-label="Select country code"
+                    >
+                      <span className="cc-flag">{selectedCountry.flag}</span>
+                      <span className="cc-dial">{selectedCountry.dial}</span>
+                      <span className={`cc-chevron${showCountryDrop ? ' open' : ''}`}>▼</span>
+                    </button>
+                    {/* Dropdown */}
+                    {showCountryDrop && (
+                      <div className="cc-dropdown">
+                        <input
+                          className="cc-search"
+                          type="text"
+                          placeholder="Search country..."
+                          autoFocus
+                          value={countrySearch}
+                          onChange={e => setCountrySearch(e.target.value)}
+                        />
+                        <div className="cc-list">
+                          {COUNTRIES.filter(c =>
+                            c.name.toLowerCase().includes(countrySearch.toLowerCase()) ||
+                            c.dial.includes(countrySearch)
+                          ).map(c => (
+                            <div
+                              key={c.code}
+                              className={`cc-option${c.code === selectedCountry.code ? ' active' : ''}`}
+                              onClick={() => { setSelectedCountry(c); setShowCountryDrop(false); setCountrySearch(''); }}
+                            >
+                              <span className="cc-opt-flag">{c.flag}</span>
+                              <span className="cc-opt-name">{c.name}</span>
+                              <span className="cc-opt-dial">{c.dial}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                    {/* Number input */}
+                    <input
+                      id="apply-phone"
+                      className="phone-number-input"
+                      type="tel"
+                      required
+                      placeholder="98765 43210"
+                      value={formData.phone}
+                      onChange={e => setFormData(p => ({ ...p, phone: e.target.value }))}
+                    />
+                  </div>
+                </div>
+                <div className="form-group">
+                  <label className="form-label" htmlFor="apply-msg">What brings you here? (Optional)</label>
+                  <textarea id="apply-msg" className="form-input form-textarea" placeholder="Share briefly what you have been experiencing..." value={formData.message} onChange={e => setFormData(p => ({ ...p, message: e.target.value }))} />
+                </div>
+                <button type="submit" className="form-submit" disabled={submitting}>
+                  {submitting ? 'Opening WhatsApp...' : 'Submit & Connect on WhatsApp'}
+                </button>
+                <p className="form-note">🔒 Your details are completely private and confidential. We will only use them to connect with you personally.</p>
+              </form>
+            </div>
+          </div>
+        )}
+
         {/* ── PRICING ── */}
         <section className="diag-section section-pricing diag-sec" id="pricing">
           <div className="diag-container" style={{ textAlign: 'center' }}>
@@ -566,20 +849,28 @@ export default function EnergyDiagnosticCallPage() {
               <div className="pricing-card">
                 <p className="price-eyebrow">Session Fee</p>
                 <p className="price-title">Energy Diagnostic Call</p>
-                <div className="price-amount"><span className="price-sup">₹</span>15,000</div>
+                {isIndia === null ? (
+                  <div className="price-amount" style={{ fontSize: '32px', WebkitTextFillColor: 'var(--ink-soft)', background: 'none' }}>Loading...</div>
+                ) : isIndia ? (
+                  <>
+                    <div className="price-badge">🇮🇳 India Pricing</div>
+                    <div className="price-amount"><span className="price-sup">₹</span>15,000</div>
+                  </>
+                ) : (
+                  <>
+                    <div className="price-badge">🌍 International Pricing</div>
+                    <div className="price-amount"><span className="price-sup">$</span>199</div>
+                  </>
+                )}
                 <ul className="price-includes">
                   <li>1-Hour Private Zoom Session</li>
                   <li>Personal &amp; Confidential Experience</li>
                   <li>Guided Energy Diagnostic Process</li>
                 </ul>
                 <p className="pricing-note">Every session is approached with depth, sincerity, care, and complete personal attention.</p>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '14px', justifyContent: 'center' }}>
-                  <a href="https://wa.me/" className="btn-glow">Apply for Your Energy Diagnostic Call</a>
-                  <a href="https://wa.me/" className="btn-outline">
-                    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" /></svg>
-                    Chat on WhatsApp
-                  </a>
-                </div>
+                <button className="btn-glow" onClick={() => setShowForm(true)} style={{ cursor: 'pointer', border: 'none', width: '100%' }}>
+                  Apply for Your Energy Diagnostic Call
+                </button>
               </div>
             </div>
           </div>
@@ -614,21 +905,17 @@ export default function EnergyDiagnosticCallPage() {
 
         {/* ── FINAL CTA ── */}
         <section className="diag-section section-final">
-          <div className="final-bg-text">Clarity</div>
           <div className="final-orb" />
+          <div className="final-bg-text">Raseshvari</div>
           <div className="final-inner diag-container">
             <div className="reveal">
-              <span className="eyebrow eyebrow-light">Begin Here</span>
-              <h2 className="final-headline">You don&apos;t have to keep carrying<br /><em>what you don&apos;t fully understand yet.</em></h2>
-              <p className="final-body">Many people spend years trying to fix what&apos;s visible — without ever understanding the deeper root. One honest conversation can change that.</p>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', justifyContent: 'center', marginTop: '44px' }}>
-                <a href="https://wa.me/" className="btn-glass">
-                  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" /></svg>
-                  Chat on WhatsApp
-                </a>
-                <a href="#apply" className="btn-glow">Apply for Your Session</a>
+              <span className="eyebrow eyebrow-light">An Invitation</span>
+              <h2 className="final-headline">Sometimes life keeps showing us the same things... until we are finally ready to <em>understand them differently.</em></h2>
+              <p className="final-body">If you feel ready to explore the energetic patterns that may have been affecting your life for a long time, you are welcome to take the next step. This session is simply a safe and personal space to explore what you may have been carrying — and what may now be ready to shift.</p>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', justifyContent: 'center', marginTop: '48px' }}>
+                <button className="btn-glow" onClick={() => setShowForm(true)} style={{ cursor: 'pointer', border: 'none' }}>Apply for Your Energy Diagnostic Call</button>
               </div>
-              <p className="final-sign">— Raseshvari Hindustani</p>
+              <p className="final-sign">With sincerity, care, and complete personal attention.</p>
             </div>
           </div>
         </section>

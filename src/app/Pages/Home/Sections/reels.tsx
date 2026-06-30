@@ -264,8 +264,7 @@ Raseshvari Hindustani:
       name: "Sumedha Adavade",
       role: "Asst. Vice President, Multinational Bank",
       location: "Mumbai",
-      youtubeId: "",
-      localVideo: "/reels/sumedha-video.mp4",
+      youtubeId: "VI2pXXGCMrE",
       poster:"sumedha.png",
       transcript: `Every time a deal seemed close to closure… something would shift at the last moment.
 Not once.
@@ -387,8 +386,7 @@ Thank you for all your blessings and hurray, thank you so much!
       name: "Bitheeka Rao",
       role: "Working Professional, Gurgaon",
       location: "",
-      youtubeId: "",
-      localVideo: "/reels/bitheeka.mp4",
+      youtubeId: "aZlBtFHqUG8",
       poster:"bitheeka.png",
       transcript: `
 Honestly, I never believed in energy work.
@@ -429,8 +427,7 @@ It might change more than you expect.
       name: "Milli Bhargava",
       role: "Reiki Healer & Tarot Reader",
       location: "",
-      youtubeId: "",
-      localVideo: "/reels/milli.mp4",
+      youtubeId: "DFzjoI_yPjM",
       poster:"milli.png",
       transcript: `
 I’m a Reiki healer and Tarot reader…

@@ -16,7 +16,7 @@ import Dare from "./Sections/dare";
 import MomsCommunity from "./Sections/momscommun";
 import Blog from "./Sections/blog";
 import Quotes from "./Sections/quotes";
-import InstagramPosts from "./Sections/instagramPosts";
+// import InstagramPosts from "./Sections/instagramPosts";
 import Contact from "./Sections/contact";
 
 /* ─── Collapsible Section Wrapper with Preview ─── */
@@ -237,9 +237,9 @@ export default function Home() {
         <Services2 />
       </section>
 
-      <section className="mt-1">
+      {/* <section className="mt-1">
         <Speaker />
-      </section>
+      </section> */}
 
       <section className="">
         <LinkedIn />
@@ -334,9 +334,9 @@ export default function Home() {
       </section>
 
       {/* ══ Instagram Posts — Separate section below collapsibles ══ */}
-      <section className="">
+      {/* <section className="">
         <InstagramPosts />
-      </section>
+      </section> */}
 
       <section className="" id="contact">
         <Contact />

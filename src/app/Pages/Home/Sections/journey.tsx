@@ -10,8 +10,8 @@ const photos: { src: string; alt: string; caption: string; aspect: string }[] = 
     // Portrait / headshot style
     { src: "/journey/Daya prakash sinha.png", alt: "Padma Shri Daya Prakash Sinha ji", caption: "Padma Shri Daya Prakash Sinha ji", aspect: "3/4" },
     { src: "/journey/Pushpeshpant.png", alt: "Padma Shri Pushpesh Pant ji", caption: "Padma Shri Pushpesh Pant ji", aspect: "3/4" },
-    { src: "/journey/Anchor sadhna Shrivastav.png", alt: "Anchor Sadhna Shrivastava", caption: "DD News anchor Sadhna Srivastava ji", aspect: "3/4" },
-    { src: "/journey/Salma sultan.png", alt: "Actor Salma Sultan ji", caption: "Actor Salma Sultan ji", aspect: "3/4" },
+    { src: "/journey/Anchor sadhna Shrivastav.png", alt: "Anchor Sadhna Shrivastava", caption: "Sadhna Srivastava DD news reader", aspect: "3/4" },
+    { src: "/journey/Salma sultan.png", alt: "Actor Salma Sultan ji", caption: "Salma Sultan Legendary Doordarshan Anchor", aspect: "3/4" },
     { src: "/journey/Sonal Mansingh.png", alt: "Classical Dancer Sonal Mansingh ji", caption: "Padma Vibhishan Sonal Mansingh ji", aspect: "3/4" },
     { src: "/journey/Rita Gangwani png.png", alt: "National Awardee Rita Gangwani", caption: "Celebrity Beauty Pageant Coach Rita Gangwani ji", aspect: "3/4" },
     { src: "/journey/Avi Arya.png", alt: "Avi Arya", caption: "India's highest paid digital coach Avi Arya", aspect: "3/4" },
