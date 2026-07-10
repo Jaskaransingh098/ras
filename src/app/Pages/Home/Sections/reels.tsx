@@ -1,14 +1,14 @@
 "use client";
- 
+
 import { useState, useEffect, useRef, RefObject, useCallback } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
- 
+
 interface Props {
   scrollRef: RefObject<HTMLElement | null>;
 }
- 
+
 interface CardData {
   title: string;
   highlight: string;
@@ -22,7 +22,7 @@ interface CardData {
   poster?: string;
   transcript: string;
 }
- 
+
 const ytThumb = (id: string) => `https://img.youtube.com/vi/${id}/hqdefault.jpg`;
 
 const cardThumb = (c: CardData) => {
@@ -123,24 +123,24 @@ function ShortsPlayer({ src, poster, name, role }: {
         >
           {muted ? (
             <svg width="13" height="13" viewBox="0 0 24 24" fill="white">
-              <path d="M3.63 3.63a.996.996 0 0 0 0 1.41L7.29 8.7 7 9H4c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1h3l3.29 3.29c.63.63 1.71.18 1.71-.71v-4.17l4.18 4.18c-.49.37-1.02.68-1.6.91-.36.15-.58.53-.58.92 0 .72.73 1.18 1.39.91.8-.33 1.55-.77 2.22-1.31l1.34 1.34a.996.996 0 1 0 1.41-1.41L5.05 3.63c-.39-.39-1.02-.39-1.42 0zM19 12c0 .82-.15 1.61-.41 2.34l1.53 1.53c.56-1.17.88-2.48.88-3.87 0-3.83-2.4-7.11-5.78-8.4-.59-.23-1.22.2-1.22.83v.91c0 .38.25.71.61.85C17.18 6.54 19 9.06 19 12zm-8.71-6.29-.17.17L12 7.76V6.41c0-.89-1.08-1.33-1.71-.7zM16.5 12A4.5 4.5 0 0 0 14 7.97v1.79l2.48 2.48c.01-.08.02-.16.02-.24z"/>
+              <path d="M3.63 3.63a.996.996 0 0 0 0 1.41L7.29 8.7 7 9H4c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1h3l3.29 3.29c.63.63 1.71.18 1.71-.71v-4.17l4.18 4.18c-.49.37-1.02.68-1.6.91-.36.15-.58.53-.58.92 0 .72.73 1.18 1.39.91.8-.33 1.55-.77 2.22-1.31l1.34 1.34a.996.996 0 1 0 1.41-1.41L5.05 3.63c-.39-.39-1.02-.39-1.42 0zM19 12c0 .82-.15 1.61-.41 2.34l1.53 1.53c.56-1.17.88-2.48.88-3.87 0-3.83-2.4-7.11-5.78-8.4-.59-.23-1.22.2-1.22.83v.91c0 .38.25.71.61.85C17.18 6.54 19 9.06 19 12zm-8.71-6.29-.17.17L12 7.76V6.41c0-.89-1.08-1.33-1.71-.7zM16.5 12A4.5 4.5 0 0 0 14 7.97v1.79l2.48 2.48c.01-.08.02-.16.02-.24z" />
             </svg>
           ) : (
             <svg width="13" height="13" viewBox="0 0 24 24" fill="white">
-              <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+              <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z" />
             </svg>
           )}
         </button>
         {/* CC icon */}
         <div className="w-7 h-7 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="white" opacity="0.7">
-            <path d="M19 4H5c-1.11 0-2 .9-2 2v12c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-8 7H9.5v-.5h-2v3h2V13H11v1c0 .55-.45 1-1 1H7c-.55 0-1-.45-1-1v-4c0-.55.45-1 1-1h3c.55 0 1 .45 1 1v1zm7 0h-1.5v-.5h-2v3h2V13H18v1c0 .55-.45 1-1 1h-3c-.55 0-1-.45-1-1v-4c0-.55.45-1 1-1h3c.55 0 1 .45 1 1v1z"/>
+            <path d="M19 4H5c-1.11 0-2 .9-2 2v12c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-8 7H9.5v-.5h-2v3h2V13H11v1c0 .55-.45 1-1 1H7c-.55 0-1-.45-1-1v-4c0-.55.45-1 1-1h3c.55 0 1 .45 1 1v1zm7 0h-1.5v-.5h-2v3h2V13H18v1c0 .55-.45 1-1 1h-3c-.55 0-1-.45-1-1v-4c0-.55.45-1 1-1h3c.55 0 1 .45 1 1v1z" />
           </svg>
         </div>
         {/* Settings icon */}
         <div className="w-7 h-7 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="white" opacity="0.7">
-            <path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/>
+            <path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z" />
           </svg>
         </div>
       </div>
@@ -153,11 +153,11 @@ function ShortsPlayer({ src, poster, name, role }: {
         <div className="w-14 h-14 rounded-full bg-black/40 backdrop-blur-sm flex items-center justify-center">
           {playing ? (
             <svg width="22" height="22" viewBox="0 0 24 24" fill="white">
-              <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+              <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
             </svg>
           ) : (
             <svg width="22" height="22" viewBox="0 0 24 24" fill="white">
-              <path d="M8 5v14l11-7z"/>
+              <path d="M8 5v14l11-7z" />
             </svg>
           )}
         </div>
@@ -192,7 +192,7 @@ function ShortsPlayer({ src, poster, name, role }: {
         {/* Shorts branding */}
         <div className="flex items-center justify-end gap-1">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="white">
-            <path d="M17.77 10.32l-1.2-.5L18 9.06c1.84-.96 2.53-3.23 1.56-5.06s-3.23-2.53-5.06-1.56L6 6.94c-1.29.68-2.07 2.04-1.98 3.49.09 1.45.97 2.71 2.29 3.27l1.2.5L6 14.94c-1.84.96-2.53 3.23-1.56 5.06.97 1.83 3.23 2.53 5.06 1.56l8.5-4.5c1.29-.68 2.07-2.04 1.98-3.49-.09-1.45-.97-2.71-2.21-3.25zM10 14.45v-5l5 2.5-5 2.5z"/>
+            <path d="M17.77 10.32l-1.2-.5L18 9.06c1.84-.96 2.53-3.23 1.56-5.06s-3.23-2.53-5.06-1.56L6 6.94c-1.29.68-2.07 2.04-1.98 3.49.09 1.45.97 2.71 2.29 3.27l1.2.5L6 14.94c-1.84.96-2.53 3.23-1.56 5.06.97 1.83 3.23 2.53 5.06 1.56l8.5-4.5c1.29-.68 2.07-2.04 1.98-3.49-.09-1.45-.97-2.71-2.21-3.25zM10 14.45v-5l5 2.5-5 2.5z" />
           </svg>
           <span className="text-white text-[10px] font-bold tracking-wide">Shorts</span>
         </div>
@@ -201,7 +201,7 @@ function ShortsPlayer({ src, poster, name, role }: {
   );
 }
 // ─────────────────────────────────────────────────────────────────────────────
- 
+
 export default function Reel({ scrollRef }: Props) {
   const [featured, setFeatured] = useState(0);
   const [flippedCards, setFlippedCards] = useState<Record<number, boolean>>({});
@@ -209,13 +209,13 @@ export default function Reel({ scrollRef }: Props) {
   const sectionRef = useRef<HTMLDivElement>(null);
   const featuredRef = useRef<HTMLDivElement>(null);
   const stripRef = useRef<HTMLDivElement>(null);
- 
+
   const scrollStrip = (direction: "left" | "right") => {
     const el = stripRef.current;
     if (!el) return;
     el.scrollBy({ left: direction === "right" ? 200 : -200, behavior: "smooth" });
   };
- 
+
   const cards: CardData[] = [
     {
       title: "15 Years of",
@@ -227,14 +227,14 @@ export default function Reel({ scrollRef }: Props) {
       location: "New Delhi",
       youtubeId: "woZJtGv6P-w",
       poster: "kamal.png",
-      transcript: `I've been a part of the banking sector for the last 15 years, and I was under intense pressure managing work turmoil and internal politics, which caught on me physically, mentally, and emotionally.
-I was under constant pressure to deliver. I could see my confidence eroding, my performance dipping, and this having an adverse impact on my health and wealth. I was gradually slipping into the shell of depression. And you know in corporate life, it's not easy to talk about things like this.
+      transcript: `I've been a part of the banking sector for the last 15 years and I was under intense pressure managing work turmoil and internal politics, which caught on me physically, mentally and emotionally.
+I was under constant pressure to deliver. I could see my confidence eroding, my performance dipping and this having an adverse impact on my health and wealth. I was gradually slipping into the shell of depression. And you know in corporate life, it's not easy to talk about things like this.
  
 I had always heard about mindset coaching, therapy, but I never heard about someone shifting energies. I decided to give it a shot and booked a session with Raseshvari.
-With just one session, things shifted. The heaviness completely lifted off, my stress evaporated, and I felt at ease.
+With just one session, things shifted. The heaviness completely lifted off, my stress evaporated and I felt at ease.
  
-Post this session, things started to change. I moved into a new role. The stress because of work completely evaporated, and happiness surrounded me finally again.
-If you're going through something like this, please connect with Raseshvari. She will transform your life only for the better. I genuinely thank the universe, the almighty, and Raseshvari for pulling this magic off and giving me a life full of bliss, abundance, and peace. Thank you.`,
+Post this session, things started to change. I moved into a new role. The stress because of work completely evaporated and happiness surrounded me finally again.
+If you're going through something like this, please connect with Raseshvari. She will transform your life only for the better. I genuinely thank the universe, the almighty and Raseshvari for pulling this magic off and giving me a life full of bliss, abundance and peace. Thank you.`,
     },
     {
       title: "Pain to Power",
@@ -250,11 +250,11 @@ If you're going through something like this, please connect with Raseshvari. She
 "Most high-achieving women carry an invisible emotional load, one that quietly blocks their growth and impacts their revenue too. One of my clients, a beautiful and brilliant doctor, had tried everything, but an old emotional pain wouldn't just let go."
  
 Dr. Roohana Rajpreet:
-"I was going through something and I was not able to sort out some things because of which I actually needed some help. Aur mere ko lag raha tha main handle kar loongi, ho jayega saara kuch. (And I thought I'll handle it, everything will be fine.) But sometimes it is always better to ask for some help. I just want to share my experience with everybody. I had a session with her today and believe you me, I changed like this [snaps fingers], and I had that glow back on my face. So, I mean, it is visible.
-There are many people—many men, many women, many ladies like me—who are going through something but they are not talking it out. I would recommend each and every one: if you connect with her, you'll feel much better. So with Raseshvari mam, with her experience and with her insight and with all the spirituality and all her learnings, she's on a very different plane. Thank you so much, Raseshvari mam. More strength to you, and thanks a ton for this session which you took for me. Thank you."
+"I was going through something and I was not able to sort out some things because of which I actually needed some help. Aur mere ko lag raha tha main handle kar loongi, ho jayega saara kuch. (And I thought I'll handle it, everything will be fine.) But sometimes it is always better to ask for some help. I just want to share my experience with everybody. I had a session with her today and believe you me, I changed like this [snaps fingers] and I had that glow back on my face. So, I mean, it is visible.
+There are many people—many men, many women, many ladies like me—who are going through something but they are not talking it out. I would recommend each and every one: if you connect with her, you'll feel much better. So with Raseshvari mam, with her experience and with her insight and with all the spirituality and all her learnings, she's on a very different plane. Thank you so much, Raseshvari mam. More strength to you and thanks a ton for this session which you took for me. Thank you."
  
 Raseshvari Hindustani:
-"When deep emotional weight releases, your confidence, your decisions, your work—everything opens up, and life feels so beautiful. But today, even after four years, she is living lighter, happier, and thriving. If you're feeling stuck in your growth, in your revenue, or your happiness, let's shift it. All you need is just one deep energy shift, and you don't have to carry it alone. Let's connect."`,
+"When deep emotional weight releases, your confidence, your decisions, your work—everything opens up and life feels so beautiful. But today, even after four years, she is living lighter, happier and thriving. If you're feeling stuck in your growth, in your revenue or your happiness, let's shift it. All you need is just one deep energy shift and you don't have to carry it alone. Let's connect."`,
     },
     {
       title: "Deals Stuck at the",
@@ -265,13 +265,13 @@ Raseshvari Hindustani:
       role: "Asst. Vice President, Multinational Bank",
       location: "Mumbai",
       youtubeId: "VI2pXXGCMrE",
-      poster:"sumedha.png",
+      poster: "sumedha.png",
       transcript: `Every time a deal seemed close to closure… something would shift at the last moment.
 Not once.
 It started feeling like a pattern.
-I'm Sumedha Adavade, Assistant Vice President in a multinational bank in Mumbai, and last year I also began building my own cybersecurity initiative.
+I'm Sumedha Adavade, Assistant Vice President in a multinational bank in Mumbai and last year I also began building my own cybersecurity initiative.
 On paper, everything looked aligned.
-Clients were interested, conversations were positive, and the direction felt right.
+Clients were interested, conversations were positive and the direction felt right.
 And yet… movement was slower than expected.
 After a point, it makes you pause and reflect —
 not just on effort, but on the deeper journey within.
@@ -280,8 +280,8 @@ Years ago, I had experienced a meaningful sense of clarity through a session wit
 So during a phase of uncertainty, I chose to reconnect and explore her revenue-focused healing session.
 What I experienced in that space was not dramatic…
 but quietly insightful.
-It helped me step back, look within, and reconnect with a sense of clarity and steadiness that I needed at that time.
-I left the session feeling lighter, more centered, and emotionally clearer about my path ahead.
+It helped me step back, look within and reconnect with a sense of clarity and steadiness that I needed at that time.
+I left the session feeling lighter, more centered and emotionally clearer about my path ahead.
 And soon after, I did see encouraging movement in my work as well.
  
 More than anything, the session reminded me that along with action in the outer world,
@@ -299,8 +299,8 @@ I'm grateful to Raseshvari for being part of my journey.`,
       role: "Student",
       location: "New Delhi",
       youtubeId: "1k8kHVQypr4",
-      poster:"abhedika.png",
-      transcript: `Abhedika Sahej: Hi everybody! My name is Abhedika Sahej. I'm pursuing my 12th class, and I'm going to tell you how a small talk with Raseshvari Di assisted me in my everyday life.
+      poster: "abhedika.png",
+      transcript: `Abhedika Sahej: Hi everybody! My name is Abhedika Sahej. I'm pursuing my 12th class and I'm going to tell you how a small talk with Raseshvari Di assisted me in my everyday life.
 Raseshvari: This beautiful girl came to me at the age of 17, quite hating her body. And today, she owns the stage.
 Abhedika: I was actually concerned about my height and reached [out] to my dad for this. And through him, I got the contact of Ras Di and told her whatever I felt about my height. And eventually, she gave me the clearing statements which helped me to clean the blockages and whatever image was there in my head about height, of course.
 And after receiving those clearings, I felt so light. Matlab, aisa laga ki [It felt like] I was carrying a lot of load on myself and now it's just gone. I feel so light after receiving those clearings.
@@ -317,16 +317,16 @@ Raseshvari: If she could shift all that energy in just one session, so can you. 
       role: "Business Owner",
       location: "",
       youtubeId: "FPadk3vUnjA",
-      poster:"shashank.png",
-      transcript: `There was a point in my life where I truly felt my business would shut down. I started it during college, and everything was going great in the beginning—sales were high, growth was solid, and overall, everything felt smooth.
+      poster: "shashank.png",
+      transcript: `There was a point in my life where I truly felt my business would shut down. I started it during college and everything was going great in the beginning—sales were high, growth was solid and overall, everything felt smooth.
 Then, suddenly, sales started dropping. I tried everything: changed products, switched categories, but the sales kept going down. At one point, I genuinely felt like I'd have to close my business and shift back to a corporate job. My mind told me to quit, but my heart felt that the problem lay somewhere else.
  
 That's when I did just one energy session with Raseshvari Ma'am. Honestly, I don't know what she did or how she did it, but I felt something shift within me instantly.
  
-My stress lifted, I gained confidence, and I found clarity in my mind. Things that had been stuck for months started solving themselves automatically.
-It's been four to five months since that session. My business is stable, the growth is back on track, and mentally, I feel very light. For me, this single session was a major turning point in my life.`,
+My stress lifted, I gained confidence and I found clarity in my mind. Things that had been stuck for months started solving themselves automatically.
+It's been four to five months since that session. My business is stable, the growth is back on track and mentally, I feel very light. For me, this single session was a major turning point in my life.`,
     },
-     {
+    {
       title: "Dream Job at a",
       highlight: "Product-Based Company",
       sub: "unlocked in just one",
@@ -335,7 +335,7 @@ It's been four to five months since that session. My business is stable, the gro
       role: "IT Professional, Bangalore",
       location: "",
       youtubeId: "xsL-pKPDCro",
-      poster:"megha.png",
+      poster: "megha.png",
       transcript: `Hello everyone! My name is Megha. I am working in a prestigious IT company in Bangalore. So today I want to share with you a magical story that happened with me.
 
 I had a very great shift in my career.
@@ -348,7 +348,7 @@ It was a good company, but deep down, I always had this feeling.
 
 I discussed everything with Raseshvari ma’am.
 
-I must say, just one day, and I was very, very happy that I did.
+I must say, just one day and I was very, very happy that I did.
 
 It shifted my life magically.
 
@@ -378,7 +378,7 @@ Thank you for all your blessings and hurray, thank you so much!
 `,
     },
 
-     {
+    {
       title: "Years of Exhaustion &",
       highlight: "Broken Relationships",
       sub: "healed in just one",
@@ -387,13 +387,13 @@ Thank you for all your blessings and hurray, thank you so much!
       role: "Working Professional, Gurgaon",
       location: "",
       youtubeId: "aZlBtFHqUG8",
-      poster:"bitheeka.png",
+      poster: "bitheeka.png",
       transcript: `
 Honestly, I never believed in energy work.
 In fact, I never even felt like trying something like this.
 
 My name is Bithika Rao. I work in a private organization in Gurgaon.
-At that time, juggling household responsibilities, office work and my daughter’s studies had completely exhausted me. Everything together had become overwhelming. During this phase, I was really struggling with my family relationships and had completely broken down. Mentally, I was absolutely drained. It was affecting my peace of mind, my sleep, and even my health.
+At that time, juggling household responsibilities, office work and my daughter’s studies had completely exhausted me. Everything together had become overwhelming. During this phase, I was really struggling with my family relationships and had completely broken down. Mentally, I was absolutely drained. It was affecting my peace of mind, my sleep and even my health.
 
 I had known Raseshvari for many years through her mother’s community. I had heard a lot about her work but I never imagined that I would personally reach out to her. 
 Then one day, something just clicked..it felt like the time had come. I felt that I had to speak to her at least once.
@@ -418,8 +418,8 @@ It might change more than you expect.
 
 `,
     },
-    
-     {
+
+    {
       title: "Even a Healer",
       highlight: "Needed Healing",
       sub: "transformed in just one",
@@ -428,14 +428,14 @@ It might change more than you expect.
       role: "Reiki Healer & Tarot Reader",
       location: "",
       youtubeId: "DFzjoI_yPjM",
-      poster:"milli.png",
+      poster: "milli.png",
       transcript: `
 I’m a Reiki healer and Tarot reader…
 and I don’t get impressed easily.”
 
 Hi I am MILLI BHARGAVA from Delhi 
 I am deeply into Occult sciences 
-I’ve known Raseshwari for a while, and from our very first conversation, I could sense her level of work-
+I’ve known Raseshwari for a while and from our very first conversation, I could sense her level of work-
 it’s far beyond words.
 When you’re in this field, you know when someone is operating at a very different frequency.”
 
@@ -454,16 +454,16 @@ Thank you, Ras, from the bottom of my heart, for being in my life and helping me
 
 `,
     },
-    
+
   ];
- 
+
   const sideCards = cards
     .map((c, i) => ({ ...c, idx: i }))
     .filter((_, i) => i !== featured);
- 
+
   const fc = cards[featured];
   const isFeaturedFlipped = !!flippedCards[featured];
- 
+
   const handleSwap = (i: number) => {
     if (featuredRef.current) {
       gsap.fromTo(featuredRef.current, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" });
@@ -472,19 +472,19 @@ Thank you, Ras, from the bottom of my heart, for being in my life and helping me
     setFlippedCards({});
     setFeatured(i);
   };
- 
+
   const flip = (i: number, e?: React.MouseEvent) => {
     e?.preventDefault();
     e?.stopPropagation();
     setFlippedCards((p) => ({ ...p, [i]: !p[i] }));
   };
- 
+
   const play = (i: number, e?: React.MouseEvent) => {
     e?.preventDefault();
     e?.stopPropagation();
     setPlayingVideo(i);
   };
- 
+
   useEffect(() => {
     const s = sectionRef.current;
     if (!s) return;
@@ -496,7 +496,7 @@ Thank you, Ras, from the bottom of my heart, for being in my life and helping me
     }, s);
     return () => ctx.revert();
   }, []);
- 
+
   return (
     <section
       ref={sectionRef}
@@ -545,7 +545,7 @@ Thank you, Ras, from the bottom of my heart, for being in my life and helping me
         .phone-frame > .face-back > div,
         .face-back > .phone-frame { height: 100%; }
       `}</style>
- 
+
       {/* ── HEADER ── */}
       <div className="text-center mb-6 sm:mb-8 md:mb-14 rr px-4 sm:px-6">
         <p className="text-[22px] sm:text-[28px] md:text-[36px] lg:text-5xl uppercase tracking-[.01em] text-[#c42d2d] mb-2 sm:mb-3 md:mb-4 font-bold font-[var(--font-dm-sans)]">
@@ -558,14 +558,14 @@ Thank you, Ras, from the bottom of my heart, for being in my life and helping me
           Real stories from real people. Watch the shorts or read the full transcript.
         </p>
       </div>
- 
+
       <div className="max-w-[1440px] mx-auto px-3 sm:px-6 md:px-10 w-full">
- 
+
         {/* ═══ MOBILE LAYOUT (< lg): stack vertically ═══ */}
         <div className="lg:hidden rr">
           {/* Top row: phone + info side by side on mobile */}
           <div ref={featuredRef} className="flex gap-3 sm:gap-6 items-start mb-5 sm:mb-6">
- 
+
             {/* Phone frame – takes up ~45% on mobile */}
             <div
               className="flex-shrink-0 w-[42vw] max-w-[180px] sm:max-w-[210px] relative"
@@ -606,7 +606,7 @@ Thank you, Ras, from the bottom of my heart, for being in my life and helping me
                         <div className="absolute bottom-0 left-0 right-0 p-2.5 z-10 text-white">
                           <div className="flex items-center gap-1.5 mb-1">
                             <div className="w-1.5 h-1.5 rounded-full bg-[#ff4444] animate-pulse" />
-                             <span className="text-[9px] uppercase tracking-wider opacity-80 font-medium font-[var(--font-dm-sans)]">YouTube Short</span>
+                            <span className="text-[9px] uppercase tracking-wider opacity-80 font-medium font-[var(--font-dm-sans)]">YouTube Short</span>
                           </div>
                           <p className="font-bold text-[11px] leading-tight font-[var(--font-outfit)]">{fc.name}</p>
                           <p className="text-[9px] opacity-70 mt-0.5">{fc.role}{fc.location ? ` · ${fc.location}` : ""}</p>
@@ -615,7 +615,7 @@ Thank you, Ras, from the bottom of my heart, for being in my life and helping me
                     )}
                   </div>
                 </div>
- 
+
                 {/* BACK — Transcript (mobile featured): rendered OUTSIDE preserve-3d so scroll works */}
                 <div className="face-back" aria-hidden="true" />
               </div>
@@ -657,23 +657,23 @@ Thank you, Ras, from the bottom of my heart, for being in my life and helping me
                 </div>
               </div>
             )}
- 
+
             {/* Info panel – right of phone on mobile */}
             <div className="flex-1 flex flex-col justify-start pt-1 min-w-0">
               <div className="flex items-center gap-2 mb-3">
                 <div className="w-5 h-0.5 rounded-full bg-[#c42d2d]" />
                 <span className="text-[#c42d2d] text-[10px] font-bold uppercase tracking-widest font-[var(--font-dm-sans)]">{featured + 1} / {cards.length}</span>
               </div>
- 
+
               <h3 className="text-[16px] sm:text-[20px] font-[var(--font-playfair)] text-[#111] leading-[1.15] font-bold">
                 {fc.title}
                 {fc.highlight && <><br /><span className="text-[#c42d2d]">{fc.highlight}</span></>}
               </h3>
- 
+
               <p className="mt-2 text-black text-[12px] sm:text-[13px] font-[var(--font-dm-sans)]">One Energy Shift Session</p>
- 
+
               <div className="my-3 h-px bg-gray-200 w-full" />
- 
+
               <div className="flex items-center gap-2">
                 <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full overflow-hidden shadow border-2 border-[#c42d2d]/20 flex-shrink-0">
                   <img src={cardThumb(fc)} alt={fc.name} className="w-full h-full object-cover" />
@@ -683,7 +683,7 @@ Thank you, Ras, from the bottom of my heart, for being in my life and helping me
                   <p className="text-black text-[11px] sm:text-[12px] truncate">{fc.role}{fc.location ? ` · ${fc.location}` : ""}</p>
                 </div>
               </div>
- 
+
               <div className="mt-3">
                 <button
                   onClick={(e) => flip(featured, e)}
@@ -698,7 +698,7 @@ Thank you, Ras, from the bottom of my heart, for being in my life and helping me
               </div>
             </div>
           </div>
- 
+
           {/* Side cards strip — full width horizontal scroll on mobile */}
           <div className="rr">
             <div className="flex items-center gap-2 mb-3 flex-shrink-0">
@@ -713,7 +713,7 @@ Thank you, Ras, from the bottom of my heart, for being in my life and helping me
                 </button>
               </div>
             </div>
- 
+
             {/* Strip with explicit height so flip cards render */}
             <div
               ref={stripRef}
@@ -762,7 +762,7 @@ Thank you, Ras, from the bottom of my heart, for being in my life and helping me
                             </button>
                           </div>
                         </div>
- 
+
                         {/* BACK */}
                         <div className="face-back">
                           <div className="w-full h-full rounded-[16px] overflow-hidden relative bg-white shadow-lg border-2 border-[#c42d2d]/30">
@@ -788,10 +788,10 @@ Thank you, Ras, from the bottom of my heart, for being in my life and helping me
             </div>
           </div>
         </div>
- 
+
         {/* ═══ DESKTOP LAYOUT (lg+): original side-by-side ═══ */}
         <div className="hidden lg:flex gap-6 items-stretch">
- 
+
           {/* LEFT: Featured Short + Info */}
           <div ref={featuredRef} className="flex flex-row items-center sm:items-stretch gap-8 md:gap-16 rr">
             {/* Featured Phone Frame */}
@@ -840,7 +840,7 @@ Thank you, Ras, from the bottom of my heart, for being in my life and helping me
                     )}
                   </div>
                 </div>
- 
+
                 {/* BACK — Transcript (desktop featured): empty placeholder, real transcript below */}
                 <div className="face-back" aria-hidden="true" />
               </div>
@@ -882,7 +882,7 @@ Thank you, Ras, from the bottom of my heart, for being in my life and helping me
                 </div>
               </div>
             )}
- 
+
             {/* Desktop text info panel */}
             <div className="flex-1 flex flex-col justify-center min-w-0">
               <div className="flex items-center gap-3 mb-4">
@@ -918,7 +918,7 @@ Thank you, Ras, from the bottom of my heart, for being in my life and helping me
               </div>
             </div>
           </div>
- 
+
           {/* RIGHT: Scrollable Thumbnails */}
           <div className="flex-1 min-w-0 flex flex-col rr">
             <div className="flex items-center gap-3 mb-4 flex-shrink-0 mt-20">
@@ -933,7 +933,7 @@ Thank you, Ras, from the bottom of my heart, for being in my life and helping me
                 </button>
               </div>
             </div>
- 
+
             <div
               ref={stripRef}
               className="flex-1 overflow-x-auto strip-scroll"
@@ -977,7 +977,7 @@ Thank you, Ras, from the bottom of my heart, for being in my life and helping me
                             </button>
                           </div>
                         </div>
- 
+
                         {/* BACK */}
                         <div className="face-back">
                           <div className="phone-frame w-full bg-white shadow-lg border-2 border-[#c42d2d]/30">
@@ -1003,7 +1003,7 @@ Thank you, Ras, from the bottom of my heart, for being in my life and helping me
             </div>
           </div>
         </div>
- 
+
         {/* ─── DOT INDICATORS ─── */}
         <div className="flex items-center justify-center gap-2 mt-4 sm:mt-5 rr">
           {cards.map((_, i) => (

@@ -4,21 +4,21 @@ import Link from "next/link";
 
 export default function Footer() {
     return (
-        <footer className="relative w-full min-h-auto md:min-h-[80dvh] pt-10 md:pt-20 lg:pt-12 bg-gradient-to-b from-[#8a0a0a] to-[#4a0e0e] text-white overflow-hidden mt-0 flex flex-col justify-between">
-            <h1 className="flex justify-center mb-4 text-xl font-[var(--font-dm-sans)]">Follow Us</h1>
+        <footer className="relative w-full min-h-auto md:min-h-[90dvh] pt-10 md:pt-20 lg:pt-10 bg-gradient-to-b from-[#8a0a0a] to-[#4a0e0e] text-white overflow-hidden mt-0 flex flex-col justify-between">
+            <h1 className="flex justify-center mb- text-xl font-[var(--font-dm-sans)]">Follow Us</h1>
             <div className="flex justify-center gap-4">
-                <a href="#" className="w-15 h-15 rounded-[12px] bg-white/10 hover:bg-white text-white hover:text-[#c42d2d] flex items-center justify-center transition-all duration-300">
+                <a href="https://www.facebook.com/raseshvarihindustani1/" className="w-15 h-15 rounded-[12px] bg-white/10 hover:bg-white text-white hover:text-[#c42d2d] flex items-center justify-center transition-all duration-300">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
                 </a>
-                <a href="#" className="w-15 h-15 rounded-[12px] bg-white/10 hover:bg-white text-white hover:text-[#c42d2d] flex items-center justify-center transition-all duration-300">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                <a href="https://www.linkedin.com/in/raseshvarihindustani" className="w-15 h-15 rounded-[12px] bg-white/10 hover:bg-white text-white hover:text-[#c42d2d] flex items-center justify-center transition-all duration-300">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
                 </a>
-                <a href="#" className="w-15 h-15 rounded-[12px] bg-white/10 hover:bg-white text-white hover:text-[#c42d2d] flex items-center justify-center transition-all duration-300">
+                <a href="https://www.youtube.com/@BeyondImaginationClub" className="w-15 h-15 rounded-[12px] bg-white/10 hover:bg-white text-white hover:text-[#c42d2d] flex items-center justify-center transition-all duration-300">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 1.46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 1.46-5.33 29 29 0 0 0-1.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
                 </a>
-                {/* <a href="#" className="w-10 h-10 rounded-[12px] bg-white/10 hover:bg-white text-white hover:text-[#c42d2d] flex items-center justify-center transition-all duration-300">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-                            </a> */}
+                <a href="https://www.instagram.com/beyondimagination.club/" className="w-15 h-15 rounded-[12px] bg-white/10 hover:bg-white text-white hover:text-[#c42d2d] flex items-center justify-center transition-all duration-300">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                </a>
             </div>
             <div className="w-full h-full max-w-[1500px] mx-auto px-4 sm:px-6 md:px-12 relative z-10 flex flex-col justify-between mt-2">
 
@@ -28,22 +28,22 @@ export default function Footer() {
             </div> */}
 
                 {/* Main Content Area */}
-                <div className="w-full flex justify-between gap-8 lg:gap-8 mb-12 md:mb-46 z-10 flex-col md:flex-row">
+                <div className="w-full flex justify-between  gap-8 lg:gap-8 mb-12 md:mb-46 z-10 flex-col md:flex-row">
 
                     {/* Left: Branding & Newsletter */}
 
 
-                    <div className="flex flex-col max-w-sm shrink-0">
+                    <div className="flex flex-col max-w-sm mb-0 md:mb-30 shrink-0">
                         <img src="/logo/logo ras hindustani zoom.png" alt="" className="h-23 w-23 bg-white rounded-3xl mb-2" />
                         {/* <h2 className="section-heading text-[32px] font-bold font-[var(--font-playfair)] tracking-wide mb-6">
                             raseshvari
                         </h2> */}
 
                         <p className="text-[14px] md:text-[15px] font-[var(--font-dm-sans)] text-white/90 leading-relaxed mb-8 pr-4">
-                            Kaleidoscope - a creative agency specializing in making videos for strategy, marketing and production.
+                            Raseshvari Hindustani — an energy transformation mentor and speaker, helping individuals and leaders shift their frequency, dissolve blocks and unlock ultimate possibilities.
                         </p>
 
-                        <div className="flex flex-col mb-10 w-full max-w-[320px]">
+                        {/* <div className="flex flex-col mb-10 w-full max-w-[320px]">
                             <span className="text-[14px] mb-3 font-[var(--font-dm-sans)] font-medium">Subscribe to our newsletter:</span>
                             <form className="flex w-full group">
                                 <input
@@ -56,7 +56,7 @@ export default function Footer() {
                                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white/80 group-hover:text-white"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
                                 </button>
                             </form>
-                        </div>
+                        </div> */}
 
                         {/* Social Icons (From first image) */}
                         {/* <div className="flex gap-4">
@@ -116,7 +116,7 @@ export default function Footer() {
                 </div> */}
 
                 {/* Giant Cut-off Background Word (Hindustani) */}
-                <div className="absolute left-0 -bottom-5 w-full overflow-hidden flex justify-center translate-y-[35%] md:translate-y-[20%] select-none pointer-events-none z-0 px-4">
+                <div className="absolute left-0 -bottom-5 w-full overflow-hidden flex justify-center select-none pointer-events-none z-0 px-4">
                     <h1 className="text-[17vw] md:text-[14vw] lg:text-[20vw] font-bold font-[var(--font-playfair)] text-[#fbfbfb] tracking-tighter leading-none whitespace-nowrap opacity-[0.95] w-full text-center">
                         Hindustani
                     </h1>

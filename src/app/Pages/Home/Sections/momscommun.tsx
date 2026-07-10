@@ -169,7 +169,7 @@ export default function MomsCommunity() {
           </h2>
 
           <p className="text-black text-[14px] sm:text-[16px] md:text-[18px] font-[var(--font-dm-sans)] max-w-[360px] mb-6 md:mb-8 leading-relaxed mx-auto md:mx-0">
-            {/* I&apos;m invited to speak with institutions, organizations, leaders, and young minds on how energy shapes choices and decisions—bringing clarity and ease, especially in high-pressure environments. */}
+            {/* I&apos;m invited to speak with institutions organizations, leaders and young minds on how energy shapes choices and decisions—bringing clarity and ease, especially in high-pressure environments. */}
             Raseshvari founded a pan india beautiful nurturing space where
             mother's came together to co-create, co-relate and co-elevate each
             other.
@@ -248,9 +248,9 @@ export default function MomsCommunity() {
               onMouseUp={stopScroll}
               onMouseLeave={stopScroll}
               className="absolute bottom-2 left-1/2 -translate-x-1/2 z-20 bg-white/80 rounded-full p-2 opacity-0 group-hover:opacity-100 transition"
-              //   onMouseUp={stopScroll}
-              //   onMouseLeave={stopScroll}
-              //   className="absolute bottom-2 left-1/2 -translate-x-1/2 z-20 bg-white/80 rounded-full p-2 opacity-0 group-hover:opacity-100 transition"
+            //   onMouseUp={stopScroll}
+            //   onMouseLeave={stopScroll}
+            //   className="absolute bottom-2 left-1/2 -translate-x-1/2 z-20 bg-white/80 rounded-full p-2 opacity-0 group-hover:opacity-100 transition"
             >
               ▼
             </button>

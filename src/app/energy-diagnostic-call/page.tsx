@@ -8,61 +8,61 @@ const WA_NUMBER = "917700801831"; // ← replace with actual WhatsApp number (co
 
 // ── Country codes list ──
 const COUNTRIES = [
-  { code: 'IN', flag: '🇮🇳', name: 'India',                dial: '+91'  },
-  { code: 'US', flag: '🇺🇸', name: 'United States',         dial: '+1'   },
-  { code: 'GB', flag: '🇬🇧', name: 'United Kingdom',        dial: '+44'  },
-  { code: 'AE', flag: '🇦🇪', name: 'UAE',                   dial: '+971' },
-  { code: 'AU', flag: '🇦🇺', name: 'Australia',             dial: '+61'  },
-  { code: 'CA', flag: '🇨🇦', name: 'Canada',                dial: '+1'   },
-  { code: 'SG', flag: '🇸🇬', name: 'Singapore',             dial: '+65'  },
-  { code: 'NZ', flag: '🇳🇿', name: 'New Zealand',           dial: '+64'  },
-  { code: 'DE', flag: '🇩🇪', name: 'Germany',               dial: '+49'  },
-  { code: 'FR', flag: '🇫🇷', name: 'France',                dial: '+33'  },
-  { code: 'NL', flag: '🇳🇱', name: 'Netherlands',           dial: '+31'  },
-  { code: 'SE', flag: '🇸🇪', name: 'Sweden',                dial: '+46'  },
-  { code: 'NO', flag: '🇳🇴', name: 'Norway',                dial: '+47'  },
-  { code: 'CH', flag: '🇨🇭', name: 'Switzerland',           dial: '+41'  },
-  { code: 'IT', flag: '🇮🇹', name: 'Italy',                 dial: '+39'  },
-  { code: 'ES', flag: '🇪🇸', name: 'Spain',                 dial: '+34'  },
-  { code: 'ZA', flag: '🇿🇦', name: 'South Africa',          dial: '+27'  },
-  { code: 'NG', flag: '🇳🇬', name: 'Nigeria',               dial: '+234' },
-  { code: 'KE', flag: '🇰🇪', name: 'Kenya',                 dial: '+254' },
-  { code: 'PK', flag: '🇵🇰', name: 'Pakistan',              dial: '+92'  },
-  { code: 'BD', flag: '🇧🇩', name: 'Bangladesh',            dial: '+880' },
-  { code: 'LK', flag: '🇱🇰', name: 'Sri Lanka',             dial: '+94'  },
-  { code: 'NP', flag: '🇳🇵', name: 'Nepal',                 dial: '+977' },
-  { code: 'MY', flag: '🇲🇾', name: 'Malaysia',              dial: '+60'  },
-  { code: 'PH', flag: '🇵🇭', name: 'Philippines',           dial: '+63'  },
-  { code: 'JP', flag: '🇯🇵', name: 'Japan',                 dial: '+81'  },
-  { code: 'KR', flag: '🇰🇷', name: 'South Korea',           dial: '+82'  },
-  { code: 'CN', flag: '🇨🇳', name: 'China',                 dial: '+86'  },
-  { code: 'BR', flag: '🇧🇷', name: 'Brazil',                dial: '+55'  },
-  { code: 'MX', flag: '🇲🇽', name: 'Mexico',                dial: '+52'  },
-  { code: 'AR', flag: '🇦🇷', name: 'Argentina',             dial: '+54'  },
-  { code: 'QA', flag: '🇶🇦', name: 'Qatar',                 dial: '+974' },
-  { code: 'KW', flag: '🇰🇼', name: 'Kuwait',                dial: '+965' },
-  { code: 'SA', flag: '🇸🇦', name: 'Saudi Arabia',          dial: '+966' },
-  { code: 'BH', flag: '🇧🇭', name: 'Bahrain',               dial: '+973' },
-  { code: 'OM', flag: '🇴🇲', name: 'Oman',                  dial: '+968' },
-  { code: 'TH', flag: '🇹🇭', name: 'Thailand',              dial: '+66'  },
-  { code: 'ID', flag: '🇮🇩', name: 'Indonesia',             dial: '+62'  },
-  { code: 'VN', flag: '🇻🇳', name: 'Vietnam',               dial: '+84'  },
-  { code: 'TR', flag: '🇹🇷', name: 'Turkey',                dial: '+90'  },
-  { code: 'EG', flag: '🇪🇬', name: 'Egypt',                 dial: '+20'  },
-  { code: 'PT', flag: '🇵🇹', name: 'Portugal',              dial: '+351' },
-  { code: 'PL', flag: '🇵🇱', name: 'Poland',                dial: '+48'  },
-  { code: 'IE', flag: '🇮🇪', name: 'Ireland',               dial: '+353' },
-  { code: 'GH', flag: '🇬🇭', name: 'Ghana',                 dial: '+233' },
-  { code: 'IL', flag: '🇮🇱', name: 'Israel',                dial: '+972' },
-  { code: 'RU', flag: '🇷🇺', name: 'Russia',                dial: '+7'   },
-  { code: 'UA', flag: '🇺🇦', name: 'Ukraine',               dial: '+380' },
+  { code: 'IN', flag: '🇮🇳', name: 'India', dial: '+91' },
+  { code: 'US', flag: '🇺🇸', name: 'United States', dial: '+1' },
+  { code: 'GB', flag: '🇬🇧', name: 'United Kingdom', dial: '+44' },
+  { code: 'AE', flag: '🇦🇪', name: 'UAE', dial: '+971' },
+  { code: 'AU', flag: '🇦🇺', name: 'Australia', dial: '+61' },
+  { code: 'CA', flag: '🇨🇦', name: 'Canada', dial: '+1' },
+  { code: 'SG', flag: '🇸🇬', name: 'Singapore', dial: '+65' },
+  { code: 'NZ', flag: '🇳🇿', name: 'New Zealand', dial: '+64' },
+  { code: 'DE', flag: '🇩🇪', name: 'Germany', dial: '+49' },
+  { code: 'FR', flag: '🇫🇷', name: 'France', dial: '+33' },
+  { code: 'NL', flag: '🇳🇱', name: 'Netherlands', dial: '+31' },
+  { code: 'SE', flag: '🇸🇪', name: 'Sweden', dial: '+46' },
+  { code: 'NO', flag: '🇳🇴', name: 'Norway', dial: '+47' },
+  { code: 'CH', flag: '🇨🇭', name: 'Switzerland', dial: '+41' },
+  { code: 'IT', flag: '🇮🇹', name: 'Italy', dial: '+39' },
+  { code: 'ES', flag: '🇪🇸', name: 'Spain', dial: '+34' },
+  { code: 'ZA', flag: '🇿🇦', name: 'South Africa', dial: '+27' },
+  { code: 'NG', flag: '🇳🇬', name: 'Nigeria', dial: '+234' },
+  { code: 'KE', flag: '🇰🇪', name: 'Kenya', dial: '+254' },
+  { code: 'PK', flag: '🇵🇰', name: 'Pakistan', dial: '+92' },
+  { code: 'BD', flag: '🇧🇩', name: 'Bangladesh', dial: '+880' },
+  { code: 'LK', flag: '🇱🇰', name: 'Sri Lanka', dial: '+94' },
+  { code: 'NP', flag: '🇳🇵', name: 'Nepal', dial: '+977' },
+  { code: 'MY', flag: '🇲🇾', name: 'Malaysia', dial: '+60' },
+  { code: 'PH', flag: '🇵🇭', name: 'Philippines', dial: '+63' },
+  { code: 'JP', flag: '🇯🇵', name: 'Japan', dial: '+81' },
+  { code: 'KR', flag: '🇰🇷', name: 'South Korea', dial: '+82' },
+  { code: 'CN', flag: '🇨🇳', name: 'China', dial: '+86' },
+  { code: 'BR', flag: '🇧🇷', name: 'Brazil', dial: '+55' },
+  { code: 'MX', flag: '🇲🇽', name: 'Mexico', dial: '+52' },
+  { code: 'AR', flag: '🇦🇷', name: 'Argentina', dial: '+54' },
+  { code: 'QA', flag: '🇶🇦', name: 'Qatar', dial: '+974' },
+  { code: 'KW', flag: '🇰🇼', name: 'Kuwait', dial: '+965' },
+  { code: 'SA', flag: '🇸🇦', name: 'Saudi Arabia', dial: '+966' },
+  { code: 'BH', flag: '🇧🇭', name: 'Bahrain', dial: '+973' },
+  { code: 'OM', flag: '🇴🇲', name: 'Oman', dial: '+968' },
+  { code: 'TH', flag: '🇹🇭', name: 'Thailand', dial: '+66' },
+  { code: 'ID', flag: '🇮🇩', name: 'Indonesia', dial: '+62' },
+  { code: 'VN', flag: '🇻🇳', name: 'Vietnam', dial: '+84' },
+  { code: 'TR', flag: '🇹🇷', name: 'Turkey', dial: '+90' },
+  { code: 'EG', flag: '🇪🇬', name: 'Egypt', dial: '+20' },
+  { code: 'PT', flag: '🇵🇹', name: 'Portugal', dial: '+351' },
+  { code: 'PL', flag: '🇵🇱', name: 'Poland', dial: '+48' },
+  { code: 'IE', flag: '🇮🇪', name: 'Ireland', dial: '+353' },
+  { code: 'GH', flag: '🇬🇭', name: 'Ghana', dial: '+233' },
+  { code: 'IL', flag: '🇮🇱', name: 'Israel', dial: '+972' },
+  { code: 'RU', flag: '🇷🇺', name: 'Russia', dial: '+7' },
+  { code: 'UA', flag: '🇺🇦', name: 'Ukraine', dial: '+380' },
 ];
 
 export default function EnergyDiagnosticCallPage() {
   const pageRef = useRef<HTMLDivElement>(null);
   const [isIndia, setIsIndia] = useState<boolean | null>(null);
   const [showForm, setShowForm] = useState(false);
-  const [formData, setFormData] = useState({ name: '', email: '', phone: '', message: '' });
+  const [formData, setFormData] = useState({ name: '', dob: '', gender: '', country: '', phone: '', purpose: '' });
   const [submitting, setSubmitting] = useState(false);
   const [selectedCountry, setSelectedCountry] = useState(COUNTRIES[0]); // default India
   const [showCountryDrop, setShowCountryDrop] = useState(false);
@@ -91,21 +91,23 @@ export default function EnergyDiagnosticCallPage() {
   const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitting(true);
-    const price = isIndia ? '₹15,000' : '$199';
+    const price = isIndia ? '₹15,000' : '$275';
     const fullPhone = `${selectedCountry.dial} ${formData.phone}`;
     const msg = encodeURIComponent(
       `*Energy Diagnostic Call Application*\n\n` +
       `*Name:* ${formData.name}\n` +
-      `*Email:* ${formData.email}\n` +
-      `*Phone:* ${fullPhone}\n` +
-      `*Session Price:* ${price}\n` +
-      `*Message:* ${formData.message || 'No additional message'}`
+      `*Date of birth:* ${formData.dob}\n` +
+      `*Gender:* ${formData.gender}\n` +
+      `*Country:* ${formData.country}\n` +
+      `*Phone number:* ${fullPhone}\n` +
+      `*Session Price:* ${price}\n\n` +
+      `*Purpose:* ${formData.purpose}`
     );
     setTimeout(() => {
       window.open(`https://wa.me/${WA_NUMBER}?text=${msg}`, '_blank');
       setShowForm(false);
       setSubmitting(false);
-      setFormData({ name: '', email: '', phone: '', message: '' });
+      setFormData({ name: '', dob: '', gender: '', country: '', phone: '', purpose: '' });
       setCountrySearch('');
     }, 300);
   };
@@ -317,7 +319,7 @@ export default function EnergyDiagnosticCallPage() {
           .grad-text { background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-style: italic; }
           .hero-divider { width: 1px; height: 52px; background: linear-gradient(to bottom, rgba(155,15,31,0.5), transparent); margin: 36px auto; animation: fadeUp 1s ease 0.3s both; }
           .hero-sub { font-size: clamp(17px, 2vw, 21px); color: var(--ink-mid); max-width: 600px; line-height: 1.82; font-weight: 300; animation: fadeUp 1s ease 0.35s both; font-family: var(--sans); }
-          .hero-relatability { font-family: var(--serif); font-style: italic; font-size: clamp(17px, 1.8vw, 21px); color: var(--ink-soft); max-width: 540px; line-height: 1.65; animation: fadeUp 1s ease 0.42s both; }
+          .hero-relatability { font-family: var(--serif); font-style: italic; font-size: clamp(17px, 1.8vw, 23px); color: var(--ink-soft); max-width: 540px; line-height: 1.65; animation: fadeUp 1s ease 0.42s both; }
           .hero-cta-group { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; margin-top: 44px; animation: fadeUp 1s ease 0.52s both; }
           .hero-trust { display: flex; align-items: center; gap: 10px; margin-top: 32px; justify-content: center; color: var(--ink-soft); font-weight: 500; animation: fadeUp 1s ease 0.62s both; font-family: var(--sans); }
           .hero-trust-sep { width: 4px; height: 4px; border-radius: 50%; background: var(--line); }
@@ -338,7 +340,7 @@ export default function EnergyDiagnosticCallPage() {
           .bullet-item:hover { color: var(--ink); }
           .bullet-mark { width: 6px; height: 6px; border-radius: 50%; background: var(--grad); flex-shrink: 0; margin-top: 8px; box-shadow: 0 0 6px rgba(155,15,31,0.35); }
           .pull-quote-block { margin-top: 44px; padding: 40px 48px; background: rgba(155,15,31,0.04); border-left: 3px solid var(--red); border-radius: 0 20px 20px 0; width: 100%; }
-          .pull-quote-block p { font-family: var(--serif); font-style: italic; font-size: 18px; color: var(--ink-mid); line-height: 1.72; }
+          .pull-quote-block p { font-family: var(--serif); font-style: italic; font-size: 20px; color: var(--ink-mid); line-height: 1.72; }
 
           /* ── SESSION ── */
           .section-session { background: var(--bg); }
@@ -373,7 +375,7 @@ export default function EnergyDiagnosticCallPage() {
           .about-stat-lbl { font-size: 11px; color: var(--ink-soft); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 7px; font-family: var(--sans); }
           .closing-italic { font-family: var(--serif); font-style: italic; font-size: 18px; color: var(--ink-mid); line-height: 1.7; padding-top: 28px; border-top: 1px solid var(--line-lt); margin-top: 28px; }
           .about-closing-block { margin-top: 60px; padding-top: 36px; border-top: 1px solid var(--line-lt); text-align: center; width: 100%; }
-          .about-closing-quote { font-family: var(--serif); font-style: italic; font-size: 20px; color: var(--ink-mid); line-height: 1.7; max-width: 800px; margin: 0 auto; }
+          .about-closing-quote { font-family: var(--serif); font-style: italic; font-size: 22px; color: var(--ink-mid); line-height: 1.7; max-width: 800px; margin: 0 auto; }
           /* ── TESTIMONIALS ── */
           .section-testimonials { background: var(--red-deep, #720A15); }
           .testimonial-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 60px; }
@@ -389,6 +391,7 @@ export default function EnergyDiagnosticCallPage() {
           .t-title { font-size: 11px; color: rgba(253,252,251,0.5); font-family: var(--sans); line-height: 1.3; }
           .wa-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 64px; }
           .wa-mockup { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.09); border-radius: 22px; overflow: hidden; }
+          .wa-img { width: 100%; height: auto; display: block; }
           .wa-top { background: rgba(255,255,255,0.05); padding: 16px 20px; display: flex; align-items: center; gap: 12px; border-bottom: 1px solid rgba(255,255,255,0.07); }
           .wa-av { width: 38px; height: 38px; border-radius: 50%; background: linear-gradient(135deg, rgba(155,15,31,0.7), rgba(196,137,74,0.4)); border: 1px solid rgba(255,255,255,0.18); display: flex; align-items: center; justify-content: center; font-family: var(--serif); font-size: 15px; color: rgba(255,255,255,0.9); }
           .wa-info .wa-name { font-size: 13px; font-weight: 400; color: rgba(253,252,251,0.88); letter-spacing: 0; text-transform: none; font-family: var(--sans); }
@@ -399,7 +402,7 @@ export default function EnergyDiagnosticCallPage() {
           .wa-sent { background: rgba(155,15,31,0.65); color: rgba(253,252,251,0.94); align-self: flex-end; border-radius: 16px 4px 16px 16px; }
           .wa-t { font-size: 10px; color: rgba(255,255,255,0.28); margin-top: 3px; font-family: var(--sans); }
           .wa-t.r { text-align: right; }
-          .testimonials-close { text-align: center; margin-top: 64px; font-family: var(--serif); font-style: italic; font-size: 18px; color: rgba(253,252,251,0.42); line-height: 1.72; }
+          .testimonials-close { text-align: center; margin-top: 64px; font-family: var(--serif); font-style: italic; font-size: 22px; color: rgba(253,252,251,0.92); line-height: 1.72; }
 
           /* ── PROCESS ── */
           .section-process { background: var(--bg); }
@@ -572,11 +575,11 @@ export default function EnergyDiagnosticCallPage() {
               <div className="recognition-bullets-col">
                 <div className="bullet-grid reveal reveal-delay-1">
                   {[
-                    "No matter how much effort you put into life, things still feel stuck, heavy, or unresolved",
-                    "The same struggles, disappointments, or patterns seem to repeat in different forms",
-                    "Relationships, work, business, or finances often feel more exhausting than they should",
-                    "You have achieved things externally... yet internally something still feels restless, disconnected, or incomplete",
-                    "You feel tired of constantly pushing, forcing, or trying to \"fix\" yourself",
+                    "No matter how much effort you put into life, things still feel stuck, heavy or unresolved",
+                    "The same struggles, disappointments or patterns seem to repeat in different forms",
+                    "Relationships, work, business or finances often feel more exhausting than they should",
+                    "You have achieved things externally... yet internally something still feels restless, disconnected or incomplete",
+                    "You feel tired of constantly pushing, forcing or trying to \"fix\" yourself",
                     "Deep down, you sense there may be a deeper reason behind what you've been experiencing",
                   ].map((txt) => (
                     <div key={txt} className="bullet-item"><span className="bullet-mark" /><span>{txt}</span></div>
@@ -598,7 +601,7 @@ export default function EnergyDiagnosticCallPage() {
             <div className="session-layout">
               <div className="session-image-box reveal">
                 <div className="session-img-wrap red-box">
-                 <img src="/images/diagnostic-what.png" alt="" />
+                  <img src="/images/diagnostic-what.png" alt="" />
                 </div>
                 <div className="session-float-tag">1-Hour Private Session</div>
               </div>
@@ -606,13 +609,13 @@ export default function EnergyDiagnosticCallPage() {
                 <span className="eyebrow reveal">The Session</span>
                 <div className="gold-line reveal reveal-delay-2" style={{ marginTop: '12px' }} />
                 <p className="section-subtext reveal reveal-delay-2" style={{ marginBottom: '18px' }}>Through a deeply personal and unhurried conversation, Raseshvari listens not only to what you share — but also to the recurring patterns and deeper themes that may be connected beneath the surface.</p>
-                <p style={{ fontFamily: 'var(--serif)', fontStyle: 'italic', fontSize: '17px', color: 'var(--ink-mid)', lineHeight: 1.72 }} className="reveal reveal-delay-2">This is not about judging you or telling you what is &quot;wrong&quot; with you.</p>
+                <p style={{ fontFamily: 'var(--serif)', fontStyle: 'italic', fontSize: '19px', color: 'var(--ink-mid)', lineHeight: 1.72 }} className="reveal reveal-delay-2">This is not about judging you or telling you what is &quot;wrong&quot; with you.</p>
                 <div className="session-bullets reveal reveal-delay-3">
                   {[
                     "Why certain struggles or patterns may keep repeating despite your efforts",
                     "What you may have been carrying within yourself for a long time",
                     "How different life experiences may be more deeply connected than they appear",
-                    "What may now be asking for your attention, awareness, or change",
+                    "What may now be asking for your attention, awareness or change",
                   ].map((txt) => (
                     <div key={txt} className="session-bullet"><div className="session-bullet-icon">→</div><p>{txt}</p></div>
                   ))}
@@ -639,7 +642,7 @@ export default function EnergyDiagnosticCallPage() {
                   <div className="about-stat"><span className="about-stat-num counter" data-target="5">0</span><span className="about-stat-num" style={{ fontSize: '26px' }}>+</span><div className="about-stat-lbl">Countries</div></div>
                   <div className="about-stat"><span className="about-stat-num counter" data-target="27">0</span><div className="about-stat-lbl">Years Experience</div></div>
                 </div>
-                <p className="section-subtext reveal reveal-delay-2" style={{ marginBottom: '16px' }}>For over 15 years, Raseshvari has been working closely with people navigating repeated life patterns, heaviness, relationship struggles, inner confusion, and deeper personal challenges that often cannot be understood only on the surface.</p>
+                <p className="section-subtext reveal reveal-delay-2" style={{ marginBottom: '16px' }}>For over 15 years, Raseshvari has been working closely with people navigating repeated life patterns, heaviness, relationship struggles, inner confusion and deeper personal challenges that often cannot be understood only on the surface.</p>
                 <p className="section-subtext reveal reveal-delay-2" style={{ marginBottom: '16px' }}>People from different walks of life across 5+ countries — professionals, business owners, leaders, mothers — have reached out seeking deeper understanding and personal transformation.</p>
                 <p className="section-subtext reveal reveal-delay-3">Before stepping fully into this work, Raseshvari also worked as a UGC NET qualified lecturer, bringing both depth and grounded understanding into the way she guides people today.</p>
               </div>
@@ -698,32 +701,16 @@ export default function EnergyDiagnosticCallPage() {
             {/* WhatsApp mockups */}
             <div className="wa-grid reveal" style={{ marginTop: '64px' }}>
               <div className="wa-mockup">
-                <div className="wa-top"><div className="wa-av">S</div><div className="wa-info"><div className="wa-name">Shruti</div><div className="wa-sub">After session</div></div></div>
-                <div className="wa-msgs">
-                  <div><div className="wa-bubble wa-recv">I honestly came in not expecting much... I&apos;ve been to so many people before.</div><div className="wa-t">3:14 PM</div></div>
-                  <div><div className="wa-bubble wa-recv">But within 20 minutes something just shifted. I can&apos;t even explain it properly.</div><div className="wa-t">3:15 PM</div></div>
-                  <div><div className="wa-bubble wa-sent">That shift you felt — that was you recognising something you&apos;d been carrying for a long time.</div><div className="wa-t r">3:22 PM</div></div>
-                  <div><div className="wa-bubble wa-recv">Yes. Exactly that. Thank you 🙏</div><div className="wa-t">3:24 PM</div></div>
-                </div>
+                <img src="/energy-testimonial/1.png" alt="WhatsApp testimonial 1" className="wa-img" />
               </div>
               <div className="wa-mockup">
-                <div className="wa-top"><div className="wa-av">M</div><div className="wa-info"><div className="wa-name">Manish</div><div className="wa-sub">3 days after</div></div></div>
-                <div className="wa-msgs">
-                  <div><div className="wa-bubble wa-recv">I wanted to message after a few days, just to sit with it first.</div><div className="wa-t">10:02 AM</div></div>
-                  <div><div className="wa-bubble wa-recv">The pattern you pointed to — I&apos;ve been seeing it everywhere since the session. Like I couldn&apos;t unsee it.</div><div className="wa-t">10:03 AM</div></div>
-                  <div><div className="wa-bubble wa-sent">That awareness is the beginning. You&apos;ve already started.</div><div className="wa-t r">10:18 AM</div></div>
-                </div>
+                <img src="/energy-testimonial/2.png" alt="WhatsApp testimonial 2" className="wa-img" />
               </div>
               <div className="wa-mockup">
-                <div className="wa-top"><div className="wa-av">P</div><div className="wa-info"><div className="wa-name">Priya</div><div className="wa-sub">Same evening</div></div></div>
-                <div className="wa-msgs">
-                  <div><div className="wa-bubble wa-recv">I cried after the call. Not out of sadness — more like something finally had permission to be seen.</div><div className="wa-t">6:45 PM</div></div>
-                  <div><div className="wa-bubble wa-sent">That&apos;s one of the most honest things someone can experience. I honour that.</div><div className="wa-t r">7:01 PM</div></div>
-                  <div><div className="wa-bubble wa-recv">Thank you for holding that space so gently 🙏</div><div className="wa-t">7:03 PM</div></div>
-                </div>
+                <img src="/energy-testimonial/3.png" alt="WhatsApp testimonial 3" className="wa-img" />
               </div>
             </div>
-            <p className="testimonials-close reveal">Every person&apos;s experience is different. But many people leave feeling lighter,<br />more settled within themselves, and more aware of what they may have been carrying.</p>
+            <p className="testimonials-close reveal">Every person&apos;s experience is different. But many people leave feeling lighter,<br />more settled within themselves and more aware of what they may have been carrying.</p>
           </div>
         </section>
 
@@ -736,10 +723,10 @@ export default function EnergyDiagnosticCallPage() {
             </div>
             <div className="process-grid">
               {[
-                { num: "01", step: "Step One",   title: "Share Your Details",     desc: "Fill out a short form to help us understand what you've been experiencing and whether this session may be the right fit for you.", delay: "reveal-delay-1" },
-                { num: "02", step: "Step Two",   title: "Personal Connection",    desc: "Our team will connect with you on WhatsApp to guide you through the next steps and answer any initial questions you may have.", delay: "reveal-delay-2" },
-                { num: "03", step: "Step Three", title: "Session Booking",        desc: "After confirmation, you'll receive payment details and your private online session will be scheduled at a mutually comfortable time.", delay: "reveal-delay-3" },
-                { num: "04", step: "Step Four",  title: "Your Diagnostic Call",   desc: "A safe and deeply personal space to explore the energetic patterns that may have been silently affecting your life for a long time.", delay: "reveal-delay-4" },
+                { num: "01", step: "Step One", title: "Share Your Details", desc: "Fill out a short form to help us understand what you've been experiencing and whether this session may be the right fit for you.", delay: "reveal-delay-1" },
+                { num: "02", step: "Step Two", title: "Personal Connection", desc: "Our team will connect with you on WhatsApp to guide you through the next steps and answer any initial questions you may have.", delay: "reveal-delay-2" },
+                { num: "03", step: "Step Three", title: "Session Booking", desc: "After confirmation, you'll receive payment details and your private online session will be scheduled at a mutually comfortable time.", delay: "reveal-delay-3" },
+                { num: "04", step: "Step Four", title: "Your Diagnostic Call", desc: "A safe and deeply personal space to explore the energetic patterns that may have been silently affecting your life for a long time.", delay: "reveal-delay-4" },
               ].map((s) => (
                 <div key={s.num} className={`process-card diag-card reveal ${s.delay}`}>
                   <span className="process-num">{s.num}</span>
@@ -749,7 +736,7 @@ export default function EnergyDiagnosticCallPage() {
                 </div>
               ))}
             </div>
-            <p style={{ textAlign: 'center', marginTop: '44px', fontSize: '12px', color: 'var(--ink-soft)', letterSpacing: '0.12em', textTransform: 'uppercase', fontFamily: 'var(--sans)' }} className="reveal">A personal, private, and confidential online experience.</p>
+            <p style={{ textAlign: 'center', marginTop: '44px', fontSize: '12px', color: 'var(--ink-soft)', letterSpacing: '0.12em', textTransform: 'uppercase', fontFamily: 'var(--sans)' }} className="reveal">A personal, private and confidential online experience.</p>
           </div>
         </section>
 
@@ -762,15 +749,28 @@ export default function EnergyDiagnosticCallPage() {
               <p className="modal-sub">Share a few details and we will connect with you personally on WhatsApp to guide your next steps.</p>
               <form onSubmit={handleFormSubmit}>
                 <div className="form-group">
-                  <label className="form-label" htmlFor="apply-name">Your Name *</label>
+                  <label className="form-label" htmlFor="apply-name">Name *</label>
                   <input id="apply-name" className="form-input" type="text" required placeholder="Full name" value={formData.name} onChange={e => setFormData(p => ({ ...p, name: e.target.value }))} />
                 </div>
                 <div className="form-group">
-                  <label className="form-label" htmlFor="apply-email">Email Address *</label>
-                  <input id="apply-email" className="form-input" type="email" required placeholder="you@example.com" value={formData.email} onChange={e => setFormData(p => ({ ...p, email: e.target.value }))} />
+                  <label className="form-label" htmlFor="apply-dob">Date of birth *</label>
+                  <input id="apply-dob" className="form-input" type="date" required value={formData.dob} onChange={e => setFormData(p => ({ ...p, dob: e.target.value }))} />
                 </div>
                 <div className="form-group">
-                  <label className="form-label" htmlFor="apply-phone">WhatsApp / Phone *</label>
+                  <label className="form-label" htmlFor="apply-gender">Gender *</label>
+                  <select id="apply-gender" className="form-input" required value={formData.gender} onChange={e => setFormData(p => ({ ...p, gender: e.target.value }))}>
+                    <option value="" disabled>Select Gender</option>
+                    <option value="Female">Female</option>
+                    <option value="Male">Male</option>
+                    <option value="Other">Other / Prefer not to say</option>
+                  </select>
+                </div>
+                <div className="form-group">
+                  <label className="form-label" htmlFor="apply-country">Country *</label>
+                  <input id="apply-country" className="form-input" type="text" required placeholder="e.g. India, United States" value={formData.country} onChange={e => setFormData(p => ({ ...p, country: e.target.value }))} />
+                </div>
+                <div className="form-group">
+                  <label className="form-label" htmlFor="apply-phone">Phone number *</label>
                   <div className="phone-row">
                     {/* Country code trigger */}
                     <button
@@ -802,7 +802,7 @@ export default function EnergyDiagnosticCallPage() {
                             <div
                               key={c.code}
                               className={`cc-option${c.code === selectedCountry.code ? ' active' : ''}`}
-                              onClick={() => { setSelectedCountry(c); setShowCountryDrop(false); setCountrySearch(''); }}
+                              onClick={() => { setSelectedCountry(c); setShowCountryDrop(false); setCountrySearch(''); setFormData(p => ({ ...p, country: p.country || c.name })); }}
                             >
                               <span className="cc-opt-flag">{c.flag}</span>
                               <span className="cc-opt-name">{c.name}</span>
@@ -825,8 +825,8 @@ export default function EnergyDiagnosticCallPage() {
                   </div>
                 </div>
                 <div className="form-group">
-                  <label className="form-label" htmlFor="apply-msg">What brings you here? (Optional)</label>
-                  <textarea id="apply-msg" className="form-input form-textarea" placeholder="Share briefly what you have been experiencing..." value={formData.message} onChange={e => setFormData(p => ({ ...p, message: e.target.value }))} />
+                  <label className="form-label" htmlFor="apply-purpose">Purpose *</label>
+                  <textarea id="apply-purpose" className="form-input form-textarea" required placeholder="Share briefly your purpose for this call..." value={formData.purpose} onChange={e => setFormData(p => ({ ...p, purpose: e.target.value }))} />
                 </div>
                 <button type="submit" className="form-submit" disabled={submitting}>
                   {submitting ? 'Opening WhatsApp...' : 'Submit & Connect on WhatsApp'}
@@ -859,7 +859,7 @@ export default function EnergyDiagnosticCallPage() {
                 ) : (
                   <>
                     <div className="price-badge">🌍 International Pricing</div>
-                    <div className="price-amount"><span className="price-sup">$</span>199</div>
+                    <div className="price-amount"><span className="price-sup">$</span>275</div>
                   </>
                 )}
                 <ul className="price-includes">
@@ -867,7 +867,7 @@ export default function EnergyDiagnosticCallPage() {
                   <li>Personal &amp; Confidential Experience</li>
                   <li>Guided Energy Diagnostic Process</li>
                 </ul>
-                <p className="pricing-note">Every session is approached with depth, sincerity, care, and complete personal attention.</p>
+                <p className="pricing-note">Every session is approached with depth, sincerity, care and complete personal attention.</p>
                 <button className="btn-glow" onClick={() => setShowForm(true)} style={{ cursor: 'pointer', border: 'none', width: '100%' }}>
                   Apply for Your Energy Diagnostic Call
                 </button>
@@ -885,11 +885,11 @@ export default function EnergyDiagnosticCallPage() {
             </div>
             <div className="faq-list reveal reveal-delay-1">
               {[
-                { q: "What exactly happens during the session?", a: "Through a deeply personal conversation, Raseshvari listens to what you share and identifies recurring patterns, themes, and deeper root causes that may be influencing how your life has been unfolding. This is not a therapy session — it's an energetic diagnostic process designed to bring clarity." },
-                { q: "Is this suitable for me if I'm going through something right now?", a: "Yes. Many people reach out precisely when something in life feels unresolved, stuck, or persistently unclear. If you sense that there may be a deeper reason behind what you've been experiencing, this session is designed for exactly that." },
+                { q: "What exactly happens during the session?", a: "Through a deeply personal conversation, Raseshvari listens to what you share and identifies recurring patterns, themes and deeper root causes that may be influencing how your life has been unfolding. This is not a therapy session — it's an energetic diagnostic process designed to bring clarity." },
+                { q: "Is this suitable for me if I'm going through something right now?", a: "Yes. Many people reach out precisely when something in life feels unresolved, stuck or persistently unclear. If you sense that there may be a deeper reason behind what you've been experiencing, this session is designed for exactly that." },
                 { q: "What should I prepare before the session?", a: "Nothing special is required. Come as you are, with an open mind and the willingness to share what has been on your heart. Raseshvari will guide the conversation gently and personally from there." },
                 { q: "Is everything shared in the session kept private?", a: "Absolutely. Every session is treated with complete confidentiality and personal care. What you share remains between you and Raseshvari." },
-                { q: "How do I book a session?", a: "Click the 'Apply' button on this page, and our team will connect with you on WhatsApp to guide you through the next steps personally." },
+                { q: "How do I book a session?", a: "Click the 'Apply' button on this page and our team will connect with you on WhatsApp to guide you through the next steps personally." },
               ].map((f) => (
                 <div key={f.q} className="faq-item">
                   <div className="faq-toggle">
@@ -915,7 +915,7 @@ export default function EnergyDiagnosticCallPage() {
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', justifyContent: 'center', marginTop: '48px' }}>
                 <button className="btn-glow" onClick={() => setShowForm(true)} style={{ cursor: 'pointer', border: 'none' }}>Apply for Your Energy Diagnostic Call</button>
               </div>
-              <p className="final-sign">With sincerity, care, and complete personal attention.</p>
+              <p className="final-sign">With sincerity, care and complete personal attention.</p>
             </div>
           </div>
         </section>

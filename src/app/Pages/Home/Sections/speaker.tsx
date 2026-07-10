@@ -1,15 +1,15 @@
 "use client";
 
 import { useRef, useState, useEffect } from "react";
-import { Poppins , Roboto_Condensed} from "next/font/google";
+import { Poppins, Roboto_Condensed } from "next/font/google";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
- const Roboto = Roboto_Condensed({
-    subsets: ["latin"],
-    variable: "--font-roboto-condensed",
-    weight: ["400", "700"],
-  });
+const Roboto = Roboto_Condensed({
+  subsets: ["latin"],
+  variable: "--font-roboto-condensed",
+  weight: ["400", "700"],
+});
 
 export default function Speaker() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -20,7 +20,7 @@ export default function Speaker() {
   const [duration, setDuration] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
 
- 
+
 
   useEffect(() => {
     const video = videoRef.current;
@@ -294,7 +294,7 @@ export default function Speaker() {
             </div>
 
             {/* Heading */}
-          <h2 className="section-heading font-[var(--font-playfair)] text-[26px] sm:text-[32px] md:text-[40px] lg:text-[44px] text-[#111] leading-[1.1] mb-5 md:mb-7">
+            <h2 className="section-heading font-[var(--font-playfair)] text-[26px] sm:text-[32px] md:text-[40px] lg:text-[44px] text-[#111] leading-[1.1] mb-5 md:mb-7">
               Talk that go
               <br />
               <span className="italic text-[#c42d2d] font-bold">
@@ -305,7 +305,7 @@ export default function Speaker() {
 
             {/* Description */}
             <p className="text-[#333] text-[14px] sm:text-[16px] md:text-[18px] lg:text-[20px] leading-[1.55] font-[var(--font-dm-sans)] mb-5 md:mb-7 max-w-2xl">
-               Raseshvari Hindustani is invited to speak with institutions, organizations,
+              Raseshvari Hindustani is invited to speak with institutions organizations,
               leaders and young minds on how energy shapes choices and
               decisions&mdash;bringing{" "}
               <span className="text-[#111] font-semibold">

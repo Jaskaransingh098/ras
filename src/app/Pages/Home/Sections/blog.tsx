@@ -11,7 +11,7 @@ const blogs = [
         id: 1,
         title: "But You Create Miracles For Others... How Can You Feel Low?",
         excerpt:
-            "Every coach, healer, and leader carries silent pain. But here's the truth: the healer also needs healing.",
+            "Every coach, healer and leader carries silent pain. But here's the truth: the healer also needs healing.",
         tag: "Energy & Frequency",
         date: "Mar 2025",
         readTime: "6 min read",

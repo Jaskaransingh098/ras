@@ -16,7 +16,7 @@ const faqData = [
         )
     },
     {
-        question: "Is this like therapy, counselling, or coaching?",
+        question: "Is this like therapy, counselling or coaching?",
         answer: (
             <>
                 <p>No. Therapy focuses on understanding your past.<br />Coaching focuses on strategy and action.</p>
@@ -28,9 +28,9 @@ const faqData = [
         question: "What happens in a single session?",
         answer: (
             <>
-                <p>I begin with a brief conversation about what feels stuck, heavy, or unclear in your life.</p>
+                <p>I begin with a brief conversation about what feels stuck, heavy or unclear in your life.</p>
                 <p className="mt-4">From there, I identify the deeper pattern behind it and facilitate the shift at its root.</p>
-                <p className="mt-4">You don&apos;t need to prepare, perform, or “do” anything — simply being present is enough.</p>
+                <p className="mt-4">You don&apos;t need to prepare, perform or “do” anything — simply being present is enough.</p>
                 <p className="mt-4">You remain fully conscious and in control throughout.</p>
             </>
         )
@@ -39,8 +39,8 @@ const faqData = [
         question: "How soon can I expect results?",
         answer: (
             <>
-                <p>Most people experience an internal shift in just one session. This may feel like clarity, calm, peace, joy, or a deep sense of lightness.</p>
-                <p className="mt-2">External movement in work, money, relationships, or decisions begins within hours or days. In few cases it unfolds gradually.</p>
+                <p>Most people experience an internal shift in just one session. This may feel like clarity, calm, peace, joy or a deep sense of lightness.</p>
+                <p className="mt-2">External movement in work, money, relationships or decisions begins within hours or days. In few cases it unfolds gradually.</p>
                 <p className="mt-4 font-medium text-[#c42d2d]">This work actually creates real movement in your life.</p>
             </>
         )
@@ -59,7 +59,7 @@ const faqData = [
         question: "Who is this work best suited for?",
         answer: (
             <>
-                <p>This work is open to anyone who genuinely wants change, ease, and greater happiness in their life.</p>
+                <p>This work is open to anyone who genuinely wants change, ease and greater happiness in their life.</p>
                 <p className="mt-2">It supports people who are ready to let go of struggle and move toward clarity, confidence and fulfilment.<br />There are no age or gender limitations. Students, professionals, entrepreneurs, homemakers and individuals navigating health or personal challenges can all benefit.</p>
                 <p className="mt-4 font-medium text-[#c42d2d]">What matters most is willingness. If you are ready for change, this work can support you.</p>
             </>
@@ -71,7 +71,7 @@ const faqData = [
             <>
                 <p>No.<br />All sessions are conducted online via Zoom.</p>
                 <p className="mt-2">This work does not rely on physical touch or location. What matters is focused presence, not proximity.<br />Clients across different cities and countries experience the same depth of shift online.</p>
-                <p className="mt-4">You simply need a quiet space, privacy, and a stable internet connection.</p>
+                <p className="mt-4">You simply need a quiet space, privacy and a stable internet connection.</p>
             </>
         )
     }
@@ -175,7 +175,7 @@ export default function FAQ() {
                     </h2>
 
                     <p className="text-[#666] text-[16px] md:text-[18px] font-[var(--font-dm-sans)] leading-relaxed max-w-2xl mx-auto">
-                        Everything you need to know about Energy Transformation, the process, and how it sparks real movement in your life.
+                        Everything you need to know about Energy Transformation, the process and how it sparks real movement in your life.
                     </p>
                 </div>
 

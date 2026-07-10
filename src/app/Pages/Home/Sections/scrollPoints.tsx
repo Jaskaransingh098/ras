@@ -35,7 +35,7 @@ const cards = [
     },
     {
         title: "Invited Speaker & Thought Leader",
-        description: "Invited speaker at universities, institutions, and organisations — shaping young minds and emerging leaders through energy-led transformation.",
+        description: "Invited speaker at universities, institutions and organisations — shaping young minds and emerging leaders through energy-led transformation.",
         image: "/scrollCards/4.png",
         icon: (
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#c42d2d" strokeWidth="2" strokeLinecap="round">
