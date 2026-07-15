@@ -65,15 +65,14 @@ function SwappingSlot({
           alt={img.alt}
           fill
           priority={idx === 0} // preload first image
-          className={`object-cover absolute inset-0 transition-all duration-1000 ease-in-out ${
-            active === idx
+          className={`object-cover absolute inset-0 transition-all duration-1000 ease-in-out ${active === idx
               ? "opacity-100 scale-100 z-10"
               : "opacity-0 scale-100 z-0"
-          }`}
+            }`}
           style={{
-    willChange: "opacity, transform",
-    backfaceVisibility: "hidden",
-  }}
+            willChange: "opacity, transform",
+            backfaceVisibility: "hidden",
+          }}
           sizes="200px"
           onError={(e) => {
             console.log("FAILED:", img.src);
@@ -175,7 +174,7 @@ export default function DareToDream() {
                 Raseshvari Hindustani hosted an Instagram Live series featuring
                 52 renowned and honoured voices including Padma Shri awardees,
                 leaders, artists and professionals from diverse fields all
-                across India and beyond— not to showcase success, but to
+                across India and beyond— not to showcase successbut to
                 humanize it. So people watching can feel: <br />
                 <span className="italic">
                   {" "}

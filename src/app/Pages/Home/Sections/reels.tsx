@@ -230,7 +230,7 @@ export default function Reel({ scrollRef }: Props) {
       transcript: `I've been a part of the banking sector for the last 15 years and I was under intense pressure managing work turmoil and internal politics, which caught on me physically, mentally and emotionally.
 I was under constant pressure to deliver. I could see my confidence eroding, my performance dipping and this having an adverse impact on my health and wealth. I was gradually slipping into the shell of depression. And you know in corporate life, it's not easy to talk about things like this.
  
-I had always heard about mindset coaching, therapy, but I never heard about someone shifting energies. I decided to give it a shot and booked a session with Raseshvari.
+I had always heard about mindset coaching, therapybut I never heard about someone shifting energies. I decided to give it a shot and booked a session with Raseshvari.
 With just one session, things shifted. The heaviness completely lifted off, my stress evaporated and I felt at ease.
  
 Post this session, things started to change. I moved into a new role. The stress because of work completely evaporated and happiness surrounded me finally again.
@@ -247,7 +247,7 @@ If you're going through something like this, please connect with Raseshvari. She
       youtubeId: "vdOWHa-rzGg",
       poster: "rajpreet.png",
       transcript: `Raseshvari Hindustani:
-"Most high-achieving women carry an invisible emotional load, one that quietly blocks their growth and impacts their revenue too. One of my clients, a beautiful and brilliant doctor, had tried everything, but an old emotional pain wouldn't just let go."
+"Most high-achieving women carry an invisible emotional load, one that quietly blocks their growth and impacts their revenue too. One of my clients, a beautiful and brilliant doctor, had tried everythingbut an old emotional pain wouldn't just let go."
  
 Dr. Roohana Rajpreet:
 "I was going through something and I was not able to sort out some things because of which I actually needed some help. Aur mere ko lag raha tha main handle kar loongi, ho jayega saara kuch. (And I thought I'll handle it, everything will be fine.) But sometimes it is always better to ask for some help. I just want to share my experience with everybody. I had a session with her today and believe you me, I changed like this [snaps fingers] and I had that glow back on my face. So, I mean, it is visible.
@@ -274,7 +274,7 @@ On paper, everything looked aligned.
 Clients were interested, conversations were positive and the direction felt right.
 And yet… movement was slower than expected.
 After a point, it makes you pause and reflect —
-not just on effort, but on the deeper journey within.
+not just on effortbut on the deeper journey within.
  
 Years ago, I had experienced a meaningful sense of clarity through a session with Raseshvari.
 So during a phase of uncertainty, I chose to reconnect and explore her revenue-focused healing session.
@@ -319,9 +319,9 @@ Raseshvari: If she could shift all that energy in just one session, so can you. 
       youtubeId: "FPadk3vUnjA",
       poster: "shashank.png",
       transcript: `There was a point in my life where I truly felt my business would shut down. I started it during college and everything was going great in the beginning—sales were high, growth was solid and overall, everything felt smooth.
-Then, suddenly, sales started dropping. I tried everything: changed products, switched categories, but the sales kept going down. At one point, I genuinely felt like I'd have to close my business and shift back to a corporate job. My mind told me to quit, but my heart felt that the problem lay somewhere else.
+Then, suddenly, sales started dropping. I tried everything: changed products, switched categoriesbut the sales kept going down. At one point, I genuinely felt like I'd have to close my business and shift back to a corporate job. My mind told me to quitbut my heart felt that the problem lay somewhere else.
  
-That's when I did just one energy session with Raseshvari Ma'am. Honestly, I don't know what she did or how she did it, but I felt something shift within me instantly.
+That's when I did just one energy session with Raseshvari Ma'am. Honestly, I don't know what she did or how she did itbut I felt something shift within me instantly.
  
 My stress lifted, I gained confidence and I found clarity in my mind. Things that had been stuck for months started solving themselves automatically.
 It's been four to five months since that session. My business is stable, the growth is back on track and mentally, I feel very light. For me, this single session was a major turning point in my life.`,
@@ -344,7 +344,7 @@ I had a very big dream that I want to work in a product-based company.
 
 But somehow I landed up in a service-based company.
 
-It was a good company, but deep down, I always had this feeling.
+It was a good companybut deep down, I always had this feeling.
 
 I discussed everything with Raseshvari ma’am.
 

@@ -590,7 +590,7 @@ export default function EnergyDiagnosticCallPage() {
 
             {/* Pull Quote Block (Full Width / full rectangular space) */}
             <div className="pull-quote-block reveal reveal-delay-2" style={{ marginTop: '60px' }}>
-              <p>&quot;Many people describe this experience not as being given answers, but as finally being able to understand their life experiences differently — sometimes for the first time in years.&quot;</p>
+              <p>&quot;Many people describe this experience not as being given answersbut as finally being able to understand their life experiences differently — sometimes for the first time in years.&quot;</p>
             </div>
           </div>
         </section>

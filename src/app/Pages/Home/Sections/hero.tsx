@@ -65,7 +65,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="flex flex-col md:flex-row items-center justify-between w-full h-[56.25vw] md:h-[90vh] min-h-[230px] md:min-h-0 relative overflow-hidden bg-black/90">
+    <section className="flex flex-col items-center justify-end 2xl:justify-between w-full relative overflow-hidden bg-black/90 h-[56.25vw] min-h-[220px] 2xl:h-[90vh] 2xl:min-h-0">
       {/* Background videos (stacked) */}
 
       <div className="absolute inset-0 w-full h-full pointer-events-none">
@@ -73,7 +73,7 @@ export default function Hero() {
           <video
             key={i}
             ref={(el: HTMLVideoElement | null) => { videoRefs.current[i] = el; }}
-            className={`absolute inset-0 w-full h-full object-contain object-top md:object-cover transition-opacity duration-1000 ${activeVideo === i ? 'opacity-100 z-0' : 'opacity-0 z-0'}`}
+            className={`absolute inset-0 w-full h-full object-contain object-center 2xl:object-cover transition-opacity duration-1000 ${activeVideo === i ? 'opacity-100 z-0' : 'opacity-0 z-0'}`}
             src={s.image}
             playsInline
             muted
@@ -101,11 +101,11 @@ export default function Hero() {
         `}</style>
 
         {/* Glass Container for Hero Text */}
-        <div className="inline-block px-2 sm:px-8 md:px-10 py-1.5 sm:py-6 md:py-8 rounded-[10px] sm:rounded-[32px] md:rounded-[40px] bg-white/5 backdrop-blur-lg border border-white/10 shadow-2xl mb-1.5 w-[50%] sm:w-[80%]">
+        <div className="inline-block px-2 sm:px-8 2xl:px-10 py-1.5 sm:py-6 2xl:py-8 rounded-[10px] sm:rounded-[32px] 2xl:rounded-[40px] bg-white/5 backdrop-blur-lg border border-white/10 shadow-2xl mb-1.5 w-[50%] sm:w-[80%]">
           {/* — Eyebrow label — */}
           <div className="flex items-center justify-center gap-2 mb-1.5 sm:mb-4">
             <span
-              className="text-[9px] sm:text-[18px] md:text-[22px] uppercase tracking-[0.08em] sm:tracking-[0.2em] font-extrabold md:font-bold text-white/90 font-[var(--font-dm-sans)]"
+              className="text-[9px] sm:text-[18px] 2xl:text-[22px] uppercase tracking-[0.08em] sm:tracking-[0.2em] font-extrabold 2xl:font-bold text-white/90 font-[var(--font-dm-sans)]"
             >
               Are You Stuck In Your
             </span>
