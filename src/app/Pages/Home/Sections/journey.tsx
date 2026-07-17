@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
@@ -72,7 +72,7 @@ function MasonryCard({ photo, rowH }: { photo: typeof photos[0]; rowH: number })
     );
 }
 
-// An infinitely scrolling row (doubles the items for seamless loop)
+// An infinitely scrolling row with manual scroll arrows
 function ScrollRow({
     items,
     rowH,
@@ -84,13 +84,125 @@ function ScrollRow({
     duration: string;
     reverse?: boolean;
 }) {
-    const doubled = [...items, ...items];
-    const animName = reverse ? "journey-scroll-rev" : "journey-scroll-fwd";
+    const containerRef = useRef<HTMLDivElement>(null);
+    const [isHovered, setIsHovered] = useState(false);
+    const [isManualScroll, setIsManualScroll] = useState(false);
+    const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+    const doubled = [...items, ...items, ...items]; // Triple for seamless wrapping on scroll
+
+    // Initialize scroll position once on mount
+    useEffect(() => {
+        const el = containerRef.current;
+        if (!el) return;
+        requestAnimationFrame(() => {
+            const oneThird = el.scrollWidth / 3;
+            el.scrollLeft = oneThird;
+        });
+        
+        return () => {
+            if (timeoutRef.current) clearTimeout(timeoutRef.current);
+        };
+    }, []);
+
+    // Handle auto-scroll animation loop
+    useEffect(() => {
+        const el = containerRef.current;
+        if (!el) return;
+
+        let animationFrameId: number;
+        const speed = 0.5; // pixels per frame
+
+        const tick = () => {
+            const oneThird = el.scrollWidth / 3;
+            if (!isHovered && !isManualScroll) {
+                if (reverse) {
+                    el.scrollLeft -= speed;
+                } else {
+                    el.scrollLeft += speed;
+                }
+
+                // Smooth looping logic inside the middle third
+                if (el.scrollLeft >= oneThird * 2) {
+                    el.scrollLeft -= oneThird;
+                } else if (el.scrollLeft <= oneThird) {
+                    el.scrollLeft += oneThird;
+                }
+            }
+            animationFrameId = requestAnimationFrame(tick);
+        };
+
+        animationFrameId = requestAnimationFrame(tick);
+        return () => {
+            cancelAnimationFrame(animationFrameId);
+        };
+    }, [isHovered, isManualScroll, reverse]);
+
+    const handleScroll = () => {
+        const el = containerRef.current;
+        if (!el) return;
+        const oneThird = el.scrollWidth / 3;
+        if (el.scrollLeft >= oneThird * 2) {
+            el.scrollLeft -= oneThird;
+        } else if (el.scrollLeft <= oneThird) {
+            el.scrollLeft += oneThird;
+        }
+    };
+
+    const scroll = (direction: 'left' | 'right') => {
+        const el = containerRef.current;
+        if (!el) return;
+
+        setIsManualScroll(true);
+        if (timeoutRef.current) clearTimeout(timeoutRef.current);
+
+        const scrollAmount = 450;
+        const targetScroll = el.scrollLeft + (direction === 'left' ? -scrollAmount : scrollAmount);
+
+        el.scrollTo({
+            left: targetScroll,
+            behavior: 'smooth'
+        });
+
+        timeoutRef.current = setTimeout(() => {
+            setIsManualScroll(false);
+        }, 3000);
+    };
+
     return (
-        <div className="overflow-hidden" style={{ height: rowH }}>
+        <div 
+            className="relative group/row overflow-hidden w-full rounded-xl"
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+        >
+            {/* Left arrow */}
+            <button 
+                onClick={() => scroll('left')}
+                className="absolute left-3 top-1/2 -translate-y-1/2 z-20 bg-black/60 hover:bg-black text-white w-9 h-9 rounded-full flex items-center justify-center shadow-lg opacity-0 group-hover/row:opacity-100 transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer"
+                aria-label="Scroll left"
+            >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </button>
+
+            {/* Right arrow */}
+            <button 
+                onClick={() => scroll('right')}
+                className="absolute right-3 top-1/2 -translate-y-1/2 z-20 bg-black/60 hover:bg-black text-white w-9 h-9 rounded-full flex items-center justify-center shadow-lg opacity-0 group-hover/row:opacity-100 transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer"
+                aria-label="Scroll right"
+            >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+            </button>
+
+            {/* Scroll Container */}
             <div
-                className="journey-track"
-                style={{ animationName: animName, animationDuration: duration, height: rowH }}
+                ref={containerRef}
+                className="overflow-x-auto scrollbar-none flex gap-3 md:gap-4 select-none w-full"
+                style={{ height: rowH }}
+                onScroll={handleScroll}
             >
                 {doubled.map((photo, i) => (
                     <MasonryCard key={i} photo={photo} rowH={rowH} />
@@ -122,24 +234,12 @@ export default function Journey() {
     return (
         <section ref={sectionRef} className="bg-white flex flex-col relative overflow-hidden pt-6 md:pt-10 p-3 md:p-5">
             <style>{`
-                @keyframes journey-scroll-fwd {
-                    0%   { transform: translateX(0); }
-                    100% { transform: translateX(-50%); }
+                .scrollbar-none::-webkit-scrollbar {
+                    display: none;
                 }
-                @keyframes journey-scroll-rev {
-                    0%   { transform: translateX(-50%); }
-                    100% { transform: translateX(0); }
-                }
-                .journey-track {
-                    display: flex;
-                    align-items: flex-start;
-                    gap: 12px;
-                    width: max-content;
-                    animation-timing-function: linear;
-                    animation-iteration-count: infinite;
-                }
-                .journey-track:hover {
-                    animation-play-state: paused;
+                .scrollbar-none {
+                    -ms-overflow-style: none;
+                    scrollbar-width: none;
                 }
             `}</style>
 

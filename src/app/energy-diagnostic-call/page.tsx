@@ -388,7 +388,7 @@ export default function EnergyDiagnosticCallPage() {
           .t-avatar { width: 44px; height: 44px; border-radius: 50%; border: 1.5px solid rgba(255,255,255,0.25); object-fit: cover; flex-shrink: 0; }
           .t-meta { display: flex; flex-direction: column; gap: 2px; text-align: left; }
           .t-name { font-size: 13px; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; color: rgba(253,252,251,0.95); font-family: var(--sans); }
-          .t-title { font-size: 11px; color: rgba(253,252,251,0.5); font-family: var(--sans); line-height: 1.3; }
+          .t-title { font-size: 13px; color: rgba(253,252,251,0.9); font-family: var(--sans); line-height: 1.3; }
           .wa-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 64px; }
           .wa-mockup { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.09); border-radius: 22px; overflow: hidden; }
           .wa-img { width: 100%; height: auto; display: block; }
@@ -402,7 +402,7 @@ export default function EnergyDiagnosticCallPage() {
           .wa-sent { background: rgba(155,15,31,0.65); color: rgba(253,252,251,0.94); align-self: flex-end; border-radius: 16px 4px 16px 16px; }
           .wa-t { font-size: 10px; color: rgba(255,255,255,0.28); margin-top: 3px; font-family: var(--sans); }
           .wa-t.r { text-align: right; }
-          .testimonials-close { text-align: center; margin-top: 64px; font-family: var(--serif); font-style: italic; font-size: 22px; color: rgba(253,252,251,0.92); line-height: 1.72; }
+          .testimonials-close { text-align: center; margin-top: 64px; font-family: var(--serif); font-style: italic; font-weight: 500; font-size: 29px; color: rgba(253,252,251,0.92); line-height: 1.72; }
 
           /* ── PROCESS ── */
           .section-process { background: var(--bg); }
@@ -427,14 +427,19 @@ export default function EnergyDiagnosticCallPage() {
           .price-includes { list-style: none; margin: 20px 0; padding: 20px 0; border-top: 1px solid var(--line-lt); border-bottom: 1px solid var(--line-lt); display: flex; flex-direction: column; gap: 10px; }
           .price-includes li { font-size: 15px; color: var(--ink-mid); display: flex; align-items: center; justify-content: center; gap: 12px; font-family: var(--sans); }
           .price-includes li::before { content: '✦'; font-size: 8px; color: var(--red); }
-          .pricing-note { font-family: var(--serif); font-style: italic; font-size: 15px; color: var(--ink-soft); margin-bottom: 24px; }
+          .pricing-note { font-family: var(--serif); font-style: italic; font-size: 22px; font-weight: 500; color: var(--ink-soft); margin-bottom: 24px; }
           .price-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(155,15,31,0.06); border: 1px solid rgba(155,15,31,0.15); border-radius: 100px; padding: 5px 16px; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--red); font-family: var(--sans); margin-bottom: 12px; }
 
           /* ── APPLY MODAL ── */
-          .modal-overlay { position: fixed; inset: 0; background: rgba(28,14,10,0.6); z-index: 9999; display: flex; align-items: center; justify-content: center; padding: 24px; backdrop-filter: blur(6px); animation: fadeIn 0.2s ease; }
+          .modal-overlay { position: fixed; inset: 0; background: rgba(28,14,10,0.6); z-index: 9999; display: flex; align-items: flex-start; justify-content: center; padding: 40px 24px; overflow-y: auto; backdrop-filter: blur(6px); animation: fadeIn 0.2s ease; }
           @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-          .modal-box { background: #FDFCFB; border-radius: 28px; padding: 48px 44px; width: 100%; max-width: 520px; position: relative; box-shadow: 0 32px 80px rgba(28,14,10,0.18); animation: slideUp 0.3s cubic-bezier(0.4,0,0.2,1); }
+          .modal-box { background: #FDFCFB; border-radius: 28px; padding: 48px 44px; width: 100%; max-width: 640px; position: relative; box-shadow: 0 32px 80px rgba(28,14,10,0.18); animation: slideUp 0.3s cubic-bezier(0.4,0,0.2,1); margin: auto; }
           @keyframes slideUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+          .form-row { display: flex; gap: 16px; width: 100%; }
+          @media (max-width: 560px) {
+            .form-row { flex-direction: column; gap: 0; }
+            .modal-box { padding: 32px 24px; border-radius: 20px; }
+          }
           .modal-box::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--grad); border-radius: 28px 28px 0 0; }
           .modal-close { position: absolute; top: 18px; right: 18px; width: 32px; height: 32px; border-radius: 50%; background: rgba(155,15,31,0.08); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 18px; color: var(--ink-soft); transition: all 0.2s; }
           .modal-close:hover { background: rgba(155,15,31,0.15); color: var(--red); }
@@ -489,14 +494,14 @@ export default function EnergyDiagnosticCallPage() {
           .faq-a { font-size: 16px; color: var(--ink-mid); line-height: 1.88; padding-bottom: 26px; font-family: var(--sans); }
 
           /* ── FINAL CTA ── */
-          .section-final { background: var(--red); padding: 200px 0 160px; text-align: center; position: relative; overflow: hidden; }
+          .section-final { background: #720A15; padding: 200px 0 160px; text-align: center; position: relative; overflow: hidden; }
           .final-bg-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); font-family: var(--serif); font-size: clamp(80px, 15vw, 220px); font-weight: 300; color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,0.08); white-space: nowrap; pointer-events: none; user-select: none; letter-spacing: -0.02em; }
           .final-orb { position: absolute; width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(0,0,0,0.2), transparent 70%); top: 50%; left: 50%; transform: translate(-50%,-50%); pointer-events: none; animation: orbFloat 12s ease-in-out infinite; }
           .final-inner { position: relative; z-index: 2; }
           .final-headline { font-family: var(--serif); font-size: clamp(30px, 4.5vw, 58px); font-weight: 400; line-height: 1.22; color: #FDFCFB; max-width: 720px; margin: 0 auto; }
           .final-headline em { font-style: italic; color: rgba(232,184,122,0.9); }
-          .final-body { max-width: 520px; margin: 28px auto 0; font-size: 16px; color: rgba(253,252,251,0.68); line-height: 1.88; font-family: var(--sans); }
-          .final-sign { font-family: var(--serif); font-style: italic; font-size: 16px; color: rgba(253,252,251,0.42); margin-top: 44px; }
+          .final-body { max-width: 520px; margin: 28px auto 0; font-size: 16px; color: rgba(253,252,251,0.88); line-height: 1.88; font-family: var(--sans); }
+          .final-sign { font-family: var(--serif); font-style: italic; font-size: 20px; color: rgba(253,252,251,0.8); margin-top: 44px; }
 
           /* ── RESPONSIVE ── */
           @media (max-width: 960px) {
@@ -603,7 +608,7 @@ export default function EnergyDiagnosticCallPage() {
                 <div className="session-img-wrap red-box">
                   <img src="/images/diagnostic-what.png" alt="" />
                 </div>
-                <div className="session-float-tag">1-Hour Private Session</div>
+                <div className="session-float-tag">1-Hour Private Online Session</div>
               </div>
               <div>
                 <span className="eyebrow reveal">The Session</span>
@@ -640,7 +645,7 @@ export default function EnergyDiagnosticCallPage() {
                 <div className="about-stats-bar reveal reveal-delay-2">
                   <div className="about-stat"><span className="about-stat-num counter" data-target="15">0</span><span className="about-stat-num" style={{ fontSize: '26px' }}>+</span><div className="about-stat-lbl">Years With People</div></div>
                   <div className="about-stat"><span className="about-stat-num counter" data-target="5">0</span><span className="about-stat-num" style={{ fontSize: '26px' }}>+</span><div className="about-stat-lbl">Countries</div></div>
-                  <div className="about-stat"><span className="about-stat-num counter" data-target="27">0</span><div className="about-stat-lbl">Years Experience</div></div>
+                  <div className="about-stat"><span className="about-stat-num counter" data-target="27">0</span><div className="about-stat-lbl">Years Spiritual Experience</div></div>
                 </div>
                 <p className="section-subtext reveal reveal-delay-2" style={{ marginBottom: '16px' }}>For over 15 years, Raseshvari has been working closely with people navigating repeated life patterns, heaviness, relationship struggles, inner confusion and deeper personal challenges that often cannot be understood only on the surface.</p>
                 <p className="section-subtext reveal reveal-delay-2" style={{ marginBottom: '16px' }}>People from different walks of life across 5+ countries — professionals, business owners, leaders, mothers — have reached out seeking deeper understanding and personal transformation.</p>
@@ -752,78 +757,85 @@ export default function EnergyDiagnosticCallPage() {
                   <label className="form-label" htmlFor="apply-name">Name *</label>
                   <input id="apply-name" className="form-input" type="text" required placeholder="Full name" value={formData.name} onChange={e => setFormData(p => ({ ...p, name: e.target.value }))} />
                 </div>
-                <div className="form-group">
-                  <label className="form-label" htmlFor="apply-dob">Date of birth *</label>
-                  <input id="apply-dob" className="form-input" type="date" required value={formData.dob} onChange={e => setFormData(p => ({ ...p, dob: e.target.value }))} />
-                </div>
-                <div className="form-group">
-                  <label className="form-label" htmlFor="apply-gender">Gender *</label>
-                  <select id="apply-gender" className="form-input" required value={formData.gender} onChange={e => setFormData(p => ({ ...p, gender: e.target.value }))}>
-                    <option value="" disabled>Select Gender</option>
-                    <option value="Female">Female</option>
-                    <option value="Male">Male</option>
-                    <option value="Other">Other / Prefer not to say</option>
-                  </select>
-                </div>
-                <div className="form-group">
-                  <label className="form-label" htmlFor="apply-country">Country *</label>
-                  <input id="apply-country" className="form-input" type="text" required placeholder="e.g. India, United States" value={formData.country} onChange={e => setFormData(p => ({ ...p, country: e.target.value }))} />
-                </div>
-                <div className="form-group">
-                  <label className="form-label" htmlFor="apply-phone">Phone number *</label>
-                  <div className="phone-row">
-                    {/* Country code trigger */}
-                    <button
-                      type="button"
-                      className="cc-btn"
-                      onClick={() => { setShowCountryDrop(v => !v); setCountrySearch(''); }}
-                      aria-label="Select country code"
-                    >
-                      <span className="cc-flag">{selectedCountry.flag}</span>
-                      <span className="cc-dial">{selectedCountry.dial}</span>
-                      <span className={`cc-chevron${showCountryDrop ? ' open' : ''}`}>▼</span>
-                    </button>
-                    {/* Dropdown */}
-                    {showCountryDrop && (
-                      <div className="cc-dropdown">
-                        <input
-                          className="cc-search"
-                          type="text"
-                          placeholder="Search country..."
-                          autoFocus
-                          value={countrySearch}
-                          onChange={e => setCountrySearch(e.target.value)}
-                        />
-                        <div className="cc-list">
-                          {COUNTRIES.filter(c =>
-                            c.name.toLowerCase().includes(countrySearch.toLowerCase()) ||
-                            c.dial.includes(countrySearch)
-                          ).map(c => (
-                            <div
-                              key={c.code}
-                              className={`cc-option${c.code === selectedCountry.code ? ' active' : ''}`}
-                              onClick={() => { setSelectedCountry(c); setShowCountryDrop(false); setCountrySearch(''); setFormData(p => ({ ...p, country: p.country || c.name })); }}
-                            >
-                              <span className="cc-opt-flag">{c.flag}</span>
-                              <span className="cc-opt-name">{c.name}</span>
-                              <span className="cc-opt-dial">{c.dial}</span>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-                    {/* Number input */}
-                    <input
-                      id="apply-phone"
-                      className="phone-number-input"
-                      type="tel"
-                      required
-                      placeholder="98765 43210"
-                      value={formData.phone}
-                      onChange={e => setFormData(p => ({ ...p, phone: e.target.value }))}
-                    />
+
+                <div className="form-row">
+                  <div className="form-group flex-1">
+                    <label className="form-label" htmlFor="apply-dob">Date of birth *</label>
+                    <input id="apply-dob" className="form-input" type="date" required value={formData.dob} onChange={e => setFormData(p => ({ ...p, dob: e.target.value }))} />
+                  </div>
+                  <div className="form-group flex-1">
+                    <label className="form-label" htmlFor="apply-gender">Gender *</label>
+                    <select id="apply-gender" className="form-input" required value={formData.gender} onChange={e => setFormData(p => ({ ...p, gender: e.target.value }))}>
+                      <option value="" disabled>Select Gender</option>
+                      <option value="Female">Female</option>
+                      <option value="Male">Male</option>
+                      <option value="Other">Other / Prefer not to say</option>
+                    </select>
                   </div>
                 </div>
+
+                <div className="form-row">
+                  <div className="form-group flex-1">
+                    <label className="form-label" htmlFor="apply-country">Country *</label>
+                    <input id="apply-country" className="form-input" type="text" required placeholder="e.g. India, United States" value={formData.country} onChange={e => setFormData(p => ({ ...p, country: e.target.value }))} />
+                  </div>
+                  <div className="form-group flex-1">
+                    <label className="form-label" htmlFor="apply-phone">Phone number *</label>
+                    <div className="phone-row">
+                      {/* Country code trigger */}
+                      <button
+                        type="button"
+                        className="cc-btn"
+                        onClick={() => { setShowCountryDrop(v => !v); setCountrySearch(''); }}
+                        aria-label="Select country code"
+                      >
+                        <span className="cc-flag">{selectedCountry.flag}</span>
+                        <span className="cc-dial">{selectedCountry.dial}</span>
+                        <span className={`cc-chevron${showCountryDrop ? ' open' : ''}`}>▼</span>
+                      </button>
+                      {/* Dropdown */}
+                      {showCountryDrop && (
+                        <div className="cc-dropdown">
+                          <input
+                            className="cc-search"
+                            type="text"
+                            placeholder="Search country..."
+                            autoFocus
+                            value={countrySearch}
+                            onChange={e => setCountrySearch(e.target.value)}
+                          />
+                          <div className="cc-list">
+                            {COUNTRIES.filter(c =>
+                              c.name.toLowerCase().includes(countrySearch.toLowerCase()) ||
+                              c.dial.includes(countrySearch)
+                            ).map(c => (
+                              <div
+                                key={c.code}
+                                className={`cc-option${c.code === selectedCountry.code ? ' active' : ''}`}
+                                onClick={() => { setSelectedCountry(c); setShowCountryDrop(false); setCountrySearch(''); setFormData(p => ({ ...p, country: p.country || c.name })); }}
+                              >
+                                <span className="cc-opt-flag">{c.flag}</span>
+                                <span className="cc-opt-name">{c.name}</span>
+                                <span className="cc-opt-dial">{c.dial}</span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                      {/* Number input */}
+                      <input
+                        id="apply-phone"
+                        className="phone-number-input"
+                        type="tel"
+                        required
+                        placeholder="98765 43210"
+                        value={formData.phone}
+                        onChange={e => setFormData(p => ({ ...p, phone: e.target.value }))}
+                      />
+                    </div>
+                  </div>
+                </div>
+
                 <div className="form-group">
                   <label className="form-label" htmlFor="apply-purpose">Purpose *</label>
                   <textarea id="apply-purpose" className="form-input form-textarea" required placeholder="Share briefly your purpose for this call..." value={formData.purpose} onChange={e => setFormData(p => ({ ...p, purpose: e.target.value }))} />

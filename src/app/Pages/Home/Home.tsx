@@ -41,63 +41,66 @@ function CollapsibleSection({
     <div className="w-full">
       <button
         onClick={onToggle}
-        className={`w-full group flex items-center gap-4 md:gap-6 px-5 md:px-8 py-4 md:py-5 rounded-2xl md:rounded-3xl transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] cursor-pointer ${
+        className={`w-full group flex items-center gap-4 md:gap-6 px-5 md:px-8 py-4 md:py-5 rounded-2xl md:rounded-3xl transition-all duration-300 ease-out cursor-pointer text-left border ${
           isOpen
-            ? "bg-gradient-to-r from-[#c42d2d]/10 to-[#c42d2d]/5 border border-[#c42d2d]/20 shadow-[0_8px_30px_-8px_rgba(196,45,45,0.15)]"
-            : "bg-white/80 backdrop-blur-sm border border-gray-200/60 shadow-[0_4px_15px_-5px_rgba(0,0,0,0.06)] hover:border-[#c42d2d]/15 hover:shadow-[0_8px_25px_-5px_rgba(196,45,45,0.1)] hover:bg-white"
-        }`}
+            ? "bg-[#c42d2d]/8 border-[#c42d2d]/20 shadow-[0_8px_30px_-8px_rgba(196,45,45,0.15)]"
+            : "bg-white/80 backdrop-blur-sm border-gray-200/60 shadow-[0_4px_15px_-5px_rgba(0,0,0,0.06)]"
+        } hover:bg-[#720A15] hover:border-[#720A15] hover:shadow-[0_12px_35px_rgba(114,10,21,0.25)] hover:scale-[1.01]`}
       >
         {/* Icon */}
         <div
-          className={`flex-shrink-0 w-11 h-11 md:w-13 md:h-13 rounded-2xl flex items-center justify-center transition-all duration-500 ${
+          className={`flex-shrink-0 w-11 h-11 md:w-13 md:h-13 rounded-2xl flex items-center justify-center transition-all duration-300 bg-gradient-to-br ${
             isOpen
-              ? "bg-[#c42d2d] shadow-lg shadow-[#c42d2d]/25"
-              : "bg-gradient-to-br from-[#c42d2d]/10 to-[#c42d2d]/5 group-hover:from-[#c42d2d]/15 group-hover:to-[#c42d2d]/8"
-          }`}
+              ? "from-[#c42d2d] to-[#c42d2d] text-white shadow-lg shadow-[#c42d2d]/25"
+              : "from-[#c42d2d]/10 to-[#c42d2d]/5 text-[#c42d2d]"
+          } group-hover:from-white group-hover:to-white group-hover:text-[#720A15] group-hover:shadow-none`}
         >
-          <span className={`transition-colors duration-300 ${isOpen ? "text-white" : "text-[#c42d2d]"}`}>
+          <span className="transition-colors duration-300">
             {icon}
           </span>
         </div>
 
         {/* Text + Preview */}
-        <div className="flex-1 text-left min-w-0">
+        <div className="flex-1 min-w-0 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <h3
-            className={`text-[16px] md:text-[19px] font-[var(--font-playfair)] font-bold leading-tight transition-colors duration-300 ${
-              isOpen ? "text-[#c42d2d]" : "text-[#111] group-hover:text-[#8a0a0a]"
-            }`}
+            className={`text-[16px] md:text-[19px] font-[var(--font-playfair)] font-bold leading-tight transition-colors duration-300 text-left ${
+              isOpen ? "text-[#c42d2d]" : "text-[#111]"
+            } group-hover:text-white flex-shrink-0`}
           >
             {title}
           </h3>
-          <p className="text-[11px] md:text-[13px] text-gray-500 font-[var(--font-dm-sans)] mt-0.5 truncate">
-            {subtitle}
-          </p>
+          
+          <div className="flex flex-col items-start sm:items-end text-left sm:text-right justify-center min-w-0">
+            <p className="text-[11px] md:text-[13px] text-gray-700 font-[var(--font-dm-sans)] mt-0.5 truncate text-left sm:text-right w-full transition-colors duration-300 group-hover:text-white/90 font-medium">
+              {subtitle}
+            </p>
 
-          {/* Preview strip — visible only when collapsed */}
-          {!isOpen && (
-            <div className="mt-2.5 transition-all duration-500">
-              {preview}
-            </div>
-          )}
+            {/* Preview strip — visible only when collapsed */}
+            {!isOpen && (
+              <div className="mt-2 transition-all duration-500 w-full text-left sm:text-right flex justify-start sm:justify-end">
+                {preview}
+              </div>
+            )}
+          </div>
         </div>
 
         {/* Arrow / toggle */}
         <div
-          className={`flex-shrink-0 w-9 h-9 md:w-10 md:h-10 rounded-full flex items-center justify-center border-2 transition-all duration-500 ${
+          className={`flex-shrink-0 w-9 h-9 md:w-10 md:h-10 rounded-full flex items-center justify-center border-2 transition-all duration-300 ${
             isOpen
-              ? "bg-[#c42d2d] border-[#c42d2d] shadow-md shadow-[#c42d2d]/30"
-              : "bg-gray-50 border-gray-300 group-hover:border-[#c42d2d]/30 group-hover:bg-white"
-          }`}
+              ? "bg-[#c42d2d] border-[#c42d2d] text-white shadow-md shadow-[#c42d2d]/30"
+              : "bg-gray-50 border-gray-300 text-[#c42d2d]"
+          } group-hover:bg-white group-hover:border-white group-hover:text-[#720A15]`}
         >
           <svg
             width="14"
             height="14"
             viewBox="0 0 24 24"
             fill="none"
-            stroke={isOpen ? "white" : "#c42d2d"}
+            stroke="currentColor"
             strokeWidth="2.5"
             strokeLinecap="round"
-            className={`transition-transform duration-500 ${isOpen ? "rotate-180" : ""}`}
+            className={`transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
           >
             <path d="M6 9l6 6 6-6" />
           </svg>
@@ -122,26 +125,29 @@ function CollapsibleSection({
 
 function MomsPreview() {
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex items-center gap-2 justify-start sm:justify-end w-full text-left sm:text-right">
+      <span className="text-[10px] text-gray-700 font-[var(--font-dm-sans)] ml-1 text-left sm:text-right transition-colors duration-300 group-hover:text-white/90 order-2 sm:order-1 font-medium">
+        Pan-India nurturing space for mothers
+      </span>
       {/* Mini thumbnails */}
-      <div className="flex -space-x-2">
+      <div className="flex -space-x-2 justify-start sm:justify-end order-1 sm:order-2">
         {[1, 2, 3, 4].map((i) => (
           <div key={i} className="w-7 h-7 rounded-full border-2 border-white overflow-hidden shadow-sm relative flex-shrink-0">
             <Image src={`/moms/${i}.png`} alt={`Mom ${i}`} fill className="object-cover" sizes="28px" />
           </div>
         ))}
       </div>
-      <span className="text-[10px] text-gray-400 font-[var(--font-dm-sans)] ml-1">
-        Pan-India nurturing space for mothers
-      </span>
     </div>
   );
 }
 
 function DarePreview() {
   return (
-    <div className="flex items-center gap-2">
-      <div className="flex -space-x-2">
+    <div className="flex items-center gap-2 justify-start sm:justify-end w-full text-left sm:text-right">
+      <span className="text-[10px] text-gray-700 font-[var(--font-dm-sans)] ml-1 text-left sm:text-right transition-colors duration-300 group-hover:text-white/90 order-2 sm:order-1 font-medium">
+        52 renowned voices · Padma Shri awardees
+      </span>
+      <div className="flex -space-x-2 justify-start sm:justify-end order-1 sm:order-2">
         {[0, 2, 4, 6].map((i) => {
           const num = String(i).padStart(4, "0");
           return (
@@ -151,42 +157,39 @@ function DarePreview() {
           );
         })}
       </div>
-      <span className="text-[10px] text-gray-400 font-[var(--font-dm-sans)] ml-1">
-        52 renowned voices · Padma Shri awardees
-      </span>
     </div>
   );
 }
 
 function QuotesPreview() {
   return (
-    <div className="flex items-center gap-2.5">
-      <div className="flex -space-x-1.5">
+    <div className="flex items-center gap-2.5 justify-start sm:justify-end w-full text-left sm:text-right">
+      <span className="text-[10px] text-gray-700 font-[var(--font-dm-sans)] italic ml-0.5 text-left sm:text-right transition-colors duration-300 group-hover:text-white/90 order-2 sm:order-1 font-medium">
+        &ldquo;Energy is the foundation of everything...&rdquo;
+      </span>
+      <div className="flex -space-x-1.5 justify-start sm:justify-end order-1 sm:order-2">
         {[1, 2, 3].map((i) => (
           <div key={i} className="w-8 h-8 rounded-lg border-2 border-white overflow-hidden shadow-sm relative flex-shrink-0">
             <Image src={`/quotes/${i}.png`} alt={`Quote ${i}`} fill className="object-cover" sizes="32px" />
           </div>
         ))}
       </div>
-      <span className="text-[10px] text-gray-400 font-[var(--font-dm-sans)] italic ml-0.5">
-        &ldquo;Energy is the foundation of everything...&rdquo;
-      </span>
     </div>
   );
 }
 
 function BlogPreview() {
   return (
-    <div className="flex items-center gap-2">
-      <div className="flex items-center gap-1.5">
-        <span className="inline-flex items-center gap-1 text-[9px] font-bold uppercase tracking-wider text-[#c42d2d] bg-[#c42d2d]/6 border border-[#c42d2d]/15 rounded-full px-2 py-0.5 font-[var(--font-dm-sans)]">
-          <span className="w-1 h-1 rounded-full bg-[#c42d2d]" />
+    <div className="flex items-center gap-2 justify-start sm:justify-end w-full text-left sm:text-right">
+      <span className="text-[10px] text-gray-700 font-[var(--font-dm-sans)] truncate text-left sm:text-right transition-colors duration-300 group-hover:text-white/90 order-2 sm:order-1 font-medium">
+        &ldquo;But You Create Miracles For Others...&rdquo; + 1 more article
+      </span>
+      <div className="flex items-center gap-1.5 justify-start sm:justify-end order-1 sm:order-2">
+        <span className="inline-flex items-center gap-1 text-[9px] font-bold uppercase tracking-wider text-[#c42d2d] bg-[#c42d2d]/6 border border-[#c42d2d]/15 rounded-full px-2 py-0.5 font-[var(--font-dm-sans)] transition-colors duration-300 group-hover:text-white group-hover:bg-white/10 group-hover:border-white/20">
+          <span className="w-1 h-1 rounded-full bg-[#c42d2d] transition-colors duration-300 group-hover:bg-white" />
           New
         </span>
       </div>
-      <span className="text-[10px] text-gray-400 font-[var(--font-dm-sans)] truncate">
-        &ldquo;But You Create Miracles For Others...&rdquo; + 1 more article
-      </span>
     </div>
   );
 }

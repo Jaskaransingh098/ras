@@ -51,7 +51,7 @@ export default function Contact() {
                     </h2>
 
                     <p className="text-white/80 text-[13px] sm:text-[15px] md:text-[18px] font-[var(--font-dm-sans)] leading-relaxed max-w-sm mb-6 md:mb-16">
-                        I&apos;m always open to discussing new opportunities, whether it&apos;s speaking at your next event or collaborating on transformative services. Let&apos;s make it happen.
+                        We&apos;re always open to discuss new opportunities, whether it&apos;s speaking at your next event or collaborating on transformative services. Let&apos;s make it happen.
                     </p>
 
                     <div className="flex flex-col gap-2">
@@ -131,6 +131,41 @@ export default function Contact() {
                             >
                                 Email Address
                             </label>
+                        </div>
+
+                        {/* Mobile & WhatsApp Numbers */}
+                        <div className="flex flex-col sm:flex-row gap-6 md:gap-8">
+                            {/* Mobile Number */}
+                            <div className="relative w-full group">
+                                <input
+                                    type="tel"
+                                    id="mobile"
+                                    className="peer w-full bg-gray-50/50 border border-gray-400/80 rounded-[16px] px-5 py-4 text-[#111] text-[15px] font-[var(--font-dm-sans)] placeholder-transparent focus:outline-none focus:border-[#c42d2d] focus:bg-white focus:shadow-[0_4px_20px_rgba(196,45,45,0.08)] transition-all"
+                                    placeholder="Mobile Number"
+                                />
+                                <label
+                                    htmlFor="mobile"
+                                    className="absolute left-5 top-[18px] text-gray-800 text-[15px] font-[var(--font-dm-sans)] transition-all peer-focus:-top-3 peer-focus:left-4 peer-focus:text-[10px] peer-focus:text-[#c42d2d] peer-focus:tracking-[.1em] peer-focus:font-bold peer-focus:uppercase peer-focus:bg-white peer-focus:px-2 peer-placeholder-shown:top-[18px] peer-placeholder-shown:left-5 peer-placeholder-shown:text-[15px] peer-placeholder-shown:text-gray-800 peer-placeholder-shown:normal-case peer-placeholder-shown:font-normal peer-placeholder-shown:bg-transparent peer-placeholder-shown:px-0 -top-3 left-4 text-[10px] text-gray-400 tracking-[.1em] uppercase font-bold bg-white px-2 pointer-events-none"
+                                >
+                                    Mobile Number (Optional)
+                                </label>
+                            </div>
+
+                            {/* WhatsApp Number */}
+                            <div className="relative w-full group">
+                                <input
+                                    type="tel"
+                                    id="whatsapp"
+                                    className="peer w-full bg-gray-50/50 border border-gray-400/80 rounded-[16px] px-5 py-4 text-[#111] text-[15px] font-[var(--font-dm-sans)] placeholder-transparent focus:outline-none focus:border-[#c42d2d] focus:bg-white focus:shadow-[0_4px_20px_rgba(196,45,45,0.08)] transition-all"
+                                    placeholder="WhatsApp Number"
+                                />
+                                <label
+                                    htmlFor="whatsapp"
+                                    className="absolute left-5 top-[18px] text-gray-800 text-[15px] font-[var(--font-dm-sans)] transition-all peer-focus:-top-3 peer-focus:left-4 peer-focus:text-[10px] peer-focus:text-[#c42d2d] peer-focus:tracking-[.1em] peer-focus:font-bold peer-focus:uppercase peer-focus:bg-white peer-focus:px-2 peer-placeholder-shown:top-[18px] peer-placeholder-shown:left-5 peer-placeholder-shown:text-[15px] peer-placeholder-shown:text-gray-800 peer-placeholder-shown:normal-case peer-placeholder-shown:font-normal peer-placeholder-shown:bg-transparent peer-placeholder-shown:px-0 -top-3 left-4 text-[10px] text-gray-400 tracking-[.1em] uppercase font-bold bg-white px-2 pointer-events-none"
+                                >
+                                    WhatsApp Number (Optional)
+                                </label>
+                            </div>
                         </div>
 
                         {/* Inquiry Regarding */}

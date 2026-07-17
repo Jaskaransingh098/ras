@@ -35,7 +35,7 @@ const cards = [
     },
     {
         title: "Invited Speaker & Thought Leader",
-        description: "Invited speaker at universities, institutions and organisations — shaping young minds and emerging leaders through energy-led transformation.",
+        description: "Invited speaker at universities, institutions and organisations, shaping young minds and emerging leaders through energy-led transformation.",
         image: "/scrollCards/4.png",
         icon: (
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#c42d2d" strokeWidth="2" strokeLinecap="round">
@@ -55,7 +55,7 @@ const cards = [
     },
     {
         title: "Founder of MOMS Community",
-        description: "Founder of MOMS (Multitasking Outstanding Mothers) community — a national movement empowering women emotionally and professionally.",
+        description: "Founder of MOMS (Multitasking Outstanding Mothers) community, a national movement empowering women emotionally and professionally.",
         image: "/scrollCards/6.png",
         icon: (
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#c42d2d" strokeWidth="2" strokeLinecap="round">
@@ -65,7 +65,7 @@ const cards = [
     },
     {
         title: "National Media Recognition",
-        description: "Featured across leading national media platforms for her work and thought leadership — a trusted voice in the world of energy transformation.",
+        description: "Featured across leading national media platforms for her work and thought leadership, a trusted voice in the world of energy transformation.",
         image: "/scrollCards/7.png",
         icon: (
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#c42d2d" strokeWidth="2" strokeLinecap="round">
@@ -74,8 +74,8 @@ const cards = [
         ),
     },
     {
-        title: "Global Impact — 5+ Countries",
-        description: "Has delivered single-session transformations for clients across 5+ countries, entirely online. Not a coach. Not a therapist. Not a healer — she shifts energy. Everything changes.",
+        title: "Global Impact, 5+ Countries",
+        description: "Has delivered single-session transformations for clients across 5+ countries, entirely online. Not a coach. Not a therapist. Not a healer, she just transforms energy & everything changes.",
         image: "/scrollCards/8.png",
         icon: (
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#c42d2d" strokeWidth="2" strokeLinecap="round">

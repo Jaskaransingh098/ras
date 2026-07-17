@@ -126,25 +126,6 @@ export default function Services() {
                 .service-card:hover .card-glow {
                     opacity: 0.3;
                 }
-                .icon-ring {
-                    position: relative;
-           
-               }
-                .icon-ring::after {
-                    content: '';
-                    position: absolute;
-                    inset: -4px;
-                    border-radius: 16px;
-                    border: 1.5px dashed;
-                    opacity: 0;
-                    transition: all 0.4s;
-                    // animation: glow-pulse 3s ease-in-out infinite;
-           
-               }
-                .service-card:hover .icon-ring::after {
-                    opacity: 0.4;
-         
-               }
                 .shine-btn {
                     position: relative;
           
@@ -164,10 +145,7 @@ export default function Services() {
                 .shine-btn:hover::after {
                     left: 120%;
                 }
-                .icon-ring-red::after {
-                    border-color: #c42d2d;
-               
-               }
+
                 .floating-orb {
                     animation: orb-drift 8s ease-in-out infinite;
                
@@ -260,11 +238,11 @@ export default function Services() {
                             <div className="p-5 sm:p-6 md:p-7 flex-1 flex flex-col relative z-10">
                                 {/* Icon & Badge */}
                                 <div className="flex items-start justify-between mb-5">
-                                    <div className="icon-ring icon-ring-red w-16 h-16 rounded-2xl bg-gradient-to-br from-[#c42d2d]/10 to-[#c42d2d]/5 border border-[#c42d2d]/15 flex items-center justify-center group-hover:from-[#c42d2d]/20 group-hover:to-[#c42d2d]/10 transition-all duration-500 z-10 bg-white">
+                                    <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#c42d2d]/10 to-[#c42d2d]/5 border border-[#c42d2d]/15 flex items-center justify-center transition-all duration-500 z-10 bg-white">
                                         <img
                                             src={svc.iconSVG}
                                             alt={svc.title}
-                                            className="w-16 h-16 object-contain transition-transform duration-500 group-hover:scale-110"
+                                            className="w-16 h-16 object-contain transition-transform duration-500 group-hover:scale-120"
                                         />
                                     </div>
                                     <span className="inline-flex items-center gap-1.5 bg-gradient-to-r from-[#c42d2d]/10 to-[#c42d2d]/5 text-[#c42d2d] text-[9px] font-bold uppercase tracking-wider rounded-full px-3 py-1 border border-[#c42d2d]/15 shadow-sm">

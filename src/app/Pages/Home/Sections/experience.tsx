@@ -156,7 +156,7 @@ export default function Experience({ scrollRef }: Props) {
             <div className="flex items-start gap-3 mb-8 md:mb-16">
               {/* <div className="w-[3px] self-stretch min-h-[2.5em] rounded-full bg-[#a51313] flex-shrink-0" /> */}
               <p className="text-[#a51313] pt-2 text-[15px] md:text-[20px] font-[var(--font-dm-sans)] font-bold leading-[1.4] tracking-wide italic">
-                Welcome to the work that goes beyond the logical mind — into pure transformation
+                Welcome to the work that goes beyond the logical mind into pure transformation
               </p>
 
             </div>
