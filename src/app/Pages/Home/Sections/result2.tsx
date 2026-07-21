@@ -10,7 +10,7 @@ gsap.registerPlugin(ScrollTrigger);
 const cards = [
     {
         title: "A Calm Mind & Emotional Lightness",
-        desc: "Your overthinking quiets. Stress loosens its grip. The heaviness, guilt, abuse, anxiety, grief begins to lift — in just one session.",
+        desc: "Your overthinking quiets. Stress loosens its grip. The heaviness, guilt, abuse, anxiety, grief begins to lift, in just one session.",
         image: "/results/1.gif",
         accent: "#c42d2d",
     },
@@ -186,7 +186,7 @@ export default function Result() {
                 <div className="r-reveal mb-2 flex flex-col md:flex-row md:items-center gap-2 md:gap-6">
                     <p className="text-[#555] text-[13px] md:text-[18px] italic font-[var(--font-playfair)]">
                         What if you didn’t have to carry everyone’s world on your shoulders?
-                        What if you felt safe to be the REAL YOU—
+                        What if you felt safe to be the REAL YOU,
                         behind the smile, behind the strength, behind the pressure?
                         {/* What if you felt safe to be the{" "}
                         <span className="font-bold not-italic text-[#1a1a1a]">REAL YOU</span>

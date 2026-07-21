@@ -7,9 +7,9 @@ import Link from 'next/link';
 const servicesData = [
     {
         badge: "Signature",
-        title: "Revenue Energetics™",
-        p1: "One powerful session that shifts what strategy, effort and coaching couldn't.",
-        p2: "This isn't healing the way you think it is — it's a deeper energy transformation, a shift in your frequency that creates visible change in one session.",
+        title: "Revenue Energetic",
+        p1: "One powerful online session that shifts what strategy, effort and coaching couldn't.",
+        p2: "This isn't healing the way you think it is, it's a deeper energy transformation, a shift in your frequency that creates visible change in one session.",
         iconSVG: "/services/Revenue-energetic.png",
         btnText: "Explore",
         btnLink: "#",
@@ -19,7 +19,7 @@ const servicesData = [
     },
     {
         badge: "Paid Diagnostic",
-        title: "Energy Diagnostic Call™",
+        title: "Energy Diagnostic Call",
         p1: "A paid energy diagnostic call to understand what's really happening beneath the surface.",
         p2: "You receive a clear energetic roadmap showing what blocks are draining you, what needs to shift and your next step toward your goals.",
         iconSVG: "/services/Energy-diagnostic.png",
@@ -28,7 +28,7 @@ const servicesData = [
         number: "02",
         extra: (
             <div className="flex flex-wrap gap-2 flex-1 mt-3">
-                {['Energy Roadmap', 'Block Identification'].map((f) => (
+                {['Energy Roadmap', 'Block Identification', 'Online Session'].map((f) => (
                     <span key={f} className="feature-chip text-[9px] uppercase tracking-wider text-[#c42d2d] bg-white/70 border border-[#c42d2d]/20 rounded-full px-3 py-1 font-semibold font-[var(--font-dm-sans)] h-fit shadow-sm">
                         {f}
                     </span>
@@ -39,9 +39,9 @@ const servicesData = [
     },
     {
         badge: "Quiz",
-        title: "Energy Score™ Quiz",
+        title: "Energy Score Quiz",
         p1: "A quick, intuitive check-in to see where your energy is dropping right now.",
-        p2: "This is not a medical diagnosis — it's a gentle mirror to the hidden energetic patterns your mind may overlook. See what's truly happening beneath the surface.",
+        p2: "This is not a medical diagnosis, it's a gentle mirror to the hidden energetic patterns your mind may overlook. See what's truly happening beneath the surface.",
         iconSVG: "/services/Energy-score.png",
         btnText: "Take the Quiz",
         btnLink: "#",
@@ -238,7 +238,7 @@ export default function Services() {
                             <div className="p-5 sm:p-6 md:p-7 flex-1 flex flex-col relative z-10">
                                 {/* Icon & Badge */}
                                 <div className="flex items-start justify-between mb-5">
-                                    <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#c42d2d]/10 to-[#c42d2d]/5 border border-[#c42d2d]/15 flex items-center justify-center transition-all duration-500 z-10 bg-white">
+                                    <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#c42d2d]/10 to-[#c42d2d]/5 border border-[#c42d2d]/15 flex items-center justify-center transition-all duration-500 scale-150 z-10 bg-white">
                                         <img
                                             src={svc.iconSVG}
                                             alt={svc.title}

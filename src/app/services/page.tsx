@@ -34,7 +34,7 @@ export default function ServicesPage() {
             </h1>
 
             <p className="text-white/80 text-[16px] md:text-[19px] max-w-2xl mx-auto leading-relaxed font-[var(--font-dm-sans)]">
-              From energy diagnostics to deep transformation — explore the full
+              From energy diagnostics to deep transformation, explore the full
               spectrum of what&apos;s possible when you shift at the root.
             </p>
 

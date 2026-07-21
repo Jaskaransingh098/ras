@@ -6,9 +6,10 @@ import { usePathname } from "next/navigation";
 
 const navLinks = [
   { label: "Home", href: "/" },
-  { label: "Our Gallery", href: "/sessions" },
-  { label: "Our Blogs", href: "/blog" },
-  { label: "Contact", href: "/contact" },
+  { label: "Our Services", href: "/services" },
+  { label: "Quotes", href: "/blog/quotes" },
+  { label: "Energy Diagnostic", href: "/energy-diagnostic-call" },
+  // { label: "Contact", href: "#contact" },
 ];
 
 export default function Navbar() {
@@ -98,7 +99,7 @@ export default function Navbar() {
 
           {/* CTA — solid red, always visible */}
           <Link
-            href="/contact"
+            href="#contact"
             className="flex items-center gap-1.5 px-5 py-2.5 text-[13px] font-bold font-[var(--font-outfit)] flex-shrink-0 transition-all duration-200 group"
             style={{
               background: "#c42d2d",

@@ -153,7 +153,7 @@ export default function BlogPostClient({ blog, relatedBlogs }: BlogPostClientPro
               </h3>
               <p className="text-[14px] md:text-[16px] text-[#6a4a3a] leading-relaxed font-[var(--font-dm-sans)]">
                 Let&apos;s explore what&apos;s really possible for you. Book an Energy
-                Diagnostic Call™ to identify your blocks and chart your path
+                Diagnostic Call to identify your blocks and chart your path
                 forward.
               </p>
             </div>

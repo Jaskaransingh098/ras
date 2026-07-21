@@ -454,84 +454,84 @@ Thank you, Ras, from the bottom of my heart, for being in my life and helping me
 
 `,
     },
-//     {
-//       title: "Even a Healer",
-//       highlight: "Needed Healing",
-//       sub: "transformed in just one",
-//       badge: "Deep Energy Session",
-//       name: "Milli Bhargava",
-//       role: "Reiki Healer & Tarot Reader",
-//       location: "",
-//       youtubeId: "hWNj_VwGsEs",
-//       poster: "milli.png",
-//       transcript: `
-// Raseshvari:
+    {
+      title: "1.5 Years of Heartbreak &",
+      highlight: "Depression Shifted",
+      sub: "transformed in just one",
+      badge: "Emotional Freedom Session",
+      name: "Swapnil",
+      role: "Interior Designer",
+      location: "Mumbai",
+      youtubeId: "hWNj_VwGsEs",
+      poster: "swapnil.png",
+      transcript: `
+Raseshvari:
 
-// Heartbreak isn't just pain, it's stuck energy. And when we shift that energy, we shift everything.
-// Not everyone feels like smiling when healing. But even in this quiet moment, you will hear the shift.
-// Grateful to this client for sharing his transformation, and it's his first time on the camera.
+Heartbreak isn't just pain, it's stuck energy. And when we shift that energy, we shift everything.
+Not everyone feels like smiling when healing. But even in this quiet moment, you will hear the shift.
+Grateful to this client for sharing his transformation, and it's his first time on the camera.
 
-// Swapnil:
+Swapnil:
 
-// Hello, friend. Myself, Sapnil. I'm interior designer from Mumbai. I would love to share about a magical transformation happening in my life in just one session.
+Hello, friend. Myself, Sapnil. I'm interior designer from Mumbai. I would love to share about a magical transformation happening in my life in just one session.
 
-// I was stuck in a relationship issue for more than one and a half year. I got into depression. I tried hard, but nothing was helping.
-// But by God grace, Raseshvari ma'am helped me with her emotional freedom session.
-// She's magical, guys. She can make anything possible. She can definitely help you out.
+I was stuck in a relationship issue for more than one and a half year. I got into depression. I tried hard, but nothing was helping.
+But by God grace, Raseshvari ma'am helped me with her emotional freedom session.
+She's magical, guys. She can make anything possible. She can definitely help you out.
 
-// Raseshvari:
+Raseshvari:
 
-// You don't have to carry the weight of heartbreak forever.
-// Sometimes, one session is all it takes.
+You don't have to carry the weight of heartbreak forever.
+Sometimes, one session is all it takes.
 
-// `,
-//     },
-//       {
-//       title: "Even a Healer",
-//       highlight: "Needed Healing",
-//       sub: "transformed in just one",
-//       badge: "Deep Energy Session",
-//       name: "Milli Bhargava",
-//       role: "Reiki Healer & Tarot Reader",
-//       location: "",
-//       youtubeId: "6ce6FWIHzf0",
-//       poster: "milli.png",
-//       transcript: `
-// Raseshvari:
+`,
+    },
+    {
+      title: "Societal Pressure &",
+      highlight: "Overwhelm Shifted",
+      sub: "transformed in just one",
+      badge: "Emotional Freedom Session",
+      name: "Rahul",
+      role: "Young Professional",
+      location: "",
+      youtubeId: "6ce6FWIHzf0",
+      poster: "rahul-1.png",
+      transcript: `
+Raseshvari:
 
-// You would never imagine how this young, intelligent professional was silently sinking under the weight of societal pressure, expectations, criticism and pain that no one could see.
+You would never imagine how this young, intelligent professional was silently sinking under the weight of societal pressure, expectations, criticism and pain that no one could see.
 
-// Rahul:
+Rahul:
 
-// Itna pressure badh gaya tha ki main kisi se share bhi nahi kar pa raha tha. It demotivated me a lot. Mera confidence level bahut gir gaya tha.
+Itna pressure badh gaya tha ki main kisi se share bhi nahi kar pa raha tha. It demotivated me a lot. Mera confidence level bahut gir gaya tha.
 
-// Even though I knew I was right, main kuch bol hi nahi pa raha tha.
-// My sister noticed the change in me. She had already taken sessions with Raseshvari Didi, so she suggested that I take just one session.
-// She told me, "After the session, you'll feel like you've found a sister who truly listens to you... and never judges you."
-// And that's exactly what happened.
+Even though I knew I was right, main kuch bol hi nahi pa raha tha.
+My sister noticed the change in me. She had already taken sessions with Raseshvari Didi, so she suggested that I take just one session.
+She told me, "After the session, you'll feel like you've found a sister who truly listens to you... and never judges you."
+And that's exactly what happened.
 
-// Within three days, I spoke to people I hadn't even met or spoken to for six months. I started answering phone calls again.
+Within three days, I spoke to people I hadn't even met or spoken to for six months. I started answering phone calls again.
 
-// Her ability to shift my energy motivated me in a way I can't explain.
-// After the session, I started feeling positive. I started feeling motivated again.
-// There was a time when I would make schedules but I had no motivation to follow them. Now, the motivation is there too.
-// After almost two years, I was finally able to open my heart and speak freely in front of someone.
-// I'm so glad I took that session.
-// Thank you so much, Raseshvari Didi.
-// You are truly a sister, a mentor, a guide... and someone who helped me come out of overwhelm.
+Her ability to shift my energy motivated me in a way I can't explain.
+After the session, I started feeling positive. I started feeling motivated again.
+There was a time when I would make schedules but I had no motivation to follow them. Now, the motivation is there too.
+After almost two years, I was finally able to open my heart and speak freely in front of someone.
+I'm so glad I took that session.
+Thank you so much, Raseshvari Didi.
+You are truly a sister, a mentor, a guide... and someone who helped me come out of overwhelm.
 
-// Raseshvari:
+Raseshvari:
 
-// You don't have to carry the weight alone.
-// You don't have to keep trying harder.
-// You don't have to wait for years.
-// You simply have to choose.
+You don't have to carry the weight alone.
+You don't have to keep trying harder.
+You don't have to wait for years.
+You simply have to choose.
 
-// I'll handle the rest.
-// Let's connect.
+I'll handle the rest.
+Let's connect.
 
-// `,
-//     },
+`,
+    },
 
   ];
 

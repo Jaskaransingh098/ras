@@ -165,20 +165,20 @@ export default function EnergyDiagnosticCallPage() {
     document.querySelectorAll(".counter").forEach((c) => counterObserver.observe(c));
 
     // ── 3D card tilt ──
-    const card3d = document.querySelector<HTMLElement>(".recognition-card-3d");
-    const cardWrap = document.querySelector<HTMLElement>(".recognition-visual");
-    if (cardWrap && card3d) {
-      const onMove = (e: Event) => {
-        const me = e as MouseEvent;
-        const rect = cardWrap.getBoundingClientRect();
-        const x = (me.clientX - rect.left) / rect.width - 0.5;
-        const y = (me.clientY - rect.top) / rect.height - 0.5;
-        card3d.style.transform = `rotateY(${x * 16}deg) rotateX(${-y * 10}deg)`;
-      };
-      const onLeave = () => { card3d.style.transform = "rotateY(-8deg) rotateX(4deg)"; };
-      cardWrap.addEventListener("mousemove", onMove);
-      cardWrap.addEventListener("mouseleave", onLeave);
-    }
+    // const card3d = document.querySelector<HTMLElement>(".recognition-card-3d");
+    // const cardWrap = document.querySelector<HTMLElement>(".recognition-visual");
+    // if (cardWrap && card3d) {
+    //   const onMove = (e: Event) => {
+    //     const me = e as MouseEvent;
+    //     const rect = cardWrap.getBoundingClientRect();
+    //     const x = (me.clientX - rect.left) / rect.width - 0.5;
+    //     const y = (me.clientY - rect.top) / rect.height - 0.5;
+    //     card3d.style.transform = `rotateY(${x * 16}deg) rotateX(${-y * 10}deg)`;
+    //   };
+    //   const onLeave = () => { card3d.style.transform = "rotateY(-8deg) rotateX(4deg)"; };
+    //   cardWrap.addEventListener("mousemove", onMove);
+    //   cardWrap.addEventListener("mouseleave", onLeave);
+    // }
 
     return () => {
       revealObserver.disconnect();
@@ -327,10 +327,10 @@ export default function EnergyDiagnosticCallPage() {
           .section-recognition { background: var(--bg-warm); }
           .recognition-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center flex:start; }
           .recognition-bullets-col { margin-top: px; }
-          .recognition-visual { position: relative; perspective: 1000px; }
-          .recognition-card-3d { background: linear-gradient(135deg, var(--red) 0%, var(--red-deep) 100%); border-radius: 28px; padding: 56px 48px; transform: rotateY(-8deg) rotateX(4deg); transform-style: preserve-3d; transition: transform 0.6s cubic-bezier(0.4,0,0.2,1); box-shadow: 32px 32px 80px rgba(155,15,31,0.25), -4px -4px 20px rgba(155,15,31,0.1); position: relative; overflow: hidden; }
+          // .recognition-visual { position: relative; perspective: 1000px; }
+          .recognition-card-3d { background: linear-gradient(135deg, var(--red) 0%, var(--red-deep) 100%); border-radius: 28px; padding: 56px 48px; transition: transform 0.6s cubic-bezier(0.4,0,0.2,1); box-shadow: 32px 32px 80px rgba(155,15,31,0.25), -4px -4px 20px rgba(155,15,31,0.1); position: relative; overflow: hidden; }
           .recognition-card-3d::before { content: ''; position: absolute; inset: 0; border-radius: 28px; background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 55%); pointer-events: none; }
-          .recognition-visual:hover .recognition-card-3d { transform: rotateY(-2deg) rotateX(1deg); }
+          // .recognition-visual:hover .recognition-card-3d { transform: rotateY(-2deg) rotateX(1deg); }
           .big-number { font-family: var(--serif); font-size: 160px; font-weight: 300; line-height: 0.8; color: rgba(255,255,255,0.12); position: absolute; top: -20px; right: 16px; pointer-events: none; user-select: none; }
           .recognition-float-stat { position: absolute; bottom: -20px; right: -20px; background: #fff; border: 1px solid var(--line); box-shadow: var(--shadow-md); border-radius: 14px; padding: 12px 20px; }
           .stat-n { font-family: var(--serif); font-size: 38px; font-weight: 400; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
@@ -636,7 +636,7 @@ export default function EnergyDiagnosticCallPage() {
           <div className="diag-container">
             <div className="about-layout">
               <div className="about-img-col reveal">
-                <div className="about-img-frame"><img src="/images/diagnostic-who.png" alt="" /></div>
+                <div className="about-img-frame"><img src="/energy-testimonial/self-pic.png" alt="" /></div>
                 {/* <div className="about-accent"><span>27 years of deep experience</span></div> */}
               </div>
               <div>

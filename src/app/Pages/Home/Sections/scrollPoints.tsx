@@ -5,7 +5,7 @@ import ScrollStack, { ScrollStackItem } from '@/components/ScrollStack'
 const cards = [
     {
         title: "First Indian Hindustani",
-        description: "Socially acclaimed First Indian to consciously adopt 'Hindustani' as her surname — standing for unity beyond caste, creed and religion.",
+        description: "Socially acclaimed First Indian to consciously adopt 'Hindustani' as her surname, standing for unity beyond caste, creed and religion.",
         image: "/scrollCards/1.png",
         icon: (
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#c42d2d" strokeWidth="2" strokeLinecap="round">
@@ -25,7 +25,7 @@ const cards = [
     },
     {
         title: "25+ Years of Spiritual Mastery",
-        description: "25+ years of deep spiritual experience with over a decade of applied energy transformation — turning ancient wisdom into real-world results.",
+        description: "25+ years of deep spiritual experience with over a decade of applied energy transformation, turning ancient wisdom into real-world results.",
         image: "/scrollCards/3.png",
         icon: (
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#c42d2d" strokeWidth="2" strokeLinecap="round">

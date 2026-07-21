@@ -9,7 +9,7 @@ gsap.registerPlugin(ScrollTrigger);
 const servicesData = [
     {
         badge: "Signature",
-        title: "Revenue Energetics™",
+        title: "Revenue Energetics",
         p1: "One powerful session that shifts what strategy, effort and coaching couldn't.",
         p2: "This isn't healing the way you think it is — it's a deeper energy transformation, a shift in your frequency that creates visible change in one session.",
         iconSVG: (
@@ -23,7 +23,7 @@ const servicesData = [
     },
     {
         badge: "Paid Diagnostic",
-        title: "Energy Diagnostic Call™",
+        title: "Energy Diagnostic Call",
         p1: "A paid energy diagnostic call to understand what's really happening beneath the surface.",
         p2: "You receive a clear energetic roadmap showing what blocks are draining you, what needs to shift and your next step toward your goals.",
         iconSVG: (
@@ -45,7 +45,7 @@ const servicesData = [
     },
     {
         badge: "Quiz",
-        title: "Energy Score™ Quiz",
+        title: "Energy Score Quiz",
         p1: "A quick, intuitive check-in to see where your energy is dropping right now.",
         p2: "This is not a medical diagnosis — it's a gentle mirror to the hidden energetic patterns your mind may overlook. See what's truly happening beneath the surface.",
         iconSVG: (
@@ -231,7 +231,7 @@ export default function Services() {
             `}</style>
 
             {/* Decorative compass top-right */}
-           
+
             <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 w-full pt-6 md:pt-8 pb-8 md:pb-10">
 
                 {/* ── Original section header ── */}
@@ -268,7 +268,7 @@ export default function Services() {
                         <span className="svc-row-num">{svc.number}</span>
 
                         {/* Title */}
-                        <h3 className="svc-row-title">{svc.title.replace('™', '')}<sup style={{ fontSize: '0.4em', verticalAlign: 'super', color: '#e85d5d' }}>™</sup></h3>
+                        <h3 className="svc-row-title">{svc.title.replace('', '')}<sup style={{ fontSize: '0.4em', verticalAlign: 'super', color: '#e85d5d' }}></sup></h3>
 
                         {/* Tags column */}
                         <div className="svc-row-tags svc-row-tags-wrap pl-30">
@@ -285,8 +285,8 @@ export default function Services() {
                                     background: i === 0
                                         ? 'linear-gradient(135deg, #8a0a0a 0%, #c42d2d 50%, #2a0505 100%)'
                                         : i === 1
-                                        ? 'linear-gradient(135deg, #1a1a2e 0%, #c42d2d 60%, #4a0e0e 100%)'
-                                        : 'linear-gradient(135deg, #2d0000 0%, #e85d5d 55%, #8a0a0a 100%)'
+                                            ? 'linear-gradient(135deg, #1a1a2e 0%, #c42d2d 60%, #4a0e0e 100%)'
+                                            : 'linear-gradient(135deg, #2d0000 0%, #e85d5d 55%, #8a0a0a 100%)'
                                 }}
                             />
                             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ position: 'relative', zIndex: 1 }}>
@@ -296,7 +296,7 @@ export default function Services() {
                         <p className="svc-row-desc">{svc.p1}&nbsp;{svc.p2}</p>
 
                         {/* Image / visual */}
-                        
+
                         {/* CTA Button */}
                         {/* <a
                             href={svc.btnLink}
@@ -315,7 +315,7 @@ export default function Services() {
                     <p className="svc-cta-text">
                         Not sure where to begin?{' '}
                         <a href="#" className="svc-cta-link">
-                            The Energy Diagnostic Call™
+                            The Energy Diagnostic Call
                         </a>{' '}
                         is the easiest first step.
                     </p>
@@ -348,7 +348,7 @@ export default function Services() {
                     >
                         Explore All
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round">
-                            <path d="M5 12h14"/><path d="M12 5l7 7-7 7"/>
+                            <path d="M5 12h14" /><path d="M12 5l7 7-7 7" />
                         </svg>
                     </a>
                 </div>

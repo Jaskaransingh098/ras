@@ -17,7 +17,7 @@ const blogs = [
     title: "Peace or Pressure — What Are You Still Holding Onto?",
     excerpt:
       "Three years back, life forced me to pause. I chose peace over pressure and released everything. Here's what I learned.",
-    tag: "Revenue Energetics™",
+    tag: "Revenue Energetics",
     date: "Feb 2025",
     readTime: "7 min read",
     content:

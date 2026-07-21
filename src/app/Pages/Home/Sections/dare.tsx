@@ -170,11 +170,11 @@ export default function DareToDream() {
                 />
               </div>
 
-              <p className="text-white text-[11px] sm:text-[13px] md:text-[16px] font-semibold font-[var(--font-dm-sans)] w-[85vw] max-w-[280px] sm:max-w-[330px] leading-relaxed mb-3 mt-2">
+              <p className="text-white text-[11px] sm:text-[13px] md:text-[16px] font-semibold font-[var(--font-dm-sans)] w-[85vw] max-w-[280px] sm:max-w-[330px] leading-relaxed mb-3 mt-7">
                 Raseshvari Hindustani hosted an Instagram Live series featuring
                 52 renowned and honoured voices including Padma Shri awardees,
                 leaders, artists and professionals from diverse fields all
-                across India and beyond— not to showcase successbut to
+                across India and beyond, not to showcase successbut to
                 humanize it. So people watching can feel: <br />
                 <span className="italic">
                   {" "}

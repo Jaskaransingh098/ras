@@ -77,17 +77,17 @@ export default function Footer() {
 
                     {/* Right: 4-Column Navigation Grid matching Synthesis UX */}
                     <div className="w-full md:w-auto grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-x-6 sm:gap-x-8 lg:gap-x-12 gap-y-8 sm:gap-y-12 font-[var(--font-dm-sans)] text-[11px] sm:text-[12px] lg:text-[13px] tracking-[.1em] uppercase pt-2">
-                        <div className="flex flex-col gap-4">
+                        {/* <div className="flex flex-col gap-4">
                             <span className="font-bold text-white mb-2">Explore</span>
                             <Link href="#" className="text-white/70 hover:text-white transition-colors">Session</Link>
                             <Link href="#" className="text-white/70 hover:text-white transition-colors">About Us</Link>
                             <Link href="#" className="text-white/70 hover:text-white transition-colors">Dare to Dream</Link>
-                        </div>
+                        </div> */}
                         <div className="flex flex-col gap-4">
                             <span className="font-bold text-white mb-2">Activities</span>
-                            <Link href="#" className="text-white/70 hover:text-white transition-colors">Services</Link>
-                            <Link href="#" className="text-white/70 hover:text-white transition-colors">Contact Us</Link>
-                            <Link href="#" className="text-white/70 hover:text-white transition-colors">FAQs</Link>
+                            <Link href="/services" className="text-white/70 hover:text-white transition-colors">Services</Link>
+                            <Link href="/blog/quotes" className="text-white/70 hover:text-white transition-colors">Quotes</Link>
+                            <Link href="/support" className="text-white/70 hover:text-white transition-colors">Contact Us</Link>
                         </div>
                         <div className="flex flex-col gap-4">
                             <span className="font-bold text-white mb-2">Community</span>
@@ -97,9 +97,9 @@ export default function Footer() {
                         </div>
                         <div className="flex flex-col gap-4">
                             <span className="font-bold text-white mb-2">Legal</span>
-                            <Link href="#" className="text-white/70 hover:text-white transition-colors">Privacy Policy</Link>
-                            <Link href="#" className="text-white/70 hover:text-white transition-colors">Terms & Conditions</Link>
-                            <Link href="#" className="text-white/70 hover:text-white transition-colors">Support</Link>
+                            <Link href="/privacy-policy" className="text-white/70 hover:text-white transition-colors">Privacy Policy</Link>
+                            <Link href="/terms-and-conditions" className="text-white/70 hover:text-white transition-colors">Terms & Conditions</Link>
+                            <Link href="/support" className="text-white/70 hover:text-white transition-colors">Support</Link>
                         </div>
                     </div>
                 </div>
