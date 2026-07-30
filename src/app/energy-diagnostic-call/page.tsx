@@ -645,7 +645,7 @@ export default function EnergyDiagnosticCallPage() {
                 <div className="about-stats-bar reveal reveal-delay-2">
                   <div className="about-stat"><span className="about-stat-num counter" data-target="15">0</span><span className="about-stat-num" style={{ fontSize: '26px' }}>+</span><div className="about-stat-lbl">Years With People</div></div>
                   <div className="about-stat"><span className="about-stat-num counter" data-target="5">0</span><span className="about-stat-num" style={{ fontSize: '26px' }}>+</span><div className="about-stat-lbl">Countries</div></div>
-                  <div className="about-stat"><span className="about-stat-num counter" data-target="27">0</span><div className="about-stat-lbl">Years Spiritual Experience</div></div>
+                  <div className="about-stat"><span className="about-stat-num counter" data-target="27">0</span><span className="about-stat-num" style={{ fontSize: '26px' }}>+</span><div className="about-stat-lbl">Years Spiritual Experience</div></div>
                 </div>
                 <p className="section-subtext reveal reveal-delay-2" style={{ marginBottom: '16px' }}>For over 15 years, Raseshvari has been working closely with people navigating repeated life patterns, heaviness, relationship struggles, inner confusion and deeper personal challenges that often cannot be understood only on the surface.</p>
                 <p className="section-subtext reveal reveal-delay-2" style={{ marginBottom: '16px' }}>People from different walks of life across 5+ countries professionals, business owners, leaders, mothers, have reached out seeking deeper understanding and personal transformation.</p>
