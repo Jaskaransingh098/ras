@@ -796,14 +796,14 @@ Let's connect.
             <div
               ref={stripRef}
               className="overflow-x-auto strip-scroll"
-              style={{ height: "calc(36vw * 16 / 9 + 8px)", maxHeight: "300px", minHeight: "180px" }}
+              style={{ height: "calc(42vw * 16 / 9 + 8px)", maxHeight: "360px", minHeight: "220px" }}
             >
               <div className="flex gap-2.5 sm:gap-3 h-full pb-1">
                 {sideCards.map((card) => {
                   const isFlipped = !!flippedCards[card.idx];
-                  const cardW = "calc(26vw)";
-                  const cardMaxW = "140px";
-                  const cardMinW = "100px";
+                  const cardW = "calc(42vw)";
+                  const cardMaxW = "180px";
+                  const cardMinW = "140px";
                   return (
                     <div
                       key={card.idx}

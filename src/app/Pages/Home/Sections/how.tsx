@@ -63,9 +63,9 @@ export default function How({ scrollRef }: Props) {
                 {/* ── CAPTION ── */}
                 <div className="mt-5 md:mt-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 hw">
                     <div className="flex items-center gap-3">
-                        <div className="w-2 h-2 rounded-full bg-[#c42d2d] animate-pulse" />
+                        {/* <div className="w-2 h-2 rounded-full bg-[#c42d2d] animate-pulse" /> */}
                         <p className="text-gray-800 text-[15px] sm:text-xl font-[var(--font-dm-sans)] italic font-semibold">
-                            One session, one shift, ultimate unlimited possibilities
+                            One session, one shift, ultimate unlimited possibilities <span className="italic text-[#a51313]">∞</span>
                         </p>
                     </div>
                 </div>

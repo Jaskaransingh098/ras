@@ -9,7 +9,7 @@ interface Props {
   scrollRef: RefObject<HTMLElement | null>;
 }
 
-const AVATAR_COUNT = 12;
+const AVATAR_COUNT = 14;
 
 export default function Experience({ scrollRef }: Props) {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -90,7 +90,7 @@ export default function Experience({ scrollRef }: Props) {
       `}</style>
 
       <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-12">
-         <p className="italic pb-6 md:pb-10 text-[15px] sm:text-[20px] md:text-[28px] font-[var(--font-dm-sans)] font-bold leading-[1.2] tracking-wide uppercase text-center md:text-left">
+         <p className="italic pb-6 md:pb-10 text-[15px] sm:text-[20px] md:text-[28px] font-[var(--font-dm-sans)] font-bold leading-[1.2] tracking-wide uppercase text-center md:text-center">
                 When Your Energy Shifts,
                 <span className="italic text-[#a51313]"> Your Entire Reality Changes!</span></p>
 

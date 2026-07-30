@@ -5,19 +5,7 @@ import Link from 'next/link';
 
 /* ─── DATA (unchanged) ─── */
 const servicesData = [
-    {
-        badge: "Signature",
-        title: "Revenue Energetic",
-        p1: "One powerful online session that shifts what strategy, effort and coaching couldn't.",
-        p2: "This isn't healing the way you think it is, it's a deeper energy transformation, a shift in your frequency that creates visible change in one session.",
-        iconSVG: "/services/Revenue-energetic.png",
-        btnText: "Explore",
-        btnLink: "#",
-        number: "01",
-        extra: null
-
-    },
-    {
+     {
         badge: "Paid Diagnostic",
         title: "Energy Diagnostic Call",
         p1: "A paid energy diagnostic call to understand what's really happening beneath the surface.",
@@ -25,7 +13,7 @@ const servicesData = [
         iconSVG: "/services/Energy-diagnostic.png",
         btnText: "Book Call",
         btnLink: "#",
-        number: "02",
+        number: "01",
         extra: (
             <div className="flex flex-wrap gap-2 flex-1 mt-3">
                 {['Energy Roadmap', 'Block Identification', 'Online Session'].map((f) => (
@@ -35,6 +23,18 @@ const servicesData = [
                 ))}
             </div>
         )
+
+    },
+    {
+        badge: "Signature",
+        title: "Revenue Energetic",
+        p1: "One powerful online session that shifts what strategy, effort and coaching couldn't.",
+        p2: "This isn't healing the way you think it is, it's a deeper energy transformation, a shift in your frequency that creates visible change in one session.",
+        iconSVG: "/services/Revenue-energetic.png",
+        btnText: "Explore",
+        btnLink: "#",
+        number: "02",
+        extra: null
 
     },
     {
@@ -316,7 +316,7 @@ export default function Services() {
                             href="/energy-diagnostic-call"
                             className="text-white font-bold font-[var(--font-outfit)] hover:text-[#e85d5d] transition-colors duration-300 underline decoration-white/20 underline-offset-2 hover:decoration-[#e85d5d]/50"
                         >
-                            The Energy Diagnostic Call&trade;
+                            The Energy Diagnostic Call
                         </Link>{' '}
                         is the easiest first step.
                     </p>

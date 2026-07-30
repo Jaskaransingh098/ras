@@ -40,7 +40,7 @@ export default function Footer() {
                         </h2> */}
 
                         <p className="text-[14px] md:text-[15px] font-[var(--font-dm-sans)] text-white/90 leading-relaxed mb-8 pr-4">
-                            Raseshvari Hindustani — an energy transformation mentor and speaker, helping individuals and leaders shift their frequency, dissolve blocks and unlock ultimate possibilities.
+                            Raseshvari Hindustani — an energy transformation expert and speaker, helping individuals and leaders shift their frequency, dissolve blocks and unlock ultimate possibilities.
                         </p>
 
                         {/* <div className="flex flex-col mb-10 w-full max-w-[320px]">

@@ -293,8 +293,8 @@ export default function EnergyDiagnosticCallPage() {
           .reveal-delay-4 { transition-delay: 0.4s; }
 
           /* ── TYPE ── */
-          .eyebrow { font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--red); display: block; margin-bottom: 0px; font-weight: 400; font-family: var(--sans); }
-          .eyebrow-light { color: rgba(255,255,255,0.55); }
+          .eyebrow { font-size: 13px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--red); display: block; margin-bottom: 0px; font-weight: 500; font-family: var(--sans); }
+          .eyebrow-light { color: rgba(255,255,255,0.88); font-weight: bold; }
           .section-headline { font-family: var(--serif); font-size: clamp(36px, 4.5vw, 64px); font-weight: 400; line-height: 1.12; color: var(--ink); }
           .section-headline em { font-style: italic; color: var(--red); }
           .section-headline.on-dark { color: #FDFCFB; }
@@ -317,9 +317,9 @@ export default function EnergyDiagnosticCallPage() {
           @keyframes heroPulse { 0%,100% { opacity:1; transform:scale(1); } 50% { opacity:0.4; transform:scale(0.75); } }
           .hero-headline { font-family: var(--serif); font-size: clamp(50px, 8vw, 110px); font-weight: 400; line-height: 1.05; color: var(--ink); max-width: 980px; animation: fadeUp 1s ease 0.15s both; }
           .grad-text { background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-style: italic; }
-          .hero-divider { width: 1px; height: 52px; background: linear-gradient(to bottom, rgba(155,15,31,0.5), transparent); margin: 36px auto; animation: fadeUp 1s ease 0.3s both; }
+          .hero-divider { width: 1px; height: 52px;  margin: 36px auto; animation: fadeUp 1s ease 0.3s both; }
           .hero-sub { font-size: clamp(17px, 2vw, 21px); color: var(--ink-mid); max-width: 600px; line-height: 1.82; font-weight: 300; animation: fadeUp 1s ease 0.35s both; font-family: var(--sans); }
-          .hero-relatability { font-family: var(--serif); font-style: italic; font-size: clamp(17px, 1.8vw, 23px); color: var(--ink-soft); max-width: 540px; line-height: 1.65; animation: fadeUp 1s ease 0.42s both; }
+          .hero-relatability { font-family: var(--serif); font-style: italic; font-size: clamp(17px, 1.8vw, 25px); color: #9B0F1F; max-width: 540px; line-height: 1.65; animation: fadeUp 1s ease 0.42s both; font-weight: 500; }
           .hero-cta-group { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; margin-top: 44px; animation: fadeUp 1s ease 0.52s both; }
           .hero-trust { display: flex; align-items: center; gap: 10px; margin-top: 32px; justify-content: center; color: var(--ink-soft); font-weight: 500; animation: fadeUp 1s ease 0.62s both; font-family: var(--sans); }
           .hero-trust-sep { width: 4px; height: 4px; border-radius: 50%; background: var(--line); }
@@ -339,8 +339,8 @@ export default function EnergyDiagnosticCallPage() {
           .bullet-item { padding: 16px 0; border-bottom: 1px solid var(--line-lt); display: flex; align-items: baseline; gap: 16px; font-size: 16px; color: var(--ink-mid); line-height: 1.2; transition: color 0.3s; font-family: var(--sans); }
           .bullet-item:hover { color: var(--ink); }
           .bullet-mark { width: 6px; height: 6px; border-radius: 50%; background: var(--grad); flex-shrink: 0; margin-top: 8px; box-shadow: 0 0 6px rgba(155,15,31,0.35); }
-          .pull-quote-block { margin-top: 44px; padding: 40px 48px; background: rgba(155,15,31,0.04); border-left: 3px solid var(--red); border-radius: 0 20px 20px 0; width: 100%; }
-          .pull-quote-block p { font-family: var(--serif); font-style: italic; font-size: 20px; color: var(--ink-mid); line-height: 1.72; }
+          .pull-quote-block { margin-top: 44px; padding: 40px 48px; background: rgba(155,15,31,0.04); border-left: 3px solid var(--red); border-radius: 0 20px 20px 0; width: 100%; font-weight: 500; }
+          .pull-quote-block p { font-family: var(--serif); font-style: italic; font-size: 23px; color: #9B0F1F; line-height: 1.72; }
 
           /* ── SESSION ── */
           .section-session { background: var(--bg); }
@@ -356,7 +356,7 @@ export default function EnergyDiagnosticCallPage() {
           .session-float-tag { position: absolute; top: 28px; left: -18px; background: #e79c2aff; color: #fff; border-radius: 100px; padding: 10px 22px; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 500; box-shadow: 0 6px 24px rgba(155,15,31,0.35); font-family: var(--sans); }
           .session-bullets { margin-top: 8px; }
           .session-bullet { display: flex; align-items: flex-start; gap: 14px; padding: 14px 0; border-bottom: 1px solid var(--line-lt); }
-          .session-bullet-icon { width: 30px; height: 30px; border-radius: 50%; flex-shrink: 0; background: rgba(155,15,31,0.08); border: 1px solid rgba(155,15,31,0.15); display: flex; align-items: center; justify-content: center; font-size: 12px; color: var(--red); margin-top: 2px; }
+          .session-bullet-icon { width: 30px; height: 30px; border-radius: 50%; flex-shrink: 0; background: var(--red); border: 1px solid rgba(155,15,31,0.15); display: flex; align-items: center; justify-content: center; font-size: 12px; color: white; margin-top: 2px; }
           .session-bullet p { font-size: 16px; color: var(--ink-mid); line-height: 1.2; font-family: var(--sans); }
 
           /* ── ABOUT ── */
@@ -371,15 +371,15 @@ export default function EnergyDiagnosticCallPage() {
           .about-stats-bar { display: grid; grid-template-columns: repeat(3,1fr); border: 1px solid var(--line); border-radius: 20px; overflow: hidden; background: #fff; box-shadow: var(--shadow-sm); margin: 0px 0 40px 0; }
           .about-stat { padding: 6px 20px; text-align: center; border-right: 1px solid var(--line); }
           .about-stat:last-child { border-right: none; }
-          .about-stat-num { font-family: var(--serif); font-size: 46px; font-weight: 400; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1; display: block; }
-          .about-stat-lbl { font-size: 11px; color: var(--ink-soft); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 7px; font-family: var(--sans); }
+          .about-stat-num { font-family: var(--serif); font-size: 46px; font-weight: 400; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1; display: inline-block; }
+          .about-stat-lbl { font-size: 11px; color: var(--ink-soft); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 7px; font-family: var(--sans); font-weight: bold; }
           .closing-italic { font-family: var(--serif); font-style: italic; font-size: 18px; color: var(--ink-mid); line-height: 1.7; padding-top: 28px; border-top: 1px solid var(--line-lt); margin-top: 28px; }
           .about-closing-block { margin-top: 60px; padding-top: 36px; border-top: 1px solid var(--line-lt); text-align: center; width: 100%; }
-          .about-closing-quote { font-family: var(--serif); font-style: italic; font-size: 22px; color: var(--ink-mid); line-height: 1.7; max-width: 800px; margin: 0 auto; }
+          .about-closing-quote { font-family: var(--serif); font-style: italic; font-size: 22px; color: var(--red); line-height: 1.7; max-width: 800px; margin: 0 auto; font-weight: 500; }
           /* ── TESTIMONIALS ── */
           .section-testimonials { background: var(--red-deep, #720A15); }
           .testimonial-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 60px; }
-          .testimonial-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 24px; padding: 44px 36px; position: relative; overflow: hidden; transition: all 0.45s; }
+          .testimonial-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 24px; padding: 44px 26px; position: relative; overflow: hidden; transition: all 0.45s; }
           .testimonial-card:hover { background: rgba(255,255,255,0.1); transform: translateY(-4px); }
           .t-card-1 { margin-top: 0; } .t-card-2 { margin-top: 32px; } .t-card-3 { margin-top: -16px; }
           .t-qmark { font-family: var(--serif); font-size: 80px; font-weight: 300; line-height: 0.7; color: rgba(232,184,122,0.35); display: block; margin-bottom: 18px; }
@@ -408,7 +408,7 @@ export default function EnergyDiagnosticCallPage() {
           .section-process { background: var(--bg); }
           .process-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; margin-top: 68px; }
           .process-card { padding: 40px 32px 36px; border-radius: 24px; position: relative; overflow: hidden; }
-          .process-num { font-family: var(--serif); font-size: 68px; font-weight: 300; line-height: 1; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; opacity: 0.6; margin-bottom: 20px; display: block; transition: opacity 0.4s; }
+          .process-num { font-family: var(--serif); font-size: 68px; font-weight: 300; line-height: 1; background:#9B0F1F; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; opacity: 1; margin-bottom: 20px; display: block; transition: opacity 0.4s; }
           // .process-card:hover .process-num { opacity: 0.6; }
           .step-badge { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--red); margin-bottom: 10px; display: block; font-weight: 400; font-family: var(--sans); }
           .step-title { font-family: var(--serif); font-size: 22px; font-weight: 400; color: var(--ink); margin-bottom: 12px; line-height: 1.3; }
@@ -420,7 +420,7 @@ export default function EnergyDiagnosticCallPage() {
           .pricing-glow { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 380px; height: 380px; border-radius: 50%; background: radial-gradient(circle, rgba(155,15,31,0.08), transparent 70%); pointer-events: none; }
           .pricing-card { background: #fff; border: 1px solid var(--line); border-radius: 32px; padding: 40px 44px; text-align: center; position: relative; overflow: hidden; box-shadow: var(--shadow-lg); }
           .pricing-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--grad); }
-          .price-eyebrow { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--red); font-family: var(--sans); }
+          .price-eyebrow { font-size: 14px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--red); font-family: var(--sans); }
           .price-title { font-family: var(--serif); font-size: 28px; color: var(--ink); font-weight: 400; margin-top: 8px; line-height: 1.2; }
           .price-amount { font-family: var(--serif); font-size: 76px; font-weight: 300; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1; margin: 18px 0 4px; }
           .price-sup { font-size: 34px; vertical-align: super; }
@@ -494,14 +494,14 @@ export default function EnergyDiagnosticCallPage() {
           .faq-a { font-size: 16px; color: var(--ink-mid); line-height: 1.88; padding-bottom: 26px; font-family: var(--sans); }
 
           /* ── FINAL CTA ── */
-          .section-final { background: #720A15; padding: 200px 0 160px; text-align: center; position: relative; overflow: hidden; }
+          .section-final { background: #720A15; padding: 100px 0 110px; text-align: center; position: relative; overflow: hidden; }
           .final-bg-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); font-family: var(--serif); font-size: clamp(80px, 15vw, 220px); font-weight: 300; color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,0.08); white-space: nowrap; pointer-events: none; user-select: none; letter-spacing: -0.02em; }
           .final-orb { position: absolute; width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(0,0,0,0.2), transparent 70%); top: 50%; left: 50%; transform: translate(-50%,-50%); pointer-events: none; animation: orbFloat 12s ease-in-out infinite; }
           .final-inner { position: relative; z-index: 2; }
-          .final-headline { font-family: var(--serif); font-size: clamp(30px, 4.5vw, 58px); font-weight: 400; line-height: 1.22; color: #FDFCFB; max-width: 720px; margin: 0 auto; }
+          .final-headline { font-family: var(--serif); font-size: clamp(30px, 4.5vw, 58px); font-weight: 400; line-height: 1.22; color: #FDFCFB; max-width: 720px; margin: 0 auto; padding-top: 20px; }
           .final-headline em { font-style: italic; color: rgba(232,184,122,0.9); }
-          .final-body { max-width: 520px; margin: 28px auto 0; font-size: 16px; color: rgba(253,252,251,0.88); line-height: 1.88; font-family: var(--sans); }
-          .final-sign { font-family: var(--serif); font-style: italic; font-size: 20px; color: rgba(253,252,251,0.8); margin-top: 44px; }
+          .final-body { max-width: 540px; margin: 28px auto 0; font-size: 16px; color: rgba(253,252,251,0.88); line-height: 2.08; font-family: var(--sans); }
+          .final-sign { font-family: var(--serif); font-style: italic; font-size: 30px; color: rgba(253,252,251,0.8); margin-top: 44px; font-weight: 500; }
 
           /* ── RESPONSIVE ── */
           @media (max-width: 960px) {
@@ -544,7 +544,7 @@ export default function EnergyDiagnosticCallPage() {
             <span className="grad-text">but what if the real<br />cause runs deeper?</span>
           </h1>
           <div className="hero-divider" />
-          <p className="hero-sub">A 1-hour private online Energy Diagnostic Call with Raseshvari Hindustani — designed to help you understand the hidden energetic patterns that may be affecting the way life has been feeling for you.</p>
+          <p className="hero-sub">Just like doctors diagnose the root cause behind a physical issue, this 1-hour private online Energy Diagnostic Call with Raseshvari Hindustani, designed to help you understand the hidden energetic patterns that may be affecting the way life has been feeling for you.</p>
           <p className="hero-relatability" style={{ marginTop: '20px' }}>For people who feel like something in life hasn&apos;t been fully making sense for a long time... despite all their efforts to move forward.</p>
           <div className="hero-cta-group" id="apply">
             <button className="btn-glow" onClick={() => setShowForm(true)} style={{ cursor: 'pointer', border: 'none' }}>Apply for Your Energy Diagnostic Call</button>
@@ -566,10 +566,10 @@ export default function EnergyDiagnosticCallPage() {
                 <div className="recognition-visual reveal">
                   <div className="recognition-card-3d">
                     <div className="big-number">02</div>
-                    <span className="eyebrow" style={{ color: 'rgba(255,255,255,0.55)' }}>Recognition</span>
+                    {/* <span className="eyebrow" style={{ color: 'rgba(255,255,255,0.55)' }}>Recognition</span> */}
                     <p style={{ fontFamily: 'var(--serif)', fontSize: '28px', fontWeight: 400, color: '#FDFCFB', lineHeight: 1.35, marginTop: '8px' }}>Sometimes the visible problem is only the surface.</p>
                     <div className="gold-line" style={{ margin: '24px 0' }} />
-                    <p style={{ fontSize: '15px', color: 'rgba(253,252,251,0.65)', lineHeight: 1.8, fontFamily: 'var(--serif)', fontStyle: 'italic' }}>&quot;The deeper reason may be something you haven&apos;t fully seen yet.&quot;</p>
+                    <p style={{ fontSize: '20px', color: 'rgba(253,252,251,1)', lineHeight: 1.8, fontFamily: 'var(--serif)', fontStyle: 'italic' }}>&quot;The deeper reason may be something you haven&apos;t fully seen yet.&quot;</p>
                   </div>
                   {/* <div className="recognition-float-stat">
                     <div className="stat-n">5+</div>
@@ -595,7 +595,7 @@ export default function EnergyDiagnosticCallPage() {
 
             {/* Pull Quote Block (Full Width / full rectangular space) */}
             <div className="pull-quote-block reveal reveal-delay-2" style={{ marginTop: '60px' }}>
-              <p>&quot;Many people describe this experience not as being given answersbut as finally being able to understand their life experiences differently — sometimes for the first time in years.&quot;</p>
+              <p>&quot;Many people describe this experience not as being given answersbut as finally being able to understand their life experiences differently, sometimes for the first time in years.&quot;</p>
             </div>
           </div>
         </section>
@@ -613,8 +613,8 @@ export default function EnergyDiagnosticCallPage() {
               <div>
                 <span className="eyebrow reveal">The Session</span>
                 <div className="gold-line reveal reveal-delay-2" style={{ marginTop: '12px' }} />
-                <p className="section-subtext reveal reveal-delay-2" style={{ marginBottom: '18px' }}>Through a deeply personal and unhurried conversation, Raseshvari listens not only to what you share — but also to the recurring patterns and deeper themes that may be connected beneath the surface.</p>
-                <p style={{ fontFamily: 'var(--serif)', fontStyle: 'italic', fontSize: '19px', color: 'var(--ink-mid)', lineHeight: 1.72 }} className="reveal reveal-delay-2">This is not about judging you or telling you what is &quot;wrong&quot; with you.</p>
+                <p className="section-subtext reveal reveal-delay-2" style={{ marginBottom: '18px' }}>This 1-hour private online session is designed to help uncover the deeper energetic patterns that may be connected to what you've been experiencing in life. Through a deeply personal and unhurried conversation, Raseshvari listens not only to what you share, but also to the recurring patterns and deeper themes that may be connected beneath the surface.</p>
+                <p style={{ fontFamily: 'var(--serif)', fontStyle: 'italic', fontSize: '19px', color: 'var(--ink-mid)', lineHeight: 1.72 }} className="reveal reveal-delay-2">Over the course of the session, what may have felt confusing, repetitive, heavy or unresolved for a long time often begins making sense in a very different way.This is not about judging you or telling you what is &quot;wrong&quot; with you.</p>
                 <div className="session-bullets reveal reveal-delay-3">
                   {[
                     "Why certain struggles or patterns may keep repeating despite your efforts",
@@ -648,14 +648,14 @@ export default function EnergyDiagnosticCallPage() {
                   <div className="about-stat"><span className="about-stat-num counter" data-target="27">0</span><div className="about-stat-lbl">Years Spiritual Experience</div></div>
                 </div>
                 <p className="section-subtext reveal reveal-delay-2" style={{ marginBottom: '16px' }}>For over 15 years, Raseshvari has been working closely with people navigating repeated life patterns, heaviness, relationship struggles, inner confusion and deeper personal challenges that often cannot be understood only on the surface.</p>
-                <p className="section-subtext reveal reveal-delay-2" style={{ marginBottom: '16px' }}>People from different walks of life across 5+ countries — professionals, business owners, leaders, mothers — have reached out seeking deeper understanding and personal transformation.</p>
+                <p className="section-subtext reveal reveal-delay-2" style={{ marginBottom: '16px' }}>People from different walks of life across 5+ countries professionals, business owners, leaders, mothers, have reached out seeking deeper understanding and personal transformation.</p>
                 <p className="section-subtext reveal reveal-delay-3">Before stepping fully into this work, Raseshvari also worked as a UGC NET qualified lecturer, bringing both depth and grounded understanding into the way she guides people today.</p>
               </div>
             </div>
 
             {/* Closing Quote (Full Width) */}
             <div className="about-closing-block reveal reveal-delay-3">
-              <p className="about-closing-quote">&quot;Sometimes being truly understood — and truly understanding the deeper root cause beneath your experiences — can itself become the beginning of change.&quot;</p>
+              <p className="about-closing-quote">&quot;Sometimes being truly understood and truly understanding the deeper root cause beneath your experiences, can itself become the beginning of change.&quot;</p>
             </div>
           </div>
         </section>
@@ -670,11 +670,11 @@ export default function EnergyDiagnosticCallPage() {
             <div className="testimonial-grid">
               <div className="testimonial-card t-card-1 reveal reveal-delay-1">
                 <span className="t-qmark">&quot;</span>
-                <p className="t-text">I originally came because the same patterns kept repeating in my relationships no matter how much I tried to change things. During the call, I understood something I had never connected before — and honestly, it changed the way I saw my entire situation.</p>
+                <p className="t-text">I originally came because the same patterns kept repeating in my relationships no matter how much I tried to change things. During the call, I understood something I had never connected before, and honestly, it changed the way I saw my entire situation.</p>
                 <div className="t-author">
                   <img src="/energy-testimonial/kirthi.jpeg" alt="Dr Kirthi kakade" className="t-avatar" />
                   <div className="t-meta">
-                    <span className="t-name">Dr Kirthi kakade</span>
+                    <span className="t-name">Dr. Kirthi kakade</span>
                     <span className="t-title">Homeopathy and Psychotherapist, Bangalore</span>
                   </div>
                 </div>
@@ -741,7 +741,7 @@ export default function EnergyDiagnosticCallPage() {
                 </div>
               ))}
             </div>
-            <p style={{ textAlign: 'center', marginTop: '44px', fontSize: '12px', color: 'var(--ink-soft)', letterSpacing: '0.12em', textTransform: 'uppercase', fontFamily: 'var(--sans)' }} className="reveal">A personal, private and confidential online experience.</p>
+            <p style={{ textAlign: 'center', marginTop: '44px', fontSize: '14px', color: '#9B0F1F', letterSpacing: '0.12em', textTransform: 'uppercase', fontFamily: 'var(--sans)' }} className="reveal">A personal, private and confidential online experience.</p>
           </div>
         </section>
 
@@ -877,12 +877,13 @@ export default function EnergyDiagnosticCallPage() {
                 <ul className="price-includes">
                   <li>1-Hour Private Zoom Session</li>
                   <li>Personal &amp; Confidential Experience</li>
-                  <li>Guided Energy Diagnostic Process</li>
+                  <li>Guided Energy Roadmap</li>
                 </ul>
                 <p className="pricing-note">Every session is approached with depth, sincerity, care and complete personal attention.</p>
                 <button className="btn-glow" onClick={() => setShowForm(true)} style={{ cursor: 'pointer', border: 'none', width: '100%' }}>
                   Apply for Your Energy Diagnostic Call
                 </button>
+                <p className="text-[15px] italic text-black">Note: Country pricing will be applied</p>
               </div>
             </div>
           </div>
@@ -897,11 +898,13 @@ export default function EnergyDiagnosticCallPage() {
             </div>
             <div className="faq-list reveal reveal-delay-1">
               {[
-                { q: "What exactly happens during the session?", a: "Through a deeply personal conversation, Raseshvari listens to what you share and identifies recurring patterns, themes and deeper root causes that may be influencing how your life has been unfolding. This is not a therapy session — it's an energetic diagnostic process designed to bring clarity." },
-                { q: "Is this suitable for me if I'm going through something right now?", a: "Yes. Many people reach out precisely when something in life feels unresolved, stuck or persistently unclear. If you sense that there may be a deeper reason behind what you've been experiencing, this session is designed for exactly that." },
-                { q: "What should I prepare before the session?", a: "Nothing special is required. Come as you are, with an open mind and the willingness to share what has been on your heart. Raseshvari will guide the conversation gently and personally from there." },
-                { q: "Is everything shared in the session kept private?", a: "Absolutely. Every session is treated with complete confidentiality and personal care. What you share remains between you and Raseshvari." },
-                { q: "How do I book a session?", a: "Click the 'Apply' button on this page and our team will connect with you on WhatsApp to guide you through the next steps personally." },
+                { q: "Is this therapy or counseling?", a: "No. This is a personal Energy Diagnostic experience designed to help better understand the energetic patterns that may be silently affecting your experiences and different areas of life." },
+                { q: "What if I cannot fully explain what I'm feeling?", a: "That is completely okay. Many people come into the call without fully understanding or being able to explain what they have been experiencing." },
+                { q: "Is the call online or in-person?", a: "Yes. The session is conducted privately online via Zoom." },
+                { q: "Will one call be enough?", a: "Yes. The Energy Diagnostic Call itself is designed as a complete experience focused on understanding the deeper patterns, influences and root causes connected to the issue you are seeking understanding about.Many people leave the session with meaningful awareness, lightness and a completely different understanding of what they have been experiencing." },
+                { q: "Is everything shared in the session kept private?", a: "Yes. Every call is approached with complete privacy, personal care and confidentiality." },
+                { q: "What should I prepare before the call?", a: "Nothing special is required. Come as you are, with an open mind and the willingness to share what has been on your heart. Raseshvari will guide the conversation gently and personally from there." },
+                { q: "Can I take this call even if I don’t fully know what’s wrong?", a: "Yes. In fact, many people reach out because they sense something deeper may be affecting their life but cannot clearly identify it yet." },
               ].map((f) => (
                 <div key={f.q} className="faq-item">
                   <div className="faq-toggle">
@@ -923,7 +926,7 @@ export default function EnergyDiagnosticCallPage() {
             <div className="reveal">
               <span className="eyebrow eyebrow-light">An Invitation</span>
               <h2 className="final-headline">Sometimes life keeps showing us the same things... until we are finally ready to <em>understand them differently.</em></h2>
-              <p className="final-body">If you feel ready to explore the energetic patterns that may have been affecting your life for a long time, you are welcome to take the next step. This session is simply a safe and personal space to explore what you may have been carrying — and what may now be ready to shift.</p>
+              <p className="final-body">If you feel ready to explore the energetic patterns that may have been affecting your life for a long time, you are welcome to take the next step.<br/><br/><span className="inline-block mt-4">This session is simply a safe and personal space to explore what you may have been carrying and what may now be ready to shift.</span></p>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', justifyContent: 'center', marginTop: '48px' }}>
                 <button className="btn-glow" onClick={() => setShowForm(true)} style={{ cursor: 'pointer', border: 'none' }}>Apply for Your Energy Diagnostic Call</button>
               </div>

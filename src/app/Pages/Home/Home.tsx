@@ -67,11 +67,20 @@ function CollapsibleSection({
               isOpen ? "text-[#c42d2d]" : "text-[#111]"
             } group-hover:text-white flex-shrink-0`}
           >
-            {title}
+            {title.includes(" ") ? (
+              <>
+                {title.split(" ")[0]}{" "}
+                <span className="italic text-[#c42d2d] transition-colors duration-300 group-hover:text-white">
+                  {title.substring(title.indexOf(" ") + 1)}
+                </span>
+              </>
+            ) : (
+              title
+            )}
           </h3>
           
           <div className="flex flex-col items-start sm:items-end text-left sm:text-right justify-center min-w-0">
-            <p className="text-[11px] md:text-[13px] text-gray-700 font-[var(--font-dm-sans)] mt-0.5 truncate text-left sm:text-right w-full transition-colors duration-300 group-hover:text-white/90 font-medium">
+            <p className="text-[11px] md:text-[15px] text-gray-700 font-[var(--font-dm-sans)] mt-0.5 truncate text-left sm:text-right w-full transition-colors duration-300 group-hover:text-white/90 font-medium">
               {subtitle}
             </p>
 
@@ -126,7 +135,7 @@ function CollapsibleSection({
 function MomsPreview() {
   return (
     <div className="flex items-center gap-2 justify-start sm:justify-end w-full text-left sm:text-right">
-      <span className="text-[10px] text-gray-700 font-[var(--font-dm-sans)] ml-1 text-left sm:text-right transition-colors duration-300 group-hover:text-white/90 order-2 sm:order-1 font-medium">
+      <span className="text-[13px] text-gray-700 font-[var(--font-dm-sans)] ml-1 text-left sm:text-right transition-colors duration-300 group-hover:text-white/90 order-2 sm:order-1 font-medium">
         Pan-India nurturing space for mothers
       </span>
       {/* Mini thumbnails */}
@@ -144,7 +153,7 @@ function MomsPreview() {
 function DarePreview() {
   return (
     <div className="flex items-center gap-2 justify-start sm:justify-end w-full text-left sm:text-right">
-      <span className="text-[10px] text-gray-700 font-[var(--font-dm-sans)] ml-1 text-left sm:text-right transition-colors duration-300 group-hover:text-white/90 order-2 sm:order-1 font-medium">
+      <span className="text-[13px] text-gray-700 font-[var(--font-dm-sans)] ml-1 text-left sm:text-right transition-colors duration-300 group-hover:text-white/90 order-2 sm:order-1 font-medium">
         52 renowned voices · Padma Shri awardees
       </span>
       <div className="flex -space-x-2 justify-start sm:justify-end order-1 sm:order-2">
@@ -164,7 +173,7 @@ function DarePreview() {
 function QuotesPreview() {
   return (
     <div className="flex items-center gap-2.5 justify-start sm:justify-end w-full text-left sm:text-right">
-      <span className="text-[10px] text-gray-700 font-[var(--font-dm-sans)] italic ml-0.5 text-left sm:text-right transition-colors duration-300 group-hover:text-white/90 order-2 sm:order-1 font-medium">
+      <span className="text-[13px] text-gray-700 font-[var(--font-dm-sans)] italic ml-0.5 text-left sm:text-right transition-colors duration-300 group-hover:text-white/90 order-2 sm:order-1 font-medium">
         &ldquo;Energy is the foundation of everything...&rdquo;
       </span>
       <div className="flex -space-x-1.5 justify-start sm:justify-end order-1 sm:order-2">
@@ -181,7 +190,7 @@ function QuotesPreview() {
 function BlogPreview() {
   return (
     <div className="flex items-center gap-2 justify-start sm:justify-end w-full text-left sm:text-right">
-      <span className="text-[10px] text-gray-700 font-[var(--font-dm-sans)] truncate text-left sm:text-right transition-colors duration-300 group-hover:text-white/90 order-2 sm:order-1 font-medium">
+      <span className="text-[13px] text-gray-700 font-[var(--font-dm-sans)] truncate text-left sm:text-right transition-colors duration-300 group-hover:text-white/90 order-2 sm:order-1 font-medium">
         &ldquo;But You Create Miracles For Others...&rdquo; + 1 more article
       </span>
       <div className="flex items-center gap-1.5 justify-start sm:justify-end order-1 sm:order-2">
