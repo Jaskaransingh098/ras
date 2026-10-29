@@ -189,6 +189,13 @@ export default function LinkedIn() {
                     className="relative"
                     onMouseEnter={() => setIsPaused(true)}
                     onMouseLeave={() => setIsPaused(false)}
+                    onTouchStart={() => setIsPaused(true)}
+                    onTouchEnd={() => {
+                        setTimeout(() => setIsPaused(false), 2000);
+                    }}
+                    onTouchCancel={() => {
+                        setTimeout(() => setIsPaused(false), 2000);
+                    }}
                 >
                     {/* Left fade */}
                     <div
@@ -210,7 +217,12 @@ export default function LinkedIn() {
 
                     <div
                         ref={scrollRef}
-                        className="scroll-container flex gap-5 overflow-x-auto px-6 pb-8"
+                        className="scroll-container flex gap-5 overflow-x-auto px-6 pb-8 select-none"
+                        style={{
+                            WebkitOverflowScrolling: "touch",
+                            touchAction: "pan-x pan-y",
+                            overscrollBehaviorX: "contain",
+                        }}
                     >
                         {loopScreenshots.map((item, index) => {
                             const id = `${item.id}-${index}`;
@@ -218,7 +230,7 @@ export default function LinkedIn() {
                             return (
                                 <div
                                     key={id}
-                                    className={`rec-card relative flex-shrink-0 ${hoveredId === id
+                                    className={`rec-card relative flex-shrink-0 select-none ${hoveredId === id
                                             ? "zoomed"
                                             : hoveredId !== null
                                                 ? "blurred"
@@ -234,7 +246,7 @@ export default function LinkedIn() {
                                     <Image
                                         src={item.src}
                                         fill
-                                        className="object-cover"
+                                        className="object-cover pointer-events-none select-none"
                                         alt="Recommendation"
                                         unoptimized
                                     />
@@ -244,8 +256,6 @@ export default function LinkedIn() {
                                         style={{
                                             position: "absolute",
                                             inset: 0,
-                                            // background:
-                                            //     "linear-gradient(to top, rgba(0,0,0,0.12), transparent)",
                                         }}
                                     />
                                 </div>

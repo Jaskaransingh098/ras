@@ -225,7 +225,7 @@ export default function Home() {
         <Experience scrollRef={scrollRef} />
       </section>
 
-      <section className="">
+      <section className="" id="reels">
         <Reel scrollRef={scrollRef} />
       </section>
 
@@ -245,7 +245,7 @@ export default function Home() {
         <Services />
       </section> */}
 
-      <section className="">
+      <section className="" id="services">
         <Services2 />
       </section>
 

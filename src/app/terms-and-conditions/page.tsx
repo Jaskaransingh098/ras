@@ -254,7 +254,7 @@ export default function TermsAndConditionsPage() {
                   Governing Law & Dispute Resolution
                 </h2>
                 <p className="text-white/80 text-sm leading-relaxed mb-6">
-                  These Terms and Conditions are governed by and construed in accordance with the laws of India. Any legal dispute, claim, or controversy arising out of these terms shall be settled exclusively within the courts of New Delhi or Mumbai, India.
+                  These Terms and Conditions are governed by and construed in accordance with the laws of India. Any legal dispute, claim, or controversy arising out of these terms shall be settled exclusively within the courts of New Delhi, India.
                 </p>
 
                 <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-4 bg-white/10 rounded-xl border border-white/15">

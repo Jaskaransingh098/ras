@@ -55,6 +55,8 @@ export const metadata: Metadata = {
   },
 };
 
+import ScrollRestoration from "./components/ScrollRestoration";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -63,6 +65,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.variable} ${playfair.variable} ${cormorant.variable} ${dmSans.variable} ${outfit.variable} ${poppins.variable} bg-[#f3f3f3]`}>
+        <ScrollRestoration />
         {children}
       </body>
     </html>

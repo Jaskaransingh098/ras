@@ -56,7 +56,7 @@ function SwappingSlot({
 
   return (
     <div
-      className={`relative w-full overflow-hidden shadow-md bg-gray-100 ${className}`}
+      className={`relative w-full overflow-hidden shadow-md bg-gray-100 select-none ${className}`}
     >
       {images.map((img, idx) => (
         <Image
@@ -65,7 +65,7 @@ function SwappingSlot({
           alt={img.alt}
           fill
           priority={idx === 0} // preload first image
-          className={`object-cover absolute inset-0 transition-all duration-1000 ease-in-out ${active === idx
+          className={`object-cover absolute inset-0 transition-all duration-1000 ease-in-out pointer-events-none select-none ${active === idx
               ? "opacity-100 scale-100 z-10"
               : "opacity-0 scale-100 z-0"
             }`}
@@ -73,7 +73,7 @@ function SwappingSlot({
             willChange: "opacity, transform",
             backfaceVisibility: "hidden",
           }}
-          sizes="200px"
+          sizes="(max-width: 768px) 250px, 300px"
           onError={(e) => {
             console.log("FAILED:", img.src);
             const t = e.target as HTMLImageElement;
@@ -87,6 +87,17 @@ function SwappingSlot({
 
 export default function DareToDream() {
   const sectionRef = useRef<HTMLElement>(null);
+  const mobileScrollRef = useRef<HTMLDivElement>(null);
+
+  const scrollMobileStrip = (direction: "left" | "right") => {
+    if (mobileScrollRef.current) {
+      const scrollAmount = 220;
+      mobileScrollRef.current.scrollBy({
+        left: direction === "left" ? -scrollAmount : scrollAmount,
+        behavior: "smooth",
+      });
+    }
+  };
 
   useEffect(() => {
     const s = sectionRef.current;
@@ -187,19 +198,56 @@ export default function DareToDream() {
               </button>
             </div>
 
-            {/* ── MOBILE ONLY: horizontal scrollable strip of all 6 guest image slots ── */}
-            <div className="md:hidden w-full mt-5 overflow-x-auto pb-2" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
-              <style>{`.dare-strip::-webkit-scrollbar{display:none}`}</style>
-              <div className="dare-strip flex gap-2.5 px-4" style={{ width: 'max-content' }}>
-                {([...leftCornerSlots, [leftMidSlot[0], leftMidSlot[1]], [rightMidSlot[0], rightMidSlot[1]], ...rightCornerSlots] as (typeof guestImages)[number][][]).map((imgs, i) => (
-                  <div key={i} className="flex-shrink-0 w-[100px] h-[140px] rounded-[16px] overflow-hidden relative bg-white/10 shadow-md border border-white/10">
-                    <SwappingSlot
-                      images={imgs}
-                      delay={i * 500}
-                      className="w-full h-full rounded-[16px]"
-                    />
-                  </div>
-                ))}
+            {/* ── MOBILE ONLY: horizontal scrollable strip of all 6 guest image slots with navigation arrows ── */}
+            <div className="md:hidden relative w-full mt-7">
+              {/* Left Arrow Button */}
+              <button
+                type="button"
+                onClick={() => scrollMobileStrip("left")}
+                className="absolute left-1 top-1/2 -translate-y-1/2 z-20 w-9 h-9 rounded-full bg-black/60 backdrop-blur-md text-white border border-white/25 flex items-center justify-center shadow-lg active:scale-90 transition-all hover:bg-black/80"
+                aria-label="Scroll Left"
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M15 18l-6-6 6-6" />
+                </svg>
+              </button>
+
+              {/* Right Arrow Button */}
+              <button
+                type="button"
+                onClick={() => scrollMobileStrip("right")}
+                className="absolute right-1 top-1/2 -translate-y-1/2 z-20 w-9 h-9 rounded-full bg-black/60 backdrop-blur-md text-white border border-white/25 flex items-center justify-center shadow-lg active:scale-90 transition-all hover:bg-black/80"
+                aria-label="Scroll Right"
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M9 18l6-6-6-6" />
+                </svg>
+              </button>
+
+              {/* Scrollable Container */}
+              <div
+                ref={mobileScrollRef}
+                className="w-full overflow-x-auto pb-4 scroll-smooth select-none"
+                style={{
+                  scrollbarWidth: 'none',
+                  msOverflowStyle: 'none',
+                  WebkitOverflowScrolling: 'touch',
+                  touchAction: 'pan-x pan-y',
+                  overscrollBehaviorX: 'contain',
+                }}
+              >
+                <style>{`.dare-strip::-webkit-scrollbar{display:none}`}</style>
+                <div className="dare-strip flex gap-3.5 px-6 select-none" style={{ width: 'max-content' }}>
+                  {([...leftCornerSlots, [leftMidSlot[0], leftMidSlot[1]], [rightMidSlot[0], rightMidSlot[1]], ...rightCornerSlots] as (typeof guestImages)[number][][]).map((imgs, i) => (
+                    <div key={i} className="flex-shrink-0 w-[180px] sm:w-[210px] h-[245px] sm:h-[285px] rounded-[24px] overflow-hidden relative bg-white/10 shadow-xl border border-white/20 select-none">
+                      <SwappingSlot
+                        images={imgs}
+                        delay={i * 500}
+                        className="w-full h-full rounded-[24px]"
+                      />
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
 

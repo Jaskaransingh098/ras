@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
-
+import Link from "next/link";
 const slides = [
   {
     word: "RELATIONSHIP??",
@@ -136,7 +136,7 @@ export default function Hero() {
               <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
             </svg>
             <span className="text-[10px] sm:text-[15px] tracking-wide font-medium font-[var(--font-outfit)]">
-              Book Diagnostic Call
+              <Link href="/energy-diagnostic-call">Book Diagnostic Call</Link>
             </span>
           </button>
           <button className="flex items-center justify-center gap-1 sm:gap-2 border border-white/60 text-white hover:bg-white hover:text-[#c42d2d] rounded-full px-2.5 sm:px-6 py-1 sm:py-2.5 transition-all duration-300">
@@ -144,7 +144,7 @@ export default function Hero() {
               <polygon points="5 3 19 12 5 21 5 3" />
             </svg>
             <span className="text-[10px] sm:text-[15px] tracking-wide font-medium font-[var(--font-outfit)]">
-              Watch Session
+              <Link href="#reels">Watch Session</Link>
             </span>
           </button>
         </div>

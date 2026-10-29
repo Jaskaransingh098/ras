@@ -926,7 +926,7 @@ export default function EnergyDiagnosticCallPage() {
             <div className="reveal">
               <span className="eyebrow eyebrow-light">An Invitation</span>
               <h2 className="final-headline">Sometimes life keeps showing us the same things... until we are finally ready to <em>understand them differently.</em></h2>
-              <p className="final-body">If you feel ready to explore the energetic patterns that may have been affecting your life for a long time, you are welcome to take the next step.<br/><br/><span className="inline-block mt-4">This session is simply a safe and personal space to explore what you may have been carrying and what may now be ready to shift.</span></p>
+              <p className="final-body">If you feel ready to explore the energetic patterns that may have been affecting your life for a long time, you are welcome to take the next step.<br /><br /><span className="inline-block mt-4">This session is simply a safe and personal space to explore what you may have been carrying and what may now be ready to shift.</span></p>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', justifyContent: 'center', marginTop: '48px' }}>
                 <button className="btn-glow" onClick={() => setShowForm(true)} style={{ cursor: 'pointer', border: 'none' }}>Apply for Your Energy Diagnostic Call</button>
               </div>

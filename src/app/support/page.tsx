@@ -295,7 +295,7 @@ export default function SupportPage() {
                     </div>
                     <div>
                       <span className="text-xs text-white/60 block">Primary Location</span>
-                      <span className="font-medium text-white/90">Mumbai / New Delhi, India</span>
+                      <span className="font-medium text-white/90">New Delhi, India</span>
                     </div>
                   </div>
                 </div>

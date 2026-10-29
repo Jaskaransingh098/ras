@@ -795,8 +795,15 @@ Let's connect.
             {/* Strip with explicit height so flip cards render */}
             <div
               ref={stripRef}
-              className="overflow-x-auto strip-scroll"
-              style={{ height: "calc(42vw * 16 / 9 + 8px)", maxHeight: "360px", minHeight: "220px" }}
+              className="overflow-x-auto strip-scroll select-none"
+              style={{
+                height: "calc(42vw * 16 / 9 + 8px)",
+                maxHeight: "360px",
+                minHeight: "220px",
+                WebkitOverflowScrolling: "touch",
+                touchAction: "pan-x pan-y",
+                overscrollBehaviorX: "contain",
+              }}
             >
               <div className="flex gap-2.5 sm:gap-3 h-full pb-1">
                 {sideCards.map((card) => {
@@ -817,8 +824,8 @@ Let's connect.
                             className={`w-full h-full rounded-[16px] overflow-hidden relative cursor-pointer group shadow-md border-2 ${card.idx === featured ? "border-[#c42d2d] ring-2 ring-[#c42d2d]/20" : "border-gray-200/60 hover:border-[#c42d2d]/40"}`}
                             onClick={() => handleSwap(card.idx)}
                           >
-                            <img src={cardThumb(card)} alt={card.name} className="absolute inset-0 w-full h-full object-cover" />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/10" />
+                            <img src={cardThumb(card)} alt={card.name} className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/10 pointer-events-none" />
                             <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 active:opacity-100 transition-opacity duration-300">
                               <div className="w-9 h-9 rounded-full bg-[#c42d2d]/90 flex items-center justify-center shadow-lg">
                                 <svg width="10" height="12" viewBox="0 0 12 14" fill="none"><path d="M0 0L12 7L0 14V0Z" fill="white" /></svg>

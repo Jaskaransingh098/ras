@@ -52,17 +52,17 @@ function MasonryCard({ photo, rowH }: { photo: typeof photos[0]; rowH: number })
     const w = Math.round(rowH * toRatio(photo.aspect));
     return (
         <div
-            className="relative overflow-hidden rounded-xl group cursor-pointer flex-shrink-0"
+            className="relative overflow-hidden rounded-xl group cursor-pointer flex-shrink-0 select-none"
             style={{ width: w, height: rowH }}
         >
             <img
                 src={photo.src}
                 alt={photo.alt}
-                className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-110"
+                className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-110 pointer-events-none select-none"
             />
             {/* Remove full image overlay, use bottom gradient for text visibility */}
             {photo.caption && (
-                <div className="absolute bottom-0 left-0 right-0 pt-16 pb-3 px-3 md:pt-20 md:pb-4 md:px-4 bg-gradient-to-t from-black/90 via-black/50 to-transparent">
+                <div className="absolute bottom-0 left-0 right-0 pt-16 pb-3 px-3 md:pt-20 md:pb-4 md:px-4 bg-gradient-to-t from-black/90 via-black/50 to-transparent pointer-events-none">
                     <p className="text-white text-[12px] md:text-[13px] leading-snug font-medium font-[var(--font-dm-sans)] drop-shadow-md">
                         {photo.caption}
                     </p>
@@ -174,6 +174,13 @@ function ScrollRow({
             className="relative group/row overflow-hidden w-full rounded-xl"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
+            onTouchStart={() => setIsHovered(true)}
+            onTouchEnd={() => {
+                setTimeout(() => setIsHovered(false), 2000);
+            }}
+            onTouchCancel={() => {
+                setTimeout(() => setIsHovered(false), 2000);
+            }}
         >
             {/* Left arrow */}
             <button 
@@ -201,7 +208,12 @@ function ScrollRow({
             <div
                 ref={containerRef}
                 className="overflow-x-auto scrollbar-none flex gap-3 md:gap-4 select-none w-full"
-                style={{ height: rowH }}
+                style={{
+                    height: rowH,
+                    WebkitOverflowScrolling: "touch",
+                    touchAction: "pan-x pan-y",
+                    overscrollBehaviorX: "contain",
+                }}
                 onScroll={handleScroll}
             >
                 {doubled.map((photo, i) => (

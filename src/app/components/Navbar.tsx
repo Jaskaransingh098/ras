@@ -6,9 +6,10 @@ import { usePathname } from "next/navigation";
 
 const navLinks = [
   { label: "Home", href: "/" },
-  { label: "Our Services", href: "/services" },
+  { label: "Services", href: "#services" },
   { label: "Quotes", href: "/blog/quotes" },
   { label: "Energy Diagnostic", href: "/energy-diagnostic-call" },
+  { label: "Diwali Offer 🪔", href: "/diwali-diagnostic-call" },
   // { label: "Contact", href: "#contact" },
 ];
 
