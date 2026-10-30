@@ -9,7 +9,6 @@ const navLinks = [
   { label: "Services", href: "#services" },
   { label: "Quotes", href: "/blog/quotes" },
   { label: "Energy Diagnostic", href: "/energy-diagnostic-call" },
-  { label: "Diwali Offer 🪔", href: "/diwali-diagnostic-call" },
   // { label: "Contact", href: "#contact" },
 ];
 
@@ -100,7 +99,7 @@ export default function Navbar() {
 
           {/* CTA — solid red, always visible */}
           <Link
-            href="#contact"
+            href="/energy-diagnostic-call"
             className="flex items-center gap-1.5 px-5 py-2.5 text-[13px] font-bold font-[var(--font-outfit)] flex-shrink-0 transition-all duration-200 group"
             style={{
               background: "#c42d2d",
@@ -117,7 +116,7 @@ export default function Navbar() {
               (e.currentTarget as HTMLAnchorElement).style.boxShadow = "0 2px 14px rgba(196,45,45,0.45)";
             }}
           >
-            Book a Session
+            Book Diagnostic Call
             <svg className="w-3 h-3 transition-transform duration-200 group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
               <path d="M5 12h14" /><path d="M12 5l7 7-7 7" />
             </svg>
@@ -166,7 +165,7 @@ export default function Navbar() {
 
           {/* CTA pill */}
           <Link
-            href="/contact"
+            href="/energy-diagnostic-call"
             className="hidden md:flex items-center gap-1.5 px-4 py-2 ml-0.5 text-[12px] font-bold font-[var(--font-outfit)] transition-all duration-200 flex-shrink-0 group"
             style={{
               background: "rgba(255,255,255,0.97)",
@@ -183,7 +182,7 @@ export default function Navbar() {
               (e.currentTarget as HTMLAnchorElement).style.color = "#000";
             }}
           >
-            Book a Session
+            Book Diagnostic Call
             <svg className="w-3 h-3 transition-transform duration-200 group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
               <path d="M5 12h14" /><path d="M12 5l7 7-7 7" />
             </svg>
@@ -255,11 +254,11 @@ export default function Navbar() {
 
             <div className="mobile-link flex flex-col gap-5" style={{ animationDelay: '0.35s' }}>
               <Link
-                href="/contact"
+                href="/energy-diagnostic-call"
                 onClick={() => setOpen(false)}
                 className="flex items-center justify-center gap-2 bg-[#c42d2d] text-white py-4 rounded-2xl text-[16px] font-bold font-[var(--font-outfit)] shadow-xl shadow-[#c42d2d]/20 hover:bg-[#a82525] transition-all duration-300"
               >
-                Book Your Session
+                Book Diagnostic Call
               </Link>
               <div className="flex items-center justify-between">
                 <p className="text-[11px] uppercase tracking-[.2em] font-medium font-[var(--font-dm-sans)]" style={{ color: "rgba(255,255,255,0.2)" }}>© 2026 Raseshvari</p>
