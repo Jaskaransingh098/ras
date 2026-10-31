@@ -59,10 +59,10 @@ export default function DiwaliDiagnosticCall() {
 
   return (
     <div className="min-h-screen bg-[#f5f0eb] font-serif">
-      <Navbar />
+      <Navbar onCtaClick={() => setShowQRModal(true)} />
 
-      {/* Diwali Offer Banner */}
-      <div className="bg-[#8B0000] text-white text-center py-3 px-4 text-sm sm:text-base">
+      {/* Diwali Offer Banner: padded so the floating menu / navbar never covers the price */}
+      <div className="bg-[#8B0000] text-white text-center py-3 pl-4 pr-16 md:pt-24 md:pb-4 md:px-4 text-sm sm:text-base">
         <span className="mr-2">🪔</span>
         <span className="font-bold text-[#d4a853]">Diwali offer:</span>
         {" "}Diagnostic Call{" "}
@@ -179,8 +179,8 @@ export default function DiwaliDiagnosticCall() {
               { q: '"Har rishte mein wahi kahani dohraati hai."', a: 'Different people, the same painful story, every time.' },
               { q: '"Mehnat poori… result aadha."', a: 'I give everything, and my business or career stays stuck at the same level.' },
               { q: '"Sab kuch hai… phir bhi khushi kyun nahi?"', a: 'I have everything I worked for. So why don\'t I feel happy?' },
-              { q: '"Sabke liye sab kuch kiya… apne liye kuch nahi bacha."', a: 'Nothing was left for me.' },
-              { q: '"Kitne courses, kitne coaches… phir bhi same jagah."', a: 'I follow every advice, and I\'m still in the same place.' },
+              { q: '"Sabke liye sab kuch kiya, par apne liye kuch nahi kar paaye."', a: 'Nothing was left for me.' },
+              { q: '"Kitne courses, kitne coaches, phir bhi aaj tak usi jagah atke hue hain."', a: 'I follow every advice, and I\'m still in the same place.' },
               { q: '"Mere saath hi aisa kyun hota hai?"', a: 'Why does this only happen to me?' },
             ].map((item, i) => (
               <div key={i} className="bg-white border border-[#e8c0c0] rounded-2xl p-5 text-left">
@@ -508,7 +508,7 @@ export default function DiwaliDiagnosticCall() {
                 ["fempreneur.jpg", "Fempreneur Awards", "Jury member"],
               ].map(([img, name, role]) => (
                 <figure key={img} className="snap-start shrink-0 w-64 bg-white rounded-2xl p-2 shadow-sm">
-                  <Image src={`/diwali/journey/${img}`} alt={`Raseshvari with ${name}`} width={400} height={300} className="w-full h-56 object-cover rounded-xl" />
+                  <Image src={`/diwali/journey/${img}`} alt={`Raseshvari with ${name}`} width={400} height={300} className="w-full h-56 object-cover object-top rounded-xl" />
                   <figcaption className="text-sm font-bold text-gray-900 mt-2 px-1">{name}{role && <span className="block text-xs font-normal text-gray-500">{role}</span>}</figcaption>
                 </figure>
               ))}
@@ -662,7 +662,7 @@ export default function DiwaliDiagnosticCall() {
               <p className="text-xs text-gray-500 mb-1">UPI ID</p>
               <p className="font-bold text-[#8B0000] text-lg tracking-wide">raseshwari1@oksbi</p>
               <p className="text-xs text-gray-500 mt-2 mb-1">UPI number</p>
-              <p className="font-bold text-[#8B0000] text-lg tracking-wide">7700801831</p>
+              <p className="font-bold text-[#8B0000] text-lg tracking-wide">98219 78386</p>
             </div>
 
             <div className="bg-[#fffbf0] border border-[#d4a853] rounded-xl p-3 text-sm text-gray-700">

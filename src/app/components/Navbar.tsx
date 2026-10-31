@@ -12,7 +12,12 @@ const navLinks = [
   // { label: "Contact", href: "#contact" },
 ];
 
-export default function Navbar() {
+export default function Navbar({ onCtaClick }: { onCtaClick?: () => void } = {}) {
+  const handleCta = (e: React.MouseEvent) => {
+    if (!onCtaClick) return;
+    e.preventDefault();
+    onCtaClick();
+  };
   const [open, setOpen] = useState(false);
   const [sticky, setSticky] = useState(false);
   const pathname = usePathname() || "/";
@@ -100,6 +105,7 @@ export default function Navbar() {
           {/* CTA — solid red, always visible */}
           <Link
             href="/energy-diagnostic-call"
+            onClick={handleCta}
             className="flex items-center gap-1.5 px-5 py-2.5 text-[13px] font-bold font-[var(--font-outfit)] flex-shrink-0 transition-all duration-200 group"
             style={{
               background: "#c42d2d",
@@ -166,6 +172,7 @@ export default function Navbar() {
           {/* CTA pill */}
           <Link
             href="/energy-diagnostic-call"
+            onClick={handleCta}
             className="hidden md:flex items-center gap-1.5 px-4 py-2 ml-0.5 text-[12px] font-bold font-[var(--font-outfit)] transition-all duration-200 flex-shrink-0 group"
             style={{
               background: "rgba(255,255,255,0.97)",
@@ -255,7 +262,7 @@ export default function Navbar() {
             <div className="mobile-link flex flex-col gap-5" style={{ animationDelay: '0.35s' }}>
               <Link
                 href="/energy-diagnostic-call"
-                onClick={() => setOpen(false)}
+                onClick={(e) => { setOpen(false); handleCta(e); }}
                 className="flex items-center justify-center gap-2 bg-[#c42d2d] text-white py-4 rounded-2xl text-[16px] font-bold font-[var(--font-outfit)] shadow-xl shadow-[#c42d2d]/20 hover:bg-[#a82525] transition-all duration-300"
               >
                 Book Diagnostic Call
