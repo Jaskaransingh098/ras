@@ -16,7 +16,6 @@ export default function SupportPage() {
 
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [openFaq, setOpenFaq] = useState<number | null>(0);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -27,29 +26,6 @@ export default function SupportPage() {
       setSubmitted(true);
     }, 800);
   };
-
-  const faqs = [
-    {
-      q: "How do I prepare for my 1-on-1 Energy Transformation or Diagnostic Call?",
-      a: "No special spiritual preparation is required. Ensure you are in a quiet, private room with a stable internet connection. Keep an open mind and be ready to share what you have been experiencing.",
-    },
-    {
-      q: "What is the difference between an Energy Diagnostic Call and a full session?",
-      a: "The Energy Diagnostic Call is an initial paid diagnostic session designed to map out where your energy is dropping or blocked. A full energy transformation session (such as Revenue Energetics) goes deep into shifting root energy blockages instantly.",
-    },
-    {
-      q: "Can I reschedule my booked session?",
-      a: "Yes, you can reschedule your session up to 24 hours prior to your scheduled time slot by sending an email or contacting support.",
-    },
-    {
-      q: "Are the sessions conducted online or in person?",
-      a: "All diagnostic calls and energy transformation sessions are conducted 1-on-1 via secure online video calls (Zoom/Google Meet) so you can join from anywhere in the world.",
-    },
-    {
-      q: "What if I experience technical issues joining my call?",
-      a: "If you experience any video link or technical difficulty, reach out to us via this support form or email raseshvari@rashindustani.com right away.",
-    },
-  ];
 
   return (
     <>
@@ -334,40 +310,6 @@ export default function SupportPage() {
 
             </div>
 
-          </div>
-        </section>
-
-        {/* FAQs Accordion Section */}
-        <section className="py-12 md:py-20 px-4 sm:px-6 md:px-12 max-w-5xl mx-auto w-full">
-          <div className="text-center mb-10">
-            <span className="text-xs uppercase tracking-widest text-[#c42d2d] font-bold block mb-1">Common Questions</span>
-            <h2 className="text-3xl sm:text-4xl font-bold font-[var(--font-playfair)] text-[#111]">
-              Frequently Asked Questions
-            </h2>
-          </div>
-
-          <div className="space-y-4">
-            {faqs.map((faq, index) => (
-              <div
-                key={index}
-                className="bg-white rounded-2xl border border-gray-200 overflow-hidden transition-all shadow-sm"
-              >
-                <button
-                  onClick={() => setOpenFaq(openFaq === index ? null : index)}
-                  className="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 font-semibold text-base text-[#1a1a1a] hover:text-[#c42d2d] transition-colors"
-                >
-                  <span className="font-[var(--font-playfair)] text-lg">{faq.q}</span>
-                  <span className="text-xl text-[#c42d2d] flex-shrink-0">
-                    {openFaq === index ? "−" : "+"}
-                  </span>
-                </button>
-                {openFaq === index && (
-                  <div className="px-5 pb-6 sm:px-6 sm:pb-6 text-gray-600 text-sm leading-relaxed border-t border-gray-100 pt-4 animate-fadeUp">
-                    {faq.a}
-                  </div>
-                )}
-              </div>
-            ))}
           </div>
         </section>
 

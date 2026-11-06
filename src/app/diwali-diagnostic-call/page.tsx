@@ -5,7 +5,9 @@ import Image from "next/image";
 import Script from "next/script";
 import Navbar from "../components/Navbar";
 
-const CALENDLY_URL = "https://calendly.com/raseshvarihindustani/energy-diagnostic-call-diwali?hide_gdpr_banner=1";
+const PAYMENT_URL = "https://payments.cashfree.com/forms/diwali-diagnostic-call";
+const WHATSAPP_URL = "https://wa.me/917700801831?text=Hi%2C%20I%20have%20a%20question%20about%20the%20Diagnostic%20Call";
+const CALENDLY_URL = "https://calendly.com/raseshvarihindustani/energy-diagnostic-call-diwali?hide_gdpr_banner=1&hide_event_type_details=1";
 
 type CalendlyWindow = Window & {
   Calendly?: { initInlineWidget: (opts: { url: string; parentElement: HTMLElement }) => void };
@@ -16,6 +18,7 @@ export default function DiwaliDiagnosticCall() {
   const [showQRModal, setShowQRModal] = useState(false);
   const [booked, setBooked] = useState(false);
   const [calendlyReady, setCalendlyReady] = useState(false);
+  const [calendlyLoaded, setCalendlyLoaded] = useState(false);
   const calendlyRef = useRef<HTMLDivElement>(null);
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
 
@@ -37,7 +40,19 @@ export default function DiwaliDiagnosticCall() {
     if (!showQRModal || booked || !calendlyReady || !calendlyRef.current) return;
     const el = calendlyRef.current;
     el.innerHTML = "";
+    setCalendlyLoaded(false);
     (window as CalendlyWindow).Calendly?.initInlineWidget({ url: CALENDLY_URL, parentElement: el });
+    // Calendly injects an iframe; hide the loading message once it has loaded
+    let fallback: ReturnType<typeof setTimeout> | undefined;
+    const poll = setInterval(() => {
+      const f = el.querySelector("iframe");
+      if (f) {
+        clearInterval(poll);
+        f.addEventListener("load", () => setCalendlyLoaded(true));
+        fallback = setTimeout(() => setCalendlyLoaded(true), 4000);
+      }
+    }, 200);
+    return () => { clearInterval(poll); if (fallback) clearTimeout(fallback); };
   }, [showQRModal, booked, calendlyReady]);
 
   // Countdown to 15 November
@@ -62,7 +77,7 @@ export default function DiwaliDiagnosticCall() {
       <Navbar onCtaClick={() => setShowQRModal(true)} />
 
       {/* Diwali Offer Banner: padded so the floating menu / navbar never covers the price */}
-      <div className="bg-[#8B0000] text-white text-center py-3 pl-4 pr-16 md:pt-24 md:pb-4 md:px-4 text-sm sm:text-base">
+      <div className="bg-[#8B0000] text-white text-center pt-16 pb-3 px-4 md:pt-24 md:pb-4 text-sm sm:text-base">
         <span className="mr-2">🪔</span>
         <span className="font-bold text-[#d4a853]">Diwali offer:</span>
         {" "}Diagnostic Call{" "}
@@ -107,7 +122,7 @@ export default function DiwaliDiagnosticCall() {
           {/* Scarcity */}
           <div className="inline-flex items-center gap-2 bg-[#fdf0f0] border border-[#e8c0c0] rounded-full px-4 py-2 text-sm text-[#8B0000] mb-8">
             <span className="w-2 h-2 rounded-full bg-[#8B0000] inline-block"></span>
-            Only 4 Diagnostic Calls a day
+            Only 3 Diagnostic Calls a day
           </div>
 
           {/* CTA Buttons */}
@@ -136,7 +151,7 @@ export default function DiwaliDiagnosticCall() {
 
         {/* Hero Image */}
         <div className="relative flex justify-center items-end">
-          <div className="w-72 h-80 sm:w-80 sm:h-96 rounded-t-full border-2 border-[#d4a853] overflow-hidden relative">
+          <div className="w-80 h-[28rem] sm:w-[26rem] sm:h-[36rem] rounded-t-full border-2 border-[#d4a853] overflow-hidden relative">
             <Image src="/diwali/raseshvari.jpg" alt="Raseshvari Hindustani" fill className="object-cover object-top" />
           </div>
           {/* Floating Card */}
@@ -150,13 +165,6 @@ export default function DiwaliDiagnosticCall() {
       {/* PRESS / SOCIAL PROOF */}
       <section className="bg-white py-8 px-6">
         <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center gap-6">
-          <div className="flex -space-x-3">
-            {[1,2,3,4,5].map(i => (
-              <div key={i} className="w-10 h-10 rounded-full bg-[#d4a853] border-2 border-white flex items-center justify-center text-white text-xs font-bold">
-                {String.fromCharCode(64 + i)}
-              </div>
-            ))}
-          </div>
           <div>
             <p className="text-xs font-bold tracking-widest text-[#8B0000] uppercase">With Padma Awardees, Public Leaders & Artists</p>
             <p className="text-gray-600 font-semibold mt-1">Dainik Jagran · Dainik Tribune · BSE</p>
@@ -295,8 +303,8 @@ export default function DiwaliDiagnosticCall() {
                 desc: 'Click "Book my Diagnostic Call", choose a date and time that suit you, and answer a few short questions.'
               },
               {
-                n: "2", title: "Pay by UPI",
-                desc: "Scan the QR shown after booking, pay ₹9,999 and send us the screenshot on WhatsApp. Your slot is confirmed once payment is received."
+                n: "2", title: "Complete payment",
+                desc: "Right after booking, pay ₹9,999 securely online. Your slot is confirmed once payment is received."
               },
               {
                 n: "3", title: "Your 1-hour call",
@@ -530,7 +538,7 @@ export default function DiwaliDiagnosticCall() {
               <h2 className="text-3xl font-black mb-2">Energy Diagnostic Call</h2>
               <p className="text-4xl font-black text-[#d4a853]">₹9,999 <s className="text-xl text-white/60">₹15,000</s></p>
               <p className="text-sm opacity-80 mt-1 mb-3">India pricing · country pricing applies outside India</p>
-              <span className="inline-block bg-white text-[#8B0000] text-xs font-bold px-3 py-1 rounded-full mb-4">Only 4 calls a day</span>
+              <span className="inline-block bg-white text-[#8B0000] text-xs font-bold px-3 py-1 rounded-full mb-4">Only 3 calls a day</span>
               <div className="grid grid-cols-4 gap-2 text-center max-w-xs">
                 {[["Days", timeLeft.days], ["Hrs", timeLeft.hours], ["Mins", timeLeft.minutes], ["Secs", timeLeft.seconds]].map(([l, v]) => (
                   <div key={l as string} className="bg-black/30 rounded-xl py-2">
@@ -553,7 +561,7 @@ export default function DiwaliDiagnosticCall() {
               >
                 Book my call
               </button>
-              <p className="text-xs opacity-80 mt-3">Pay by UPI · non-refundable, one free reschedule (24 hrs' notice)</p>
+              <p className="text-xs opacity-80 mt-3">Secure online payment · non-refundable, one free reschedule (24 hrs' notice)</p>
               <p className="text-xs opacity-80 mt-1">Questions or outside India? <a className="underline" href="https://wa.me/917700801831?text=Hi%2C%20I%20have%20a%20question%20about%20the%20Diagnostic%20Call" target="_blank" rel="noopener noreferrer">WhatsApp us</a></p>
             </div>
           </div>
@@ -571,7 +579,7 @@ export default function DiwaliDiagnosticCall() {
             <details className="bg-white rounded-2xl p-5 shadow-sm group"><summary className="font-bold text-gray-900 cursor-pointer">Will this one call solve my problem?</summary><p className="text-gray-600 mt-3 leading-relaxed">The Diagnostic Call shows you what's really holding you back, why it repeats and what can change. Many people leave lighter and clearer. If you'd like me to shift what we find, that happens in my private Energy Transformation Session, which I'll explain on the call if it's relevant. It's your choice.</p></details>
             <details className="bg-white rounded-2xl p-5 shadow-sm group"><summary className="font-bold text-gray-900 cursor-pointer">Is the call online? Is it private?</summary><p className="text-gray-600 mt-3 leading-relaxed">Yes to both. The call is on Zoom, one to one, and everything you share stays confidential.</p></details>
             <details className="bg-white rounded-2xl p-5 shadow-sm group"><summary className="font-bold text-gray-900 cursor-pointer">What do I need to prepare?</summary><p className="text-gray-600 mt-3 leading-relaxed">Nothing special. A quiet space, a stable connection, and an open mind.</p></details>
-            <details className="bg-white rounded-2xl p-5 shadow-sm group"><summary className="font-bold text-gray-900 cursor-pointer">How do I choose my time?</summary><p className="text-gray-600 mt-3 leading-relaxed">Click &quot;Book my Diagnostic Call&quot;, pay by UPI and send the screenshot on WhatsApp. Once payment is received, your slot is confirmed and the Zoom link reaches you by email. Unpaid bookings are released after 3 hours.</p></details>
+            <details className="bg-white rounded-2xl p-5 shadow-sm group"><summary className="font-bold text-gray-900 cursor-pointer">How do I choose my time?</summary><p className="text-gray-600 mt-3 leading-relaxed">Click &quot;Book my Diagnostic Call&quot;, pick a date and time, then complete the payment. Once payment is received, your slot is confirmed and the Zoom link reaches you by email. Unpaid bookings are released after 3 hours.</p></details>
             <details className="bg-white rounded-2xl p-5 shadow-sm group"><summary className="font-bold text-gray-900 cursor-pointer">I live outside India. What does it cost, and what about time zones?</summary><p className="text-gray-600 mt-3 leading-relaxed">₹9,999 is the India price. Outside India, country pricing applies. If none of the available times suit your time zone, message us on WhatsApp and we'll do our best to find a time that works for you.</p></details>
             <details className="bg-white rounded-2xl p-5 shadow-sm group"><summary className="font-bold text-gray-900 cursor-pointer">Can I reschedule or get a refund?</summary><p className="text-gray-600 mt-3 leading-relaxed">Your Diagnostic Call is reserved exclusively for you once booked, so fees are non-refundable. You can reschedule once, free of charge, up to 24 hours before your call. Calls missed without notice cannot be rescheduled or refunded.</p></details>
         </div>
@@ -579,7 +587,8 @@ export default function DiwaliDiagnosticCall() {
 
       {/* FINAL CTA */}
       <section className="bg-[#8B0000] py-24 px-6 text-center">
-        <h2 className="text-3xl sm:text-4xl font-black italic text-[#d4a853] mb-4">space for clarity within.</h2>
+        <p className="text-[#d4a853] text-xs sm:text-sm font-bold tracking-[0.3em] uppercase mb-3">This Diwali</p>
+        <h2 className="text-3xl sm:text-4xl font-black italic text-[#d4a853] mb-4">Light a diya at home.<br />Make space for clarity within...</h2>
         <p className="text-white text-xl font-bold max-w-2xl mx-auto mb-3">
           If the Universe has brought you this far... what is stopping you from taking the next step?
         </p>
@@ -616,7 +625,19 @@ export default function DiwaliDiagnosticCall() {
         onReady={() => setCalendlyReady(true)}
       />
 
-      {/* QR CODE MODAL */}
+      {/* FLOATING WHATSAPP BUTTON */}
+      <a
+        href={WHATSAPP_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Chat with us on WhatsApp"
+        className="fixed bottom-5 right-5 z-40 h-14 px-5 gap-2 rounded-full bg-[#25D366] text-white font-bold flex items-center justify-center shadow-xl hover:bg-[#20b958] transition-colors"
+      >
+        <span className="text-2xl" aria-hidden="true">💬</span>
+        <span>WhatsApp</span>
+      </a>
+
+      {/* BOOKING MODAL */}
       {showQRModal && (
         <div
           className="fixed inset-0 bg-black bg-opacity-60 z-50 flex items-center justify-center p-4"
@@ -641,43 +662,19 @@ export default function DiwaliDiagnosticCall() {
             {!booked ? (
               <div id="step-book">
                 <p className="text-sm text-gray-600 mb-2">Step 1 of 2: pick your date and time</p>
-                <div ref={calendlyRef} style={{ minWidth: "320px", height: "680px" }} />
+                {!calendlyLoaded && <p className="text-gray-500 text-sm py-8 animate-pulse">Loading available times…</p>}
+                <div ref={calendlyRef} style={{ minWidth: "320px", height: calendlyLoaded ? "680px" : "0px" }} />
               </div>
             ) : (
               <div id="step-pay">
                 <p className="text-sm text-green-700 font-bold mb-4">✓ Slot booked. Step 2 of 2: pay to confirm it</p>
-            <div className="bg-gray-50 rounded-2xl p-4 mb-4">
-              <p className="text-gray-600 text-sm mb-3 font-medium">Scan to pay via Google Pay / UPI</p>
-              <div className="relative w-52 h-52 mx-auto rounded-xl overflow-hidden border-4 border-[#8B0000]">
-                <Image
-                  src="/gpay-qr.jpg"
-                  alt="Google Pay QR Code"
-                  fill
-                  className="object-contain"
-                />
-              </div>
-            </div>
-
-            <div className="bg-[#fdf0f0] rounded-xl p-3 mb-4">
-              <p className="text-xs text-gray-500 mb-1">UPI ID</p>
-              <p className="font-bold text-[#8B0000] text-lg tracking-wide">raseshwari1@oksbi</p>
-              <p className="text-xs text-gray-500 mt-2 mb-1">UPI number</p>
-              <p className="font-bold text-[#8B0000] text-lg tracking-wide">98219 78386</p>
-            </div>
-
-            <div className="bg-[#fffbf0] border border-[#d4a853] rounded-xl p-3 text-sm text-gray-700">
-              <p className="font-bold text-[#8B0000] mb-1">After payment:</p>
-              <p>Send the payment screenshot on WhatsApp to confirm your slot. Your booking is confirmed once payment is received.</p>
-            </div>
-
             <a
-              href="https://wa.me/917700801831"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-4 w-full bg-[#25D366] text-white py-3 rounded-full font-bold flex items-center justify-center gap-2 hover:bg-[#20b958] transition-colors"
+              href={PAYMENT_URL}
+              className="w-full bg-[#8B0000] text-white py-4 rounded-full font-bold text-lg flex items-center justify-center hover:bg-[#6d0000] transition-colors"
             >
-              <span>📱</span> Send Screenshot on WhatsApp
+              Complete payment ₹9,999
             </a>
+            <p className="text-xs text-gray-500 mt-3">Your slot is confirmed once payment is received.</p>
               </div>
             )}
           </div>
