@@ -5,16 +5,26 @@ import { useEffect } from "react";
 type FbqWindow = Window & { fbq?: (...args: unknown[]) => void };
 
 export default function DiwaliThankYou() {
-  // Fires the Meta Purchase event once per browser session (guards against refresh)
+  // Fires the Meta Purchase event once per browser session (guards against refresh).
+  // Waits for the pixel to load and only marks it tracked after it actually fires.
   useEffect(() => {
-    try {
-      if (sessionStorage.getItem("diwali-purchase-tracked")) return;
-      sessionStorage.setItem("diwali-purchase-tracked", "1");
-    } catch {}
+    const KEY = "diwali-purchase-tracked";
+    try { if (sessionStorage.getItem(KEY)) return; } catch {}
     const w = window as FbqWindow;
-    const fire = () => w.fbq?.("track", "Purchase", { value: 9999, currency: "INR", content_name: "Energy Diagnostic Call - Diwali" });
-    if (w.fbq) fire(); else setTimeout(fire, 1500);
+    let tries = 0;
+    const timer = setInterval(() => {
+      if (w.fbq) {
+        clearInterval(timer);
+        w.fbq("track", "Purchase", { value: 9999, currency: "INR", content_name: "Energy Diagnostic Call - Diwali" });
+        try { sessionStorage.setItem(KEY, "1"); } catch {}
+      } else if (++tries > 50) {
+        clearInterval(timer);
+      }
+    }, 200);
+    return () => clearInterval(timer);
   }, []);
+
+  const trackContact = () => (window as FbqWindow).fbq?.("track", "Contact");
 
   return (
     <div className="min-h-screen bg-[#f5f0eb] font-serif flex items-center justify-center px-6">
@@ -29,6 +39,7 @@ export default function DiwaliThankYou() {
           href="https://wa.me/917700801831?text=Hi%2C%20I%20have%20a%20question%20about%20my%20Diagnostic%20Call"
           target="_blank"
           rel="noopener noreferrer"
+          onClick={trackContact}
           className="inline-block bg-[#25D366] text-white px-8 py-3 rounded-full font-bold hover:bg-[#20b958] transition-colors"
         >
           WhatsApp us

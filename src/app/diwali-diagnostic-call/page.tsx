@@ -22,6 +22,9 @@ export default function DiwaliDiagnosticCall() {
   const calendlyRef = useRef<HTMLDivElement>(null);
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
 
+  // Meta "Contact" event for every WhatsApp button
+  const trackContact = () => (window as CalendlyWindow).fbq?.("track", "Contact");
+
   // Calendly booking completed: swap to the payment step and count it as a Lead
   useEffect(() => {
     const onMessage = (e: MessageEvent) => {
@@ -562,7 +565,7 @@ export default function DiwaliDiagnosticCall() {
                 Book my call
               </button>
               <p className="text-xs opacity-80 mt-3">Secure online payment · non-refundable, one free reschedule (24 hrs' notice)</p>
-              <p className="text-xs opacity-80 mt-1">Questions or outside India? <a className="underline" href="https://wa.me/917700801831?text=Hi%2C%20I%20have%20a%20question%20about%20the%20Diagnostic%20Call" target="_blank" rel="noopener noreferrer">WhatsApp us</a></p>
+              <p className="text-xs opacity-80 mt-1">Questions or outside India? <a className="underline" href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" onClick={trackContact}>WhatsApp us</a></p>
             </div>
           </div>
         </div>
@@ -613,14 +616,14 @@ export default function DiwaliDiagnosticCall() {
           <span>·</span>
           <a href="/terms-and-conditions" className="underline hover:text-white">Terms & conditions</a>
           <span>·</span>
-          <a href="https://wa.me/917700801831" target="_blank" rel="noopener noreferrer" className="underline hover:text-white">Contact us on WhatsApp</a>
+          <a href="https://wa.me/917700801831" target="_blank" rel="noopener noreferrer" onClick={trackContact} className="underline hover:text-white">Contact us on WhatsApp</a>
         </div>
       </footer>
 
       <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
       <Script
         src="https://assets.calendly.com/assets/external/widget.js"
-        strategy="lazyOnload"
+        strategy="afterInteractive"
         onLoad={() => setCalendlyReady(true)}
         onReady={() => setCalendlyReady(true)}
       />
@@ -631,6 +634,7 @@ export default function DiwaliDiagnosticCall() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Chat with us on WhatsApp"
+        onClick={trackContact}
         className="fixed bottom-5 right-5 z-40 h-14 px-5 gap-2 rounded-full bg-[#25D366] text-white font-bold flex items-center justify-center shadow-xl hover:bg-[#20b958] transition-colors"
       >
         <span className="text-2xl" aria-hidden="true">💬</span>
@@ -640,10 +644,10 @@ export default function DiwaliDiagnosticCall() {
       {/* BOOKING MODAL */}
       {showQRModal && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-60 z-50 flex items-center justify-center p-4"
+          className="fixed inset-0 bg-black bg-opacity-60 z-50 flex items-center justify-center p-2 sm:p-4"
           onClick={(e) => { if (e.target === e.currentTarget) setShowQRModal(false); }}
         >
-          <div className="bg-white rounded-3xl p-8 max-w-sm w-full max-h-[92vh] overflow-y-auto shadow-2xl text-center relative" style={!booked ? { maxWidth: "42rem" } : undefined}>
+          <div className="bg-white rounded-3xl px-2 py-8 sm:p-8 max-w-sm w-full max-h-[92vh] overflow-y-auto shadow-2xl text-center relative" style={!booked ? { maxWidth: "42rem" } : undefined}>
             <button
               onClick={() => setShowQRModal(false)}
               className="absolute top-4 right-4 w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-500 hover:bg-gray-200 font-bold text-lg"
@@ -662,8 +666,13 @@ export default function DiwaliDiagnosticCall() {
             {!booked ? (
               <div id="step-book">
                 <p className="text-sm text-gray-600 mb-2">Step 1 of 2: pick your date and time</p>
-                {!calendlyLoaded && <p className="text-gray-500 text-sm py-8 animate-pulse">Loading available times…</p>}
-                <div ref={calendlyRef} style={{ minWidth: "320px", height: calendlyLoaded ? "680px" : "0px" }} />
+                {!calendlyLoaded && (
+                  <div className="py-10 flex flex-col items-center gap-3 text-gray-500 text-sm">
+                    <span className="w-8 h-8 border-4 border-[#e8c0c0] border-t-[#8B0000] rounded-full animate-spin" aria-hidden="true" />
+                    <p>Loading calendar…</p>
+                  </div>
+                )}
+                <div ref={calendlyRef} className="w-full overflow-hidden" style={{ height: calendlyLoaded ? "700px" : "0px" }} />
               </div>
             ) : (
               <div id="step-pay">
